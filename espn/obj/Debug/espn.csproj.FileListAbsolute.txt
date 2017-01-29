@@ -1,0 +1,24 @@
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\bin\Debug\espn.exe.config
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\bin\Debug\espn.exe
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\bin\Debug\espn.pdb
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\obj\Debug\espn.Properties.Resources.resources
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\obj\Debug\espn.csproj.GenerateResource.Cache
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\obj\Debug\espn.exe
+c:\users\kobim\documents\visual studio 2015\Projects\espn\espn\obj\Debug\espn.pdb
+C:\Users\KobiM\Documents\Visual Studio 2015\Projects\espn\espn\obj\Debug\espn.csprojResolveAssemblyReference.cache
+C:\Users\KobiM\Documents\Visual Studio 2015\Projects\espn\espn\obj\Debug\espn.MainForm.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn\espn\bin\Debug\espn.exe.config
+C:\Users\KobiM\Dropbox\NBA fantasy\espn\espn\obj\Debug\espn.exe
+C:\Users\KobiM\Dropbox\NBA fantasy\espn\espn\obj\Debug\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\espn.exe.config
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\espn.exe
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.MainForm.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.Properties.Resources.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.GenerateResource.Cache
+C:\Users\Kubic\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\espn.exe.config
+C:\Users\Kubic\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
+C:\Users\Kubic\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojResolveAssemblyReference.cache

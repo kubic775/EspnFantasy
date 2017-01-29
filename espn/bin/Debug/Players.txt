@@ -1,0 +1,36 @@
+Paul George ; 4251
+Myles Turner ; 3133628
+Jeff Teague ; 4015
+Thaddeus Young ; 3244
+Monta Ellis ; 2751
+Al Jefferson ; 2389
+C.J Miles ; 2778
+Glenn Robinson III ; 2991039
+Aaron Brooks ; 3192
+Rodney Stuckey ; 3235
+Georges Niang ; 2990969
+Joe Young ; 2528386
+Lavoy Allen ; 6424
+Kevin Seraphin ; 4289
+Rakeem Christmas ; 2596110
+Frank Kaminsky III ; 2579294
+Kentavious Caldwell-Pope ; 2581018
+Ish Smith ; 4305
+Nick Young ; 3243
+Marcin Gortat ; 2758
+Kawhi Leonard ; 6450
+Nicolas Batum ; 3416
+Chris Paul ; 2779
+Joakim Noah ; 3224
+Nerlens Noel ; 2991280
+Dirk Nowitzki ; 609
+Seth Curry ; 2326307
+Kevin Love;3449
+Andre Roberson;2530596
+Victor Oladipo;2527963
+Jon Leuer;6452
+Robin Lopez;3447
+Dwyane Wade;1987
+Iman Shumpert;6468
+Raymond Felton;2753
+Ersan Ilyasova;2767
