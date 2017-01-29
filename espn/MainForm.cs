@@ -34,8 +34,7 @@ namespace espn
             compare_last_comboBox.SelectedIndex = 3;
             stats_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             stat_chart.Series[0].Points.Clear();
-            player1_chart.Series[0].Points.Clear();
-            player2_chart.Series[0].Points.Clear();
+            compare_chart.Series[0].Points.Clear();
             player1_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
             player2_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
         }
@@ -204,16 +203,16 @@ namespace espn
             return y;
         }
 
-        public void PrintChart(double[] y, string name, Chart chart)
+        public void PrintChart(double[] y, string name, Chart chart, int seriesNum = 0)
         {
             int[] x = Enumerable.Range(1, y.Length).ToArray();
 
-            chart.Series[0].Points.Clear();
-            chart.Series[0].Name = name;
+            chart.Series[seriesNum].Points.Clear();
+            chart.Series[seriesNum].Name = name;
 
             for (int i = 0; i < x.Length; i++)
             {
-                chart.Series[0].Points.Add(new DataPoint(x[i], y[i]));
+                chart.Series[seriesNum].Points.Add(new DataPoint(x[i], y[i]));
             }
         }
 
@@ -269,7 +268,7 @@ namespace espn
                 GameStats[] games = FilterReleventGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                     compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem), player1);
                 UpdateCompareInfo1(games);
-                player1_chart.Titles[0].Text = player1.PlayerName;
+
             }
             catch (Exception)
             {
@@ -287,7 +286,6 @@ namespace espn
                 GameStats[] games = FilterReleventGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                      compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem), player2);
                 UpdateCompareInfo2(games);
-                player2_chart.Titles[0].Text = player2.PlayerName;
             }
             catch (Exception ex)
             {
@@ -384,20 +382,26 @@ namespace espn
             UpdateCompareCharts("Pts");
         }
 
-        private void UpdateCompareCharts(string name)
+
+
+        private void UpdateCompareCharts(string colName)
         {
             Type gameStatsType = typeof(GameStats);
-            FieldInfo fieldInfo = gameStatsType.GetField(name);
+            FieldInfo fieldInfo = gameStatsType.GetField(colName);
             GameStats[] games = FilterReleventGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                     compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem), player1);
 
             var y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
-            PrintChart(y, name, player1_chart);
+            var nameArray = player1.PlayerName.Split(" ".ToCharArray());
+            PrintChart(y, nameArray[0].Substring(0, 1) + "." + nameArray[1].Substring(0, 1) + ".", compare_chart, 0);
 
             games = FilterReleventGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                    compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem), player2);
             y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
-            PrintChart(y, name, player2_chart);
+            nameArray = player2.PlayerName.Split(" ".ToCharArray());
+            PrintChart(y, nameArray[0].Substring(0, 1) + "." + nameArray[1].Substring(0, 1) + ".", compare_chart, 1);
+
+            compare_chart.Titles[0].Text = player1.PlayerName + " Vs " + player2.PlayerName + Environment.NewLine + colName;
         }
 
         private void copyCompare_button_Click(object sender, EventArgs e)
@@ -415,6 +419,15 @@ namespace espn
             Clipboard.SetText(text);
         }
 
+        private void copyChart_button_Click(object sender, EventArgs e)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                compare_chart.SaveImage(ms, ChartImageFormat.Bmp);
+                Bitmap bm = new Bitmap(ms);
+                Clipboard.SetImage(bm);
+            }
+        }
         #endregion
 
 
