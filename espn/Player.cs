@@ -24,7 +24,6 @@ namespace espn
             CreatePlayer(playerStr, Id);
         }
 
-
         public void CreatePlayer(string playerStr, int id)
         {
             Games = new List<GameStats>();
@@ -42,7 +41,7 @@ namespace espn
 
             index1 = playerStr.IndexOf("2016-2017 REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
-            if (index1!=-1)
+            if (index1 != -1)
             {
                 string gamesStr = playerStr.Substring(index1, index2 - index1);
                 CreatePlayerGames(gamesStr);
@@ -63,7 +62,7 @@ namespace espn
 
             Task<WebResponse> task = Task.Factory.FromAsync(
                 request.BeginGetResponse,
-                asyncResult => request.EndGetResponse(asyncResult),null);
+                asyncResult => request.EndGetResponse(asyncResult), null);
 
             return task.ContinueWith(t => ReadStreamFromResponse(t.Result));
         }
@@ -78,7 +77,6 @@ namespace espn
                 return strContent;
             }
         }
-
 
         public void CreatePlayerGames(string gamesStr)
         {
@@ -96,5 +94,18 @@ namespace espn
             }
         }
 
+        public GameStats GetAvgStats(int numOfGames)
+        {
+            var fieldNames = typeof(GameStats).GetFields();
+            var games = Games.Where(g => g.Min > 0).Take(numOfGames).ToArray();
+            GameStats stats = new GameStats();
+
+            foreach (var field in fieldNames)
+            {
+                field.SetValue(stats, games.Average(g => double.Parse(field.GetValue(g).ToString())));
+            }
+
+            return stats;
+        }
     }
 }

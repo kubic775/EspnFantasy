@@ -78,6 +78,7 @@
             this.playerName_textBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
+            this.copyChart_button = new System.Windows.Forms.Button();
             this.copyCompare_button = new System.Windows.Forms.Button();
             this.compare_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pts2_label = new System.Windows.Forms.Label();
@@ -122,6 +123,14 @@
             this.player1_comboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.send_label = new System.Windows.Forms.Label();
+            this.clearList_button = new System.Windows.Forms.Button();
+            this.trade_button = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.recivePlayers_listBox = new System.Windows.Forms.ListBox();
+            this.sendPlayers_listBox = new System.Windows.Forms.ListBox();
             this.tradeLast_comboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tradeMode_comboBox = new System.Windows.Forms.ComboBox();
@@ -130,9 +139,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.sendPlayers_comboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.copyChart_button = new System.Windows.Forms.Button();
-            this.sendPlayers_listBox = new System.Windows.Forms.ListBox();
-            this.recivePlayers_listBox = new System.Windows.Forms.ListBox();
+            this.trade_backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).BeginInit();
@@ -481,6 +488,7 @@
             this.playerName_textBox.Size = new System.Drawing.Size(127, 22);
             this.playerName_textBox.TabIndex = 1;
             this.playerName_textBox.TextChanged += new System.EventHandler(this.playerName_textBox_TextChanged);
+            this.playerName_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playerName_textBox_KeyPress);
             // 
             // nameLabel
             // 
@@ -545,6 +553,16 @@
             this.compare_tabPage.Size = new System.Drawing.Size(1113, 408);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
+            // 
+            // copyChart_button
+            // 
+            this.copyChart_button.Location = new System.Drawing.Point(345, 230);
+            this.copyChart_button.Name = "copyChart_button";
+            this.copyChart_button.Size = new System.Drawing.Size(95, 23);
+            this.copyChart_button.TabIndex = 53;
+            this.copyChart_button.Text = "Copy Chart";
+            this.copyChart_button.UseVisualStyleBackColor = true;
+            this.copyChart_button.Click += new System.EventHandler(this.copyChart_button_Click);
             // 
             // copyCompare_button
             // 
@@ -989,6 +1007,12 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.PeachPuff;
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.send_label);
+            this.tabPage2.Controls.Add(this.clearList_button);
+            this.tabPage2.Controls.Add(this.trade_button);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.recivePlayers_listBox);
             this.tabPage2.Controls.Add(this.sendPlayers_listBox);
             this.tabPage2.Controls.Add(this.tradeLast_comboBox);
@@ -1005,6 +1029,80 @@
             this.tabPage2.Size = new System.Drawing.Size(1113, 408);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Trade Analyzer";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(421, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 16);
+            this.label11.TabIndex = 41;
+            this.label11.Text = "Players Received :";
+            // 
+            // send_label
+            // 
+            this.send_label.AutoSize = true;
+            this.send_label.Location = new System.Drawing.Point(421, 29);
+            this.send_label.Name = "send_label";
+            this.send_label.Size = new System.Drawing.Size(104, 16);
+            this.send_label.TabIndex = 40;
+            this.send_label.Text = "Players Sent :";
+            // 
+            // clearList_button
+            // 
+            this.clearList_button.Location = new System.Drawing.Point(107, 334);
+            this.clearList_button.Name = "clearList_button";
+            this.clearList_button.Size = new System.Drawing.Size(75, 23);
+            this.clearList_button.TabIndex = 39;
+            this.clearList_button.Text = "Clear";
+            this.clearList_button.UseVisualStyleBackColor = true;
+            this.clearList_button.Click += new System.EventHandler(this.clearList_button_Click);
+            // 
+            // trade_button
+            // 
+            this.trade_button.Location = new System.Drawing.Point(107, 295);
+            this.trade_button.Name = "trade_button";
+            this.trade_button.Size = new System.Drawing.Size(75, 23);
+            this.trade_button.TabIndex = 38;
+            this.trade_button.Text = "Trade";
+            this.trade_button.UseVisualStyleBackColor = true;
+            this.trade_button.Click += new System.EventHandler(this.trade_button_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(477, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 16);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(437, 134);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 16);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Pts:";
+            // 
+            // recivePlayers_listBox
+            // 
+            this.recivePlayers_listBox.FormattingEnabled = true;
+            this.recivePlayers_listBox.ItemHeight = 16;
+            this.recivePlayers_listBox.Location = new System.Drawing.Point(166, 115);
+            this.recivePlayers_listBox.Name = "recivePlayers_listBox";
+            this.recivePlayers_listBox.Size = new System.Drawing.Size(106, 164);
+            this.recivePlayers_listBox.TabIndex = 35;
+            // 
+            // sendPlayers_listBox
+            // 
+            this.sendPlayers_listBox.FormattingEnabled = true;
+            this.sendPlayers_listBox.ItemHeight = 16;
+            this.sendPlayers_listBox.Location = new System.Drawing.Point(21, 115);
+            this.sendPlayers_listBox.Name = "sendPlayers_listBox";
+            this.sendPlayers_listBox.Size = new System.Drawing.Size(106, 164);
+            this.sendPlayers_listBox.TabIndex = 34;
             // 
             // tradeLast_comboBox
             // 
@@ -1061,6 +1159,7 @@
             this.recivePlayers_comboBox.Name = "recivePlayers_comboBox";
             this.recivePlayers_comboBox.Size = new System.Drawing.Size(106, 24);
             this.recivePlayers_comboBox.TabIndex = 29;
+            this.recivePlayers_comboBox.SelectedValueChanged += new System.EventHandler(this.recivePlayers_comboBox_SelectedValueChanged);
             // 
             // label7
             // 
@@ -1080,6 +1179,7 @@
             this.sendPlayers_comboBox.Name = "sendPlayers_comboBox";
             this.sendPlayers_comboBox.Size = new System.Drawing.Size(106, 24);
             this.sendPlayers_comboBox.TabIndex = 27;
+            this.sendPlayers_comboBox.SelectedValueChanged += new System.EventHandler(this.sendPlayers_comboBox_SelectedValueChanged);
             // 
             // label8
             // 
@@ -1090,33 +1190,13 @@
             this.label8.TabIndex = 26;
             this.label8.Text = "Send";
             // 
-            // copyChart_button
+            // trade_backgroundWorker
             // 
-            this.copyChart_button.Location = new System.Drawing.Point(345, 230);
-            this.copyChart_button.Name = "copyChart_button";
-            this.copyChart_button.Size = new System.Drawing.Size(95, 23);
-            this.copyChart_button.TabIndex = 53;
-            this.copyChart_button.Text = "Copy Chart";
-            this.copyChart_button.UseVisualStyleBackColor = true;
-            this.copyChart_button.Click += new System.EventHandler(this.copyChart_button_Click);
-            // 
-            // sendPlayers_listBox
-            // 
-            this.sendPlayers_listBox.FormattingEnabled = true;
-            this.sendPlayers_listBox.ItemHeight = 16;
-            this.sendPlayers_listBox.Location = new System.Drawing.Point(21, 115);
-            this.sendPlayers_listBox.Name = "sendPlayers_listBox";
-            this.sendPlayers_listBox.Size = new System.Drawing.Size(106, 276);
-            this.sendPlayers_listBox.TabIndex = 34;
-            // 
-            // recivePlayers_listBox
-            // 
-            this.recivePlayers_listBox.FormattingEnabled = true;
-            this.recivePlayers_listBox.ItemHeight = 16;
-            this.recivePlayers_listBox.Location = new System.Drawing.Point(166, 115);
-            this.recivePlayers_listBox.Name = "recivePlayers_listBox";
-            this.recivePlayers_listBox.Size = new System.Drawing.Size(106, 276);
-            this.recivePlayers_listBox.TabIndex = 35;
+            this.trade_backgroundWorker.WorkerReportsProgress = true;
+            this.trade_backgroundWorker.WorkerSupportsCancellation = true;
+            this.trade_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.trade_backgroundWorker_DoWork);
+            this.trade_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.trade_backgroundWorker_ProgressChanged);
+            this.trade_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.trade_backgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -1234,6 +1314,13 @@
         private System.Windows.Forms.Button copyChart_button;
         private System.Windows.Forms.ListBox recivePlayers_listBox;
         private System.Windows.Forms.ListBox sendPlayers_listBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button trade_button;
+        private System.Windows.Forms.Button clearList_button;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label send_label;
+        private System.ComponentModel.BackgroundWorker trade_backgroundWorker;
     }
 }
 

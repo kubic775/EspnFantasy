@@ -8,8 +8,14 @@ namespace espn
     public class GameStats
     {
         public DateTime GameDate;
-        public int Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
+        public double Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
         public double FtPer, FgPer, TpPer;
+
+
+        public GameStats()
+        {
+            
+        }
 
         public GameStats(string gameStr)
         {
