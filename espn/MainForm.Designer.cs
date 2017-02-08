@@ -166,8 +166,6 @@
             this.astChartTrade_label = new System.Windows.Forms.Label();
             this.tpmChartTrade_label = new System.Windows.Forms.Label();
             this.ptsChartTrade_label = new System.Windows.Forms.Label();
-            this.playersReceived_label = new System.Windows.Forms.Label();
-            this.playersSent_label = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -200,6 +198,10 @@
             this.sendPlayers_comboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tradePlayers_button = new System.Windows.Forms.Button();
+            this.trade_panel = new System.Windows.Forms.Panel();
+            this.screenshot_button = new System.Windows.Forms.Button();
+            this.playersSent_textBox = new System.Windows.Forms.Label();
+            this.playersReceived_textBox = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).BeginInit();
@@ -209,6 +211,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.compare_chart)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).BeginInit();
+            this.trade_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -1075,65 +1078,15 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.PeachPuff;
+            this.tabPage2.Controls.Add(this.screenshot_button);
+            this.tabPage2.Controls.Add(this.trade_panel);
             this.tabPage2.Controls.Add(this.copyTradeChart_button);
             this.tabPage2.Controls.Add(this.trade_chart);
             this.tabPage2.Controls.Add(this.flip_button);
             this.tabPage2.Controls.Add(this.copyDiff_button);
             this.tabPage2.Controls.Add(this.copyTradeStats_button);
-            this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.pts2Trade_label);
-            this.tabPage2.Controls.Add(this.ast2Trade_label);
-            this.tabPage2.Controls.Add(this.stl2Trade_label);
-            this.tabPage2.Controls.Add(this.blk2Trade_label);
-            this.tabPage2.Controls.Add(this.reb2Trade_label);
-            this.tabPage2.Controls.Add(this.tpm2Trade_label);
-            this.tabPage2.Controls.Add(this.fg2Trade_label);
-            this.tabPage2.Controls.Add(this.ft2Trade_label);
-            this.tabPage2.Controls.Add(this.to2Trade_label);
-            this.tabPage2.Controls.Add(this.pts1Trade_label);
-            this.tabPage2.Controls.Add(this.ast1Trade_label);
-            this.tabPage2.Controls.Add(this.stl1Trade_label);
-            this.tabPage2.Controls.Add(this.blk1Trade_label);
-            this.tabPage2.Controls.Add(this.reb1Trade_label);
-            this.tabPage2.Controls.Add(this.tpm1Trade_label);
-            this.tabPage2.Controls.Add(this.fg1Trade_label);
-            this.tabPage2.Controls.Add(this.ft1Trade_label);
-            this.tabPage2.Controls.Add(this.to1Trade_label);
-            this.tabPage2.Controls.Add(this.ftChartTrade_label);
-            this.tabPage2.Controls.Add(this.toChartTrade_label);
-            this.tabPage2.Controls.Add(this.blkChartTrade_label);
-            this.tabPage2.Controls.Add(this.rebChartTrade_label);
-            this.tabPage2.Controls.Add(this.stlChartTrade_label);
-            this.tabPage2.Controls.Add(this.fgChartTrade_label);
-            this.tabPage2.Controls.Add(this.astChartTrade_label);
-            this.tabPage2.Controls.Add(this.tpmChartTrade_label);
-            this.tabPage2.Controls.Add(this.ptsChartTrade_label);
-            this.tabPage2.Controls.Add(this.playersReceived_label);
-            this.tabPage2.Controls.Add(this.playersSent_label);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.label21);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.toTrade_label);
-            this.tabPage2.Controls.Add(this.ftPerTrade_label);
-            this.tabPage2.Controls.Add(this.fgPerTrade_label);
-            this.tabPage2.Controls.Add(this.tpmTrade_label);
-            this.tabPage2.Controls.Add(this.blkTrade_label);
-            this.tabPage2.Controls.Add(this.stlTrade_label);
-            this.tabPage2.Controls.Add(this.astTrade_label);
-            this.tabPage2.Controls.Add(this.rebTrade_label);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.clearList_button);
             this.tabPage2.Controls.Add(this.trade_button);
-            this.tabPage2.Controls.Add(this.ptsTrade_label);
-            this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.tradeLast_comboBox);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.tradeMode_comboBox);
@@ -1151,9 +1104,9 @@
             // 
             // copyTradeChart_button
             // 
-            this.copyTradeChart_button.Location = new System.Drawing.Point(445, 134);
+            this.copyTradeChart_button.Location = new System.Drawing.Point(443, 136);
             this.copyTradeChart_button.Name = "copyTradeChart_button";
-            this.copyTradeChart_button.Size = new System.Drawing.Size(95, 23);
+            this.copyTradeChart_button.Size = new System.Drawing.Size(97, 23);
             this.copyTradeChart_button.TabIndex = 106;
             this.copyTradeChart_button.Text = "Copy Chart";
             this.copyTradeChart_button.UseVisualStyleBackColor = true;
@@ -1205,7 +1158,7 @@
             // 
             // copyDiff_button
             // 
-            this.copyDiff_button.Location = new System.Drawing.Point(592, 373);
+            this.copyDiff_button.Location = new System.Drawing.Point(573, 377);
             this.copyDiff_button.Name = "copyDiff_button";
             this.copyDiff_button.Size = new System.Drawing.Size(91, 23);
             this.copyDiff_button.TabIndex = 103;
@@ -1215,7 +1168,7 @@
             // 
             // copyTradeStats_button
             // 
-            this.copyTradeStats_button.Location = new System.Drawing.Point(863, 373);
+            this.copyTradeStats_button.Location = new System.Drawing.Point(755, 377);
             this.copyTradeStats_button.Name = "copyTradeStats_button";
             this.copyTradeStats_button.Size = new System.Drawing.Size(91, 23);
             this.copyTradeStats_button.TabIndex = 102;
@@ -1227,7 +1180,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(973, 83);
+            this.label25.Location = new System.Drawing.Point(408, 77);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(98, 24);
             this.label25.TabIndex = 101;
@@ -1237,7 +1190,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(780, 83);
+            this.label24.Location = new System.Drawing.Point(215, 77);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(52, 24);
             this.label24.TabIndex = 100;
@@ -1246,7 +1199,7 @@
             // pts2Trade_label
             // 
             this.pts2Trade_label.AutoSize = true;
-            this.pts2Trade_label.Location = new System.Drawing.Point(1005, 127);
+            this.pts2Trade_label.Location = new System.Drawing.Point(440, 121);
             this.pts2Trade_label.Name = "pts2Trade_label";
             this.pts2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.pts2Trade_label.TabIndex = 98;
@@ -1255,7 +1208,7 @@
             // ast2Trade_label
             // 
             this.ast2Trade_label.AutoSize = true;
-            this.ast2Trade_label.Location = new System.Drawing.Point(1005, 181);
+            this.ast2Trade_label.Location = new System.Drawing.Point(440, 175);
             this.ast2Trade_label.Name = "ast2Trade_label";
             this.ast2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.ast2Trade_label.TabIndex = 97;
@@ -1264,7 +1217,7 @@
             // stl2Trade_label
             // 
             this.stl2Trade_label.AutoSize = true;
-            this.stl2Trade_label.Location = new System.Drawing.Point(1005, 208);
+            this.stl2Trade_label.Location = new System.Drawing.Point(440, 202);
             this.stl2Trade_label.Name = "stl2Trade_label";
             this.stl2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.stl2Trade_label.TabIndex = 96;
@@ -1273,7 +1226,7 @@
             // blk2Trade_label
             // 
             this.blk2Trade_label.AutoSize = true;
-            this.blk2Trade_label.Location = new System.Drawing.Point(1005, 235);
+            this.blk2Trade_label.Location = new System.Drawing.Point(440, 229);
             this.blk2Trade_label.Name = "blk2Trade_label";
             this.blk2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.blk2Trade_label.TabIndex = 95;
@@ -1282,7 +1235,7 @@
             // reb2Trade_label
             // 
             this.reb2Trade_label.AutoSize = true;
-            this.reb2Trade_label.Location = new System.Drawing.Point(1005, 154);
+            this.reb2Trade_label.Location = new System.Drawing.Point(440, 148);
             this.reb2Trade_label.Name = "reb2Trade_label";
             this.reb2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.reb2Trade_label.TabIndex = 94;
@@ -1291,7 +1244,7 @@
             // tpm2Trade_label
             // 
             this.tpm2Trade_label.AutoSize = true;
-            this.tpm2Trade_label.Location = new System.Drawing.Point(1005, 262);
+            this.tpm2Trade_label.Location = new System.Drawing.Point(440, 256);
             this.tpm2Trade_label.Name = "tpm2Trade_label";
             this.tpm2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.tpm2Trade_label.TabIndex = 93;
@@ -1300,7 +1253,7 @@
             // fg2Trade_label
             // 
             this.fg2Trade_label.AutoSize = true;
-            this.fg2Trade_label.Location = new System.Drawing.Point(1005, 289);
+            this.fg2Trade_label.Location = new System.Drawing.Point(440, 283);
             this.fg2Trade_label.Name = "fg2Trade_label";
             this.fg2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.fg2Trade_label.TabIndex = 92;
@@ -1309,7 +1262,7 @@
             // ft2Trade_label
             // 
             this.ft2Trade_label.AutoSize = true;
-            this.ft2Trade_label.Location = new System.Drawing.Point(1005, 316);
+            this.ft2Trade_label.Location = new System.Drawing.Point(440, 310);
             this.ft2Trade_label.Name = "ft2Trade_label";
             this.ft2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.ft2Trade_label.TabIndex = 91;
@@ -1318,7 +1271,7 @@
             // to2Trade_label
             // 
             this.to2Trade_label.AutoSize = true;
-            this.to2Trade_label.Location = new System.Drawing.Point(1005, 343);
+            this.to2Trade_label.Location = new System.Drawing.Point(440, 337);
             this.to2Trade_label.Name = "to2Trade_label";
             this.to2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.to2Trade_label.TabIndex = 90;
@@ -1327,7 +1280,7 @@
             // pts1Trade_label
             // 
             this.pts1Trade_label.AutoSize = true;
-            this.pts1Trade_label.Location = new System.Drawing.Point(789, 127);
+            this.pts1Trade_label.Location = new System.Drawing.Point(224, 121);
             this.pts1Trade_label.Name = "pts1Trade_label";
             this.pts1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.pts1Trade_label.TabIndex = 87;
@@ -1336,7 +1289,7 @@
             // ast1Trade_label
             // 
             this.ast1Trade_label.AutoSize = true;
-            this.ast1Trade_label.Location = new System.Drawing.Point(789, 181);
+            this.ast1Trade_label.Location = new System.Drawing.Point(224, 175);
             this.ast1Trade_label.Name = "ast1Trade_label";
             this.ast1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.ast1Trade_label.TabIndex = 86;
@@ -1345,7 +1298,7 @@
             // stl1Trade_label
             // 
             this.stl1Trade_label.AutoSize = true;
-            this.stl1Trade_label.Location = new System.Drawing.Point(789, 208);
+            this.stl1Trade_label.Location = new System.Drawing.Point(224, 202);
             this.stl1Trade_label.Name = "stl1Trade_label";
             this.stl1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.stl1Trade_label.TabIndex = 85;
@@ -1354,7 +1307,7 @@
             // blk1Trade_label
             // 
             this.blk1Trade_label.AutoSize = true;
-            this.blk1Trade_label.Location = new System.Drawing.Point(789, 235);
+            this.blk1Trade_label.Location = new System.Drawing.Point(224, 229);
             this.blk1Trade_label.Name = "blk1Trade_label";
             this.blk1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.blk1Trade_label.TabIndex = 84;
@@ -1363,7 +1316,7 @@
             // reb1Trade_label
             // 
             this.reb1Trade_label.AutoSize = true;
-            this.reb1Trade_label.Location = new System.Drawing.Point(789, 154);
+            this.reb1Trade_label.Location = new System.Drawing.Point(224, 148);
             this.reb1Trade_label.Name = "reb1Trade_label";
             this.reb1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.reb1Trade_label.TabIndex = 83;
@@ -1372,7 +1325,7 @@
             // tpm1Trade_label
             // 
             this.tpm1Trade_label.AutoSize = true;
-            this.tpm1Trade_label.Location = new System.Drawing.Point(789, 262);
+            this.tpm1Trade_label.Location = new System.Drawing.Point(224, 256);
             this.tpm1Trade_label.Name = "tpm1Trade_label";
             this.tpm1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.tpm1Trade_label.TabIndex = 82;
@@ -1381,7 +1334,7 @@
             // fg1Trade_label
             // 
             this.fg1Trade_label.AutoSize = true;
-            this.fg1Trade_label.Location = new System.Drawing.Point(789, 289);
+            this.fg1Trade_label.Location = new System.Drawing.Point(224, 283);
             this.fg1Trade_label.Name = "fg1Trade_label";
             this.fg1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.fg1Trade_label.TabIndex = 81;
@@ -1391,7 +1344,7 @@
             // ft1Trade_label
             // 
             this.ft1Trade_label.AutoSize = true;
-            this.ft1Trade_label.Location = new System.Drawing.Point(789, 316);
+            this.ft1Trade_label.Location = new System.Drawing.Point(224, 310);
             this.ft1Trade_label.Name = "ft1Trade_label";
             this.ft1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.ft1Trade_label.TabIndex = 80;
@@ -1401,7 +1354,7 @@
             // to1Trade_label
             // 
             this.to1Trade_label.AutoSize = true;
-            this.to1Trade_label.Location = new System.Drawing.Point(789, 343);
+            this.to1Trade_label.Location = new System.Drawing.Point(224, 337);
             this.to1Trade_label.Name = "to1Trade_label";
             this.to1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.to1Trade_label.TabIndex = 79;
@@ -1410,7 +1363,7 @@
             // ftChartTrade_label
             // 
             this.ftChartTrade_label.AutoSize = true;
-            this.ftChartTrade_label.Location = new System.Drawing.Point(895, 316);
+            this.ftChartTrade_label.Location = new System.Drawing.Point(330, 310);
             this.ftChartTrade_label.Name = "ftChartTrade_label";
             this.ftChartTrade_label.Size = new System.Drawing.Size(27, 16);
             this.ftChartTrade_label.TabIndex = 76;
@@ -1420,7 +1373,7 @@
             // toChartTrade_label
             // 
             this.toChartTrade_label.AutoSize = true;
-            this.toChartTrade_label.Location = new System.Drawing.Point(894, 343);
+            this.toChartTrade_label.Location = new System.Drawing.Point(329, 337);
             this.toChartTrade_label.Name = "toChartTrade_label";
             this.toChartTrade_label.Size = new System.Drawing.Size(29, 16);
             this.toChartTrade_label.TabIndex = 75;
@@ -1430,7 +1383,7 @@
             // blkChartTrade_label
             // 
             this.blkChartTrade_label.AutoSize = true;
-            this.blkChartTrade_label.Location = new System.Drawing.Point(893, 235);
+            this.blkChartTrade_label.Location = new System.Drawing.Point(328, 229);
             this.blkChartTrade_label.Name = "blkChartTrade_label";
             this.blkChartTrade_label.Size = new System.Drawing.Size(30, 16);
             this.blkChartTrade_label.TabIndex = 74;
@@ -1440,7 +1393,7 @@
             // rebChartTrade_label
             // 
             this.rebChartTrade_label.AutoSize = true;
-            this.rebChartTrade_label.Location = new System.Drawing.Point(890, 154);
+            this.rebChartTrade_label.Location = new System.Drawing.Point(325, 148);
             this.rebChartTrade_label.Name = "rebChartTrade_label";
             this.rebChartTrade_label.Size = new System.Drawing.Size(37, 16);
             this.rebChartTrade_label.TabIndex = 73;
@@ -1450,7 +1403,7 @@
             // stlChartTrade_label
             // 
             this.stlChartTrade_label.AutoSize = true;
-            this.stlChartTrade_label.Location = new System.Drawing.Point(895, 208);
+            this.stlChartTrade_label.Location = new System.Drawing.Point(330, 202);
             this.stlChartTrade_label.Name = "stlChartTrade_label";
             this.stlChartTrade_label.Size = new System.Drawing.Size(26, 16);
             this.stlChartTrade_label.TabIndex = 72;
@@ -1460,7 +1413,7 @@
             // fgChartTrade_label
             // 
             this.fgChartTrade_label.AutoSize = true;
-            this.fgChartTrade_label.Location = new System.Drawing.Point(894, 289);
+            this.fgChartTrade_label.Location = new System.Drawing.Point(329, 283);
             this.fgChartTrade_label.Name = "fgChartTrade_label";
             this.fgChartTrade_label.Size = new System.Drawing.Size(28, 16);
             this.fgChartTrade_label.TabIndex = 71;
@@ -1471,7 +1424,7 @@
             // astChartTrade_label
             // 
             this.astChartTrade_label.AutoSize = true;
-            this.astChartTrade_label.Location = new System.Drawing.Point(893, 181);
+            this.astChartTrade_label.Location = new System.Drawing.Point(328, 175);
             this.astChartTrade_label.Name = "astChartTrade_label";
             this.astChartTrade_label.Size = new System.Drawing.Size(30, 16);
             this.astChartTrade_label.TabIndex = 69;
@@ -1481,7 +1434,7 @@
             // tpmChartTrade_label
             // 
             this.tpmChartTrade_label.AutoSize = true;
-            this.tpmChartTrade_label.Location = new System.Drawing.Point(889, 262);
+            this.tpmChartTrade_label.Location = new System.Drawing.Point(324, 256);
             this.tpmChartTrade_label.Name = "tpmChartTrade_label";
             this.tpmChartTrade_label.Size = new System.Drawing.Size(38, 16);
             this.tpmChartTrade_label.TabIndex = 68;
@@ -1491,39 +1444,18 @@
             // ptsChartTrade_label
             // 
             this.ptsChartTrade_label.AutoSize = true;
-            this.ptsChartTrade_label.Location = new System.Drawing.Point(893, 127);
+            this.ptsChartTrade_label.Location = new System.Drawing.Point(328, 121);
             this.ptsChartTrade_label.Name = "ptsChartTrade_label";
             this.ptsChartTrade_label.Size = new System.Drawing.Size(30, 16);
             this.ptsChartTrade_label.TabIndex = 67;
             this.ptsChartTrade_label.Text = "Pts";
             this.ptsChartTrade_label.Click += new System.EventHandler(this.ptsChartTrade_label_Click);
             // 
-            // playersReceived_label
-            // 
-            this.playersReceived_label.AutoSize = true;
-            this.playersReceived_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playersReceived_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playersReceived_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playersReceived_label.Location = new System.Drawing.Point(503, 49);
-            this.playersReceived_label.Name = "playersReceived_label";
-            this.playersReceived_label.Size = new System.Drawing.Size(2, 22);
-            this.playersReceived_label.TabIndex = 65;
-            // 
-            // playersSent_label
-            // 
-            this.playersSent_label.AutoSize = true;
-            this.playersSent_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playersSent_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playersSent_label.Location = new System.Drawing.Point(458, 21);
-            this.playersSent_label.Name = "playersSent_label";
-            this.playersSent_label.Size = new System.Drawing.Size(2, 22);
-            this.playersSent_label.TabIndex = 64;
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(332, 50);
+            this.label22.Location = new System.Drawing.Point(3, 36);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(156, 20);
             this.label22.TabIndex = 63;
@@ -1533,7 +1465,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(604, 83);
+            this.label21.Location = new System.Drawing.Point(39, 77);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(51, 24);
             this.label21.TabIndex = 62;
@@ -1543,7 +1475,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(332, 21);
+            this.label18.Location = new System.Drawing.Point(3, 7);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(120, 20);
             this.label18.TabIndex = 61;
@@ -1552,7 +1484,7 @@
             // toTrade_label
             // 
             this.toTrade_label.AutoSize = true;
-            this.toTrade_label.Location = new System.Drawing.Point(657, 344);
+            this.toTrade_label.Location = new System.Drawing.Point(92, 338);
             this.toTrade_label.Name = "toTrade_label";
             this.toTrade_label.Size = new System.Drawing.Size(16, 16);
             this.toTrade_label.TabIndex = 60;
@@ -1561,7 +1493,7 @@
             // ftPerTrade_label
             // 
             this.ftPerTrade_label.AutoSize = true;
-            this.ftPerTrade_label.Location = new System.Drawing.Point(657, 317);
+            this.ftPerTrade_label.Location = new System.Drawing.Point(92, 311);
             this.ftPerTrade_label.Name = "ftPerTrade_label";
             this.ftPerTrade_label.Size = new System.Drawing.Size(16, 16);
             this.ftPerTrade_label.TabIndex = 59;
@@ -1570,7 +1502,7 @@
             // fgPerTrade_label
             // 
             this.fgPerTrade_label.AutoSize = true;
-            this.fgPerTrade_label.Location = new System.Drawing.Point(657, 290);
+            this.fgPerTrade_label.Location = new System.Drawing.Point(92, 284);
             this.fgPerTrade_label.Name = "fgPerTrade_label";
             this.fgPerTrade_label.Size = new System.Drawing.Size(16, 16);
             this.fgPerTrade_label.TabIndex = 58;
@@ -1579,7 +1511,7 @@
             // tpmTrade_label
             // 
             this.tpmTrade_label.AutoSize = true;
-            this.tpmTrade_label.Location = new System.Drawing.Point(657, 263);
+            this.tpmTrade_label.Location = new System.Drawing.Point(92, 257);
             this.tpmTrade_label.Name = "tpmTrade_label";
             this.tpmTrade_label.Size = new System.Drawing.Size(16, 16);
             this.tpmTrade_label.TabIndex = 57;
@@ -1588,7 +1520,7 @@
             // blkTrade_label
             // 
             this.blkTrade_label.AutoSize = true;
-            this.blkTrade_label.Location = new System.Drawing.Point(657, 238);
+            this.blkTrade_label.Location = new System.Drawing.Point(92, 232);
             this.blkTrade_label.Name = "blkTrade_label";
             this.blkTrade_label.Size = new System.Drawing.Size(16, 16);
             this.blkTrade_label.TabIndex = 56;
@@ -1597,7 +1529,7 @@
             // stlTrade_label
             // 
             this.stlTrade_label.AutoSize = true;
-            this.stlTrade_label.Location = new System.Drawing.Point(657, 211);
+            this.stlTrade_label.Location = new System.Drawing.Point(92, 205);
             this.stlTrade_label.Name = "stlTrade_label";
             this.stlTrade_label.Size = new System.Drawing.Size(16, 16);
             this.stlTrade_label.TabIndex = 55;
@@ -1606,7 +1538,7 @@
             // astTrade_label
             // 
             this.astTrade_label.AutoSize = true;
-            this.astTrade_label.Location = new System.Drawing.Point(657, 184);
+            this.astTrade_label.Location = new System.Drawing.Point(92, 178);
             this.astTrade_label.Name = "astTrade_label";
             this.astTrade_label.Size = new System.Drawing.Size(16, 16);
             this.astTrade_label.TabIndex = 54;
@@ -1615,7 +1547,7 @@
             // rebTrade_label
             // 
             this.rebTrade_label.AutoSize = true;
-            this.rebTrade_label.Location = new System.Drawing.Point(657, 157);
+            this.rebTrade_label.Location = new System.Drawing.Point(92, 151);
             this.rebTrade_label.Name = "rebTrade_label";
             this.rebTrade_label.Size = new System.Drawing.Size(16, 16);
             this.rebTrade_label.TabIndex = 53;
@@ -1624,7 +1556,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(605, 317);
+            this.label10.Location = new System.Drawing.Point(40, 311);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 16);
             this.label10.TabIndex = 52;
@@ -1633,7 +1565,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(605, 344);
+            this.label11.Location = new System.Drawing.Point(40, 338);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 16);
             this.label11.TabIndex = 51;
@@ -1642,7 +1574,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(605, 238);
+            this.label12.Location = new System.Drawing.Point(40, 232);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 16);
             this.label12.TabIndex = 50;
@@ -1651,7 +1583,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(605, 157);
+            this.label13.Location = new System.Drawing.Point(40, 151);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 16);
             this.label13.TabIndex = 49;
@@ -1660,7 +1592,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(605, 211);
+            this.label14.Location = new System.Drawing.Point(40, 205);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 16);
             this.label14.TabIndex = 48;
@@ -1669,7 +1601,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(605, 290);
+            this.label17.Location = new System.Drawing.Point(40, 284);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(36, 16);
             this.label17.TabIndex = 47;
@@ -1679,7 +1611,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(605, 184);
+            this.label19.Location = new System.Drawing.Point(40, 178);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(38, 16);
             this.label19.TabIndex = 45;
@@ -1688,7 +1620,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(605, 263);
+            this.label20.Location = new System.Drawing.Point(40, 257);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(46, 16);
             this.label20.TabIndex = 44;
@@ -1696,9 +1628,9 @@
             // 
             // clearList_button
             // 
-            this.clearList_button.Location = new System.Drawing.Point(174, 134);
+            this.clearList_button.Location = new System.Drawing.Point(216, 127);
             this.clearList_button.Name = "clearList_button";
-            this.clearList_button.Size = new System.Drawing.Size(75, 23);
+            this.clearList_button.Size = new System.Drawing.Size(83, 23);
             this.clearList_button.TabIndex = 39;
             this.clearList_button.Text = "Clear";
             this.clearList_button.UseVisualStyleBackColor = true;
@@ -1706,9 +1638,10 @@
             // 
             // trade_button
             // 
-            this.trade_button.Location = new System.Drawing.Point(68, 134);
+            this.trade_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trade_button.Location = new System.Drawing.Point(99, 127);
             this.trade_button.Name = "trade_button";
-            this.trade_button.Size = new System.Drawing.Size(75, 23);
+            this.trade_button.Size = new System.Drawing.Size(79, 23);
             this.trade_button.TabIndex = 38;
             this.trade_button.Text = "Trade";
             this.trade_button.UseVisualStyleBackColor = true;
@@ -1717,7 +1650,7 @@
             // ptsTrade_label
             // 
             this.ptsTrade_label.AutoSize = true;
-            this.ptsTrade_label.Location = new System.Drawing.Point(657, 129);
+            this.ptsTrade_label.Location = new System.Drawing.Point(92, 123);
             this.ptsTrade_label.Name = "ptsTrade_label";
             this.ptsTrade_label.Size = new System.Drawing.Size(16, 16);
             this.ptsTrade_label.TabIndex = 37;
@@ -1726,7 +1659,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(605, 129);
+            this.label9.Location = new System.Drawing.Point(40, 123);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 16);
             this.label9.TabIndex = 36;
@@ -1830,6 +1763,93 @@
             this.tradePlayers_button.UseVisualStyleBackColor = false;
             this.tradePlayers_button.Click += new System.EventHandler(this.tradePlayers_button_Click);
             // 
+            // trade_panel
+            // 
+            this.trade_panel.Controls.Add(this.playersReceived_textBox);
+            this.trade_panel.Controls.Add(this.playersSent_textBox);
+            this.trade_panel.Controls.Add(this.label9);
+            this.trade_panel.Controls.Add(this.ptsTrade_label);
+            this.trade_panel.Controls.Add(this.label20);
+            this.trade_panel.Controls.Add(this.label19);
+            this.trade_panel.Controls.Add(this.label17);
+            this.trade_panel.Controls.Add(this.label14);
+            this.trade_panel.Controls.Add(this.label25);
+            this.trade_panel.Controls.Add(this.label13);
+            this.trade_panel.Controls.Add(this.label22);
+            this.trade_panel.Controls.Add(this.label18);
+            this.trade_panel.Controls.Add(this.label24);
+            this.trade_panel.Controls.Add(this.label12);
+            this.trade_panel.Controls.Add(this.pts2Trade_label);
+            this.trade_panel.Controls.Add(this.label11);
+            this.trade_panel.Controls.Add(this.ast2Trade_label);
+            this.trade_panel.Controls.Add(this.label10);
+            this.trade_panel.Controls.Add(this.stl2Trade_label);
+            this.trade_panel.Controls.Add(this.rebTrade_label);
+            this.trade_panel.Controls.Add(this.blk2Trade_label);
+            this.trade_panel.Controls.Add(this.astTrade_label);
+            this.trade_panel.Controls.Add(this.reb2Trade_label);
+            this.trade_panel.Controls.Add(this.stlTrade_label);
+            this.trade_panel.Controls.Add(this.tpm2Trade_label);
+            this.trade_panel.Controls.Add(this.blkTrade_label);
+            this.trade_panel.Controls.Add(this.fg2Trade_label);
+            this.trade_panel.Controls.Add(this.tpmTrade_label);
+            this.trade_panel.Controls.Add(this.ft2Trade_label);
+            this.trade_panel.Controls.Add(this.fgPerTrade_label);
+            this.trade_panel.Controls.Add(this.to2Trade_label);
+            this.trade_panel.Controls.Add(this.ftPerTrade_label);
+            this.trade_panel.Controls.Add(this.pts1Trade_label);
+            this.trade_panel.Controls.Add(this.toTrade_label);
+            this.trade_panel.Controls.Add(this.ast1Trade_label);
+            this.trade_panel.Controls.Add(this.label21);
+            this.trade_panel.Controls.Add(this.stl1Trade_label);
+            this.trade_panel.Controls.Add(this.ptsChartTrade_label);
+            this.trade_panel.Controls.Add(this.blk1Trade_label);
+            this.trade_panel.Controls.Add(this.tpmChartTrade_label);
+            this.trade_panel.Controls.Add(this.reb1Trade_label);
+            this.trade_panel.Controls.Add(this.astChartTrade_label);
+            this.trade_panel.Controls.Add(this.tpm1Trade_label);
+            this.trade_panel.Controls.Add(this.fgChartTrade_label);
+            this.trade_panel.Controls.Add(this.fg1Trade_label);
+            this.trade_panel.Controls.Add(this.stlChartTrade_label);
+            this.trade_panel.Controls.Add(this.ft1Trade_label);
+            this.trade_panel.Controls.Add(this.rebChartTrade_label);
+            this.trade_panel.Controls.Add(this.to1Trade_label);
+            this.trade_panel.Controls.Add(this.blkChartTrade_label);
+            this.trade_panel.Controls.Add(this.ftChartTrade_label);
+            this.trade_panel.Controls.Add(this.toChartTrade_label);
+            this.trade_panel.Location = new System.Drawing.Point(546, 13);
+            this.trade_panel.Name = "trade_panel";
+            this.trade_panel.Size = new System.Drawing.Size(561, 360);
+            this.trade_panel.TabIndex = 107;
+            // 
+            // screenshot_button
+            // 
+            this.screenshot_button.Location = new System.Drawing.Point(919, 377);
+            this.screenshot_button.Name = "screenshot_button";
+            this.screenshot_button.Size = new System.Drawing.Size(100, 23);
+            this.screenshot_button.TabIndex = 108;
+            this.screenshot_button.Text = "ScreenShot";
+            this.screenshot_button.UseVisualStyleBackColor = true;
+            this.screenshot_button.Click += new System.EventHandler(this.screenshot_button_Click);
+            // 
+            // playersSent_textBox
+            // 
+            this.playersSent_textBox.AutoSize = true;
+            this.playersSent_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playersSent_textBox.Location = new System.Drawing.Point(127, 10);
+            this.playersSent_textBox.Name = "playersSent_textBox";
+            this.playersSent_textBox.Size = new System.Drawing.Size(2, 18);
+            this.playersSent_textBox.TabIndex = 104;
+            // 
+            // playersReceived_textBox
+            // 
+            this.playersReceived_textBox.AutoSize = true;
+            this.playersReceived_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playersReceived_textBox.Location = new System.Drawing.Point(161, 38);
+            this.playersReceived_textBox.Name = "playersReceived_textBox";
+            this.playersReceived_textBox.Size = new System.Drawing.Size(2, 18);
+            this.playersReceived_textBox.TabIndex = 105;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1851,6 +1871,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).EndInit();
+            this.trade_panel.ResumeLayout(false);
+            this.trade_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1965,8 +1987,6 @@
         private System.Windows.Forms.Label stlTrade_label;
         private System.Windows.Forms.Label astTrade_label;
         private System.Windows.Forms.Label rebTrade_label;
-        private System.Windows.Forms.Label playersReceived_label;
-        private System.Windows.Forms.Label playersSent_label;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label18;
@@ -2005,6 +2025,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart trade_chart;
         private System.Windows.Forms.Button copyTradeChart_button;
         private System.Windows.Forms.Button tradePlayers_button;
+        private System.Windows.Forms.Panel trade_panel;
+        private System.Windows.Forms.Button screenshot_button;
+        private System.Windows.Forms.Label playersSent_textBox;
+        private System.Windows.Forms.Label playersReceived_textBox;
     }
 }
 

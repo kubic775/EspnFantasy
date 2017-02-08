@@ -412,6 +412,8 @@ namespace espn
         {
             sendPlayers_comboBox.SelectedItem = player1_comboBox.SelectedItem;
             receivePlayers_comboBox.SelectedItem = player2_comboBox.SelectedItem;
+            tradeMode_comboBox.SelectedIndex = compareMode_comboBox.SelectedIndex;
+            tradeLast_comboBox.SelectedIndex = compare_last_comboBox.SelectedIndex;
             tabControl.SelectedIndex = 2;
         }
 
@@ -448,39 +450,39 @@ namespace espn
 
         private void sendPlayers_comboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            playersSent_label.Text += sendPlayers_comboBox.GetItemText(sendPlayers_comboBox.SelectedItem) + ",";
+            playersSent_textBox.Text += sendPlayers_comboBox.GetItemText(sendPlayers_comboBox.SelectedItem) + ",";
         }
 
 
         private void recivePlayers_comboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            playersReceived_label.Text += receivePlayers_comboBox.GetItemText(receivePlayers_comboBox.SelectedItem) + ",";
+            playersReceived_textBox.Text += receivePlayers_comboBox.GetItemText(receivePlayers_comboBox.SelectedItem) + ",";
         }
 
         private void clearList_button_Click(object sender, EventArgs e)
         {
-            playersSent_label.Text = "";
-            playersReceived_label.Text = "";
+            playersSent_textBox.Text = "";
+            playersReceived_textBox.Text = "";
         }
 
         private void flip_button_Click(object sender, EventArgs e)
         {
-            string sendStr = playersSent_label.Text;
-            string recStr = playersReceived_label.Text;
+            string sendStr = playersSent_textBox.Text;
+            string recStr = playersReceived_textBox.Text;
 
             object temp = sendPlayers_comboBox.SelectedItem;
             sendPlayers_comboBox.SelectedItem = receivePlayers_comboBox.SelectedItem;
             receivePlayers_comboBox.SelectedItem = temp;
 
-            playersSent_label.Text = recStr;
-            playersReceived_label.Text = sendStr;
+            playersSent_textBox.Text = recStr;
+            playersReceived_textBox.Text = sendStr;
         }
 
         private async void trade_button_Click(object sender, EventArgs e)
         {
             UseWaitCursor = true;
-            List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_label.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-            List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_label.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
             GameStats[] avgStatsSend = sentPlayers.Select(
                 p => GameStats.GetAvgStats(p.FilterGames(
@@ -554,12 +556,12 @@ namespace espn
         private void copyTradeStats_button_Click(object sender, EventArgs e)
         {
             string text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
-            text += "Players Sent : " + playersSent_label.Text + Environment.NewLine;
+            text += "Players Sent : " + playersSent_textBox.Text + Environment.NewLine;
             text += "Pts: " + pts1Trade_label.Text + ", Reb: " + reb1Trade_label.Text + ", Ast: " + ast1Trade_label.Text + ", Stl: " + stl1Trade_label.Text +
                     ", Blk: " + blk1Trade_label.Text + ", Tpm: " + tpm1Trade_label.Text + ", FgPer: " + fg1Trade_label.Text +
                     ", FtPer: " + ft1Trade_label.Text + ", To : " + to1Trade_label.Text;
 
-            text += Environment.NewLine + "Players Received : " + playersReceived_label.Text + Environment.NewLine;
+            text += Environment.NewLine + "Players Received : " + playersReceived_textBox.Text + Environment.NewLine;
             text += "Pts: " + pts2Trade_label.Text + ", Reb: " + reb2Trade_label.Text + ", Ast: " + ast2Trade_label.Text + ", Stl: " + stl2Trade_label.Text +
                     ", Blk: " + blk2Trade_label.Text + ", Tpm: " + tpm2Trade_label.Text + ", FgPer: " + fg2Trade_label.Text +
                     ", FtPer: " + ft2Trade_label.Text + ", To : " + to2Trade_label.Text;
@@ -576,8 +578,8 @@ namespace espn
         private void copyDiff_button_Click(object sender, EventArgs e)
         {
             string text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
-            text += "Players Sent : " + playersSent_label.Text + Environment.NewLine;
-            text += "Players Received : " + playersReceived_label.Text + Environment.NewLine;
+            text += "Players Sent : " + playersSent_textBox.Text + Environment.NewLine;
+            text += "Players Received : " + playersReceived_textBox.Text + Environment.NewLine;
             text += Environment.NewLine + "Diff :" + Environment.NewLine;
             text += "Pts: " + ptsTrade_label.Text + ", Reb: " + rebTrade_label.Text + ", Ast: " + astTrade_label.Text + ", Stl: " + stlTrade_label.Text +
                     ", Blk: " + blkTrade_label.Text + ", Tpm: " + tpmTrade_label.Text + ", FgPer: " + fgPerTrade_label.Text +
@@ -631,6 +633,7 @@ namespace espn
             UpdateTradeCharts("To");
         }
 
+
         private void ptsChartTrade_label_Click(object sender, EventArgs e)
         {
             UpdateTradeCharts("Pts");
@@ -647,8 +650,8 @@ namespace espn
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
 
 
-            List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_label.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-            List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_label.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
             var yValSend = new double[4];
             var yValRecevied = new double[4];
@@ -669,7 +672,14 @@ namespace espn
             trade_chart.Titles[0].Text = colName;
         }
 
-
+        private void screenshot_button_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(trade_panel.Width, trade_panel.Height))
+            {
+                trade_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                Clipboard.SetImage(bmp);
+            }
+        }
         #endregion
 
     }
