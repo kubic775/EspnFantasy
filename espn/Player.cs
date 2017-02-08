@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,11 +19,18 @@ namespace espn
 
         public Player(string playerName)
         {
-            Games = new List<GameStats>();
-            PlayerName = playerName;
-            Id = PlayersList.Players[playerName];
-            string playerStr = DownloadPlayerStr(Id);
-            CreatePlayer(playerStr, Id);
+            try
+            {
+                Games = new List<GameStats>();
+                PlayerName = playerName;
+                Id = PlayersList.Players[playerName];
+                string playerStr = DownloadPlayerStr(Id);
+                CreatePlayer(playerStr, Id);
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
         public void CreatePlayer(string playerStr, int id)
@@ -94,18 +103,48 @@ namespace espn
             }
         }
 
-        public GameStats GetAvgStats(int numOfGames)
+        public GameStats[] FilterGames(string mode, string numOfGames)
         {
-            var fieldNames = typeof(GameStats).GetFields();
-            var games = Games.Where(g => g.Min > 0).Take(numOfGames).ToArray();
-            GameStats stats = new GameStats();
-
-            foreach (var field in fieldNames)
-            {
-                field.SetValue(stats, games.Average(g => double.Parse(field.GetValue(g).ToString())));
-            }
-
-            return stats;
+            int num = numOfGames.Equals("Max") ? Games.Count : int.Parse(numOfGames);
+            return FilterGames(mode, num);
         }
+
+        public GameStats[] FilterGames(string mode, int numOfGames)
+        {
+            if (mode.Equals("Games"))
+            {
+                return Games.Take(numOfGames).ToArray();
+            }
+            else//Days
+            {
+                DateTime minDate = DateTime.Now - new TimeSpan(numOfGames, 0, 0, 0);
+                return Games.Where(g => g.GameDate >= minDate).ToArray();
+            }
+        }
+
+        public static int GetPlayerId(string playerName)
+        {
+            try
+            {
+                string uriString = "http://www.google.com/search";
+                string searchPattern = @"www.espn.com/nba/player/_/id/";
+                WebClient webClient = new WebClient();
+                NameValueCollection nameValueCollection = new NameValueCollection { { "q", playerName + " espn" } };
+                webClient.QueryString.Add(nameValueCollection);
+                string s = webClient.DownloadString(uriString);
+
+                int i1 = s.IndexOf(searchPattern, StringComparison.Ordinal) + searchPattern.Length;
+                int i2 = i1;
+                while (Char.IsDigit(s[i2]))
+                    i2++;
+
+                return int.Parse(s.Substring(i1, i2 - i1));
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+
     }
 }

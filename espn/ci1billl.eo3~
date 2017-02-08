@@ -268,7 +268,7 @@ namespace espn
                             compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
                     UpdateCompareInfo1(games);
                 }
-                if (mode == 0 || mode == 2)
+                else if (mode == 0 || mode == 2)
                 {
                     if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player2_comboBox.SelectedIndex == -1)
                         return;
@@ -380,39 +380,26 @@ namespace espn
         {
             Type gameStatsType = typeof(GameStats);
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
-            if (_player1 != null)
-            {
-                GameStats[] games = _player1.FilterGames(
+            GameStats[] games = _player1.FilterGames(
                 compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                 compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
-                var y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
-                var x = games.Select(g => g.GameDate).ToArray();
-                PrintChartWithDates(y, x, _player1.PlayerName, compare_chart, 0);
-                if (_player1?.Id == _player2?.Id)
-                    return;
-            }
+            var y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
+            var x = games.Select(g => g.GameDate).ToArray();
+            PrintChartWithDates(y, x, _player1.PlayerName, compare_chart, 0);
 
+            if (_player1.Id == _player2.Id)
+                return;
 
-            if (_player2 != null)
-            {
-                GameStats[] games = _player2.FilterGames(
-               compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
-               compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
+            games = _player2.FilterGames(
+                compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
+                compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
-                var y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
-                var x = games.Select(g => g.GameDate).ToArray();
-                PrintChartWithDates(y, x, _player2.PlayerName, compare_chart, 1);
-            }
+            y = games.Select(g => double.Parse(fieldInfo.GetValue(g).ToString())).ToArray();
+            x = games.Select(g => g.GameDate).ToArray();
+            PrintChartWithDates(y, x, _player2.PlayerName, compare_chart, 1);
 
-            compare_chart.Titles[0].Text = _player1?.PlayerName + " Vs " + _player2?.PlayerName + Environment.NewLine + colName;
-        }
-
-        private void tradePlayers_button_Click(object sender, EventArgs e)
-        {
-            sendPlayers_comboBox.SelectedItem = player1_comboBox.SelectedItem;
-            receivePlayers_comboBox.SelectedItem = player2_comboBox.SelectedItem;
-            tabControl.SelectedIndex = 2;
+            compare_chart.Titles[0].Text = _player1.PlayerName + " Vs " + _player2.PlayerName + Environment.NewLine + colName;
         }
 
 
@@ -465,15 +452,9 @@ namespace espn
 
         private void flip_button_Click(object sender, EventArgs e)
         {
-            string sendStr = playersSent_label.Text;
-            string recStr = playersReceived_label.Text;
-
-            object temp = sendPlayers_comboBox.SelectedItem;
-            sendPlayers_comboBox.SelectedItem = receivePlayers_comboBox.SelectedItem;
-            receivePlayers_comboBox.SelectedItem = temp;
-
-            playersSent_label.Text = recStr;
-            playersReceived_label.Text = sendStr;
+            string temp = playersSent_label.Text;
+            playersSent_label.Text = playersReceived_label.Text;
+            playersReceived_label.Text = temp;
         }
 
         private async void trade_button_Click(object sender, EventArgs e)
@@ -577,7 +558,7 @@ namespace espn
         {
             string text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
             text += "Players Sent : " + playersSent_label.Text + Environment.NewLine;
-            text += "Players Received : " + playersReceived_label.Text + Environment.NewLine;
+            text += Environment.NewLine + "Players Received : " + playersReceived_label.Text + Environment.NewLine;
             text += Environment.NewLine + "Diff :" + Environment.NewLine;
             text += "Pts: " + ptsTrade_label.Text + ", Reb: " + rebTrade_label.Text + ", Ast: " + astTrade_label.Text + ", Stl: " + stlTrade_label.Text +
                     ", Blk: " + blkTrade_label.Text + ", Tpm: " + tpmTrade_label.Text + ", FgPer: " + fgPerTrade_label.Text +
@@ -585,6 +566,7 @@ namespace espn
             Clipboard.SetText(text);
         }
 
+       
 
         private void copyTradeChart_Click(object sender, EventArgs e)
         {
@@ -594,41 +576,6 @@ namespace espn
                 Bitmap bm = new Bitmap(ms);
                 Clipboard.SetImage(bm);
             }
-        }
-
-        private void astChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("Ast");
-        }
-
-        private void stlChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("Stl");
-        }
-
-        private void blkChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("Blk");
-        }
-
-        private void tpmChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("Tpm");
-        }
-
-        private void fgChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("FgPer");
-        }
-
-        private void ftChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("FtPer");
-        }
-
-        private void toChartTrade_label_Click(object sender, EventArgs e)
-        {
-            UpdateTradeCharts("To");
         }
 
         private void ptsChartTrade_label_Click(object sender, EventArgs e)
