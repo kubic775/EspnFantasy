@@ -11,6 +11,7 @@ namespace espn
         public DateTime GameDate;
         public double Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
         public double FtPer, FgPer, TpPer;
+        public double Score;
         public int Gp;
 
         public GameStats()
@@ -65,6 +66,7 @@ namespace espn
                 stats.FgPer = (stats.Fgm / stats.Fga) * 100;
                 stats.FtPer = (stats.Ftm / stats.Fta) * 100;
                 stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
+                stats.Score = CalcScore(stats);
                 stats.Gp = games.Length;
             }
             else
@@ -94,7 +96,7 @@ namespace espn
             stats.FgPer = (stats.Fgm / stats.Fga) * 100;
             stats.FtPer = (stats.Ftm / stats.Fta) * 100;
             stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
-
+            stats.Score = CalcScore(stats);
             return stats;
         }
 
@@ -156,6 +158,15 @@ namespace espn
             }
 
             return y;
+        }
+
+
+        public static double CalcScore(GameStats stat)
+        {
+            return stat.Pts * MainForm.Factors.Pts + stat.Reb * MainForm.Factors.Reb + stat.Ast * MainForm.Factors.Ast +
+                   stat.Stl * MainForm.Factors.Stl + stat.Blk * MainForm.Factors.Blk + stat.Tpm * MainForm.Factors.Tpm +
+                   stat.To * MainForm.Factors.To + stat.FgPer * MainForm.Factors.FgPer + stat.FtPer * MainForm.Factors.FtPer +
+                   MainForm.Factors.FtVol * (stat.Fta - stat.Ftm) + MainForm.Factors.FgVol * (stat.Fga - stat.Fgm);
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.exe.config
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.exe
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Release\log4net.dll
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\bin\Release\log4net.xml
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.FactorsForm.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.MainForm.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.Properties.Resources.resources
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.GenerateResource.Cache
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.exe
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.pdb
+C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojResolveAssemblyReference.cache

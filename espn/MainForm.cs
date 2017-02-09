@@ -21,6 +21,7 @@ namespace espn
     public partial class MainForm : Form
     {
         #region Init & Gui
+        public static FactorsForm Factors;
         private Player _player, _player1, _player2;
         private List<Player> _playersSent, _playersReceived;
 
@@ -34,6 +35,7 @@ namespace espn
 
         private void InitGui()
         {
+            Factors = new FactorsForm();
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeLast_comboBox.SelectedIndex = 3;
             stats_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -481,6 +483,9 @@ namespace espn
         private async void trade_button_Click(object sender, EventArgs e)
         {
             UseWaitCursor = true;
+            timePeriod_label.Text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " +
+                                    tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem);
+
             List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
             List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
@@ -500,9 +505,16 @@ namespace espn
 
             UpdateTotalTradeLabelsh(totalSend, totalReceived);
             UpdateDiffTradeLabels(diffStat);
+
             UseWaitCursor = false;
         }
 
+       
+
+        private void score_label_Click(object sender, EventArgs e)
+        {
+            Factors.ShowDialog();
+        }
 
         private void UpdateTotalTradeLabelsh(GameStats totalSend, GameStats totalReceived)
         {
@@ -524,14 +536,14 @@ namespace espn
             fg2Trade_label.Text = totalReceived.Fgm.ToString("0.0") + "/" + totalReceived.Fga.ToString("0.0") + " " + totalReceived.FgPer.ToString("0.0") + " %";
             ft1Trade_label.Text = totalSend.Ftm.ToString("0.0") + "/" + totalSend.Fta.ToString("0.0") + " " + totalSend.FtPer.ToString("0.0") + " %";
             ft2Trade_label.Text = totalReceived.Ftm.ToString("0.0") + "/" + totalReceived.Fta.ToString("0.0") + " " + totalReceived.FtPer.ToString("0.0") + " %";
+            score1Trade_label.Text = totalSend.Score.ToString("0.0");
+            score2Trade_label.Text = totalReceived.Score.ToString("0.0");
 
             fg1Trade_label.Location = new Point(tpm1Trade_label.Location.X + (tpm1Trade_label.Size.Width / 2) - (fg1Trade_label.Size.Width / 2), fg1Trade_label.Location.Y);
             fg2Trade_label.Location = new Point(tpm2Trade_label.Location.X + (tpm2Trade_label.Size.Width / 2) - (fg2Trade_label.Size.Width / 2), fg2Trade_label.Location.Y);
             ft1Trade_label.Location = new Point(tpm1Trade_label.Location.X + (tpm1Trade_label.Size.Width / 2) - (ft1Trade_label.Size.Width / 2), ft1Trade_label.Location.Y);
             ft2Trade_label.Location = new Point(tpm2Trade_label.Location.X + (tpm2Trade_label.Size.Width / 2) - (ft2Trade_label.Size.Width / 2), ft2Trade_label.Location.Y);
         }
-
-
 
         private void UpdateDiffTradeLabels(GameStats diffStat)
         {
@@ -542,8 +554,25 @@ namespace espn
             UpdateTradeLabel(blkTrade_label, diffStat.Blk);
             UpdateTradeLabel(tpmTrade_label, diffStat.Tpm);
             UpdateTradeLabel(toTrade_label, diffStat.To);
+            UpdateTradeLabel(scoreTrade_label, diffStat.Score);
             UpdateTradeLabel(fgPerTrade_label, diffStat.FgPer, "%");
             UpdateTradeLabel(ftPerTrade_label, diffStat.FtPer, "%");
+
+            if (diffStat.Score>0)
+            {
+                score_label.Text = "Pass";
+                score_label.ForeColor = Color.Green;
+            }
+            else if (diffStat.Score < 0)
+            {
+                score_label.Text = "Reject";
+                score_label.ForeColor = Color.Red;
+            }
+            else
+            {
+                score_label.Text = "Equal";
+                score_label.ForeColor = Color.DarkOrange;
+            }
         }
 
 
@@ -639,9 +668,25 @@ namespace espn
             UpdateTradeCharts("Pts");
         }
 
+
         private void rebChartTrade_label_Click(object sender, EventArgs e)
         {
             UpdateTradeCharts("Reb");
+        }
+
+        private void playersReceived_textBox_Click(object sender, EventArgs e)
+        {
+            playersReceived_textBox.Text = "";
+        }
+
+        private void scoreChartTrade_label_Click(object sender, EventArgs e)
+        {
+            UpdateTradeCharts("Score");
+        }
+
+        private void playersSent_textBox_Click(object sender, EventArgs e)
+        {
+            playersSent_textBox.Text = "";
         }
 
         private async void UpdateTradeCharts(string colName)
