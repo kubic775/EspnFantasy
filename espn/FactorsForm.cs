@@ -8,6 +8,8 @@ namespace espn
     public partial class FactorsForm : Form
     {
         public double Pts, Reb, Ast, Tpm, Stl, Blk, To;
+
+      
         public double FtPer, FgPer, FtVol, FgVol;
 
         public FactorsForm()
@@ -44,7 +46,6 @@ namespace espn
             try
             {
                 ParseFactors();
-                SaveFactors();
                 Close();
             }
             catch (Exception ex)
@@ -70,14 +71,23 @@ namespace espn
             FgVol = double.Parse(fgVol_textBox.Text);
         }
 
+        private void save_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ParseFactors();
+                SaveFactors();
+                Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cant Save Factors To File");
+
+            }
+        }
+
         private void SaveFactors()
         {
-            //string appPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            //string configFile = System.IO.Path.Combine(appPath, "App.config");
-            //ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-            //configFileMap.ExeConfigFilename = configFile;
-            //Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-
             Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             FieldInfo[] fieldNames = typeof(FactorsForm).GetFields();
             foreach (FieldInfo fieldName in fieldNames)

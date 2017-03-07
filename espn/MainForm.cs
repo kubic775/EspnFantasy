@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Xml;
 
 
 namespace espn
 {
+    public delegate void PlayerSelectedDelegate(string name);
+
     public partial class MainForm : Form
     {
         #region Init & Gui
         public static FactorsForm Factors;
         private Player _player, _player1, _player2;
-        private List<Player> _playersSent, _playersReceived;
 
         public MainForm()
         {
@@ -46,39 +39,51 @@ namespace espn
             trade_chart.Series[1].XValueType = ChartValueType.String;
             stat_chart.Series[0].Points.Clear();
             compare_chart.Series[0].Points.Clear();
-            player1_comboBox.Items.Clear();
-            player2_comboBox.Items.Clear();
-            sendPlayers_comboBox.Items.Clear();
-            receivePlayers_comboBox.Items.Clear();
-            player1_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
-            player2_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
-            sendPlayers_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
-            receivePlayers_comboBox.Items.AddRange(PlayersList.Players.Keys.ToArray());
-            _playersReceived = new List<Player>();
-            _playersSent = new List<Player>();
+
+
+            //Init AutoCompleteTextBox//
+            foreach (var textBox in Utils.GetAll(this, typeof(AutoCompleteTextBox)))
+            {
+                ((AutoCompleteTextBox)textBox).Values = PlayersList.Players.Keys.ToArray();
+            }
+
+            playerName_textBox.PlayerSelectedEvent = PlayerInfoSelectPlayerEvent;
+            sendPlayer_TextBox.PlayerSelectedEvent = SendPlayerSelectedEvent;
+            receivePlayer_TextBox.PlayerSelectedEvent = ReceivedPlayerSelectedEvent;
+            player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
+            player2_TextBox.PlayerSelectedEvent = Player2CompareSelectedPlayerEvent;
         }
+        public void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
+        {
+            chart.Series[seriesNum].Points.Clear();
+            chart.Series[seriesNum].Name = name;
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                chart.Series[seriesNum].Points.AddXY(x[i], y[i]);
+                chart.Series[seriesNum].Points[i].ToolTip = x[i] + " , " + y[i];
+            }
+        }
+
+        public void PrintChartWithDates(double[] y, DateTime[] dates, string name, Chart chart, int seriesNum = 0)
+        {
+            chart.Series[seriesNum].Points.Clear();
+            chart.Series[seriesNum].Name = name;
+            for (int i = 0; i < y.Length; i++)
+            {
+                chart.Series[seriesNum].Points.AddXY(dates[i], y[i]);
+                chart.Series[seriesNum].Points[i].ToolTip = y[i] + " - " + dates[i].ToString("d");
+            }
+        }
+
 
         #endregion
 
         #region PlayerInfo
 
-
-        private void playerName_textBox_TextChanged(object sender, EventArgs e)
+        public async void PlayerInfoSelectPlayerEvent(string name)
         {
-            players_listBox.Items.Clear();
-            if (playerName_textBox.Text.Length < 2)
-            {
-                return;
-            }
-
-            List<string> releventPlayers = PlayersList.Players.Keys.Where(p => p.ToLower().Contains(playerName_textBox.Text.ToLower())).ToList();
-            players_listBox.Items.AddRange(releventPlayers.ToArray());
-        }
-
-        private async void players_listBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //UseWaitCursor = true;
-            string name = players_listBox.GetItemText(players_listBox.SelectedItem);
+            UseWaitCursor = true;
             if (PlayersList.Players.ContainsKey(name))
             {
                 _player = await PlayersList.CreatePlayerAsync(name);
@@ -87,7 +92,7 @@ namespace espn
                 playerInfo_label.Text = _player.PlayerInfo + " | " + _player.Team;
                 button_max_Click(null, null);
             }
-            //UseWaitCursor = false;
+            UseWaitCursor = false;
         }
 
         private void button_7_Click(object sender, EventArgs e)
@@ -110,21 +115,6 @@ namespace espn
             numOf_textBox.Text = _player.Games.Count.ToString();
         }
 
-        private void playerName_textBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                if (MessageBox.Show("Create New Player? - " + playerName_textBox.Text, "Create New Player?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    string input = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name And ID Seperate By ',' ", "Create New Player", playerName_textBox.Text + ",", -1, -1);
-                    var p = input.Split(",".ToCharArray());
-                    PlayersList.AddNewPlayer(p[0], int.Parse(p[1]));
-                    InitGui();
-                    MessageBox.Show("Done");
-                }
-            }
-        }
-
         private void mode_comboBox_DropDownClosed(object sender, EventArgs e)
         {
             numOf_textBox_TextChanged(null, null);
@@ -132,11 +122,13 @@ namespace espn
 
         private void numOf_textBox_TextChanged(object sender, EventArgs e)
         {
-            var games = _player?.FilterGames(mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text);
+            var games = _player?.FilterGames(
+                mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
+                zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
 
             if (games == null)
                 return;
-            UpdateTable(GameStats.GetAvgStats(games), games.Length);
+            UpdateTable(GameStats.GetAvgStats(games));
             var colName = stats_dataGridView.SelectedCells.Count > 0
                 ? stats_dataGridView.Columns[stats_dataGridView.SelectedCells[0].ColumnIndex].Name
                 : "Pts";
@@ -144,26 +136,21 @@ namespace espn
             PrintChartWithDates(GameStats.GetYVals(colName, games), x, colName, stat_chart);
         }
 
-        private GameStats[] FilterReleventGames(string mode, string numStr, Player playerToFilter)
+        private void zeroMinutes_checkBox_CheckStateChanged(object sender, EventArgs e)
         {
-            var numOfGames = numStr.Equals("Max") ? playerToFilter.Games.Count : int.Parse(numStr);
-            switch (mode)
-            {
-                case "Games":
-                    return playerToFilter.Games.Take(numOfGames).ToArray();
-
-                case "Days":
-                    DateTime minDay = DateTime.Now - new TimeSpan(numOfGames, 0, 0, 0);
-                    return playerToFilter.Games.Where(g => g.GameDate >= minDay).ToArray();
-            }
-            return null;
+            numOf_textBox_TextChanged(null, null);
         }
 
-        private void UpdateTable(GameStats game, int numOfGames)
+        private void outliersMinutes_checkBox_CheckStateChanged(object sender, EventArgs e)
         {
-            stats_dataGridView.Rows[0].Cells["Gp"].Value = numOfGames;
+            numOf_textBox_TextChanged(null, null);
+        }
 
-            if (numOfGames == 0)
+        private void UpdateTable(GameStats game)
+        {
+            stats_dataGridView.Rows[0].Cells["Gp"].Value = game.Gp;
+
+            if (game.Gp == 0)
                 return;
 
             stats_dataGridView.Rows[0].Cells["Min"].Value = game.Min.ToString("0.0");
@@ -189,36 +176,14 @@ namespace espn
         private void stats_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var name = stats_dataGridView.Columns[e.ColumnIndex].Name;
-            var games = _player.FilterGames(mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text);
+            var games = _player.FilterGames(mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
+                zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
             var y = GameStats.GetYVals(name, games);
             var x = games.Select(g => g.GameDate).ToArray();
             if (y.Length > 0)
                 PrintChartWithDates(y, x, name, stat_chart);
             //PrintChart(y, name, stat_chart);
         }
-
-
-        public void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
-        {
-            chart.Series[seriesNum].Points.Clear();
-            chart.Series[seriesNum].Name = name;
-
-            for (int i = 0; i < x.Length; i++)
-            {
-                chart.Series[seriesNum].Points.AddXY(x[i], y[i]);
-            }
-        }
-
-        public void PrintChartWithDates(double[] y, DateTime[] dates, string name, Chart chart, int seriesNum = 0)
-        {
-            chart.Series[seriesNum].Points.Clear();
-            chart.Series[seriesNum].Name = name;
-            for (int i = 0; i < y.Length; i++)
-            {
-                chart.Series[seriesNum].Points.AddXY(dates[i], y[i]);
-            }
-        }
-
 
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
@@ -235,12 +200,12 @@ namespace espn
 
         #region ComparePlayers
 
-        private void player1_comboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void Player1CompareSelectedPlayerEvent(string name)
         {
             UpdateComparePlayer(1);
         }
 
-        private void player2_comboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void Player2CompareSelectedPlayerEvent(string name)
         {
             UpdateComparePlayer(2);
         }
@@ -261,10 +226,10 @@ namespace espn
             {
                 if (mode == 0 || mode == 1)
                 {
-                    if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player1_comboBox.SelectedIndex == -1)
+                    if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player1_TextBox.Text == String.Empty)
                         return;
-                    if (_player1 == null || _player1.Id != PlayersList.Players[player1_comboBox.GetItemText(player1_comboBox.SelectedItem)])
-                        _player1 = await PlayersList.CreatePlayerAsync(player1_comboBox.GetItemText(player1_comboBox.SelectedItem));
+                    if (_player1 == null || _player1.Id != PlayersList.Players[player1_TextBox.Text])
+                        _player1 = await PlayersList.CreatePlayerAsync(player1_TextBox.Text);
 
                     GameStats[] games = _player1.FilterGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                             compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
@@ -272,10 +237,10 @@ namespace espn
                 }
                 if (mode == 0 || mode == 2)
                 {
-                    if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player2_comboBox.SelectedIndex == -1)
+                    if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player2_TextBox.Text == String.Empty)
                         return;
-                    if (_player2 == null || _player2.Id != PlayersList.Players[players_listBox.GetItemText(player2_comboBox.SelectedItem)])
-                        _player2 = await PlayersList.CreatePlayerAsync(player2_comboBox.GetItemText(player2_comboBox.SelectedItem));
+                    if (_player2 == null || _player2.Id != PlayersList.Players[player2_TextBox.Text])
+                        _player2 = await PlayersList.CreatePlayerAsync(player2_TextBox.Text);
                     GameStats[] games = _player2.FilterGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                             compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
                     UpdateCompareInfo2(games);
@@ -412,10 +377,12 @@ namespace espn
 
         private void tradePlayers_button_Click(object sender, EventArgs e)
         {
-            sendPlayers_comboBox.SelectedItem = player1_comboBox.SelectedItem;
-            receivePlayers_comboBox.SelectedItem = player2_comboBox.SelectedItem;
             tradeMode_comboBox.SelectedIndex = compareMode_comboBox.SelectedIndex;
             tradeLast_comboBox.SelectedIndex = compare_last_comboBox.SelectedIndex;
+            sendPlayer_TextBox.Text = player1_TextBox.Text;
+            receivePlayer_TextBox.Text = player2_TextBox.Text;
+            sendPlayer_TextBox.PlayerSelectedEvent.Invoke(sendPlayer_TextBox.Text);
+            receivePlayer_TextBox.PlayerSelectedEvent.Invoke(receivePlayer_TextBox.Text);
             tabControl.SelectedIndex = 2;
         }
 
@@ -450,16 +417,16 @@ namespace espn
 
         #region Trade Analyzer
 
-        private void sendPlayers_comboBox_SelectedValueChanged(object sender, EventArgs e)
+        public void SendPlayerSelectedEvent(string name)
         {
-            playersSent_textBox.Text += sendPlayers_comboBox.GetItemText(sendPlayers_comboBox.SelectedItem) + ",";
+            playersSent_textBox.Text = name + "," + playersSent_textBox.Text;
         }
 
-
-        private void recivePlayers_comboBox_SelectedValueChanged(object sender, EventArgs e)
+        public void ReceivedPlayerSelectedEvent(string name)
         {
-            playersReceived_textBox.Text += receivePlayers_comboBox.GetItemText(receivePlayers_comboBox.SelectedItem) + ",";
+            playersReceived_textBox.Text = name + "," + playersReceived_textBox.Text;
         }
+
 
         private void clearList_button_Click(object sender, EventArgs e)
         {
@@ -469,15 +436,13 @@ namespace espn
 
         private void flip_button_Click(object sender, EventArgs e)
         {
-            string sendStr = playersSent_textBox.Text;
-            string recStr = playersReceived_textBox.Text;
+            string temp = playersReceived_textBox.Text;
+            playersReceived_textBox.Text = playersSent_textBox.Text;
+            playersSent_textBox.Text = temp;
 
-            object temp = sendPlayers_comboBox.SelectedItem;
-            sendPlayers_comboBox.SelectedItem = receivePlayers_comboBox.SelectedItem;
-            receivePlayers_comboBox.SelectedItem = temp;
-
-            playersSent_textBox.Text = recStr;
-            playersReceived_textBox.Text = sendStr;
+            temp = sendPlayer_TextBox.Text;
+            sendPlayer_TextBox.Text = receivePlayer_TextBox.Text;
+            receivePlayer_TextBox.Text = temp;
         }
 
         private async void trade_button_Click(object sender, EventArgs e)
@@ -509,12 +474,6 @@ namespace espn
             UseWaitCursor = false;
         }
 
-       
-
-        private void score_label_Click(object sender, EventArgs e)
-        {
-            Factors.ShowDialog();
-        }
 
         private void UpdateTotalTradeLabelsh(GameStats totalSend, GameStats totalReceived)
         {
@@ -558,7 +517,7 @@ namespace espn
             UpdateTradeLabel(fgPerTrade_label, diffStat.FgPer, "%");
             UpdateTradeLabel(ftPerTrade_label, diffStat.FtPer, "%");
 
-            if (diffStat.Score>0)
+            if (diffStat.Score > 0)
             {
                 score_label.Text = "Pass";
                 score_label.ForeColor = Color.Green;
@@ -676,17 +635,22 @@ namespace espn
 
         private void playersReceived_textBox_Click(object sender, EventArgs e)
         {
-            playersReceived_textBox.Text = "";
+            var playersForm = new PlayersForm(playersReceived_textBox.Text);
+            if (playersForm.ShowDialog() == DialogResult.OK)
+                playersReceived_textBox.Text = playersForm.PlayersStr;
+        }
+
+
+        private void playersSent_textBox_Click(object sender, EventArgs e)
+        {
+            var playersForm = new PlayersForm(playersSent_textBox.Text);
+            if (playersForm.ShowDialog() == DialogResult.OK)
+                playersSent_textBox.Text = playersForm.PlayersStr;
         }
 
         private void scoreChartTrade_label_Click(object sender, EventArgs e)
         {
             UpdateTradeCharts("Score");
-        }
-
-        private void playersSent_textBox_Click(object sender, EventArgs e)
-        {
-            playersSent_textBox.Text = "";
         }
 
         private async void UpdateTradeCharts(string colName)
@@ -717,6 +681,7 @@ namespace espn
             trade_chart.Titles[0].Text = colName;
         }
 
+
         private void screenshot_button_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(trade_panel.Width, trade_panel.Height))
@@ -725,6 +690,75 @@ namespace espn
                 Clipboard.SetImage(bmp);
             }
         }
+
+        private void loadPlayersToolStripMenuItem1_Click(object sender, EventArgs e)//Sent
+        {
+            try
+            {
+                playersSent_textBox.Text = File.ReadAllText("SentPlayers.txt");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void loadPlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
+        {
+            try
+            {
+                playersReceived_textBox.Text = File.ReadAllText("ReceivedPlayers.txt");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void savePlayersToolStripMenuItem1_Click(object sender, EventArgs e)//Sent
+        {
+            try
+            {
+                File.WriteAllText("SentPlayers.txt", playersSent_textBox.Text);
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string name = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name (For Example: Chris Paul)", "Add New Player", "Default", -1, -1);
+            if (!string.Equals(name, ""))
+                PlayersList.AddNewPlayer(name);
+            InitGui();
+        }
+
+        private void savePlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
+        {
+            try
+            {
+                File.WriteAllText("ReceivedPlayers.txt", playersReceived_textBox.Text);
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+        #endregion
+
+        #region Players Rater
+
+        private void setFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Factors.ShowDialog();
+        }
+
         #endregion
 
     }

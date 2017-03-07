@@ -51,6 +51,7 @@
             this.ok_button = new System.Windows.Forms.Button();
             this.to_textBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.save_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -246,9 +247,9 @@
             // ok_button
             // 
             this.ok_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ok_button.Location = new System.Drawing.Point(47, 296);
+            this.ok_button.Location = new System.Drawing.Point(24, 296);
             this.ok_button.Name = "ok_button";
-            this.ok_button.Size = new System.Drawing.Size(75, 23);
+            this.ok_button.Size = new System.Drawing.Size(49, 23);
             this.ok_button.TabIndex = 21;
             this.ok_button.Text = "OK";
             this.ok_button.UseVisualStyleBackColor = true;
@@ -273,11 +274,23 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "To";
             // 
+            // save_button
+            // 
+            this.save_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_button.Location = new System.Drawing.Point(89, 296);
+            this.save_button.Name = "save_button";
+            this.save_button.Size = new System.Drawing.Size(49, 23);
+            this.save_button.TabIndex = 24;
+            this.save_button.Text = "Save";
+            this.save_button.UseVisualStyleBackColor = true;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
+            // 
             // FactorsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(168, 335);
+            this.Controls.Add(this.save_button);
             this.Controls.Add(this.to_textBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ok_button);
@@ -335,5 +348,6 @@
         private System.Windows.Forms.Button ok_button;
         private System.Windows.Forms.TextBox to_textBox;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button save_button;
     }
 }

@@ -29,7 +29,7 @@ namespace espn
             }
             catch (Exception)
             {
-                
+
             }
         }
 
@@ -103,10 +103,18 @@ namespace espn
             }
         }
 
-        public GameStats[] FilterGames(string mode, string numOfGames)
+        public GameStats[] FilterGames(string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
         {
             int num = numOfGames.Equals("Max") ? Games.Count : int.Parse(numOfGames);
-            return FilterGames(mode, num);
+            GameStats[] games = FilterGames(mode, num);
+
+            if (filterZeroMinutes)
+                games = games.Where(g => g.Min > 0).ToArray();
+
+            if (filterOutliers)
+                games = GameStats.FilterOutliers(games);
+
+            return games;
         }
 
         public GameStats[] FilterGames(string mode, int numOfGames)

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace espn
 {
@@ -41,6 +42,20 @@ namespace espn
         public static void UpdatePlayersFromFile(string filePath)
         {
             UpdatePlayersIds(File.ReadAllLines(filePath));
+        }
+
+        public static void AddNewPlayer(string name)
+        {
+            try
+            {
+                AddNewPlayer(name, Player.GetPlayerId(name), true);
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Create New Player - " + ex.Message);
+            }
+
         }
 
         public static void UpdatePlayersIds(string[] playerNames)

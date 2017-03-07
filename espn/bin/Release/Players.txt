@@ -230,6 +230,7 @@ Kevin Durant;3202
 Kevin Love;3449
 Kevin Seraphin;4289
 Kevon Looney;3155535
+Khris Middleton;6609
 KJ McDaniels;2566741
 Klay Thompson;6475
 Kosta Koufos;3444
