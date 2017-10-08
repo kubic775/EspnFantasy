@@ -50,6 +50,12 @@ namespace espn
         private void this_KeyUp(object sender, KeyEventArgs e)
         {
             UpdateListBox();
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if ((_listBox.Visible) && (_listBox.SelectedIndex >= 0))
+                    ListSelectedIndexChanged(null, null);
+            }
         }
 
         private void this_KeyDown(object sender, KeyEventArgs e)

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace espn
 {
@@ -18,15 +18,16 @@ namespace espn
                                       .Concat(controls).Where(c => c.GetType() == type);
         }
 
-        public static double[] Smooth(this double[] array, int windowLength)
+        public static double[] Smooth(double[] array, int windowLength)
         {
             double[] res = new double[array.Length];
 
             for (int i = 0; i < array.Length; i++)
             {
-                res[i] = array.Take(i + 1).Skip(Math.Max(0, i + 1 - windowLength)).Average();
+                int start = Math.Max(0, i - windowLength);
+                int end = Math.Min(array.Length, i + windowLength);
+                res[i] = array.Skip(start).Take(end - start + 1).Average();
             }
-
             return res;
         }
 
@@ -34,6 +35,41 @@ namespace espn
         {
             double avg = values.Average();
             return Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)));
+        }
+
+        public static Task<string> MakeAsyncRequest(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = WebRequestMethods.Http.Get;
+            request.Timeout = 20000;
+
+            Task<WebResponse> task = Task.Factory.FromAsync(
+                request.BeginGetResponse,
+                asyncResult => request.EndGetResponse(asyncResult), null);
+
+            return task.ContinueWith(t => ReadStreamFromResponse(t.Result));
+        }
+
+        private static string ReadStreamFromResponse(WebResponse response)
+        {
+            using (Stream responseStream = response.GetResponseStream())
+            using (StreamReader sr = new StreamReader(responseStream))
+            {
+                //Need to return this response 
+                string strContent = sr.ReadToEnd();
+                return strContent;
+            }
+        }
+
+        public static string DownloadStringFromUrl(string url)
+        {
+            using (WebClient wc = new WebClient())
+            {
+                //wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                //wc.Encoding = System.Text.Encoding.UTF8;
+                string res = wc.DownloadString(url);
+                return res;
+            }
         }
     }
 }

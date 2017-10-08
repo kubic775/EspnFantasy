@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -85,7 +84,9 @@ namespace espn
         {
             if (!CachePlayers.ContainsKey(playerName))
             {
-                CachePlayers.Add(playerName, new Player(playerName));
+                var player = new Player(playerName);
+                if (player.Games != null)
+                    CachePlayers.Add(playerName, new Player(playerName));
             }
             return CachePlayers[playerName];
         }

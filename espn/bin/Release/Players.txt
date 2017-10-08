@@ -201,6 +201,7 @@ Jonas Valanciunas;6477
 Jonathan Gibson;2234666
 Jonathon Simmons;2579466
 Jordan Clarkson;2528426
+Jordan Crawford;4243
 Jordan Farmar;3002
 Jordan Hill;3994
 Jordan McRae;2531797

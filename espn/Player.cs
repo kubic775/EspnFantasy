@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Configuration;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace espn
 {
@@ -29,11 +25,12 @@ namespace espn
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Can't Create Player - " + playerName);
+                Games = null;
             }
         }
 
-        public void CreatePlayer(string playerStr, int id)
+        public void CreatePlayer(string playerStr, int id, int year = 2017)
         {
             Games = new List<GameStats>();
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
@@ -48,7 +45,7 @@ namespace espn
             var playerInfo = playerStr.Substring(index1 + 6, index2 - index1 - 10).Split(new[] { '>', '<' }, StringSplitOptions.RemoveEmptyEntries);
             PlayerInfo = playerInfo[0] + " | " + playerInfo[3];
 
-            index1 = playerStr.IndexOf("2016-2017 REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
+            index1 = playerStr.IndexOf((year - 1) + "-" + year + " REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
             if (index1 != -1)
             {
@@ -57,34 +54,10 @@ namespace espn
             }
         }
 
-        private string DownloadPlayerStr(int id)
+        private string DownloadPlayerStr(int id, int year = 2017)
         {
-            var task = MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id);
+            var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
             return task.Result;
-        }
-
-        public static Task<string> MakeAsyncRequest(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = WebRequestMethods.Http.Get;
-            request.Timeout = 20000;
-
-            Task<WebResponse> task = Task.Factory.FromAsync(
-                request.BeginGetResponse,
-                asyncResult => request.EndGetResponse(asyncResult), null);
-
-            return task.ContinueWith(t => ReadStreamFromResponse(t.Result));
-        }
-
-        private static string ReadStreamFromResponse(WebResponse response)
-        {
-            using (Stream responseStream = response.GetResponseStream())
-            using (StreamReader sr = new StreamReader(responseStream))
-            {
-                //Need to return this response 
-                string strContent = sr.ReadToEnd();
-                return strContent;
-            }
         }
 
         public void CreatePlayerGames(string gamesStr)
@@ -100,6 +73,7 @@ namespace espn
                 catch (Exception ex)
                 {
                 }
+                Games = Games.OrderBy(g => g.GameDate).ToList();
             }
         }
 
@@ -121,7 +95,7 @@ namespace espn
         {
             if (mode.Equals("Games"))
             {
-                return Games.Take(numOfGames).ToArray();
+                return Games.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
             }
             else//Days
             {
@@ -134,19 +108,15 @@ namespace espn
         {
             try
             {
-                string uriString = "http://www.google.com/search";
+                string uriString = @"https://www.bing.com/search?q=" + playerName + " espn";
                 string searchPattern = @"www.espn.com/nba/player/_/id/";
-                WebClient webClient = new WebClient();
-                NameValueCollection nameValueCollection = new NameValueCollection { { "q", playerName + " espn" } };
-                webClient.QueryString.Add(nameValueCollection);
-                string s = webClient.DownloadString(uriString);
-
-                int i1 = s.IndexOf(searchPattern, StringComparison.Ordinal) + searchPattern.Length;
+                string res = Utils.DownloadStringFromUrl(uriString);
+                int i1 = res.IndexOf(searchPattern, StringComparison.Ordinal) + searchPattern.Length;
                 int i2 = i1;
-                while (Char.IsDigit(s[i2]))
+                while (Char.IsDigit(res[i2]))
                     i2++;
 
-                return int.Parse(s.Substring(i1, i2 - i1));
+                return int.Parse(res.Substring(i1, i2 - i1));
             }
             catch (Exception ex)
             {
