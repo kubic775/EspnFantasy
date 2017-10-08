@@ -19,14 +19,14 @@ namespace espn
 
         }
 
-        public GameStats(string gameStr)
+        public GameStats(string gameStr, int year)
         {
             string[] stats = gameStr.Split(new[] { @"<td>", @"</td>" }, StringSplitOptions.RemoveEmptyEntries);
 
             var temp = stats[1].Substring(4).Split('/');
             var month = Int32.Parse(temp[0]);
             var day = Int32.Parse(temp[1]);
-            GameDate = new DateTime(month < 10 ? 2017 : 2016, month, day);
+            GameDate = new DateTime(month < 10 ? year : year-1, month, day);
 
             Min = Int32.Parse(stats[4].Substring(stats[4].IndexOf(">") + 1));
 

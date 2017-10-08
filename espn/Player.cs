@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Net;
 using System.Windows.Forms;
 
 namespace espn
@@ -20,8 +19,11 @@ namespace espn
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = PlayersList.Players[playerName];
-                string playerStr = DownloadPlayerStr(Id);
-                CreatePlayer(playerStr, Id);
+                for (int year = 2014; year <= 2018; year++)
+                {
+                    string playerStr = DownloadPlayerStr(Id, year);
+                    CreatePlayer(playerStr, Id, year);
+                }
             }
             catch (Exception)
             {
@@ -30,9 +32,8 @@ namespace espn
             }
         }
 
-        public void CreatePlayer(string playerStr, int id, int year = 2017)
+        public void CreatePlayer(string playerStr, int id, int year)
         {
-            Games = new List<GameStats>();
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
 
             int index1 = playerStr.IndexOf("Game By Game Stats and Performance", StringComparison.InvariantCulture);
@@ -50,24 +51,24 @@ namespace espn
             if (index1 != -1)
             {
                 string gamesStr = playerStr.Substring(index1, index2 - index1);
-                CreatePlayerGames(gamesStr);
+                CreatePlayerGames(gamesStr, year);
             }
         }
 
-        private string DownloadPlayerStr(int id, int year = 2017)
+        private string DownloadPlayerStr(int id, int year)
         {
             var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
             return task.Result;
         }
 
-        public void CreatePlayerGames(string gamesStr)
+        public void CreatePlayerGames(string gamesStr, int year)
         {
             string[] lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var statLine in lines.Where(line => line.Contains("oddrow team") || line.Contains("evenrow team")))
             {
                 try
                 {
-                    var gameStats = new GameStats(statLine);
+                    var gameStats = new GameStats(statLine, year);
                     Games.Add(gameStats);
                 }
                 catch (Exception ex)
@@ -77,10 +78,15 @@ namespace espn
             }
         }
 
-        public GameStats[] FilterGames(string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
+        public GameStats[] FilterGamesByYear(int year)
+        {
+            return Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToArray();
+        }
+
+        public GameStats[] FilterGames(string year, string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
         {
             int num = numOfGames.Equals("Max") ? Games.Count : int.Parse(numOfGames);
-            GameStats[] games = FilterGames(mode, num);
+            GameStats[] games = FilterGames(int.Parse(year), mode, num);
 
             if (filterZeroMinutes)
                 games = games.Where(g => g.Min > 0).ToArray();
@@ -91,16 +97,17 @@ namespace espn
             return games;
         }
 
-        public GameStats[] FilterGames(string mode, int numOfGames)
+        public GameStats[] FilterGames(int year, string mode, int numOfGames)
         {
+            var releventGames = Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToList();
             if (mode.Equals("Games"))
             {
-                return Games.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
+                return releventGames.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
             }
             else//Days
             {
                 DateTime minDate = DateTime.Now - new TimeSpan(numOfGames, 0, 0, 0);
-                return Games.Where(g => g.GameDate >= minDate).ToArray();
+                return releventGames.Where(g => g.GameDate >= minDate).ToArray();
             }
         }
 

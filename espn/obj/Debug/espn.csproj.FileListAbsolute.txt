@@ -35,3 +35,4 @@ C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.GenerateRes
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cache
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojResolveAssemblyReference.cache

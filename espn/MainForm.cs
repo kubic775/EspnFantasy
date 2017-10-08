@@ -17,6 +17,7 @@ namespace espn
         #region Init & Gui
         public static FactorsForm Factors;
         private Player _player, _player1, _player2;
+        private int _year = DateTime.Now.Month > 9 ? DateTime.Now.Year + 1 : DateTime.Now.Year;
 
         public MainForm()
         {
@@ -56,7 +57,7 @@ namespace espn
             player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
             player2_TextBox.PlayerSelectedEvent = Player2CompareSelectedPlayerEvent;
 
-            compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = 0;
+            compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeLast_comboBox.SelectedIndex = 3;
         }
 
@@ -139,7 +140,9 @@ namespace espn
 
         private void button_max_Click(object sender, EventArgs e)
         {
-            numOf_textBox.Text = _player.Games.Count.ToString();
+            var games = _player.FilterGamesByYear(
+                int.Parse(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])));
+            numOf_textBox.Text = games.Length.ToString();
         }
 
         private void mode_comboBox_DropDownClosed(object sender, EventArgs e)
@@ -147,9 +150,19 @@ namespace espn
             numOf_textBox_TextChanged(null, null);
         }
 
+        private void year_comboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var games = _player.FilterGamesByYear(
+                int.Parse(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])));
+            if (numOf_textBox.Text.Equals(games.Length.ToString()))
+                numOf_textBox_TextChanged(null, null);
+            else
+                numOf_textBox.Text = games.Length.ToString();
+        }
+
         private void numOf_textBox_TextChanged(object sender, EventArgs e)
         {
-            var games = _player?.FilterGames(
+            var games = _player?.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
                 mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
                 zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
 
@@ -202,7 +215,8 @@ namespace espn
         private void stats_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var name = stats_dataGridView.Columns[e.ColumnIndex].Name;
-            var games = _player.FilterGames(mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
+            var games = _player.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
+                mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
                 zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
             var y = GameStats.GetYVals(name, games);
             var x = games.Select(g => g.GameDate).ToArray();
@@ -267,7 +281,7 @@ namespace espn
                     if (_player1 == null || _player1.Id != PlayersList.Players[player1_TextBox.Text])
                         _player1 = await PlayersList.CreatePlayerAsync(player1_TextBox.Text);
 
-                    GameStats[] games = _player1.FilterGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
+                    GameStats[] games = _player1.FilterGames("2018", compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                             compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
                     UpdateCompareInfo1(games);
                 }
@@ -277,7 +291,7 @@ namespace espn
                         return;
                     if (_player2 == null || _player2.Id != PlayersList.Players[player2_TextBox.Text])
                         _player2 = await PlayersList.CreatePlayerAsync(player2_TextBox.Text);
-                    GameStats[] games = _player2.FilterGames(compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
+                    GameStats[] games = _player2.FilterGames("2018", compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                             compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
                     UpdateCompareInfo2(games);
                 }
@@ -386,7 +400,7 @@ namespace espn
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
             if (_player1 != null)
             {
-                GameStats[] games = _player1.FilterGames(
+                GameStats[] games = _player1.FilterGames("2018",
                 compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                 compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
@@ -400,7 +414,7 @@ namespace espn
 
             if (_player2 != null)
             {
-                GameStats[] games = _player2.FilterGames(
+                GameStats[] games = _player2.FilterGames("2018",
                compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
@@ -494,12 +508,12 @@ namespace espn
                 List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
                 GameStats[] avgStatsSend = sentPlayers.Select(
-                    p => GameStats.GetAvgStats(p.FilterGames(
+                    p => GameStats.GetAvgStats(p.FilterGames("2018",
                         tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem),
                         tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem)))).ToArray();
 
                 GameStats[] avgStatsrecevied = receiviedPlayers.Select(
-                   p => GameStats.GetAvgStats(p.FilterGames(
+                   p => GameStats.GetAvgStats(p.FilterGames("2018",
                        tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem),
                        tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem)))).ToArray();
 
@@ -709,14 +723,14 @@ namespace espn
             var yValSend = new double[4];
             var yValRecevied = new double[4];
 
-            yValSend[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", "Max"))).ToArray())).ToString());
-            yValRecevied[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", "Max"))).ToArray())).ToString());
-            yValSend[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 30))).ToArray())).ToString());
-            yValRecevied[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 30))).ToArray())).ToString());
-            yValSend[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 15))).ToArray())).ToString());
-            yValRecevied[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 15))).ToArray())).ToString());
-            yValSend[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 7))).ToArray())).ToString());
-            yValRecevied[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("Games", 7))).ToArray())).ToString());
+            yValSend[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("2018", "Games", "Max"))).ToArray())).ToString());
+            yValRecevied[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("2018", "Games", "Max"))).ToArray())).ToString());
+            yValSend[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 30))).ToArray())).ToString());
+            yValRecevied[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 30))).ToArray())).ToString());
+            yValSend[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 15))).ToArray())).ToString());
+            yValRecevied[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 15))).ToArray())).ToString());
+            yValSend[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 7))).ToArray())).ToString());
+            yValRecevied[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 7))).ToArray())).ToString());
 
             var xVal = new[] { "Season", "30", "15", "7" };
 

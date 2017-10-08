@@ -55,11 +55,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.coptStatChart_button = new System.Windows.Forms.Button();
             this.smooth_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.outliersMinutes_checkBox = new System.Windows.Forms.CheckBox();
             this.zeroMinutes_checkBox = new System.Windows.Forms.CheckBox();
-            this.playerName_textBox = new espn.AutoCompleteTextBox();
             this.copyToClipboard_button = new System.Windows.Forms.Button();
             this.stat_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.playerInfo_label = new System.Windows.Forms.Label();
@@ -90,8 +90,6 @@
             this.player_pictureBox = new System.Windows.Forms.PictureBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
-            this.player2_TextBox = new espn.AutoCompleteTextBox();
-            this.player1_TextBox = new espn.AutoCompleteTextBox();
             this.tradePlayers_button = new System.Windows.Forms.Button();
             this.copyChart_button = new System.Windows.Forms.Button();
             this.copyCompare_button = new System.Windows.Forms.Button();
@@ -136,8 +134,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.receivePlayer_TextBox = new espn.AutoCompleteTextBox();
-            this.sendPlayer_TextBox = new espn.AutoCompleteTextBox();
             this.score_label = new System.Windows.Forms.Label();
             this.screenshot_button = new System.Windows.Forms.Button();
             this.trade_panel = new System.Windows.Forms.Panel();
@@ -225,7 +221,12 @@
             this.loadPlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.playerRaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coptStatChart_button = new System.Windows.Forms.Button();
+            this.year_comboBox = new System.Windows.Forms.ComboBox();
+            this.playerName_textBox = new espn.AutoCompleteTextBox();
+            this.player2_TextBox = new espn.AutoCompleteTextBox();
+            this.player1_TextBox = new espn.AutoCompleteTextBox();
+            this.receivePlayer_TextBox = new espn.AutoCompleteTextBox();
+            this.sendPlayer_TextBox = new espn.AutoCompleteTextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -256,6 +257,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.OldLace;
+            this.tabPage1.Controls.Add(this.year_comboBox);
             this.tabPage1.Controls.Add(this.coptStatChart_button);
             this.tabPage1.Controls.Add(this.smooth_checkBox);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -279,6 +281,16 @@
             this.tabPage1.Size = new System.Drawing.Size(1100, 410);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Players";
+            // 
+            // coptStatChart_button
+            // 
+            this.coptStatChart_button.Location = new System.Drawing.Point(923, 313);
+            this.coptStatChart_button.Name = "coptStatChart_button";
+            this.coptStatChart_button.Size = new System.Drawing.Size(95, 23);
+            this.coptStatChart_button.TabIndex = 54;
+            this.coptStatChart_button.Text = "Copy Chart";
+            this.coptStatChart_button.UseVisualStyleBackColor = true;
+            this.coptStatChart_button.Click += new System.EventHandler(this.coptStatChart_button_Click);
             // 
             // smooth_checkBox
             // 
@@ -324,14 +336,6 @@
             this.zeroMinutes_checkBox.Text = "Zero Minutes";
             this.zeroMinutes_checkBox.UseVisualStyleBackColor = true;
             this.zeroMinutes_checkBox.CheckStateChanged += new System.EventHandler(this.zeroMinutes_checkBox_CheckStateChanged);
-            // 
-            // playerName_textBox
-            // 
-            this.playerName_textBox.Location = new System.Drawing.Point(63, 17);
-            this.playerName_textBox.Name = "playerName_textBox";
-            this.playerName_textBox.Size = new System.Drawing.Size(130, 22);
-            this.playerName_textBox.TabIndex = 17;
-            this.playerName_textBox.Values = null;
             // 
             // copyToClipboard_button
             // 
@@ -399,7 +403,7 @@
             // 
             // button_max
             // 
-            this.button_max.Location = new System.Drawing.Point(565, 313);
+            this.button_max.Location = new System.Drawing.Point(643, 313);
             this.button_max.Name = "button_max";
             this.button_max.Size = new System.Drawing.Size(46, 23);
             this.button_max.TabIndex = 12;
@@ -409,7 +413,7 @@
             // 
             // button_30
             // 
-            this.button_30.Location = new System.Drawing.Point(513, 313);
+            this.button_30.Location = new System.Drawing.Point(591, 313);
             this.button_30.Name = "button_30";
             this.button_30.Size = new System.Drawing.Size(46, 23);
             this.button_30.TabIndex = 11;
@@ -419,7 +423,7 @@
             // 
             // button_15
             // 
-            this.button_15.Location = new System.Drawing.Point(461, 313);
+            this.button_15.Location = new System.Drawing.Point(539, 313);
             this.button_15.Name = "button_15";
             this.button_15.Size = new System.Drawing.Size(46, 23);
             this.button_15.TabIndex = 10;
@@ -429,7 +433,7 @@
             // 
             // button_7
             // 
-            this.button_7.Location = new System.Drawing.Point(409, 313);
+            this.button_7.Location = new System.Drawing.Point(487, 313);
             this.button_7.Name = "button_7";
             this.button_7.Size = new System.Drawing.Size(46, 23);
             this.button_7.TabIndex = 9;
@@ -443,7 +447,7 @@
             this.mode_comboBox.Items.AddRange(new object[] {
             "Games",
             "Days"});
-            this.mode_comboBox.Location = new System.Drawing.Point(202, 313);
+            this.mode_comboBox.Location = new System.Drawing.Point(280, 313);
             this.mode_comboBox.Name = "mode_comboBox";
             this.mode_comboBox.Size = new System.Drawing.Size(121, 24);
             this.mode_comboBox.TabIndex = 8;
@@ -451,7 +455,7 @@
             // 
             // numOf_textBox
             // 
-            this.numOf_textBox.Location = new System.Drawing.Point(333, 314);
+            this.numOf_textBox.Location = new System.Drawing.Point(411, 314);
             this.numOf_textBox.Name = "numOf_textBox";
             this.numOf_textBox.Size = new System.Drawing.Size(51, 22);
             this.numOf_textBox.TabIndex = 7;
@@ -681,22 +685,6 @@
             this.compare_tabPage.Size = new System.Drawing.Size(1100, 410);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
-            // 
-            // player2_TextBox
-            // 
-            this.player2_TextBox.Location = new System.Drawing.Point(237, 70);
-            this.player2_TextBox.Name = "player2_TextBox";
-            this.player2_TextBox.Size = new System.Drawing.Size(106, 22);
-            this.player2_TextBox.TabIndex = 56;
-            this.player2_TextBox.Values = null;
-            // 
-            // player1_TextBox
-            // 
-            this.player1_TextBox.Location = new System.Drawing.Point(27, 70);
-            this.player1_TextBox.Name = "player1_TextBox";
-            this.player1_TextBox.Size = new System.Drawing.Size(106, 22);
-            this.player1_TextBox.TabIndex = 55;
-            this.player1_TextBox.Values = null;
             // 
             // tradePlayers_button
             // 
@@ -1165,22 +1153,6 @@
             this.tabPage2.Size = new System.Drawing.Size(1100, 410);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Trade Analyzer";
-            // 
-            // receivePlayer_TextBox
-            // 
-            this.receivePlayer_TextBox.Location = new System.Drawing.Point(151, 94);
-            this.receivePlayer_TextBox.Name = "receivePlayer_TextBox";
-            this.receivePlayer_TextBox.Size = new System.Drawing.Size(123, 22);
-            this.receivePlayer_TextBox.TabIndex = 111;
-            this.receivePlayer_TextBox.Values = null;
-            // 
-            // sendPlayer_TextBox
-            // 
-            this.sendPlayer_TextBox.Location = new System.Drawing.Point(151, 66);
-            this.sendPlayer_TextBox.Name = "sendPlayer_TextBox";
-            this.sendPlayer_TextBox.Size = new System.Drawing.Size(123, 22);
-            this.sendPlayer_TextBox.TabIndex = 110;
-            this.sendPlayer_TextBox.Values = null;
             // 
             // score_label
             // 
@@ -2082,15 +2054,60 @@
             this.setFactorsToolStripMenuItem.Text = "Set Factors";
             this.setFactorsToolStripMenuItem.Click += new System.EventHandler(this.setFactorsToolStripMenuItem_Click);
             // 
-            // coptStatChart_button
+            // year_comboBox
             // 
-            this.coptStatChart_button.Location = new System.Drawing.Point(923, 313);
-            this.coptStatChart_button.Name = "coptStatChart_button";
-            this.coptStatChart_button.Size = new System.Drawing.Size(95, 23);
-            this.coptStatChart_button.TabIndex = 54;
-            this.coptStatChart_button.Text = "Copy Chart";
-            this.coptStatChart_button.UseVisualStyleBackColor = true;
-            this.coptStatChart_button.Click += new System.EventHandler(this.coptStatChart_button_Click);
+            this.year_comboBox.FormattingEnabled = true;
+            this.year_comboBox.Items.AddRange(new object[] {
+            "2018",
+            "2017",
+            "2016",
+            "2015",
+            "2014"});
+            this.year_comboBox.Location = new System.Drawing.Point(202, 313);
+            this.year_comboBox.Name = "year_comboBox";
+            this.year_comboBox.Size = new System.Drawing.Size(71, 24);
+            this.year_comboBox.TabIndex = 55;
+            this.year_comboBox.DropDownClosed += new System.EventHandler(this.year_comboBox_DropDownClosed);
+            // 
+            // playerName_textBox
+            // 
+            this.playerName_textBox.Location = new System.Drawing.Point(63, 17);
+            this.playerName_textBox.Name = "playerName_textBox";
+            this.playerName_textBox.Size = new System.Drawing.Size(130, 22);
+            this.playerName_textBox.TabIndex = 17;
+            this.playerName_textBox.Values = null;
+            // 
+            // player2_TextBox
+            // 
+            this.player2_TextBox.Location = new System.Drawing.Point(237, 70);
+            this.player2_TextBox.Name = "player2_TextBox";
+            this.player2_TextBox.Size = new System.Drawing.Size(106, 22);
+            this.player2_TextBox.TabIndex = 56;
+            this.player2_TextBox.Values = null;
+            // 
+            // player1_TextBox
+            // 
+            this.player1_TextBox.Location = new System.Drawing.Point(27, 70);
+            this.player1_TextBox.Name = "player1_TextBox";
+            this.player1_TextBox.Size = new System.Drawing.Size(106, 22);
+            this.player1_TextBox.TabIndex = 55;
+            this.player1_TextBox.Values = null;
+            // 
+            // receivePlayer_TextBox
+            // 
+            this.receivePlayer_TextBox.Location = new System.Drawing.Point(151, 94);
+            this.receivePlayer_TextBox.Name = "receivePlayer_TextBox";
+            this.receivePlayer_TextBox.Size = new System.Drawing.Size(123, 22);
+            this.receivePlayer_TextBox.TabIndex = 111;
+            this.receivePlayer_TextBox.Values = null;
+            // 
+            // sendPlayer_TextBox
+            // 
+            this.sendPlayer_TextBox.Location = new System.Drawing.Point(151, 66);
+            this.sendPlayer_TextBox.Name = "sendPlayer_TextBox";
+            this.sendPlayer_TextBox.Size = new System.Drawing.Size(123, 22);
+            this.sendPlayer_TextBox.TabIndex = 110;
+            this.sendPlayer_TextBox.Values = null;
             // 
             // MainForm
             // 
@@ -2302,6 +2319,7 @@
         private System.Windows.Forms.ToolStripMenuItem addNewPlayerToolStripMenuItem;
         private System.Windows.Forms.CheckBox smooth_checkBox;
         private System.Windows.Forms.Button coptStatChart_button;
+        private System.Windows.Forms.ComboBox year_comboBox;
     }
 }
 
