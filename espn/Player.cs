@@ -25,7 +25,7 @@ namespace espn
                     CreatePlayer(playerStr, Id, year);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Can't Create Player - " + playerName);
                 Games = null;
@@ -48,7 +48,7 @@ namespace espn
 
             index1 = playerStr.IndexOf((year - 1) + "-" + year + " REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
-            if (index1 != -1)
+            if (index1 != -1 && index2 != -1)
             {
                 string gamesStr = playerStr.Substring(index1, index2 - index1);
                 CreatePlayerGames(gamesStr, year);

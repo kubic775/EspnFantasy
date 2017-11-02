@@ -428,3 +428,5 @@ Yogi Ferrell;2991018
 Zach LaVine;3064440
 Zach Randolph;1017
 Zaza Pachulia;2016
+Markelle Fultz;4066636
+Lonzo Ball;4066421

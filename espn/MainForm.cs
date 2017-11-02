@@ -228,10 +228,15 @@ namespace espn
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
             string text = _player.PlayerName + ", Last " + numOf_textBox.Text + " : " + Environment.NewLine;
-            text += "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " + "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
-                          "Ast: " + stats_dataGridView.Rows[0].Cells["Ast"].Value + ", " + "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
-                          "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " + "Blk: " + stats_dataGridView.Rows[0].Cells["Blk"].Value + ", " +
-                          "FgPer: " + stats_dataGridView.Rows[0].Cells["FgPer"].Value + ", " + "FtPer: " + stats_dataGridView.Rows[0].Cells["FtPer"].Value + ", ";
+            text += "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " + 
+                    "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
+                    "Ast: " + stats_dataGridView.Rows[0].Cells["Ast"].Value + ", " +
+                    "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
+                    "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " + 
+                    "Blk: " + stats_dataGridView.Rows[0].Cells["Blk"].Value + ", " +
+                    "FgPer: " + stats_dataGridView.Rows[0].Cells["FgPer"].Value + ", " + 
+                    "FtPer: " + stats_dataGridView.Rows[0].Cells["FtPer"].Value + ", " + 
+                    "To: " + stats_dataGridView.Rows[0].Cells["To"].Value + ", Min: " + stats_dataGridView.Rows[0].Cells["Min"].Value;
 
             Clipboard.SetText(text);
         }
