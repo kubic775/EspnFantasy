@@ -11,7 +11,7 @@ namespace espn
     {
         public static SortedDictionary<string, int> Players = new SortedDictionary<string, int>();
 
-        public static Dictionary<string, Player> CachePlayers = new Dictionary<string, Player>();
+        public static Dictionary<string, PlayerInfo> CachePlayers = new Dictionary<string, PlayerInfo>();
 
         public static void CreatePlayersList()
         {
@@ -47,7 +47,7 @@ namespace espn
         {
             try
             {
-                AddNewPlayer(name, Player.GetPlayerId(name), true);
+                AddNewPlayer(name, PlayerInfo.GetPlayerId(name), true);
                 MessageBox.Show("Done");
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace espn
 
         public static void UpdatePlayersIds(string[] playerNames)
         {
-            int[] ids = playerNames.AsParallel().Select(Player.GetPlayerId).ToArray();
+            int[] ids = playerNames.AsParallel().Select(PlayerInfo.GetPlayerId).ToArray();
             for (int i = 0; i < playerNames.Length; i++)
             {
                 if (ids[i] != -1)
@@ -68,25 +68,25 @@ namespace espn
             WritePlayerListToFile();
         }
 
-        public static async Task<List<Player>> CreatePlayersAsync(string[] playerNames)
+        public static async Task<List<PlayerInfo>> CreatePlayersAsync(string[] playerNames)
         {
-            Task<List<Player>> t = Task.Run(() => playerNames.AsParallel().Select(CachePlayer).ToList());
+            Task<List<PlayerInfo>> t = Task.Run(() => playerNames.AsParallel().Select(CachePlayer).ToList());
             return await t;
         }
 
-        public static async Task<Player> CreatePlayerAsync(string playerName)
+        public static async Task<PlayerInfo> CreatePlayerAsync(string playerName)
         {
-            Task<Player> t = Task.Run(() => CachePlayer(playerName));
+            Task<PlayerInfo> t = Task.Run(() => CachePlayer(playerName));
             return await t;
         }
 
-        private static Player CachePlayer(string playerName)
+        private static PlayerInfo CachePlayer(string playerName)
         {
             if (!CachePlayers.ContainsKey(playerName))
             {
-                var player = new Player(playerName);
+                var player = new PlayerInfo(playerName);
                 if (player.Games != null)
-                    CachePlayers.Add(playerName, new Player(playerName));
+                    CachePlayers.Add(playerName, new PlayerInfo(playerName));
             }
             return CachePlayers[playerName];
         }

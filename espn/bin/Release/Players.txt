@@ -32,6 +32,7 @@ Arron Afflalo;3187
 Austin Rivers;6617
 Avery Bradley;4240
 Ben McLemore;2578213
+Ben Simmons;3907387
 Beno Udrih;2448
 Bismack Biyombo;6427
 Blake Griffin;3989
@@ -71,6 +72,7 @@ Cory Joseph;6446
 Courtney Lee;3445
 Cristiano Felicio;3113587
 D.J. Augustin;3415
+Dakari Johnson;3064516
 Damian Jones;3064559
 Damian Lillard;6606
 Damjan Rudez;2309097
@@ -107,6 +109,7 @@ Dion Waiters;6628
 Dirk Nowitzki;609
 Domantas Sabonis;3155942
 Donatas Motiejunas;6464
+Donovan Mitchell;3908809
 Dorian Finney-Smith;2578185
 Doug McDermott;2528588
 Dragan Bender;4011991
@@ -174,6 +177,7 @@ Jason Smith;3232
 Jason Terry;841
 JaVale McGee;3452
 Jaylen Brown;3917376
+Jayson Tatum;4065648
 Jeff Green;3209
 Jeff Teague;4015
 Jeff Withey;2333797
@@ -240,6 +244,7 @@ Kris Humphries;2433
 Kristaps Porzingis;3102531
 Kyle Anderson;2993874
 Kyle Korver;2011
+Kyle Kuzma;3134907
 Kyle Lowry;3012
 Kyle O'Quinn;6615
 Kyle Singler;6469
@@ -252,6 +257,7 @@ Larry Nance Jr.;2580365
 Lavoy Allen;6424
 Leandro Barbosa;2166
 LeBron James;1966
+Lonzo Ball;4066421
 Lou Williams;2799
 Luc Mbah a Moute;3451
 Lucas Nogueira;3032980
@@ -271,6 +277,7 @@ Marcus Morris;6462
 Marcus Smart;2990992
 Marcus Thornton;4017
 Mario Hezonja;2995706
+Markelle Fultz;4066636
 Markieff Morris;6461
 Marquese Chriss;3907487
 Marreese Speights;3460
@@ -428,5 +435,3 @@ Yogi Ferrell;2991018
 Zach LaVine;3064440
 Zach Randolph;1017
 Zaza Pachulia;2016
-Markelle Fultz;4066636
-Lonzo Ball;4066421

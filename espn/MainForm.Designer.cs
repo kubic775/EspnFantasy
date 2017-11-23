@@ -55,6 +55,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.year_comboBox = new System.Windows.Forms.ComboBox();
             this.coptStatChart_button = new System.Windows.Forms.Button();
             this.smooth_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -221,7 +222,6 @@
             this.loadPlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.playerRaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.year_comboBox = new System.Windows.Forms.ComboBox();
             this.playerName_textBox = new espn.AutoCompleteTextBox();
             this.player2_TextBox = new espn.AutoCompleteTextBox();
             this.player1_TextBox = new espn.AutoCompleteTextBox();
@@ -281,6 +281,21 @@
             this.tabPage1.Size = new System.Drawing.Size(1100, 410);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Players";
+            // 
+            // year_comboBox
+            // 
+            this.year_comboBox.FormattingEnabled = true;
+            this.year_comboBox.Items.AddRange(new object[] {
+            "2018",
+            "2017",
+            "2016",
+            "2015",
+            "2014"});
+            this.year_comboBox.Location = new System.Drawing.Point(202, 313);
+            this.year_comboBox.Name = "year_comboBox";
+            this.year_comboBox.Size = new System.Drawing.Size(71, 24);
+            this.year_comboBox.TabIndex = 55;
+            this.year_comboBox.DropDownClosed += new System.EventHandler(this.year_comboBox_DropDownClosed);
             // 
             // coptStatChart_button
             // 
@@ -386,9 +401,9 @@
             this.playerInfo_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerInfo_label.Location = new System.Drawing.Point(480, 65);
             this.playerInfo_label.Name = "playerInfo_label";
-            this.playerInfo_label.Size = new System.Drawing.Size(66, 24);
+            this.playerInfo_label.Size = new System.Drawing.Size(108, 24);
             this.playerInfo_label.TabIndex = 14;
-            this.playerInfo_label.Text = "label2";
+            this.playerInfo_label.Text = "Player Info";
             // 
             // playerNameLabel
             // 
@@ -2053,21 +2068,6 @@
             this.setFactorsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.setFactorsToolStripMenuItem.Text = "Set Factors";
             this.setFactorsToolStripMenuItem.Click += new System.EventHandler(this.setFactorsToolStripMenuItem_Click);
-            // 
-            // year_comboBox
-            // 
-            this.year_comboBox.FormattingEnabled = true;
-            this.year_comboBox.Items.AddRange(new object[] {
-            "2018",
-            "2017",
-            "2016",
-            "2015",
-            "2014"});
-            this.year_comboBox.Location = new System.Drawing.Point(202, 313);
-            this.year_comboBox.Name = "year_comboBox";
-            this.year_comboBox.Size = new System.Drawing.Size(71, 24);
-            this.year_comboBox.TabIndex = 55;
-            this.year_comboBox.DropDownClosed += new System.EventHandler(this.year_comboBox_DropDownClosed);
             // 
             // playerName_textBox
             // 

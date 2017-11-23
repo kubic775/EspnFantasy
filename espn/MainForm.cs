@@ -16,7 +16,7 @@ namespace espn
     {
         #region Init & Gui
         public static FactorsForm Factors;
-        private Player _player, _player1, _player2;
+        private PlayerInfo _player, _player1, _player2;
         private int _year = DateTime.Now.Month > 9 ? DateTime.Now.Year + 1 : DateTime.Now.Year;
 
         public MainForm()
@@ -111,7 +111,7 @@ namespace espn
                     _player = await PlayersList.CreatePlayerAsync(name);
                     player_pictureBox.Load(_player.ImagePath);
                     playerNameLabel.Text = _player.PlayerName;
-                    playerInfo_label.Text = _player.PlayerInfo + " | " + _player.Team;
+                    playerInfo_label.Text = _player.Misc + " | " + _player.Team;
                     button_max_Click(null, null);
                 }
             }
@@ -142,7 +142,10 @@ namespace espn
         {
             var games = _player.FilterGamesByYear(
                 int.Parse(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])));
-            numOf_textBox.Text = games.Length.ToString();
+            if (numOf_textBox.Text.Equals(games.Length.ToString()))
+                numOf_textBox_TextChanged(null, null);
+            else
+                numOf_textBox.Text = games.Length.ToString();
         }
 
         private void mode_comboBox_DropDownClosed(object sender, EventArgs e)
@@ -195,11 +198,11 @@ namespace espn
 
             stats_dataGridView.Rows[0].Cells["Min"].Value = game.Min.ToString("0.0");
 
-            stats_dataGridView.Rows[0].Cells["FgmFga"].Value = game.Fgm.ToString("0.0") + "-" + game.Fga.ToString("0.0");
+            stats_dataGridView.Rows[0].Cells["FgmFga"].Value = game.Fgm.ToString("0.0") + "/" + game.Fga.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["FgPer"].Value = game.FgPer.ToString("0.0") + "%";
-            stats_dataGridView.Rows[0].Cells["TpmTpa"].Value = game.Tpm.ToString("0.0") + "-" + game.Tpa.ToString("0.0");
+            stats_dataGridView.Rows[0].Cells["TpmTpa"].Value = game.Tpm.ToString("0.0") + "/" + game.Tpa.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["TpPer"].Value = game.TpPer.ToString("0.0") + "%";
-            stats_dataGridView.Rows[0].Cells["FtmFta"].Value = game.Ftm.ToString("0.0") + "-" + game.Fta.ToString("0.0");
+            stats_dataGridView.Rows[0].Cells["FtmFta"].Value = game.Ftm.ToString("0.0") + "/" + game.Fta.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["FtPer"].Value = game.FtPer.ToString("0.0") + "%";
 
             stats_dataGridView.Rows[0].Cells["Reb"].Value = game.Reb.ToString("0.0");
@@ -234,8 +237,8 @@ namespace espn
                     "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
                     "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " + 
                     "Blk: " + stats_dataGridView.Rows[0].Cells["Blk"].Value + ", " +
-                    "FgPer: " + stats_dataGridView.Rows[0].Cells["FgPer"].Value + ", " + 
-                    "FtPer: " + stats_dataGridView.Rows[0].Cells["FtPer"].Value + ", " + 
+                    "Fg: " + stats_dataGridView.Rows[0].Cells["FgmFga"].Value + "(" +  stats_dataGridView.Rows[0].Cells["FgPer"].Value + ") , " + 
+                    "Ft: " + stats_dataGridView.Rows[0].Cells["FtmFta"].Value + "(" + stats_dataGridView.Rows[0].Cells["FtPer"].Value + "), " + 
                     "To: " + stats_dataGridView.Rows[0].Cells["To"].Value + ", Min: " + stats_dataGridView.Rows[0].Cells["Min"].Value;
 
             Clipboard.SetText(text);
@@ -509,8 +512,8 @@ namespace espn
                 timePeriod_label.Text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " +
                                    tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem);
 
-                List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-                List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                List<PlayerInfo> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                List<PlayerInfo> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
                 GameStats[] avgStatsSend = sentPlayers.Select(
                     p => GameStats.GetAvgStats(p.FilterGames("2018",
@@ -722,8 +725,8 @@ namespace espn
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
 
 
-            List<Player> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-            List<Player> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<PlayerInfo> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<PlayerInfo> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
             var yValSend = new double[4];
             var yValRecevied = new double[4];

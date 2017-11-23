@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace espn
 {
-    public class Player
+    public class PlayerInfo
     {
-        public string PlayerName, ImagePath, Team, PlayerInfo;
+        public string PlayerName, ImagePath, Team, Misc, Age;
         public int Id;
         public List<GameStats> Games;
 
-        public Player(string playerName)
+        public PlayerInfo(string playerName)
         {
             try
             {
@@ -38,13 +38,14 @@ namespace espn
 
             int index1 = playerStr.IndexOf("Game By Game Stats and Performance", StringComparison.InvariantCulture);
             int index2 = playerStr.IndexOf("ESPN</title>", index1, StringComparison.InvariantCulture);
-            Team = playerStr.Substring(index1 + 34, index2 - index1 - 34).Trim().Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().Trim();
+            Team = playerStr.Substring(index1 + 34, index2 - index1 - 34).Trim().Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.Trim();
 
             index1 = playerStr.IndexOf("general-info", StringComparison.InvariantCulture);
             index1 = playerStr.IndexOf("first", index1, StringComparison.InvariantCulture);
-            index2 = playerStr.IndexOf("last", index1, StringComparison.InvariantCulture);
-            var playerInfo = playerStr.Substring(index1 + 6, index2 - index1 - 10).Split(new[] { '>', '<' }, StringSplitOptions.RemoveEmptyEntries);
-            PlayerInfo = playerInfo[0] + " | " + playerInfo[3];
+            index2 = playerStr.IndexOf("lbs", index1, StringComparison.InvariantCulture);
+            var playerInfo = playerStr.Substring(index1 + 6, index2 - index1).Split(new[] { '>', '<' }, StringSplitOptions.RemoveEmptyEntries);
+            Age = playerStr.Substring(playerStr.IndexOf("Age:", index1, StringComparison.InvariantCulture), 7);
+            Misc = playerInfo[0] + " | " + playerInfo[3] + " | " + Age;
 
             index1 = playerStr.IndexOf((year - 1) + "-" + year + " REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
