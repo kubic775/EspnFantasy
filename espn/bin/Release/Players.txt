@@ -254,6 +254,7 @@ Lance Stephenson;4244
 Lance Thomas;6485
 Langston Galloway;2530572
 Larry Nance Jr.;2580365
+Lauri Markkanen;4066336
 Lavoy Allen;6424
 Leandro Barbosa;2166
 LeBron James;1966

@@ -73,7 +73,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameStats.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="PlayerInfo.cs" />
     <Compile Include="PlayersForm.cs">
       <SubType>Form</SubType>
     </Compile>

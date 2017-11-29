@@ -8,8 +8,8 @@ namespace espn
 {
     public class PlayerInfo
     {
-        public string PlayerName, ImagePath, Team, Misc;
-        public int Id, Age;
+        public string PlayerName, ImagePath, Team, Misc, Age;
+        public int Id;
         public List<GameStats> Games;
 
         public PlayerInfo(string playerName)
@@ -19,26 +19,6 @@ namespace espn
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = PlayersList.Players[playerName];
-                for (int year = 2014; year <= 2018; year++)
-                {
-                    string playerStr = DownloadPlayerStr(Id, year);
-                    CreatePlayer(playerStr, Id, year);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can't Create Player - " + playerName);
-                Games = null;
-            }
-        }
-
-        public PlayerInfo(string playerName, int id)
-        {
-            try
-            {
-                Games = new List<GameStats>();
-                PlayerName = playerName;
-                Id = id;
                 for (int year = 2014; year <= 2018; year++)
                 {
                     string playerStr = DownloadPlayerStr(Id, year);
@@ -64,8 +44,8 @@ namespace espn
             index1 = playerStr.IndexOf("first", index1, StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("lbs", index1, StringComparison.InvariantCulture);
             var playerInfo = playerStr.Substring(index1 + 6, index2 - index1).Split(new[] { '>', '<' }, StringSplitOptions.RemoveEmptyEntries);
-            Age = int.Parse(playerStr.Substring(playerStr.IndexOf("Age:", index1, StringComparison.InvariantCulture) + 5, 2));
-            Misc = playerInfo[0] + " | " + playerInfo[3];
+            Age = playerStr.Substring(playerStr.IndexOf("Age:", index1, StringComparison.InvariantCulture), 7);
+            Misc = playerInfo[0] + " | " + playerInfo[3] + " | " + Age;
 
             index1 = playerStr.IndexOf((year - 1) + "-" + year + " REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
             index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
