@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EspnModelStoreContainer" CdmEntityContainer="EspnEntities">
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="EspnModel.Game">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Pk" ColumnName="Pk" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+          <ScalarProperty Name="Gp" ColumnName="Gp" />
+          <ScalarProperty Name="Pts" ColumnName="Pts" />
+          <ScalarProperty Name="Reb" ColumnName="Reb" />
+          <ScalarProperty Name="Ast" ColumnName="Ast" />
+          <ScalarProperty Name="Tpm" ColumnName="Tpm" />
+          <ScalarProperty Name="Tpa" ColumnName="Tpa" />
+          <ScalarProperty Name="Fga" ColumnName="Fga" />
+          <ScalarProperty Name="Fgm" ColumnName="Fgm" />
+          <ScalarProperty Name="Fta" ColumnName="Fta" />
+          <ScalarProperty Name="Ftm" ColumnName="Ftm" />
+          <ScalarProperty Name="Stl" ColumnName="Stl" />
+          <ScalarProperty Name="Blk" ColumnName="Blk" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Pf" ColumnName="Pf" />
+          <ScalarProperty Name="FtPer" ColumnName="FtPer" />
+          <ScalarProperty Name="FgPer" ColumnName="FgPer" />
+          <ScalarProperty Name="TpPer" ColumnName="TpPer" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="EspnModel.Player">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Misc" ColumnName="Misc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

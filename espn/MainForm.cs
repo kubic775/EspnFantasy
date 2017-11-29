@@ -17,7 +17,6 @@ namespace espn
         #region Init & Gui
         public static FactorsForm Factors;
         private PlayerInfo _player, _player1, _player2;
-        private int _year = DateTime.Now.Month > 9 ? DateTime.Now.Year + 1 : DateTime.Now.Year;
 
         public MainForm()
         {
@@ -797,8 +796,11 @@ namespace espn
         {
             string name = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name (For Example: Chris Paul)", "Add New Player", "Default", -1, -1);
             if (!string.Equals(name, ""))
+            {
+                DbManager.AddNewPlayer(name);
                 PlayersList.AddNewPlayer(name);
-            InitGui();
+                InitGui();
+            }
         }
 
 
