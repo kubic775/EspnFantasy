@@ -47,7 +47,11 @@ namespace espn
         {
             try
             {
-                AddNewPlayer(name, PlayerInfo.GetPlayerId(name), true);
+                int id = PlayerInfo.GetPlayerId(name);
+                if (id == -1)
+                    id = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Can't Found Player, Please Insert Id", "Add New Player", "Default", -1, -1));
+
+                AddNewPlayer(name, id, true);
                 MessageBox.Show("Done");
             }
             catch (Exception ex)
