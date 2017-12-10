@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -20,14 +21,15 @@ namespace espn
 
         public MainForm()
         {
-            //PlayersList.UpdatePlayersFromFile("NewNBAPlayers.txt");
             InitializeComponent();
-            PlayersList.CreatePlayersList();
             InitGui();
         }
 
-        private void InitGui()
+        private async void InitGui()
         {
+            this.Enabled = false;
+            await Task.Run(() => PlayersList.CreatePlayersList());
+
             Factors = new FactorsForm();
 
             stat_chart.Series[0].Points.Clear();
@@ -58,6 +60,21 @@ namespace espn
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeLast_comboBox.SelectedIndex = 3;
+
+            update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
+            update_timer_Tick(null, null);
+            this.Enabled = true;
+        }
+
+        private async void update_timer_Tick(object sender, EventArgs e)
+        {
+            update_timer.Stop();
+            update_label.Text = "Updating...";
+            update_label.ForeColor = Color.Green;
+            await DbManager.UpdatePlayers();
+            update_label.Text = "Last Update : " + DateTime.Now.ToString("t");
+            update_label.ForeColor = Color.Black;
+            update_timer.Start();
         }
 
         public void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
@@ -230,14 +247,14 @@ namespace espn
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
             string text = _player.PlayerName + ", Last " + numOf_textBox.Text + " : " + Environment.NewLine;
-            text += "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " + 
+            text += "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " +
                     "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
                     "Ast: " + stats_dataGridView.Rows[0].Cells["Ast"].Value + ", " +
                     "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
-                    "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " + 
+                    "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " +
                     "Blk: " + stats_dataGridView.Rows[0].Cells["Blk"].Value + ", " +
-                    "Fg: " + stats_dataGridView.Rows[0].Cells["FgmFga"].Value + "(" +  stats_dataGridView.Rows[0].Cells["FgPer"].Value + ") , " + 
-                    "Ft: " + stats_dataGridView.Rows[0].Cells["FtmFta"].Value + "(" + stats_dataGridView.Rows[0].Cells["FtPer"].Value + "), " + 
+                    "Fg: " + stats_dataGridView.Rows[0].Cells["FgmFga"].Value + "(" + stats_dataGridView.Rows[0].Cells["FgPer"].Value + ") , " +
+                    "Ft: " + stats_dataGridView.Rows[0].Cells["FtmFta"].Value + "(" + stats_dataGridView.Rows[0].Cells["FtPer"].Value + "), " +
                     "To: " + stats_dataGridView.Rows[0].Cells["To"].Value + ", Min: " + stats_dataGridView.Rows[0].Cells["Min"].Value;
 
             Clipboard.SetText(text);
@@ -798,11 +815,10 @@ namespace espn
             if (!string.Equals(name, ""))
             {
                 DbManager.AddNewPlayer(name);
-                PlayersList.AddNewPlayer(name);
+                //PlayersList.AddNewPlayer(name);
                 InitGui();
             }
         }
-
 
 
         private void savePlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
@@ -817,7 +833,6 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
-
 
 
         #endregion

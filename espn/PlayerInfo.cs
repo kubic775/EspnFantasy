@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace espn
@@ -32,14 +33,15 @@ namespace espn
             }
         }
 
-        public PlayerInfo(string playerName, int id)
+        public PlayerInfo(string playerName, int id, int startYear = 2014)
         {
             try
             {
+                Console.WriteLine(playerName);
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = id;
-                for (int year = 2014; year <= 2018; year++)
+                for (int year = startYear; year <= 2018; year++)
                 {
                     string playerStr = DownloadPlayerStr(Id, year);
                     CreatePlayer(playerStr, Id, year);
@@ -50,6 +52,17 @@ namespace espn
                 MessageBox.Show("Can't Create Player - " + playerName + ", " + ex.Message);
                 Games = null;
             }
+        }
+
+        public PlayerInfo(Player player, Game[] games)
+        {
+            PlayerName = player.Name;
+            Id = player.ID;
+            ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + Id + ".png&w=350&h=254";
+            Team = player.Team;
+            Misc = player.Misc;
+            Age = player.Age.Value;
+            Games = games.Select(g => new GameStats(g)).ToList();
         }
 
         public void CreatePlayer(string playerStr, int id, int year)
@@ -84,19 +97,10 @@ namespace espn
 
         public void CreatePlayerGames(string gamesStr, int year)
         {
-            string[] lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var statLine in lines.Where(line => line.Contains("oddrow team") || line.Contains("evenrow team")))
-            {
-                try
-                {
-                    var gameStats = new GameStats(statLine, year);
-                    Games.Add(gameStats);
-                }
-                catch (Exception ex)
-                {
-                }
-                Games = Games.OrderBy(g => g.GameDate).ToList();
-            }
+            var lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries).Where(line => line.Contains("oddrow team") || line.Contains("evenrow team"));
+            var games = lines.Select(l => new GameStats(l, year));
+            Games.AddRange(games);
+            Games = Games.OrderBy(g => g.GameDate).ToList();
         }
 
         public GameStats[] FilterGamesByYear(int year)

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,6 +13,39 @@ namespace espn
 {
     public class DbManager
     {
+        private static int _nextGamePk = -1;
+        private static readonly Mutex Mutex = new Mutex();
+
+        public static int GetNextGamePk()
+        {
+            int pk;
+            Mutex.WaitOne();
+            try
+            {
+                if (_nextGamePk == -1)
+                {
+                    using (var db = new EspnEntities())
+                    {
+                        _nextGamePk = db.Games.Max(g => g.Pk) + 1;
+                        pk = _nextGamePk;
+                    }
+                }
+                else
+                {
+                    pk = ++_nextGamePk;
+                }
+            }
+            catch (Exception)
+            {
+                pk = -1;
+            }
+            finally
+            {
+                Mutex.ReleaseMutex();
+            }
+            return pk;
+        }
+
         public static void CreateTables()
         {
             using (var db = new EspnEntities())
@@ -82,11 +118,53 @@ namespace espn
             }
         }
 
-        public void UpdatePlayers(int id)
+        public static async Task UpdatePlayers()
         {
+            Player[] players;
+            var startTime = DateTime.Now;
             using (var db = new EspnEntities())
             {
-                
+                players = db.Players.ToArray();
+            }
+
+            await Task.Run(() =>
+            {
+                var playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, 2018));
+                foreach (PlayerInfo playerInfo in playerInfos)
+                {
+                    if (playerInfo.Games.Count == 0) continue;
+                    UpdatePlayer(playerInfo);
+                }
+            }).ConfigureAwait(false);
+            Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");
+        }
+
+        private static void UpdatePlayer(PlayerInfo playerInfo)
+        {
+            try
+            {
+                using (var db = new EspnEntities())
+                {
+                    Player player = db.Players.FirstOrDefault(p => p.ID == playerInfo.Id);
+                    if (player == null) return;
+
+                    Game lastGame = db.Games.Where(g => g.PlayerId == player.ID).OrderByDescending(g => g.GameDate).First();
+                    lastGame = new Game(playerInfo.Games.First(g => g.GameDate == lastGame.GameDate), lastGame.Pk, playerInfo.Id);
+
+
+                    foreach (GameStats gameStats in playerInfo.Games.Where(g => g.GameDate > lastGame.GameDate))
+                    {
+                        var game = new Game(gameStats, GetNextGamePk(), player.ID);
+                        db.Games.Add(game);
+                    }
+
+                    db.SaveChanges();
+                }
+                Console.WriteLine(playerInfo.PlayerName + " - Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(playerInfo.PlayerName + " - " + e.Message);
             }
         }
     }

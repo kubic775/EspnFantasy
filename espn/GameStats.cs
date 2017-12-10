@@ -19,6 +19,30 @@ namespace espn
 
         }
 
+        public GameStats(Game game)
+        {
+            GameDate = game.GameDate.Value;
+            Pts = game.Pts.Value;
+            Reb = game.Reb.Value;
+            Ast = game.Ast.Value;
+            Tpm = game.Tpm.Value;
+            Tpa = game.Tpa.Value;
+            Fga = game.Fga.Value;
+            Fgm = game.Fgm.Value;
+            Ftm = game.Ftm.Value;
+            Fta = game.Fta.Value;
+            Stl = game.Stl.Value;
+            Blk = game.Blk.Value;
+            To = game.To.Value;
+            Min = game.Min.Value;
+            Pf = game.Pf.Value;
+            FtPer = game.FtPer.Value;
+            FgPer = game.FgPer.Value;
+            TpPer = game.TpPer.Value;
+            //Score = game.Score.Value;
+            Gp = game.Gp.Value;
+        }
+
         public GameStats(string gameStr, int year)
         {
             string[] stats = gameStr.Split(new[] { @"<td>", @"</td>" }, StringSplitOptions.RemoveEmptyEntries);
@@ -26,7 +50,7 @@ namespace espn
             var temp = stats[1].Substring(4).Split('/');
             var month = Int32.Parse(temp[0]);
             var day = Int32.Parse(temp[1]);
-            GameDate = new DateTime(month < 10 ? year : year-1, month, day);
+            GameDate = new DateTime(month < 10 ? year : year - 1, month, day);
 
             Min = Int32.Parse(stats[4].Substring(stats[4].IndexOf(">") + 1));
 

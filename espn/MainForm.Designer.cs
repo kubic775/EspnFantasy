@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -222,6 +223,8 @@
             this.loadPlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.playerRaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.update_label = new System.Windows.Forms.Label();
+            this.update_timer = new System.Windows.Forms.Timer(this.components);
             this.playerName_textBox = new espn.AutoCompleteTextBox();
             this.player2_TextBox = new espn.AutoCompleteTextBox();
             this.player1_TextBox = new espn.AutoCompleteTextBox();
@@ -2069,6 +2072,23 @@
             this.setFactorsToolStripMenuItem.Text = "Set Factors";
             this.setFactorsToolStripMenuItem.Click += new System.EventHandler(this.setFactorsToolStripMenuItem_Click);
             // 
+            // update_label
+            // 
+            this.update_label.AutoSize = true;
+            this.update_label.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.update_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update_label.Location = new System.Drawing.Point(948, 4);
+            this.update_label.Name = "update_label";
+            this.update_label.Size = new System.Drawing.Size(90, 16);
+            this.update_label.TabIndex = 56;
+            this.update_label.Text = "Last Update : ";
+            this.update_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // update_timer
+            // 
+            this.update_timer.Interval = 120000;
+            this.update_timer.Tick += new System.EventHandler(this.update_timer_Tick);
+            // 
             // playerName_textBox
             // 
             this.playerName_textBox.Location = new System.Drawing.Point(63, 17);
@@ -2114,6 +2134,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 463);
+            this.Controls.Add(this.update_label);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2320,6 +2341,8 @@
         private System.Windows.Forms.CheckBox smooth_checkBox;
         private System.Windows.Forms.Button coptStatChart_button;
         private System.Windows.Forms.ComboBox year_comboBox;
+        private System.Windows.Forms.Label update_label;
+        private System.Windows.Forms.Timer update_timer;
     }
 }
 

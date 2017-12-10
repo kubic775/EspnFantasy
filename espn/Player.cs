@@ -14,6 +14,11 @@ namespace espn
 
     public partial class Player
     {
+        public Player()
+        {
+            
+        }
+
         public Player(PlayerInfo playerInfo)
         {
             ID = playerInfo.Id;
