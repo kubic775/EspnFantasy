@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -10,28 +11,9 @@ namespace espn
     public class PlayerInfo
     {
         public string PlayerName, ImagePath, Team, Misc;
-        public int Id, Age;
         public List<GameStats> Games;
-
-        public PlayerInfo(string playerName)
-        {
-            try
-            {
-                Games = new List<GameStats>();
-                PlayerName = playerName;
-                Id = PlayersList.Players[playerName];
-                for (int year = 2014; year <= 2018; year++)
-                {
-                    string playerStr = DownloadPlayerStr(Id, year);
-                    CreatePlayer(playerStr, Id, year);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can't Create Player - " + playerName);
-                Games = null;
-            }
-        }
+        public int Id, Age;
+        public double Score;
 
         public PlayerInfo(string playerName, int id, int startYear = 2014)
         {
@@ -49,7 +31,7 @@ namespace espn
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't Create Player - " + playerName + ", " + ex.Message);
+                Console.WriteLine("Can't Create Player - " + playerName + ", " + ex.Message);
                 Games = null;
             }
         }
@@ -103,39 +85,6 @@ namespace espn
             Games = Games.OrderBy(g => g.GameDate).ToList();
         }
 
-        public GameStats[] FilterGamesByYear(int year)
-        {
-            return Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToArray();
-        }
-
-        public GameStats[] FilterGames(string year, string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
-        {
-            int num = numOfGames.Equals("Max") ? Games.Count : int.Parse(numOfGames);
-            GameStats[] games = FilterGames(int.Parse(year), mode, num);
-
-            if (filterZeroMinutes)
-                games = games.Where(g => g.Min > 0).ToArray();
-
-            if (filterOutliers)
-                games = GameStats.FilterOutliers(games);
-
-            return games;
-        }
-
-        public GameStats[] FilterGames(int year, string mode, int numOfGames)
-        {
-            var releventGames = Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToList();
-            if (mode.Equals("Games"))
-            {
-                return releventGames.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
-            }
-            else//Days
-            {
-                DateTime minDate = DateTime.Now - new TimeSpan(numOfGames, 0, 0, 0);
-                return releventGames.Where(g => g.GameDate >= minDate).ToArray();
-            }
-        }
-
         public static int GetPlayerId(string playerName)
         {
             try
@@ -169,5 +118,51 @@ namespace espn
             }
         }
 
+        public GameStats[] FilterGamesByYear(int year)
+        {
+            return Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToArray();
+        }
+
+        public GameStats[] FilterGames(string year, string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
+        {
+            int num = numOfGames.Equals("Max") ? Games.Count : int.Parse(numOfGames);
+            GameStats[] games = FilterGames(int.Parse(year), mode, num);
+
+            if (filterZeroMinutes)
+                games = games.Where(g => g.Min > 0).ToArray();
+
+            if (filterOutliers)
+                games = GameStats.FilterOutliers(games);
+
+            return games;
+        }
+
+        public GameStats[] FilterGames(int year, string mode, int numOfGames)
+        {
+            var releventGames = Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToList();
+            if (mode.Equals("Games"))
+            {
+                return releventGames.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
+            }
+            else//Days
+            {
+                DateTime minDate = DateTime.Now - new TimeSpan(numOfGames, 0, 0, 0);
+                return releventGames.Where(g => g.GameDate >= minDate).OrderBy(g => g.GameDate).ToArray();
+            }
+        }
+
+
+        public GameStats[] FilterGamesByPlayerInjury(GameStats[] originalGames, string playerInjuredName)
+        {
+            List<Game> injuredGames;
+            using (var db = new EspnEntities())
+            {
+                var playerInjured = db.Players.First(p => p.Name.Equals(playerInjuredName));
+                injuredGames = db.Games.Where(g => g.PlayerId == playerInjured.ID).Where(g => g.Min < 10).ToList();
+            }
+
+            List<DateTime> injuredGamesDates = injuredGames.Select(g => g.GameDate.Value).ToList();
+            return originalGames.Where(g => injuredGamesDates.Contains(g.GameDate)).ToArray();
+        }
     }
 }

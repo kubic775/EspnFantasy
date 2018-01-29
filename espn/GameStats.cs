@@ -90,7 +90,7 @@ namespace espn
                 stats.FgPer = (stats.Fgm / stats.Fga) * 100;
                 stats.FtPer = (stats.Ftm / stats.Fta) * 100;
                 stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
-                stats.Score = CalcScore(stats);
+                //stats.Score = CalcScore(stats);
                 stats.Gp = games.Length;
             }
             else
@@ -104,10 +104,10 @@ namespace espn
             return stats;
         }
 
-        public static GameStats GetSumStats(GameStats[] games)
+        public static GameStats GetSumStats(IEnumerable<GameStats> games)
         {
             GameStats stats = new GameStats();
-            if (games.Length == 0)
+            if (!games.Any())
                 return stats;
 
             FieldInfo[] fieldNames = typeof(GameStats).GetFields();
@@ -120,7 +120,7 @@ namespace espn
             stats.FgPer = (stats.Fgm / stats.Fga) * 100;
             stats.FtPer = (stats.Ftm / stats.Fta) * 100;
             stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
-            stats.Score = CalcScore(stats);
+            //stats.Score = CalcScore(stats);
             return stats;
         }
 

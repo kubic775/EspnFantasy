@@ -17,6 +17,7 @@ namespace espn
     {
         #region Init & Gui
         public static FactorsForm Factors;
+        public static Rater PlayerRater;
         private PlayerInfo _player, _player1, _player2;
 
         public MainForm()
@@ -29,8 +30,6 @@ namespace espn
         {
             this.Enabled = false;
             await Task.Run(() => PlayersList.CreatePlayersList());
-
-            Factors = new FactorsForm();
 
             stat_chart.Series[0].Points.Clear();
             stat_chart.Series[1].Points.Clear();
@@ -45,6 +44,8 @@ namespace espn
             trade_chart.Series[1].XValueType = ChartValueType.String;
 
             stats_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rater_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 
             //Init AutoCompleteTextBox//
             foreach (var textBox in Utils.GetAll(this, typeof(AutoCompleteTextBox)))
@@ -53,18 +54,22 @@ namespace espn
             }
 
             playerName_textBox.PlayerSelectedEvent = PlayerInfoSelectPlayerEvent;
+            filterByPlayer_autoCompleteTextBox.PlayerSelectedEvent = PlayerInjuredSelectPlayerEvent;
             sendPlayer_TextBox.PlayerSelectedEvent = SendPlayerSelectedEvent;
             receivePlayer_TextBox.PlayerSelectedEvent = ReceivedPlayerSelectedEvent;
             player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
             player2_TextBox.PlayerSelectedEvent = Player2CompareSelectedPlayerEvent;
+            rater_autoCompleteTextBox.PlayerSelectedEvent = SearchForPlayerInRater;
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
-            compare_last_comboBox.SelectedIndex = tradeLast_comboBox.SelectedIndex = 3;
+            compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
             update_timer_Tick(null, null);
             this.Enabled = true;
         }
+
+
 
         private async void update_timer_Tick(object sender, EventArgs e)
         {
@@ -139,6 +144,12 @@ namespace espn
             UseWaitCursor = false;
         }
 
+        public void PlayerInjuredSelectPlayerEvent(string name)
+        {
+            if (!playerName_textBox.Text.Equals(string.Empty))
+                numOf_textBox_TextChanged(null, null);
+        }
+
         private void button_7_Click(object sender, EventArgs e)
         {
             numOf_textBox.Text = Math.Min(7, _player.Games.Count).ToString();
@@ -181,13 +192,26 @@ namespace espn
 
         private void numOf_textBox_TextChanged(object sender, EventArgs e)
         {
+            if (!int.TryParse(numOf_textBox.Text, out var numOfGames))
+                return;
+
+            string mode = mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]);
+
             var games = _player?.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
-                mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
-                zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
+                mode, numOf_textBox.Text, zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
 
             if (games == null)
                 return;
-            UpdateTable(GameStats.GetAvgStats(games));
+
+            if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+            {
+                games = _player?.FilterGamesByPlayerInjury(games, filterByPlayer_autoCompleteTextBox.Text);
+            }
+
+            var avgGame = GameStats.GetAvgStats(games);
+            avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames);
+
+            UpdateTable(avgGame);
             var colName = stats_dataGridView.SelectedCells.Count > 0
                 ? stats_dataGridView.Columns[stats_dataGridView.SelectedCells[0].ColumnIndex].Name
                 : "Pts";
@@ -228,15 +252,18 @@ namespace espn
             stats_dataGridView.Rows[0].Cells["Pf"].Value = game.Pf.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["To"].Value = game.To.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["Pts"].Value = game.Pts.ToString("0.0");
+
+            stats_dataGridView.Rows[0].Cells["Value"].Value = game.Score.ToString("0.0");
         }
 
 
         private void stats_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var name = stats_dataGridView.Columns[e.ColumnIndex].Name;
-            var games = _player.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
+            var games = _player?.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
                 mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]), numOf_textBox.Text,
                 zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
+            if (games == null) return;
             var y = GameStats.GetYVals(name, games);
             var x = games.Select(g => g.GameDate).ToArray();
             if (y.Length > 0)
@@ -246,8 +273,11 @@ namespace espn
 
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
-            string text = _player.PlayerName + ", Last " + numOf_textBox.Text + " : " + Environment.NewLine;
-            text += "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " +
+            string text = $"{_player.PlayerName} , Last {numOf_textBox.Text} {mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex])}";
+            if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+                text += $" ,Without {filterByPlayer_autoCompleteTextBox.Text}";
+            text += " : " + Environment.NewLine +
+                    "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " +
                     "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
                     "Ast: " + stats_dataGridView.Rows[0].Cells["Ast"].Value + ", " +
                     "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
@@ -268,6 +298,11 @@ namespace espn
                 Bitmap bm = new Bitmap(ms);
                 Clipboard.SetImage(bm);
             }
+        }
+
+        private void playerFilter_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterByPlayer_autoCompleteTextBox.Enabled = playerFilter_checkBox.Checked;
         }
 
         #endregion
@@ -298,6 +333,9 @@ namespace espn
         {
             try
             {
+                string compareMode = compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem);
+                string numOfGames = compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem);
+
                 if (mode == 0 || mode == 1)
                 {
                     if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player1_TextBox.Text == String.Empty)
@@ -305,9 +343,10 @@ namespace espn
                     if (_player1 == null || _player1.Id != PlayersList.Players[player1_TextBox.Text])
                         _player1 = await PlayersList.CreatePlayerAsync(player1_TextBox.Text);
 
-                    GameStats[] games = _player1.FilterGames("2018", compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
-                            compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
-                    UpdateCompareInfo1(games);
+                    GameStats[] games = _player1.FilterGames("2018", compareMode, numOfGames);
+                    var avgGame = GameStats.GetAvgStats(games);
+                    avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), compareMode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
+                    UpdateCompareInfo1(avgGame);
                 }
                 if (mode == 0 || mode == 2)
                 {
@@ -315,9 +354,10 @@ namespace espn
                         return;
                     if (_player2 == null || _player2.Id != PlayersList.Players[player2_TextBox.Text])
                         _player2 = await PlayersList.CreatePlayerAsync(player2_TextBox.Text);
-                    GameStats[] games = _player2.FilterGames("2018", compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
-                            compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
-                    UpdateCompareInfo2(games);
+                    GameStats[] games = _player2.FilterGames("2018", compareMode, numOfGames);
+                    var avgGame = GameStats.GetAvgStats(games);
+                    avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), compareMode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
+                    UpdateCompareInfo2(avgGame);
                 }
             }
             catch (Exception ex)
@@ -327,9 +367,9 @@ namespace espn
         }
 
 
-        private void UpdateCompareInfo1(GameStats[] games)
+        private void UpdateCompareInfo1(GameStats avgGame)
         {
-            var avgGame = GameStats.GetAvgStats(games);
+            //var avgGame = GameStats.GetAvgStats(games);
 
             gp1_label.Text = avgGame.Gp.ToString();
             min1_label.Text = avgGame.Min.ToString("0.0");
@@ -344,12 +384,13 @@ namespace espn
             ft1_label.Text = avgGame.Ftm.ToString("0.0") + @"/" + avgGame.Fta.ToString("0.0") + @" - " + avgGame.FtPer.ToString("0.0") + @"%";
             ft1_label.Location = new Point(tpm1_label.Location.X + (tpm1_label.Size.Width / 2) - (ft1_label.Size.Width / 2), ft1_label.Location.Y);
             to1_label.Text = avgGame.To.ToString("0.0");
+            score1_label.Text = avgGame.Score.ToString("0.0");
         }
 
 
-        private void UpdateCompareInfo2(GameStats[] games)
+        private void UpdateCompareInfo2(GameStats avgGame)
         {
-            var avgGame = GameStats.GetAvgStats(games);
+            //var avgGame = GameStats.GetAvgStats(games);
             gp2_label.Text = avgGame.Gp.ToString();
             min2_label.Text = avgGame.Min.ToString("0.0");
             pts2_label.Text = avgGame.Pts.ToString("0.0");
@@ -363,6 +404,7 @@ namespace espn
             ft2_label.Text = avgGame.Ftm.ToString("0.0") + @"/" + avgGame.Fta.ToString("0.0") + @" - " + avgGame.FtPer.ToString("0.0") + @"%";
             ft2_label.Location = new Point(tpm2_label.Location.X + (tpm2_label.Size.Width / 2) - (ft2_label.Size.Width / 2), ft2_label.Location.Y);
             to2_label.Text = avgGame.To.ToString("0.0");
+            score2_label.Text = avgGame.Score.ToString("0.0");
         }
 
         private void min_label_Click(object sender, EventArgs e)
@@ -453,7 +495,7 @@ namespace espn
         private void tradePlayers_button_Click(object sender, EventArgs e)
         {
             tradeMode_comboBox.SelectedIndex = compareMode_comboBox.SelectedIndex;
-            tradeLast_comboBox.SelectedIndex = compare_last_comboBox.SelectedIndex;
+            tradeNumOfGames_comboBox.SelectedIndex = compare_last_comboBox.SelectedIndex;
             sendPlayer_TextBox.Text = player1_TextBox.Text;
             receivePlayer_TextBox.Text = player2_TextBox.Text;
             sendPlayer_TextBox.PlayerSelectedEvent.Invoke(sendPlayer_TextBox.Text);
@@ -464,12 +506,14 @@ namespace espn
 
         private void copyCompare_button_Click(object sender, EventArgs e)
         {
-            string text = _player1.PlayerName + ", Last " + compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem) + " : " + Environment.NewLine;
+            string mode = compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem);
+            string numOfGames = compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem);
+            string text = $"{_player1.PlayerName} , Last {numOfGames}  {mode}: " + Environment.NewLine;
             text += "Pts: " + pts1_label.Text + ", Reb: " + reb1_label.Text + ", Ast: " + ast1_label.Text + ", Stl: " + stl1_label.Text +
                     ", Blk: " + blk1_label.Text + ", Tpm: " + tpm1_label.Text + ", FgPer: " + fg1_label.Text +
                     ", FtPer: " + ft1_label.Text + ", To : " + to1_label.Text + ", Min : " + min1_label.Text;
 
-            text += Environment.NewLine + _player2.PlayerName + ", Last " + compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem) + " : " + Environment.NewLine;
+            text += Environment.NewLine + $"{_player2.PlayerName} , Last {numOfGames}  {mode}: " + Environment.NewLine;
             text += "Pts: " + pts2_label.Text + ", Reb: " + reb2_label.Text + ", Ast: " + ast2_label.Text + ", Stl: " + stl2_label.Text +
                     ", Blk: " + blk2_label.Text + ", Tpm: " + tpm2_label.Text + ", FgPer: " + fg2_label.Text +
                     ", FtPer: " + ft2_label.Text + ", To : " + to2_label.Text + ", Min : " + min2_label.Text;
@@ -525,21 +569,31 @@ namespace espn
             UseWaitCursor = true;
             try
             {
-                timePeriod_label.Text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " +
-                                   tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem);
+                string mode = tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem);
+                string numOfGames = tradeNumOfGames_comboBox.GetItemText(tradeNumOfGames_comboBox.SelectedItem);
+
+                timePeriod_label.Text = $@"Last {numOfGames} {mode}";
 
                 List<PlayerInfo> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
                 List<PlayerInfo> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
-                GameStats[] avgStatsSend = sentPlayers.Select(
-                    p => GameStats.GetAvgStats(p.FilterGames("2018",
-                        tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem),
-                        tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem)))).ToArray();
+                List<GameStats> avgStatsSend = new List<GameStats>();
+                foreach (var player in sentPlayers)
+                {
+                    var relevantGames = player.FilterGames("2018", mode, numOfGames);
+                    var avgGame = GameStats.GetAvgStats(relevantGames);
+                    avgGame.Score = PlayerRater.CalcScore(relevantGames, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
+                    avgStatsSend.Add(avgGame);
+                }
 
-                GameStats[] avgStatsrecevied = receiviedPlayers.Select(
-                   p => GameStats.GetAvgStats(p.FilterGames("2018",
-                       tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem),
-                       tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem)))).ToArray();
+                List<GameStats> avgStatsrecevied = new List<GameStats>();
+                foreach (var player in receiviedPlayers)
+                {
+                    var relevantGames = player.FilterGames("2018", mode, numOfGames);
+                    var avgGame = GameStats.GetAvgStats(relevantGames);
+                    avgGame.Score = PlayerRater.CalcScore(relevantGames, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
+                    avgStatsrecevied.Add(avgGame);
+                }
 
                 GameStats totalSend = GameStats.GetSumStats(avgStatsSend);
                 GameStats totalReceived = GameStats.GetSumStats(avgStatsrecevied);
@@ -625,7 +679,7 @@ namespace espn
 
         private void copyTradeStats_button_Click(object sender, EventArgs e)
         {
-            string text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
+            string text = "Last " + tradeNumOfGames_comboBox.GetItemText(tradeNumOfGames_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
             text += "Players Sent : " + playersSent_textBox.Text + Environment.NewLine;
             text += "Pts: " + pts1Trade_label.Text + ", Reb: " + reb1Trade_label.Text + ", Ast: " + ast1Trade_label.Text + ", Stl: " + stl1Trade_label.Text +
                     ", Blk: " + blk1Trade_label.Text + ", Tpm: " + tpm1Trade_label.Text + ", FgPer: " + fg1Trade_label.Text +
@@ -647,7 +701,7 @@ namespace espn
 
         private void copyDiff_button_Click(object sender, EventArgs e)
         {
-            string text = "Last " + tradeLast_comboBox.GetItemText(tradeLast_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
+            string text = "Last " + tradeNumOfGames_comboBox.GetItemText(tradeNumOfGames_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
             text += "Players Sent : " + playersSent_textBox.Text + Environment.NewLine;
             text += "Players Received : " + playersReceived_textBox.Text + Environment.NewLine;
             text += Environment.NewLine + "Diff :" + Environment.NewLine;
@@ -821,6 +875,7 @@ namespace espn
         }
 
 
+
         private void savePlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
         {
             try
@@ -834,7 +889,6 @@ namespace espn
             }
         }
 
-
         #endregion
 
         #region Players Rater
@@ -844,6 +898,64 @@ namespace espn
             Factors.ShowDialog();
         }
 
+        private void raterSeason_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
+        private void raterAvg_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Games).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
+        private void raterLast30_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 30).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
+        private void raterLast15_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 15).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
+        private void raterLast7_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 7).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
+
+
+        private void UpdateRaterTable(List<PlayerInfo> playerRater)
+        {
+            rater_dataGridView.Rows.Clear();
+            for (int i = 0; i < playerRater.Count; i++)
+            {
+                object[] o = { playerRater[i].PlayerName, Math.Round(playerRater[i].Score, 2) };
+                rater_dataGridView.Rows.Add(o);
+                rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
+            }
+        }
+
+        private void SearchForPlayerInRater(string searchValue)
+        {
+            if (rater_dataGridView.Rows.Count == 0) return;
+
+            foreach (DataGridViewRow row in rater_dataGridView.Rows)
+            {
+                if (row.Cells[0].Value.ToString().Equals(searchValue))
+                {
+                    row.Selected = true;
+                    rater_dataGridView.FirstDisplayedScrollingRowIndex = rater_dataGridView.SelectedRows[0].Index;
+                    break;
+                }
+            }
+
+        }
         #endregion
 
     }

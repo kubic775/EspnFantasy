@@ -125,6 +125,7 @@
     <Compile Include="PlayersList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rater.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FactorsForm.resx">
       <DependentUpon>FactorsForm.cs</DependentUpon>

@@ -29,31 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(40D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(40D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.year_comboBox = new System.Windows.Forms.ComboBox();
@@ -92,6 +94,9 @@
             this.player_pictureBox = new System.Windows.Forms.PictureBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
+            this.score2_label = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.score1_label = new System.Windows.Forms.Label();
             this.tradePlayers_button = new System.Windows.Forms.Button();
             this.copyChart_button = new System.Windows.Forms.Button();
             this.copyCompare_button = new System.Windows.Forms.Button();
@@ -205,12 +210,22 @@
             this.copyTradeStats_button = new System.Windows.Forms.Button();
             this.clearList_button = new System.Windows.Forms.Button();
             this.trade_button = new System.Windows.Forms.Button();
-            this.tradeLast_comboBox = new System.Windows.Forms.ComboBox();
+            this.tradeNumOfGames_comboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tradeMode_comboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.rater_tab = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.raterLast7_button = new System.Windows.Forms.Button();
+            this.raterLast15_button = new System.Windows.Forms.Button();
+            this.raterLast30Days_button = new System.Windows.Forms.Button();
+            this.raterAvg_button = new System.Windows.Forms.Button();
+            this.raterSeason_button = new System.Windows.Forms.Button();
+            this.rater_dataGridView = new System.Windows.Forms.DataGridView();
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,11 +240,14 @@
             this.setFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
+            this.playerFilter_checkBox = new System.Windows.Forms.CheckBox();
+            this.filterByPlayer_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.playerName_textBox = new espn.AutoCompleteTextBox();
             this.player2_TextBox = new espn.AutoCompleteTextBox();
             this.player1_TextBox = new espn.AutoCompleteTextBox();
             this.receivePlayer_TextBox = new espn.AutoCompleteTextBox();
             this.sendPlayer_TextBox = new espn.AutoCompleteTextBox();
+            this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -241,6 +259,8 @@
             this.tabPage2.SuspendLayout();
             this.trade_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).BeginInit();
+            this.rater_tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rater_dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -249,6 +269,7 @@
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.compare_tabPage);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.rater_tab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(0, 24);
@@ -315,20 +336,23 @@
             this.smooth_checkBox.AutoSize = true;
             this.smooth_checkBox.Checked = true;
             this.smooth_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.smooth_checkBox.Location = new System.Drawing.Point(13, 317);
+            this.smooth_checkBox.Location = new System.Drawing.Point(13, 361);
             this.smooth_checkBox.Name = "smooth_checkBox";
             this.smooth_checkBox.Size = new System.Drawing.Size(79, 20);
             this.smooth_checkBox.TabIndex = 19;
             this.smooth_checkBox.Text = "Smooth";
             this.smooth_checkBox.UseVisualStyleBackColor = true;
+            this.smooth_checkBox.Visible = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.filterByPlayer_autoCompleteTextBox);
+            this.groupBox1.Controls.Add(this.playerFilter_checkBox);
             this.groupBox1.Controls.Add(this.outliersMinutes_checkBox);
             this.groupBox1.Controls.Add(this.zeroMinutes_checkBox);
             this.groupBox1.Location = new System.Drawing.Point(7, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 231);
+            this.groupBox1.Size = new System.Drawing.Size(194, 290);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
@@ -367,33 +391,33 @@
             // 
             // stat_chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.stat_chart.ChartAreas.Add(chartArea1);
-            legend1.DockedToChartArea = "ChartArea1";
-            legend1.MaximumAutoSize = 30F;
-            legend1.Name = "Legend1";
-            this.stat_chart.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.stat_chart.ChartAreas.Add(chartArea4);
+            legend4.DockedToChartArea = "ChartArea1";
+            legend4.MaximumAutoSize = 30F;
+            legend4.Name = "Legend1";
+            this.stat_chart.Legends.Add(legend4);
             this.stat_chart.Location = new System.Drawing.Point(481, 93);
             this.stat_chart.Name = "stat_chart";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.MarkerSize = 6;
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "Series1";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            series1.Points.Add(dataPoint3);
-            series2.BorderWidth = 4;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.MarkerSize = 8;
-            series2.Name = "SmoothSeries";
-            this.stat_chart.Series.Add(series1);
-            this.stat_chart.Series.Add(series2);
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.MarkerSize = 6;
+            series7.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series7.Name = "Series1";
+            series7.Points.Add(dataPoint8);
+            series7.Points.Add(dataPoint9);
+            series7.Points.Add(dataPoint10);
+            series8.BorderWidth = 4;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.IsVisibleInLegend = false;
+            series8.Legend = "Legend1";
+            series8.MarkerSize = 8;
+            series8.Name = "SmoothSeries";
+            this.stat_chart.Series.Add(series7);
+            this.stat_chart.Series.Add(series8);
             this.stat_chart.Size = new System.Drawing.Size(615, 215);
             this.stat_chart.TabIndex = 15;
             this.stat_chart.Text = "Stat";
@@ -484,14 +508,14 @@
             this.stats_dataGridView.AllowUserToDeleteRows = false;
             this.stats_dataGridView.BackgroundColor = System.Drawing.Color.OldLace;
             this.stats_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.stats_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.stats_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.stats_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.stats_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Min,
@@ -510,25 +534,25 @@
             this.Pts,
             this.Gp,
             this.Value});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.stats_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.stats_dataGridView.DefaultCellStyle = dataGridViewCellStyle7;
             this.stats_dataGridView.Location = new System.Drawing.Point(202, 347);
             this.stats_dataGridView.Name = "stats_dataGridView";
             this.stats_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.stats_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.stats_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.stats_dataGridView.RowHeadersVisible = false;
             this.stats_dataGridView.Size = new System.Drawing.Size(897, 56);
             this.stats_dataGridView.TabIndex = 5;
@@ -651,8 +675,9 @@
             // compare_tabPage
             // 
             this.compare_tabPage.BackColor = System.Drawing.Color.Wheat;
-            this.compare_tabPage.Controls.Add(this.player2_TextBox);
-            this.compare_tabPage.Controls.Add(this.player1_TextBox);
+            this.compare_tabPage.Controls.Add(this.score2_label);
+            this.compare_tabPage.Controls.Add(this.label27);
+            this.compare_tabPage.Controls.Add(this.score1_label);
             this.compare_tabPage.Controls.Add(this.tradePlayers_button);
             this.compare_tabPage.Controls.Add(this.copyChart_button);
             this.compare_tabPage.Controls.Add(this.copyCompare_button);
@@ -679,6 +704,8 @@
             this.compare_tabPage.Controls.Add(this.to1_label);
             this.compare_tabPage.Controls.Add(this.min1_label);
             this.compare_tabPage.Controls.Add(this.gp1_label);
+            this.compare_tabPage.Controls.Add(this.player2_TextBox);
+            this.compare_tabPage.Controls.Add(this.player1_TextBox);
             this.compare_tabPage.Controls.Add(this.compare_last_comboBox);
             this.compare_tabPage.Controls.Add(this.label16);
             this.compare_tabPage.Controls.Add(this.compareMode_comboBox);
@@ -703,6 +730,33 @@
             this.compare_tabPage.Size = new System.Drawing.Size(1100, 410);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
+            // 
+            // score2_label
+            // 
+            this.score2_label.AutoSize = true;
+            this.score2_label.Location = new System.Drawing.Point(266, 382);
+            this.score2_label.Name = "score2_label";
+            this.score2_label.Size = new System.Drawing.Size(34, 16);
+            this.score2_label.TabIndex = 59;
+            this.score2_label.Text = "N\\A";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(157, 382);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 16);
+            this.label27.TabIndex = 58;
+            this.label27.Text = "Score";
+            // 
+            // score1_label
+            // 
+            this.score1_label.AutoSize = true;
+            this.score1_label.Location = new System.Drawing.Point(60, 382);
+            this.score1_label.Name = "score1_label";
+            this.score1_label.Size = new System.Drawing.Size(34, 16);
+            this.score1_label.TabIndex = 57;
+            this.score1_label.Text = "N\\A";
             // 
             // tradePlayers_button
             // 
@@ -737,41 +791,41 @@
             // 
             // compare_chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.compare_chart.ChartAreas.Add(chartArea2);
-            legend2.DockedToChartArea = "ChartArea1";
-            legend2.Name = "Legend1";
-            this.compare_chart.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.compare_chart.ChartAreas.Add(chartArea5);
+            legend5.DockedToChartArea = "ChartArea1";
+            legend5.Name = "Legend1";
+            this.compare_chart.Legends.Add(legend5);
             this.compare_chart.Location = new System.Drawing.Point(459, 6);
             this.compare_chart.Name = "compare_chart";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series3.Name = "Series1";
-            series3.Points.Add(dataPoint4);
-            series3.Points.Add(dataPoint5);
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series4.Legend = "Legend1";
-            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series4.Name = "Series2";
-            this.compare_chart.Series.Add(series3);
-            this.compare_chart.Series.Add(series4);
+            series9.BorderWidth = 2;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series9.Name = "Series1";
+            series9.Points.Add(dataPoint11);
+            series9.Points.Add(dataPoint12);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series10.Legend = "Legend1";
+            series10.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series10.Name = "Series2";
+            this.compare_chart.Series.Add(series9);
+            this.compare_chart.Series.Add(series10);
             this.compare_chart.Size = new System.Drawing.Size(634, 389);
             this.compare_chart.TabIndex = 50;
             this.compare_chart.Text = "Stat";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "PlayerName";
-            title1.Text = "Player1";
-            this.compare_chart.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "PlayerName";
+            title3.Text = "Player1";
+            this.compare_chart.Titles.Add(title3);
             // 
             // pts2_label
             // 
             this.pts2_label.AutoSize = true;
-            this.pts2_label.Location = new System.Drawing.Point(266, 163);
+            this.pts2_label.Location = new System.Drawing.Point(266, 150);
             this.pts2_label.Name = "pts2_label";
             this.pts2_label.Size = new System.Drawing.Size(34, 16);
             this.pts2_label.TabIndex = 47;
@@ -780,7 +834,7 @@
             // ast2_label
             // 
             this.ast2_label.AutoSize = true;
-            this.ast2_label.Location = new System.Drawing.Point(266, 217);
+            this.ast2_label.Location = new System.Drawing.Point(266, 202);
             this.ast2_label.Name = "ast2_label";
             this.ast2_label.Size = new System.Drawing.Size(34, 16);
             this.ast2_label.TabIndex = 46;
@@ -789,7 +843,7 @@
             // stl2_label
             // 
             this.stl2_label.AutoSize = true;
-            this.stl2_label.Location = new System.Drawing.Point(266, 244);
+            this.stl2_label.Location = new System.Drawing.Point(266, 228);
             this.stl2_label.Name = "stl2_label";
             this.stl2_label.Size = new System.Drawing.Size(34, 16);
             this.stl2_label.TabIndex = 45;
@@ -798,7 +852,7 @@
             // blk2_label
             // 
             this.blk2_label.AutoSize = true;
-            this.blk2_label.Location = new System.Drawing.Point(266, 271);
+            this.blk2_label.Location = new System.Drawing.Point(266, 254);
             this.blk2_label.Name = "blk2_label";
             this.blk2_label.Size = new System.Drawing.Size(34, 16);
             this.blk2_label.TabIndex = 44;
@@ -807,7 +861,7 @@
             // reb2_label
             // 
             this.reb2_label.AutoSize = true;
-            this.reb2_label.Location = new System.Drawing.Point(266, 190);
+            this.reb2_label.Location = new System.Drawing.Point(266, 176);
             this.reb2_label.Name = "reb2_label";
             this.reb2_label.Size = new System.Drawing.Size(34, 16);
             this.reb2_label.TabIndex = 43;
@@ -816,7 +870,7 @@
             // tpm2_label
             // 
             this.tpm2_label.AutoSize = true;
-            this.tpm2_label.Location = new System.Drawing.Point(266, 298);
+            this.tpm2_label.Location = new System.Drawing.Point(266, 280);
             this.tpm2_label.Name = "tpm2_label";
             this.tpm2_label.Size = new System.Drawing.Size(34, 16);
             this.tpm2_label.TabIndex = 42;
@@ -825,7 +879,7 @@
             // fg2_label
             // 
             this.fg2_label.AutoSize = true;
-            this.fg2_label.Location = new System.Drawing.Point(266, 325);
+            this.fg2_label.Location = new System.Drawing.Point(266, 306);
             this.fg2_label.Name = "fg2_label";
             this.fg2_label.Size = new System.Drawing.Size(34, 16);
             this.fg2_label.TabIndex = 41;
@@ -834,7 +888,7 @@
             // ft2_label
             // 
             this.ft2_label.AutoSize = true;
-            this.ft2_label.Location = new System.Drawing.Point(266, 352);
+            this.ft2_label.Location = new System.Drawing.Point(266, 332);
             this.ft2_label.Name = "ft2_label";
             this.ft2_label.Size = new System.Drawing.Size(34, 16);
             this.ft2_label.TabIndex = 40;
@@ -843,7 +897,7 @@
             // to2_label
             // 
             this.to2_label.AutoSize = true;
-            this.to2_label.Location = new System.Drawing.Point(266, 379);
+            this.to2_label.Location = new System.Drawing.Point(266, 358);
             this.to2_label.Name = "to2_label";
             this.to2_label.Size = new System.Drawing.Size(34, 16);
             this.to2_label.TabIndex = 39;
@@ -852,7 +906,7 @@
             // min2_label
             // 
             this.min2_label.AutoSize = true;
-            this.min2_label.Location = new System.Drawing.Point(266, 136);
+            this.min2_label.Location = new System.Drawing.Point(266, 124);
             this.min2_label.Name = "min2_label";
             this.min2_label.Size = new System.Drawing.Size(34, 16);
             this.min2_label.TabIndex = 38;
@@ -861,7 +915,7 @@
             // gp2_label
             // 
             this.gp2_label.AutoSize = true;
-            this.gp2_label.Location = new System.Drawing.Point(266, 109);
+            this.gp2_label.Location = new System.Drawing.Point(266, 99);
             this.gp2_label.Name = "gp2_label";
             this.gp2_label.Size = new System.Drawing.Size(34, 16);
             this.gp2_label.TabIndex = 37;
@@ -870,7 +924,7 @@
             // pts1_label
             // 
             this.pts1_label.AutoSize = true;
-            this.pts1_label.Location = new System.Drawing.Point(60, 163);
+            this.pts1_label.Location = new System.Drawing.Point(60, 150);
             this.pts1_label.Name = "pts1_label";
             this.pts1_label.Size = new System.Drawing.Size(34, 16);
             this.pts1_label.TabIndex = 36;
@@ -879,7 +933,7 @@
             // ast1_label
             // 
             this.ast1_label.AutoSize = true;
-            this.ast1_label.Location = new System.Drawing.Point(60, 217);
+            this.ast1_label.Location = new System.Drawing.Point(60, 202);
             this.ast1_label.Name = "ast1_label";
             this.ast1_label.Size = new System.Drawing.Size(34, 16);
             this.ast1_label.TabIndex = 35;
@@ -888,7 +942,7 @@
             // stl1_label
             // 
             this.stl1_label.AutoSize = true;
-            this.stl1_label.Location = new System.Drawing.Point(60, 244);
+            this.stl1_label.Location = new System.Drawing.Point(60, 228);
             this.stl1_label.Name = "stl1_label";
             this.stl1_label.Size = new System.Drawing.Size(34, 16);
             this.stl1_label.TabIndex = 34;
@@ -897,7 +951,7 @@
             // blk1_label
             // 
             this.blk1_label.AutoSize = true;
-            this.blk1_label.Location = new System.Drawing.Point(60, 271);
+            this.blk1_label.Location = new System.Drawing.Point(60, 254);
             this.blk1_label.Name = "blk1_label";
             this.blk1_label.Size = new System.Drawing.Size(34, 16);
             this.blk1_label.TabIndex = 33;
@@ -906,7 +960,7 @@
             // reb1_label
             // 
             this.reb1_label.AutoSize = true;
-            this.reb1_label.Location = new System.Drawing.Point(60, 190);
+            this.reb1_label.Location = new System.Drawing.Point(60, 176);
             this.reb1_label.Name = "reb1_label";
             this.reb1_label.Size = new System.Drawing.Size(34, 16);
             this.reb1_label.TabIndex = 32;
@@ -915,7 +969,7 @@
             // tpm1_label
             // 
             this.tpm1_label.AutoSize = true;
-            this.tpm1_label.Location = new System.Drawing.Point(60, 298);
+            this.tpm1_label.Location = new System.Drawing.Point(60, 280);
             this.tpm1_label.Name = "tpm1_label";
             this.tpm1_label.Size = new System.Drawing.Size(34, 16);
             this.tpm1_label.TabIndex = 31;
@@ -924,7 +978,7 @@
             // fg1_label
             // 
             this.fg1_label.AutoSize = true;
-            this.fg1_label.Location = new System.Drawing.Point(60, 325);
+            this.fg1_label.Location = new System.Drawing.Point(60, 306);
             this.fg1_label.Name = "fg1_label";
             this.fg1_label.Size = new System.Drawing.Size(34, 16);
             this.fg1_label.TabIndex = 30;
@@ -934,7 +988,7 @@
             // ft1_label
             // 
             this.ft1_label.AutoSize = true;
-            this.ft1_label.Location = new System.Drawing.Point(60, 352);
+            this.ft1_label.Location = new System.Drawing.Point(60, 332);
             this.ft1_label.Name = "ft1_label";
             this.ft1_label.Size = new System.Drawing.Size(34, 16);
             this.ft1_label.TabIndex = 29;
@@ -944,7 +998,7 @@
             // to1_label
             // 
             this.to1_label.AutoSize = true;
-            this.to1_label.Location = new System.Drawing.Point(60, 379);
+            this.to1_label.Location = new System.Drawing.Point(60, 358);
             this.to1_label.Name = "to1_label";
             this.to1_label.Size = new System.Drawing.Size(34, 16);
             this.to1_label.TabIndex = 28;
@@ -953,7 +1007,7 @@
             // min1_label
             // 
             this.min1_label.AutoSize = true;
-            this.min1_label.Location = new System.Drawing.Point(60, 136);
+            this.min1_label.Location = new System.Drawing.Point(60, 124);
             this.min1_label.Name = "min1_label";
             this.min1_label.Size = new System.Drawing.Size(34, 16);
             this.min1_label.TabIndex = 27;
@@ -962,7 +1016,7 @@
             // gp1_label
             // 
             this.gp1_label.AutoSize = true;
-            this.gp1_label.Location = new System.Drawing.Point(60, 109);
+            this.gp1_label.Location = new System.Drawing.Point(60, 99);
             this.gp1_label.Name = "gp1_label";
             this.gp1_label.Size = new System.Drawing.Size(34, 16);
             this.gp1_label.TabIndex = 26;
@@ -1019,7 +1073,7 @@
             // ft_label
             // 
             this.ft_label.AutoSize = true;
-            this.ft_label.Location = new System.Drawing.Point(169, 352);
+            this.ft_label.Location = new System.Drawing.Point(168, 332);
             this.ft_label.Name = "ft_label";
             this.ft_label.Size = new System.Drawing.Size(27, 16);
             this.ft_label.TabIndex = 21;
@@ -1029,7 +1083,7 @@
             // to_label
             // 
             this.to_label.AutoSize = true;
-            this.to_label.Location = new System.Drawing.Point(168, 379);
+            this.to_label.Location = new System.Drawing.Point(167, 358);
             this.to_label.Name = "to_label";
             this.to_label.Size = new System.Drawing.Size(29, 16);
             this.to_label.TabIndex = 20;
@@ -1039,7 +1093,7 @@
             // blk_label
             // 
             this.blk_label.AutoSize = true;
-            this.blk_label.Location = new System.Drawing.Point(167, 271);
+            this.blk_label.Location = new System.Drawing.Point(166, 254);
             this.blk_label.Name = "blk_label";
             this.blk_label.Size = new System.Drawing.Size(30, 16);
             this.blk_label.TabIndex = 19;
@@ -1049,7 +1103,7 @@
             // reb_label
             // 
             this.reb_label.AutoSize = true;
-            this.reb_label.Location = new System.Drawing.Point(164, 190);
+            this.reb_label.Location = new System.Drawing.Point(163, 176);
             this.reb_label.Name = "reb_label";
             this.reb_label.Size = new System.Drawing.Size(37, 16);
             this.reb_label.TabIndex = 18;
@@ -1059,7 +1113,7 @@
             // stl_label
             // 
             this.stl_label.AutoSize = true;
-            this.stl_label.Location = new System.Drawing.Point(169, 244);
+            this.stl_label.Location = new System.Drawing.Point(168, 228);
             this.stl_label.Name = "stl_label";
             this.stl_label.Size = new System.Drawing.Size(26, 16);
             this.stl_label.TabIndex = 17;
@@ -1069,7 +1123,7 @@
             // fg_label
             // 
             this.fg_label.AutoSize = true;
-            this.fg_label.Location = new System.Drawing.Point(168, 325);
+            this.fg_label.Location = new System.Drawing.Point(167, 306);
             this.fg_label.Name = "fg_label";
             this.fg_label.Size = new System.Drawing.Size(28, 16);
             this.fg_label.TabIndex = 16;
@@ -1080,7 +1134,7 @@
             // min_label
             // 
             this.min_label.AutoSize = true;
-            this.min_label.Location = new System.Drawing.Point(166, 136);
+            this.min_label.Location = new System.Drawing.Point(165, 124);
             this.min_label.Name = "min_label";
             this.min_label.Size = new System.Drawing.Size(32, 16);
             this.min_label.TabIndex = 15;
@@ -1090,7 +1144,7 @@
             // ast_label
             // 
             this.ast_label.AutoSize = true;
-            this.ast_label.Location = new System.Drawing.Point(167, 217);
+            this.ast_label.Location = new System.Drawing.Point(166, 202);
             this.ast_label.Name = "ast_label";
             this.ast_label.Size = new System.Drawing.Size(30, 16);
             this.ast_label.TabIndex = 14;
@@ -1100,7 +1154,7 @@
             // tpm_label
             // 
             this.tpm_label.AutoSize = true;
-            this.tpm_label.Location = new System.Drawing.Point(163, 298);
+            this.tpm_label.Location = new System.Drawing.Point(162, 280);
             this.tpm_label.Name = "tpm_label";
             this.tpm_label.Size = new System.Drawing.Size(38, 16);
             this.tpm_label.TabIndex = 13;
@@ -1110,7 +1164,7 @@
             // pts_label
             // 
             this.pts_label.AutoSize = true;
-            this.pts_label.Location = new System.Drawing.Point(167, 163);
+            this.pts_label.Location = new System.Drawing.Point(166, 150);
             this.pts_label.Name = "pts_label";
             this.pts_label.Size = new System.Drawing.Size(30, 16);
             this.pts_label.TabIndex = 12;
@@ -1120,7 +1174,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 109);
+            this.label4.Location = new System.Drawing.Point(167, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 16);
             this.label4.TabIndex = 11;
@@ -1159,7 +1213,7 @@
             this.tabPage2.Controls.Add(this.copyTradeStats_button);
             this.tabPage2.Controls.Add(this.clearList_button);
             this.tabPage2.Controls.Add(this.trade_button);
-            this.tabPage2.Controls.Add(this.tradeLast_comboBox);
+            this.tabPage2.Controls.Add(this.tradeNumOfGames_comboBox);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.tradeMode_comboBox);
             this.tabPage2.Controls.Add(this.label6);
@@ -1266,7 +1320,6 @@
             this.scoreTrade_label.Size = new System.Drawing.Size(16, 16);
             this.scoreTrade_label.TabIndex = 112;
             this.scoreTrade_label.Text = "0";
-            this.scoreTrade_label.Visible = false;
             // 
             // label23
             // 
@@ -1276,7 +1329,6 @@
             this.label23.Size = new System.Drawing.Size(57, 16);
             this.label23.TabIndex = 111;
             this.label23.Text = "Score :";
-            this.label23.Visible = false;
             // 
             // score2Trade_label
             // 
@@ -1286,7 +1338,6 @@
             this.score2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.score2Trade_label.TabIndex = 110;
             this.score2Trade_label.Text = "N\\A";
-            this.score2Trade_label.Visible = false;
             // 
             // score1Trade_label
             // 
@@ -1296,7 +1347,6 @@
             this.score1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.score1Trade_label.TabIndex = 109;
             this.score1Trade_label.Text = "N\\A";
-            this.score1Trade_label.Visible = false;
             // 
             // scoreChartTrade_label
             // 
@@ -1306,7 +1356,6 @@
             this.scoreChartTrade_label.Size = new System.Drawing.Size(49, 16);
             this.scoreChartTrade_label.TabIndex = 108;
             this.scoreChartTrade_label.Text = "Score";
-            this.scoreChartTrade_label.Visible = false;
             this.scoreChartTrade_label.Click += new System.EventHandler(this.scoreChartTrade_label_Click);
             // 
             // timePeriod_label
@@ -1828,37 +1877,37 @@
             // 
             // trade_chart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.trade_chart.ChartAreas.Add(chartArea3);
-            legend3.DockedToChartArea = "ChartArea1";
-            legend3.IsDockedInsideChartArea = false;
-            legend3.Name = "Legend1";
-            this.trade_chart.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.trade_chart.ChartAreas.Add(chartArea6);
+            legend6.DockedToChartArea = "ChartArea1";
+            legend6.IsDockedInsideChartArea = false;
+            legend6.Name = "Legend1";
+            this.trade_chart.Legends.Add(legend6);
             this.trade_chart.Location = new System.Drawing.Point(8, 163);
             this.trade_chart.Name = "trade_chart";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series5.Name = "Series1";
-            series5.Points.Add(dataPoint6);
-            series5.Points.Add(dataPoint7);
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series6.Legend = "Legend1";
-            series6.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series6.Name = "Series2";
-            this.trade_chart.Series.Add(series5);
-            this.trade_chart.Series.Add(series6);
+            series11.BorderWidth = 2;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.Legend = "Legend1";
+            series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series11.Name = "Series1";
+            series11.Points.Add(dataPoint13);
+            series11.Points.Add(dataPoint14);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series12.Legend = "Legend1";
+            series12.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series12.Name = "Series2";
+            this.trade_chart.Series.Add(series11);
+            this.trade_chart.Series.Add(series12);
             this.trade_chart.Size = new System.Drawing.Size(532, 239);
             this.trade_chart.TabIndex = 105;
             this.trade_chart.Text = "Stat";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "PlayerName";
-            title2.Text = "Player1";
-            this.trade_chart.Titles.Add(title2);
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title4.Name = "PlayerName";
+            title4.Text = "Player1";
+            this.trade_chart.Titles.Add(title4);
             // 
             // flip_button
             // 
@@ -1911,20 +1960,20 @@
             this.trade_button.UseVisualStyleBackColor = true;
             this.trade_button.Click += new System.EventHandler(this.trade_button_Click);
             // 
-            // tradeLast_comboBox
+            // tradeNumOfGames_comboBox
             // 
-            this.tradeLast_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tradeLast_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tradeLast_comboBox.FormattingEnabled = true;
-            this.tradeLast_comboBox.Items.AddRange(new object[] {
+            this.tradeNumOfGames_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tradeNumOfGames_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tradeNumOfGames_comboBox.FormattingEnabled = true;
+            this.tradeNumOfGames_comboBox.Items.AddRange(new object[] {
             "7",
             "14",
             "30",
             "Max"});
-            this.tradeLast_comboBox.Location = new System.Drawing.Point(151, 38);
-            this.tradeLast_comboBox.Name = "tradeLast_comboBox";
-            this.tradeLast_comboBox.Size = new System.Drawing.Size(88, 24);
-            this.tradeLast_comboBox.TabIndex = 33;
+            this.tradeNumOfGames_comboBox.Location = new System.Drawing.Point(151, 38);
+            this.tradeNumOfGames_comboBox.Name = "tradeNumOfGames_comboBox";
+            this.tradeNumOfGames_comboBox.Size = new System.Drawing.Size(88, 24);
+            this.tradeNumOfGames_comboBox.TabIndex = 33;
             // 
             // label5
             // 
@@ -1974,6 +2023,125 @@
             this.label8.Size = new System.Drawing.Size(96, 16);
             this.label8.TabIndex = 26;
             this.label8.Text = "Players Sent";
+            // 
+            // rater_tab
+            // 
+            this.rater_tab.Controls.Add(this.rater_autoCompleteTextBox);
+            this.rater_tab.Controls.Add(this.label1);
+            this.rater_tab.Controls.Add(this.raterLast7_button);
+            this.rater_tab.Controls.Add(this.raterLast15_button);
+            this.rater_tab.Controls.Add(this.raterLast30Days_button);
+            this.rater_tab.Controls.Add(this.raterAvg_button);
+            this.rater_tab.Controls.Add(this.raterSeason_button);
+            this.rater_tab.Controls.Add(this.rater_dataGridView);
+            this.rater_tab.Location = new System.Drawing.Point(4, 25);
+            this.rater_tab.Name = "rater_tab";
+            this.rater_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.rater_tab.Size = new System.Drawing.Size(1100, 410);
+            this.rater_tab.TabIndex = 3;
+            this.rater_tab.Text = "Rater";
+            this.rater_tab.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(493, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Search Player :";
+            // 
+            // raterLast7_button
+            // 
+            this.raterLast7_button.Location = new System.Drawing.Point(408, 9);
+            this.raterLast7_button.Name = "raterLast7_button";
+            this.raterLast7_button.Size = new System.Drawing.Size(76, 23);
+            this.raterLast7_button.TabIndex = 5;
+            this.raterLast7_button.Text = "Last 7";
+            this.raterLast7_button.UseVisualStyleBackColor = true;
+            this.raterLast7_button.Click += new System.EventHandler(this.raterLast7_button_Click);
+            // 
+            // raterLast15_button
+            // 
+            this.raterLast15_button.Location = new System.Drawing.Point(326, 9);
+            this.raterLast15_button.Name = "raterLast15_button";
+            this.raterLast15_button.Size = new System.Drawing.Size(76, 23);
+            this.raterLast15_button.TabIndex = 4;
+            this.raterLast15_button.Text = "Last 15";
+            this.raterLast15_button.UseVisualStyleBackColor = true;
+            this.raterLast15_button.Click += new System.EventHandler(this.raterLast15_button_Click);
+            // 
+            // raterLast30Days_button
+            // 
+            this.raterLast30Days_button.Location = new System.Drawing.Point(244, 9);
+            this.raterLast30Days_button.Name = "raterLast30Days_button";
+            this.raterLast30Days_button.Size = new System.Drawing.Size(76, 23);
+            this.raterLast30Days_button.TabIndex = 3;
+            this.raterLast30Days_button.Text = "Last 30";
+            this.raterLast30Days_button.UseVisualStyleBackColor = true;
+            this.raterLast30Days_button.Click += new System.EventHandler(this.raterLast30_button_Click);
+            // 
+            // raterAvg_button
+            // 
+            this.raterAvg_button.Location = new System.Drawing.Point(117, 9);
+            this.raterAvg_button.Name = "raterAvg_button";
+            this.raterAvg_button.Size = new System.Drawing.Size(121, 23);
+            this.raterAvg_button.TabIndex = 2;
+            this.raterAvg_button.Text = "2018 Averages";
+            this.raterAvg_button.UseVisualStyleBackColor = true;
+            this.raterAvg_button.Click += new System.EventHandler(this.raterAvg_button_Click);
+            // 
+            // raterSeason_button
+            // 
+            this.raterSeason_button.Location = new System.Drawing.Point(6, 9);
+            this.raterSeason_button.Name = "raterSeason_button";
+            this.raterSeason_button.Size = new System.Drawing.Size(105, 23);
+            this.raterSeason_button.TabIndex = 1;
+            this.raterSeason_button.Text = "2018 Season";
+            this.raterSeason_button.UseVisualStyleBackColor = true;
+            this.raterSeason_button.Click += new System.EventHandler(this.raterSeason_button_Click);
+            // 
+            // rater_dataGridView
+            // 
+            this.rater_dataGridView.AllowUserToAddRows = false;
+            this.rater_dataGridView.AllowUserToDeleteRows = false;
+            this.rater_dataGridView.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rater_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.rater_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rater_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PlayerName,
+            this.Score});
+            this.rater_dataGridView.Location = new System.Drawing.Point(6, 38);
+            this.rater_dataGridView.Name = "rater_dataGridView";
+            this.rater_dataGridView.ReadOnly = true;
+            this.rater_dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.rater_dataGridView.Size = new System.Drawing.Size(1086, 366);
+            this.rater_dataGridView.TabIndex = 0;
+            // 
+            // PlayerName
+            // 
+            this.PlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PlayerName.HeaderText = "Name";
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            this.PlayerName.Width = 74;
+            // 
+            // Score
+            // 
+            this.Score.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Score.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Score.HeaderText = "Score";
+            this.Score.Name = "Score";
+            this.Score.ReadOnly = true;
+            this.Score.Width = 74;
             // 
             // menuStrip1
             // 
@@ -2089,6 +2257,26 @@
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.update_timer_Tick);
             // 
+            // playerFilter_checkBox
+            // 
+            this.playerFilter_checkBox.AutoSize = true;
+            this.playerFilter_checkBox.Location = new System.Drawing.Point(6, 80);
+            this.playerFilter_checkBox.Name = "playerFilter_checkBox";
+            this.playerFilter_checkBox.Size = new System.Drawing.Size(133, 20);
+            this.playerFilter_checkBox.TabIndex = 2;
+            this.playerFilter_checkBox.Text = "Filter By Player";
+            this.playerFilter_checkBox.UseVisualStyleBackColor = true;
+            this.playerFilter_checkBox.CheckedChanged += new System.EventHandler(this.playerFilter_checkBox_CheckedChanged);
+            // 
+            // filterByPlayer_autoCompleteTextBox
+            // 
+            this.filterByPlayer_autoCompleteTextBox.Enabled = false;
+            this.filterByPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(6, 106);
+            this.filterByPlayer_autoCompleteTextBox.Name = "filterByPlayer_autoCompleteTextBox";
+            this.filterByPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.filterByPlayer_autoCompleteTextBox.TabIndex = 18;
+            this.filterByPlayer_autoCompleteTextBox.Values = null;
+            // 
             // playerName_textBox
             // 
             this.playerName_textBox.Location = new System.Drawing.Point(63, 17);
@@ -2129,6 +2317,14 @@
             this.sendPlayer_TextBox.TabIndex = 110;
             this.sendPlayer_TextBox.Values = null;
             // 
+            // rater_autoCompleteTextBox
+            // 
+            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(609, 10);
+            this.rater_autoCompleteTextBox.Name = "rater_autoCompleteTextBox";
+            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.rater_autoCompleteTextBox.TabIndex = 19;
+            this.rater_autoCompleteTextBox.Values = null;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2158,6 +2354,9 @@
             this.trade_panel.ResumeLayout(false);
             this.trade_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).EndInit();
+            this.rater_tab.ResumeLayout(false);
+            this.rater_tab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rater_dataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2241,7 +2440,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart compare_chart;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button copyCompare_button;
-        private System.Windows.Forms.ComboBox tradeLast_comboBox;
+        private System.Windows.Forms.ComboBox tradeNumOfGames_comboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox tradeMode_comboBox;
         private System.Windows.Forms.Label label6;
@@ -2343,6 +2542,22 @@
         private System.Windows.Forms.ComboBox year_comboBox;
         private System.Windows.Forms.Label update_label;
         private System.Windows.Forms.Timer update_timer;
+        private System.Windows.Forms.TabPage rater_tab;
+        private System.Windows.Forms.DataGridView rater_dataGridView;
+        private System.Windows.Forms.Button raterAvg_button;
+        private System.Windows.Forms.Button raterSeason_button;
+        private System.Windows.Forms.Button raterLast30Days_button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.Button raterLast7_button;
+        private System.Windows.Forms.Button raterLast15_button;
+        private AutoCompleteTextBox rater_autoCompleteTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label score2_label;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label score1_label;
+        private AutoCompleteTextBox filterByPlayer_autoCompleteTextBox;
+        private System.Windows.Forms.CheckBox playerFilter_checkBox;
     }
 }
 

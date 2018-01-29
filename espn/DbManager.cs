@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,15 +85,15 @@ namespace espn
             {
                 if (id == -1)
                     id = PlayerInfo.GetPlayerId(name);
-                if (id == -1)
+                if (id == -1 )
                     id = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Can't Found Player, Please Insert Id", "Add New Player", "Default", -1, -1));
 
                 using (var db = new EspnEntities())
                 {
                     if (db.Players.Any(p => p.Name.Equals(name) || p.ID == id))
                     {
-                        //MessageBox.Show("Player Already Exist");
-                        return;
+                        id = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Can't Found Player, Please Insert Id", "Add New Player", "-1"));
+                        if (id == -1) return;
                     }
 
                     int gamePk = db.Games.Max(g => g.Pk);
@@ -122,9 +119,18 @@ namespace espn
         {
             Player[] players;
             var startTime = DateTime.Now;
+
             using (var db = new EspnEntities())
             {
                 players = db.Players.ToArray();
+                List<Game> games = new List<Game>(db.Games.Where(g => g.GameDate > new DateTime(2017, 10, 1)));
+                MainForm.PlayerRater = new Rater(players, games);
+            }
+
+            if (!Utils.Ping(@"http://www.espn.com"))
+            {
+                Console.WriteLine("No Ping");
+                return;
             }
 
             await Task.Run(() =>
@@ -137,6 +143,12 @@ namespace espn
                 }
             }).ConfigureAwait(false);
             Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");
+
+            using (var db = new EspnEntities())
+            {
+                List<Game> games = new List<Game>(db.Games.Where(g => g.GameDate > new DateTime(2017, 10, 1)));
+                MainForm.PlayerRater.Games = new List<Game>(games);
+            }
         }
 
         private static void UpdatePlayer(PlayerInfo playerInfo)

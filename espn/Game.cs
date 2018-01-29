@@ -60,6 +60,7 @@ namespace espn
             FtPer = gameStats.FtPer;
             FgPer = gameStats.FgPer;
             TpPer = gameStats.TpPer;
+            Score = gameStats.Score;
         }
 
         public Game()

@@ -11,7 +11,7 @@ namespace espn
     {
         public static SortedDictionary<string, int> Players = new SortedDictionary<string, int>();
 
-        public static Dictionary<string, PlayerInfo> CachePlayers = new Dictionary<string, PlayerInfo>();
+        //public static Dictionary<string, PlayerInfo> CachePlayers = new Dictionary<string, PlayerInfo>();
 
         public static void CreatePlayersList()
         {
