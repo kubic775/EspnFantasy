@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,7 @@ namespace espn
 
             stats_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             rater_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gameLog_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
             //Init AutoCompleteTextBox//
@@ -60,9 +62,11 @@ namespace espn
             player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
             player2_TextBox.PlayerSelectedEvent = Player2CompareSelectedPlayerEvent;
             rater_autoCompleteTextBox.PlayerSelectedEvent = SearchForPlayerInRater;
+            gameLog_autoCompleteTextBox.PlayerSelectedEvent = ShowGameslogAsync;
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
+
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
             update_timer_Tick(null, null);
@@ -957,6 +961,54 @@ namespace espn
 
         }
         #endregion
+
+
+        private async void ShowGameslogAsync(string playerName)
+        {
+            try
+            {
+                if (PlayersList.Players.ContainsKey(playerName))
+                {
+                    var player = await PlayersList.CreatePlayerAsync(playerName);
+                    var games = player.Games;
+                    UpdateGamesLogTable(games.Where(g => g.GameDate > new DateTime(2017, 10, 01)).OrderByDescending(g => g.GameDate));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UpdateGamesLogTable(IEnumerable<GameStats> games)
+        {
+            gameLog_dataGridView.Rows.Clear();
+
+            foreach (GameStats game in games)
+            {
+                int rowId = gameLog_dataGridView.Rows.Add();
+                DataGridViewRow row = gameLog_dataGridView.Rows[rowId];
+                row.HeaderCell.Value = $"{rowId + 1}";
+
+                row.Cells["Date_GameLog"].Value = game.GameDate;
+                row.Cells["Opp_GameLog"].Value = game.Opp;
+                row.Cells["Min_GameLog"].Value = game.Min;
+                row.Cells["Pts_GameLog"].Value = game.Pts;
+                row.Cells["Ast_GameLog"].Value = game.Ast;
+                row.Cells["Reb_GameLog"].Value = game.Reb;
+                row.Cells["Stl_GameLog"].Value = game.Stl;
+                row.Cells["Blk_GameLog"].Value = game.Blk;
+                row.Cells["To_GameLog"].Value = game.To;
+                row.Cells["Pf_GameLog"].Value = game.To;
+
+                row.Cells["FgmFga_GameLog"].Value = game.Fgm.ToString("0.0") + "/" + game.Fga.ToString("0.0");
+                row.Cells["FgPer_GameLog"].Value = game.FgPer;
+                row.Cells["FtmFta_GameLog"].Value = game.Ftm.ToString("0.0") + "/" + game.Fta.ToString("0.0");
+                row.Cells["FtPer_GameLog"].Value = game.FtPer;
+                row.Cells["TpmTpa_GameLog"].Value = game.Tpm.ToString("0.0") + "/" + game.Tpa.ToString("0.0");
+                row.Cells["TpPer_GameLog"].Value = game.TpPer;
+            }
+        }
 
     }
 }

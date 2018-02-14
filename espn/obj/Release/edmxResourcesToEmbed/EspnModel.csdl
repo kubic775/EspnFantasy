@@ -26,6 +26,7 @@
     <Property Name="FgPer" Type="Double" />
     <Property Name="TpPer" Type="Double" />
     <Property Name="Score" Type="Double" />
+    <Property Name="Opp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Player">
     <Key>

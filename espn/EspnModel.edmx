@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EspnModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=Z:\Kobi\Programming\TestProject\C#\PracticeOnSqlLite\PracticeOnSqlLite\bin\Debug\espn.sqlite" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EspnModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=Z:\Kobi\Programming\TestProject\C#\PracticeOnSqlLite\PracticeOnSqlLite\bin\Debug\espn.sqlite" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Games">
           <Key>
             <PropertyRef Name="Pk" />
@@ -31,6 +31,7 @@
           <Property Name="FgPer" Type="real" />
           <Property Name="TpPer" Type="real" />
           <Property Name="Score" Type="real" />
+          <Property Name="Opp" Type="varchar" MaxLength="32" />
         </EntityType>
         <EntityType Name="Players">
           <Key>
@@ -46,8 +47,7 @@
           <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" />
           <EntitySet Name="Players" EntityType="Self.Players" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EspnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -77,6 +77,7 @@
           <Property Name="FgPer" Type="Double" />
           <Property Name="TpPer" Type="Double" />
           <Property Name="Score" Type="Double" />
+          <Property Name="Opp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -101,6 +102,7 @@
           <EntitySetMapping Name="Games">
             <EntityTypeMapping TypeName="EspnModel.Game">
               <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Opp" ColumnName="Opp" />
                 <ScalarProperty Name="Pk" ColumnName="Pk" />
                 <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
                 <ScalarProperty Name="GameDate" ColumnName="GameDate" />

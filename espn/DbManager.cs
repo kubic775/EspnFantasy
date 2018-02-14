@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -47,12 +48,12 @@ namespace espn
         {
             using (var db = new EspnEntities())
             {
-                int gamePk = db.Games.Max(g => g.Pk);
+                int gamePk = db.Games.Any() ? db.Games.Max(g => g.Pk) : 0;
 
                 foreach (Player player in db.Players)
                 {
                     Console.WriteLine(player.Name);
-                    if (player.Age != null) continue;
+                    //if (player.Age != null) continue;
                     var playerInfo = new PlayerInfo(player.Name, player.ID);
                     player.Age = playerInfo.Age;
                     player.Team = playerInfo.Team;
@@ -85,7 +86,7 @@ namespace espn
             {
                 if (id == -1)
                     id = PlayerInfo.GetPlayerId(name);
-                if (id == -1 )
+                if (id == -1)
                     id = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Can't Found Player, Please Insert Id", "Add New Player", "Default", -1, -1));
 
                 using (var db = new EspnEntities())
@@ -135,11 +136,13 @@ namespace espn
 
             await Task.Run(() =>
             {
-                var playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, 2018));
+                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, 2018));
                 foreach (PlayerInfo playerInfo in playerInfos)
                 {
-                    if (playerInfo.Games.Count == 0) continue;
-                    UpdatePlayer(playerInfo);
+                    if (playerInfo?.Games?.Count != 0)
+                    {
+                        UpdatePlayer(playerInfo);
+                    }
                 }
             }).ConfigureAwait(false);
             Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");
@@ -160,11 +163,15 @@ namespace espn
                     Player player = db.Players.FirstOrDefault(p => p.ID == playerInfo.Id);
                     if (player == null) return;
 
-                    Game lastGame = db.Games.Where(g => g.PlayerId == player.ID).OrderByDescending(g => g.GameDate).First();
-                    lastGame = new Game(playerInfo.Games.First(g => g.GameDate == lastGame.GameDate), lastGame.Pk, playerInfo.Id);
+                    Game lastGame = db.Games.Where(g => g.PlayerId == player.ID).OrderByDescending(g => g.GameDate).FirstOrDefault();
 
+                    if (lastGame != null)
+                    {
+                        playerInfo.Games.FirstOrDefault(g => g.GameDate == lastGame.GameDate)?.UpdateGame(lastGame);//Update Last Game In DB
+                        db.Games.AddOrUpdate(lastGame);
+                    }
 
-                    foreach (GameStats gameStats in playerInfo.Games.Where(g => g.GameDate > lastGame.GameDate))
+                    foreach (GameStats gameStats in playerInfo.Games.Where(g => g.GameDate > lastGame.GameDate))//Update Rest Of The Games
                     {
                         var game = new Game(gameStats, GetNextGamePk(), player.ID);
                         db.Games.Add(game);

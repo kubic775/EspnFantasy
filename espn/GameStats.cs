@@ -12,6 +12,7 @@ namespace espn
         public double Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
         public double FtPer, FgPer, TpPer;
         public double Score;
+        public string Opp;
         public int Gp;
 
         public GameStats()
@@ -41,6 +42,31 @@ namespace espn
             TpPer = game.TpPer.Value;
             //Score = game.Score.Value;
             Gp = game.Gp.Value;
+            Opp = game.Opp;
+        }
+
+        public Game UpdateGame(Game game)
+        {
+            game.GameDate = GameDate;
+            game.Pts = Pts;
+            game.Reb = Reb;
+            game.Ast = Ast;
+            game.Tpm = Tpm;
+            game.Tpa = Tpa;
+            game.Fga = Fga;
+            game.Fgm = Fgm;
+            game.Ftm = Ftm;
+            game.Fta = Fta;
+            game.Stl = Stl;
+            game.Blk = Blk;
+            game.To = To;
+            game.Min = Min;
+            game.Pf = Pf;
+            game.FtPer = FtPer;
+            game.FgPer = FtPer;
+            game.TpPer = TpPer;
+            game.Opp = Opp;
+            return game;
         }
 
         public GameStats(string gameStr, int year)
@@ -51,6 +77,8 @@ namespace espn
             var month = Int32.Parse(temp[0]);
             var day = Int32.Parse(temp[1]);
             GameDate = new DateTime(month < 10 ? year : year - 1, month, day);
+
+            Opp = stats[2].Substring(stats[2].Length - 17, 3);
 
             Min = Int32.Parse(stats[4].Substring(stats[4].IndexOf(">") + 1));
 

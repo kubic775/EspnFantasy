@@ -11,12 +11,18 @@ namespace espn
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Player
     {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Team { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string Misc { get; set; }
+
         public Player()
         {
-            
+
         }
 
         public Player(PlayerInfo playerInfo)
@@ -27,11 +33,5 @@ namespace espn
             Age = playerInfo.Age;
             Misc = playerInfo.Misc;
         }
-
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Team { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string Misc { get; set; }
     }
 }

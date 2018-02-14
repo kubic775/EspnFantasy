@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Games">
       <EntityTypeMapping TypeName="EspnModel.Game">
         <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Opp" ColumnName="Opp" />
           <ScalarProperty Name="Pk" ColumnName="Pk" />
           <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
           <ScalarProperty Name="GameDate" ColumnName="GameDate" />

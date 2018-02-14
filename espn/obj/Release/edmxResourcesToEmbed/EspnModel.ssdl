@@ -26,6 +26,7 @@
     <Property Name="FgPer" Type="real" />
     <Property Name="TpPer" Type="real" />
     <Property Name="Score" Type="real" />
+    <Property Name="Opp" Type="varchar" MaxLength="32" />
   </EntityType>
   <EntityType Name="Players">
     <Key>

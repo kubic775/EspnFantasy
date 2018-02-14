@@ -12,19 +12,19 @@ namespace espn
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class EspnEntities : DbContext
     {
         public EspnEntities()
             : base("name=EspnEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Player> Players { get; set; }
     }
