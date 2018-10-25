@@ -259,7 +259,6 @@ namespace espn
             stats_dataGridView.Rows[0].Cells["Score"].Value = game.Score.ToString("0.0");
         }
 
-
         private void stats_dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var name = stats_dataGridView.Columns[e.ColumnIndex].Name;
@@ -318,6 +317,33 @@ namespace espn
         private void draftPicksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new DraftPicksForm().ShowDialog();
+        }
+
+        private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string name = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name (For Example: Chris Paul)", "Add New Player", "Default", -1, -1);
+            if (!string.Equals(name, ""))
+            {
+                DbManager.AddNewPlayer(name);
+                //PlayersList.AddNewPlayer(name);
+                InitGui();
+            }
+        }
+
+        private void updatePlayersFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newNames = File.ReadAllLines(@"C:\Users\user\Dropbox\NBA fantasy\espn C#\players.txt");
+            using (var db = new EspnEntities())
+            {
+                var playersName = db.Players.Select(p=>p.Name);
+                newNames = newNames.Where(n => !playersName.Contains(n)).ToArray();
+            }
+
+            foreach (string name in newNames)
+            {
+                DbManager.AddNewPlayer(name);
+            }
+            InitGui();
         }
         #endregion
 
@@ -684,7 +710,6 @@ namespace espn
             }
         }
 
-
         private void UpdateTradeLabel(Label label, double val, string extension = "")
         {
             label.Text = val.ToString("0.0") + " " + extension;
@@ -712,7 +737,6 @@ namespace espn
             Clipboard.SetText(text);
         }
 
-
         private void copyDiff_button_Click(object sender, EventArgs e)
         {
             string text = "Last " + tradeNumOfGames_comboBox.GetItemText(tradeNumOfGames_comboBox.SelectedItem) + " " + tradeMode_comboBox.GetItemText(tradeMode_comboBox.SelectedItem) + Environment.NewLine;
@@ -724,7 +748,6 @@ namespace espn
                     ", FtPer: " + ftPerTrade_label.Text + ", To : " + toTrade_label.Text;
             Clipboard.SetText(text);
         }
-
 
         private void copyTradeChart_Click(object sender, EventArgs e)
         {
@@ -771,12 +794,10 @@ namespace espn
             UpdateTradeCharts("To");
         }
 
-
         private void ptsChartTrade_label_Click(object sender, EventArgs e)
         {
             UpdateTradeCharts("Pts");
         }
-
 
         private void rebChartTrade_label_Click(object sender, EventArgs e)
         {
@@ -789,7 +810,6 @@ namespace espn
             if (playersForm.ShowDialog() == DialogResult.OK)
                 playersReceived_textBox.Text = playersForm.PlayersStr;
         }
-
 
         private void playersSent_textBox_Click(object sender, EventArgs e)
         {
@@ -830,7 +850,6 @@ namespace espn
             PrintChartWithString(yValRecevied, xVal, "Receivied", trade_chart, 1);
             trade_chart.Titles[0].Text = colName;
         }
-
 
         private void screenshot_button_Click(object sender, EventArgs e)
         {
@@ -876,19 +895,6 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string name = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name (For Example: Chris Paul)", "Add New Player", "Default", -1, -1);
-            if (!string.Equals(name, ""))
-            {
-                DbManager.AddNewPlayer(name);
-                //PlayersList.AddNewPlayer(name);
-                InitGui();
-            }
-        }
-
-
 
         private void savePlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
         {
@@ -1063,6 +1069,8 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
 
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {

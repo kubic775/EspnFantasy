@@ -69,21 +69,11 @@ namespace espn
             }
         }
 
-        public static void AddNewPlayersFromFile(string filePath)
-        {
-            string[] names = File.ReadAllLines(filePath).Select(p => p.Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0]).ToArray();
-            int[] ids = File.ReadAllLines(filePath).Select(p => int.Parse(p.Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1])).ToArray();
-
-            for (int i = 0; i < ids.Length; i++)
-            {
-                AddNewPlayer(names[i], ids[i]);
-            }
-        }
-
         public static void AddNewPlayer(string name, int id = -1)
         {
             try
             {
+                Console.WriteLine("Add New Player - " + name);
                 if (id == -1)
                     id = PlayerInfo.GetPlayerId(name);
                 if (id == -1)
@@ -91,9 +81,13 @@ namespace espn
 
                 using (var db = new EspnEntities())
                 {
-                    if (db.Players.Any(p => p.Name.Equals(name) || p.ID == id))
+                    var names = db.Players.Select(p => p.Name);
+                    var ids = db.Players.Select(p => p.ID);
+
+                    if (names.Contains(name) || ids.Contains(id))
                     {
-                        MessageBox.Show("Player Already Exist");
+
+                        Console.WriteLine("Player Already Exist");
                         return;
                     }
 
@@ -107,7 +101,7 @@ namespace espn
                     db.Games.AddRange(games);
                     db.SaveChanges();
 
-                    MessageBox.Show("Done");
+                    Console.WriteLine("Done");
                 }
             }
             catch (Exception e)
@@ -166,6 +160,12 @@ namespace espn
                 {
                     Player player = db.Players.FirstOrDefault(p => p.ID == playerInfo.Id);
                     if (player == null) return;
+
+
+                    player.Age = playerInfo.Age;
+                    player.Misc = playerInfo.Misc;
+                    player.Team = playerInfo.Team;
+
 
                     Game lastGame = db.Games.Where(g => g.PlayerId == player.ID).OrderByDescending(g => g.GameDate).FirstOrDefault();
 
