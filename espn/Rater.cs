@@ -32,9 +32,9 @@ namespace espn
 
             Dictionary<int, List<Game>> playersGames = Games.Where(g => g.GameDate >= startTime).GroupBy(g => g.PlayerId).ToDictionary(k => k.Key.Value, v => v.ToList());
 
-            foreach (var player in playersGames)
+            foreach (KeyValuePair<int, List<Game>> player in playersGames)
             {
-                var games = player.Value.Select(g => new GameStats(g));
+                IEnumerable<GameStats> games = player.Value.Select(g => new GameStats(g));
                 var scores = CalcScores(games, mode, timePeriod, false);
                 var avgGame = GameStats.GetAvgStats(games.ToArray());
                 avgGame.Score = scores["Score"];

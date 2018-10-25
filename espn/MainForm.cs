@@ -942,9 +942,24 @@ namespace espn
             UpdateRaterTable(playerRater);
         }
 
+        private void raterLast1_button_Click(object sender, EventArgs e)
+        {
+            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 1).ToList();
+            UpdateRaterTable(playerRater);
+        }
+
         private void UpdateRaterTable(List<PlayerInfo> playerRater)
         {
             rater_dataGridView.Rows.Clear();
+
+            if (watchList_checkBox.Checked)
+            {
+                int[] ids = DbManager.GetWatchList();
+                if (!ids.Any()) return;
+
+                playerRater = playerRater.Where(p => ids.Contains(p.Id)).ToList();
+            }
+
             for (int i = 0; i < playerRater.Count; i++)
             {
                 object[] o;
@@ -1010,6 +1025,22 @@ namespace espn
             ShowGameslogAsync(name);
             tabControl.SelectedIndex = 1;
         }
+
+        private void addRemoveWatchListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rater_dataGridView.SelectedCells.Count == 0) return;
+            var name = rater_dataGridView.SelectedCells[0].Value.ToString();
+            using (var db = new EspnEntities())
+            {
+                var player = db.Players.First(p => p.Name.Equals(name));
+                if (player.Watch == null || player.Watch == false)
+                    player.Watch = true;
+                else
+                    player.Watch = false;
+
+                db.SaveChanges();
+            }
+        }
         #endregion
 
         #region GameLog
@@ -1032,8 +1063,6 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
-
-       
 
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {

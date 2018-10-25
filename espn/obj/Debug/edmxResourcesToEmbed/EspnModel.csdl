@@ -37,6 +37,7 @@
     <Property Name="Team" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Age" Type="Int32" />
     <Property Name="Misc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Watch" Type="Boolean" />
   </EntityType>
   <EntityContainer Name="EspnEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Games" EntityType="Self.Game" />

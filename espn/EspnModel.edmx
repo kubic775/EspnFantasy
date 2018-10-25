@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EspnModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=Z:\Kobi\Programming\TestProject\C#\PracticeOnSqlLite\PracticeOnSqlLite\bin\Debug\espn.sqlite" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EspnModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=&quot;C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\espn.sqlite&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Games">
           <Key>
             <PropertyRef Name="Pk" />
@@ -42,6 +42,7 @@
           <Property Name="Team" Type="varchar" MaxLength="32" />
           <Property Name="Age" Type="int" />
           <Property Name="Misc" Type="varchar" MaxLength="32" />
+          <Property Name="Watch" Type="bit" />
         </EntityType>
         <EntityContainer Name="EspnModelStoreContainer">
           <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" />
@@ -88,6 +89,7 @@
           <Property Name="Team" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
           <Property Name="Misc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Watch" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="EspnEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Games" EntityType="Self.Game" />
@@ -131,6 +133,7 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="EspnModel.Player">
               <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="Watch" ColumnName="Watch" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Team" ColumnName="Team" />

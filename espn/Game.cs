@@ -11,7 +11,7 @@ namespace espn
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Game
     {
         public int Pk { get; set; }
@@ -38,6 +38,11 @@ namespace espn
         public Nullable<double> Score { get; set; }
         public string Opp { get; set; }
 
+        public Game()
+        {
+
+        }
+
         public Game(GameStats gameStats, int pk, int playerId)
         {
             Pk = pk;
@@ -63,11 +68,6 @@ namespace espn
             TpPer = gameStats.TpPer;
             Score = gameStats.Score;
             Opp = gameStats.Opp;
-        }
-
-        public Game()
-        {
-
         }
     }
 }

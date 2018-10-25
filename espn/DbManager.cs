@@ -190,5 +190,17 @@ namespace espn
                 Console.WriteLine(playerInfo.PlayerName + " - " + e.Message);
             }
         }
+
+        public static int[] GetWatchList()
+        {
+            using (var db = new EspnEntities())
+            {
+                var playres = db.Players.Where(p => p.Watch.HasValue && p.Watch.Value);
+                if (playres.Any())
+                    return playres.Select(p => p.ID).ToArray();
+                else
+                    return new int[0];
+            }
+        }
     }
 }

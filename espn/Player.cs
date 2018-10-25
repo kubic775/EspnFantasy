@@ -19,6 +19,7 @@ namespace espn
         public string Team { get; set; }
         public Nullable<int> Age { get; set; }
         public string Misc { get; set; }
+        public Nullable<bool> Watch { get; set; }
 
         public Player()
         {
@@ -32,6 +33,7 @@ namespace espn
             Team = playerInfo.Team;
             Age = playerInfo.Age;
             Misc = playerInfo.Misc;
+            Watch = false;
         }
     }
 }

@@ -33,6 +33,7 @@
     <EntitySetMapping Name="Players">
       <EntityTypeMapping TypeName="EspnModel.Player">
         <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="Watch" ColumnName="Watch" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Team" ColumnName="Team" />
