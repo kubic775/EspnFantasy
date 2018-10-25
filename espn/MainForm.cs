@@ -46,6 +46,7 @@ namespace espn
 
             stats_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             rater_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            rater_dataGridView.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gameLog_dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
@@ -72,8 +73,6 @@ namespace espn
             update_timer_Tick(null, null);
             this.Enabled = true;
         }
-
-
 
         private async void update_timer_Tick(object sender, EventArgs e)
         {
@@ -136,7 +135,7 @@ namespace espn
                     _player = await PlayersList.CreatePlayerAsync(name);
                     player_pictureBox.Load(_player.ImagePath);
                     playerNameLabel.Text = _player.PlayerName;
-                    playerInfo_label.Text = _player.Misc + " | " + _player.Team;
+                    playerInfo_label.Text = $"{_player.Misc} | {_player.Team} | Age: {_player.Age}";
                     button_max_Click(null, null);
                 }
             }
@@ -244,7 +243,7 @@ namespace espn
 
             stats_dataGridView.Rows[0].Cells["FgmFga"].Value = game.Fgm.ToString("0.0") + "/" + game.Fga.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["FgPer"].Value = game.FgPer.ToString("0.0") + "%";
-            stats_dataGridView.Rows[0].Cells["TpmTpa"].Value = game.Tpm.ToString("0.0") + "/" + game.Tpa.ToString("0.0");
+            stats_dataGridView.Rows[0].Cells["Tpm"].Value = game.Tpm.ToString("0.0") + "/" + game.Tpa.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["TpPer"].Value = game.TpPer.ToString("0.0") + "%";
             stats_dataGridView.Rows[0].Cells["FtmFta"].Value = game.Ftm.ToString("0.0") + "/" + game.Fta.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["FtPer"].Value = game.FtPer.ToString("0.0") + "%";
@@ -257,7 +256,7 @@ namespace espn
             stats_dataGridView.Rows[0].Cells["To"].Value = game.To.ToString("0.0");
             stats_dataGridView.Rows[0].Cells["Pts"].Value = game.Pts.ToString("0.0");
 
-            stats_dataGridView.Rows[0].Cells["Value"].Value = game.Score.ToString("0.0");
+            stats_dataGridView.Rows[0].Cells["Score"].Value = game.Score.ToString("0.0");
         }
 
 
@@ -284,7 +283,7 @@ namespace espn
                     "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " +
                     "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
                     "Ast: " + stats_dataGridView.Rows[0].Cells["Ast"].Value + ", " +
-                    "Tpm: " + stats_dataGridView.Rows[0].Cells["TpmTpa"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
+                    "Tpm: " + stats_dataGridView.Rows[0].Cells["Tpm"].Value.ToString().Split("-".ToCharArray())[0] + ", " +
                     "Stl: " + stats_dataGridView.Rows[0].Cells["Stl"].Value + ", " +
                     "Blk: " + stats_dataGridView.Rows[0].Cells["Blk"].Value + ", " +
                     "Fg: " + stats_dataGridView.Rows[0].Cells["FgmFga"].Value + "(" + stats_dataGridView.Rows[0].Cells["FgPer"].Value + ") , " +
@@ -309,6 +308,17 @@ namespace espn
             filterByPlayer_autoCompleteTextBox.Enabled = playerFilter_checkBox.Checked;
         }
 
+        private void showGameLog_button_Click(object sender, EventArgs e)
+        {
+            gameLog_autoCompleteTextBox.Text = playerName_textBox.Text;
+            ShowGameslogAsync(gameLog_autoCompleteTextBox.Text);
+            tabControl.SelectedIndex = 1;
+        }
+
+        private void draftPicksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DraftPicksForm().ShowDialog();
+        }
         #endregion
 
         #region ComparePlayers
@@ -347,7 +357,7 @@ namespace espn
                     if (_player1 == null || _player1.Id != PlayersList.Players[player1_TextBox.Text])
                         _player1 = await PlayersList.CreatePlayerAsync(player1_TextBox.Text);
 
-                    GameStats[] games = _player1.FilterGames("2018", compareMode, numOfGames);
+                    GameStats[] games = _player1.FilterGames((Utils.GetCurrentYear() + 1).ToString(), compareMode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(games);
                     avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), compareMode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
                     UpdateCompareInfo1(avgGame);
@@ -358,7 +368,7 @@ namespace espn
                         return;
                     if (_player2 == null || _player2.Id != PlayersList.Players[player2_TextBox.Text])
                         _player2 = await PlayersList.CreatePlayerAsync(player2_TextBox.Text);
-                    GameStats[] games = _player2.FilterGames("2018", compareMode, numOfGames);
+                    GameStats[] games = _player2.FilterGames((Utils.GetCurrentYear() + 1).ToString(), compareMode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(games);
                     avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), compareMode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
                     UpdateCompareInfo2(avgGame);
@@ -470,7 +480,7 @@ namespace espn
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
             if (_player1 != null)
             {
-                GameStats[] games = _player1.FilterGames("2018",
+                GameStats[] games = _player1.FilterGames((Utils.GetCurrentYear() + 1).ToString(),
                 compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                 compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
@@ -484,7 +494,7 @@ namespace espn
 
             if (_player2 != null)
             {
-                GameStats[] games = _player2.FilterGames("2018",
+                GameStats[] games = _player2.FilterGames((Utils.GetCurrentYear() + 1).ToString(),
                compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem),
                compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem));
 
@@ -504,7 +514,7 @@ namespace espn
             receivePlayer_TextBox.Text = player2_TextBox.Text;
             sendPlayer_TextBox.PlayerSelectedEvent.Invoke(sendPlayer_TextBox.Text);
             receivePlayer_TextBox.PlayerSelectedEvent.Invoke(receivePlayer_TextBox.Text);
-            tabControl.SelectedIndex = 2;
+            tabControl.SelectedIndex = 3;
         }
 
 
@@ -584,7 +594,7 @@ namespace espn
                 List<GameStats> avgStatsSend = new List<GameStats>();
                 foreach (var player in sentPlayers)
                 {
-                    var relevantGames = player.FilterGames("2018", mode, numOfGames);
+                    var relevantGames = player.FilterGames((Utils.GetCurrentYear() + 1).ToString(), mode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(relevantGames);
                     avgGame.Score = PlayerRater.CalcScore(relevantGames, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
                     avgStatsSend.Add(avgGame);
@@ -593,7 +603,7 @@ namespace espn
                 List<GameStats> avgStatsrecevied = new List<GameStats>();
                 foreach (var player in receiviedPlayers)
                 {
-                    var relevantGames = player.FilterGames("2018", mode, numOfGames);
+                    var relevantGames = player.FilterGames((Utils.GetCurrentYear() + 1).ToString(), mode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(relevantGames);
                     avgGame.Score = PlayerRater.CalcScore(relevantGames, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
                     avgStatsrecevied.Add(avgGame);
@@ -805,14 +815,14 @@ namespace espn
             var yValSend = new double[4];
             var yValRecevied = new double[4];
 
-            yValSend[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("2018", "Games", "Max"))).ToArray())).ToString());
-            yValRecevied[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames("2018", "Games", "Max"))).ToArray())).ToString());
-            yValSend[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 30))).ToArray())).ToString());
-            yValRecevied[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 30))).ToArray())).ToString());
-            yValSend[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 15))).ToArray())).ToString());
-            yValRecevied[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 15))).ToArray())).ToString());
-            yValSend[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 7))).ToArray())).ToString());
-            yValRecevied[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(2018, "Games", 7))).ToArray())).ToString());
+            yValSend[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames((Utils.GetCurrentYear() + 1).ToString(), "Games", "Max"))).ToArray())).ToString());
+            yValRecevied[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames((Utils.GetCurrentYear() + 1).ToString(), "Games", "Max"))).ToArray())).ToString());
+            yValSend[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 30))).ToArray())).ToString());
+            yValRecevied[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 30))).ToArray())).ToString());
+            yValSend[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 15))).ToArray())).ToString());
+            yValRecevied[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 15))).ToArray())).ToString());
+            yValSend[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 7))).ToArray())).ToString());
+            yValRecevied[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 7))).ToArray())).ToString());
 
             var xVal = new[] { "Season", "30", "15", "7" };
 
@@ -932,14 +942,36 @@ namespace espn
             UpdateRaterTable(playerRater);
         }
 
-
-
         private void UpdateRaterTable(List<PlayerInfo> playerRater)
         {
             rater_dataGridView.Rows.Clear();
             for (int i = 0; i < playerRater.Count; i++)
             {
-                object[] o = { playerRater[i].PlayerName, Math.Round(playerRater[i].Score, 2) };
+                object[] o;
+                var avgGame = playerRater[i].GetAvgGame();
+
+                if (raterTableMode.Checked) //Scores
+                    o = new object[]
+                    {
+                        playerRater[i].PlayerName, Math.Round(avgGame.Min, 1),
+                        Math.Round(playerRater[i].Scores["Fga"], 2), Math.Round(playerRater[i].Scores["FgPer"], 2),
+                        Math.Round(playerRater[i].Scores["Fta"], 2), Math.Round(playerRater[i].Scores["FtPer"], 2),
+                        Math.Round(playerRater[i].Scores["Tpm"], 2), Math.Round(playerRater[i].Scores["Reb"], 2),
+                        Math.Round(playerRater[i].Scores["Ast"], 2), Math.Round(playerRater[i].Scores["Stl"], 2),
+                        Math.Round(playerRater[i].Scores["Blk"], 2), Math.Round(playerRater[i].Scores["To"], 2),
+                        Math.Round(playerRater[i].Scores["Pts"], 2), Math.Round(playerRater[i].Scores["Score"], 2)
+                    };
+                else
+                    o = new object[]
+                    {
+                        playerRater[i].PlayerName, Math.Round(avgGame.Min, 1),
+                        avgGame.Fgm.ToString("0.0") + "/" + avgGame.Fga.ToString("0.0"), Math.Round(avgGame.FgPer, 1),
+                        avgGame.Ftm.ToString("0.0") + "/" + avgGame.Fta.ToString("0.0"), Math.Round(avgGame.FtPer, 1),
+                        Math.Round(avgGame.Tpm, 1), Math.Round(avgGame.Reb, 1), Math.Round(avgGame.Ast, 1),
+                        Math.Round(avgGame.Stl, 1), Math.Round(avgGame.Blk, 1), Math.Round(avgGame.To, 1),
+                        Math.Round(avgGame.Pts, 1), Math.Round(playerRater[i].Scores["Score"], 2)
+                    };
+
                 rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
             }
@@ -960,9 +992,27 @@ namespace espn
             }
 
         }
+
+        private void playerInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rater_dataGridView.SelectedCells.Count == 0) return;
+            var name = rater_dataGridView.SelectedCells[0].Value.ToString();
+            playerName_textBox.Text = name;
+            PlayerInfoSelectPlayerEvent(name);
+            tabControl.SelectedIndex = 0;
+        }
+
+        private void gameLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rater_dataGridView.SelectedCells.Count == 0) return;
+            var name = rater_dataGridView.SelectedCells[0].Value.ToString();
+            gameLog_autoCompleteTextBox.Text = name;
+            ShowGameslogAsync(name);
+            tabControl.SelectedIndex = 1;
+        }
         #endregion
 
-
+        #region GameLog
         private async void ShowGameslogAsync(string playerName)
         {
             try
@@ -970,8 +1020,11 @@ namespace espn
                 if (PlayersList.Players.ContainsKey(playerName))
                 {
                     var player = await PlayersList.CreatePlayerAsync(playerName);
-                    var games = player.Games;
-                    UpdateGamesLogTable(games.Where(g => g.GameDate > new DateTime(2017, 10, 01)).OrderByDescending(g => g.GameDate));
+                    var games = player.Games.Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 01)).OrderByDescending(g => g.GameDate);
+                    PlayerRater.CreateRater(CalcScoreType.Games);
+                    playerNameGameLog_label.Text = player.PlayerName;
+                    startEndTimesGameLog_label.Text = games.Min(g => g.GameDate).ToString("d") + "-" + games.Max(g => g.GameDate).ToString("d");
+                    UpdateGamesLogTable(games);
                 }
             }
             catch (Exception ex)
@@ -979,6 +1032,8 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
+
+       
 
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {
@@ -1001,14 +1056,24 @@ namespace espn
                 row.Cells["To_GameLog"].Value = game.To;
                 row.Cells["Pf_GameLog"].Value = game.To;
 
-                row.Cells["FgmFga_GameLog"].Value = game.Fgm.ToString("0.0") + "/" + game.Fga.ToString("0.0");
-                row.Cells["FgPer_GameLog"].Value = game.FgPer;
-                row.Cells["FtmFta_GameLog"].Value = game.Ftm.ToString("0.0") + "/" + game.Fta.ToString("0.0");
-                row.Cells["FtPer_GameLog"].Value = game.FtPer;
-                row.Cells["TpmTpa_GameLog"].Value = game.Tpm.ToString("0.0") + "/" + game.Tpa.ToString("0.0");
-                row.Cells["TpPer_GameLog"].Value = game.TpPer;
+                row.Cells["FgmFga_GameLog"].Value = game.Fgm + "/" + game.Fga;
+                row.Cells["FgPer_GameLog"].Value = Math.Round(game.FgPer, 1);
+                row.Cells["FtmFta_GameLog"].Value = game.Ftm + "/" + game.Fta;
+                row.Cells["FtPer_GameLog"].Value = Math.Round(game.FtPer, 1);
+                row.Cells["TpmTpa_GameLog"].Value = game.Tpm + "/" + game.Tpa;
+                row.Cells["TpPer_GameLog"].Value = Math.Round(game.TpPer, 1);
+                row.Cells["Score_GameLog"].Value = Math.Round(PlayerRater.CalcScore(new[] { game }, CalcScoreType.Games, 0, false), 1);
             }
         }
 
+        private void copyGames_button_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(gameLog_panel.Width, gameLog_panel.Height))
+            {
+                gameLog_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                Clipboard.SetImage(bmp);
+            }
+        }
+        #endregion
     }
 }

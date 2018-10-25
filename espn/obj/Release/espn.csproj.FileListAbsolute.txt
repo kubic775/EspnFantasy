@@ -29,4 +29,6 @@ C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.GenerateR
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CoreCompileInputs.cache
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.exe
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.pdb
-C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojResolveAssemblyReference.cache
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.DraftPicksForm.resources
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CopyComplete
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojAssemblyReference.cache

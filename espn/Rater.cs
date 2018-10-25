@@ -35,15 +35,15 @@ namespace espn
             foreach (var player in playersGames)
             {
                 var games = player.Value.Select(g => new GameStats(g));
-                var score = CalcScore(games, mode, timePeriod, false);
+                var scores = CalcScores(games, mode, timePeriod, false);
                 var avgGame = GameStats.GetAvgStats(games.ToArray());
-                avgGame.Score = score;
+                avgGame.Score = scores["Score"];
                 var playerT = new PlayerInfo(Players.First(p => p.ID == player.Key),
                     new[] { new Game(avgGame, -1, player.Key) })
-                { Score = score };
+                { Scores = scores };
                 rater.Add(playerT);
             }
-            return rater.OrderByDescending(g => g.Score);
+            return rater.OrderByDescending(g => g.Scores["Score"]);
         }
 
         /// <summary>
@@ -53,6 +53,12 @@ namespace espn
         /// <param name="timePeriod">Calc Score For The Last 'timePeriod' Days, Else No Relevant </param>
         /// <param name="updateFactors">True For Update Factors Before Calc Player Score </param>
         public double CalcScore(IEnumerable<GameStats> games, CalcScoreType mode, int timePeriod, bool updateFactors = true)//Games Of Single Player
+        {
+            Dictionary<string, double> scores = CalcScores(games, mode, timePeriod, updateFactors);
+            return scores?["Score"] ?? -1;
+        }
+
+        public Dictionary<string, double> CalcScores(IEnumerable<GameStats> games, CalcScoreType mode, int timePeriod, bool updateFactors = true)
         {
             try
             {
@@ -88,19 +94,20 @@ namespace espn
                 scores["Fg"] = Math.Sign(scores["FgPer"]) * Math.Abs(scores["Fga"] * scores["FgPer"]);
                 scores["Ft"] = Math.Sign(scores["FtPer"]) * Math.Abs(scores["Fta"] * scores["FtPer"]);
 
-                scores.Remove("Fta");
-                scores.Remove("FtPer");
-                scores.Remove("Fga");
-                scores.Remove("FgPer");
+                //scores.Remove("Fta");
+                //scores.Remove("FtPer");
+                //scores.Remove("Fga");
+                //scores.Remove("FgPer");
 
-                var totalScore = scores.Values.Sum();
+                scores["Score"] = scores["Fg"] + scores["Ft"] + scores["Tpm"] + scores["Reb"] + scores["Ast"] +
+                                  scores["Stl"] + scores["Blk"] + scores["To"] + scores["Pts"];
 
-                return totalScore;
+                return scores;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return -1;
+                return null;
             }
         }
 
@@ -118,11 +125,13 @@ namespace espn
                 var prop = typeof(Game).GetProperties().FirstOrDefault(p => p.Name.Equals(fieldInfo.Name));
                 if (prop == null) continue;
                 if (prop.Name.Equals("FtPer"))
-                    arr = playersGames.Select(p => p.Sum(g => g.Ftm.Value) / p.Sum(g => g.Fta.Value)).Select(a => double.IsNaN(a) ? 0 : a).ToArray();
+                    arr = playersGames.Select(p => p.Sum(g => g.Ftm.Value) / p.Sum(g => g.Fta.Value)).ToArray();
                 else if (prop.Name.Equals("FgPer"))
-                    arr = playersGames.Select(p => p.Sum(g => g.Fgm.Value) / p.Sum(g => g.Fga.Value)).Select(a => double.IsNaN(a) ? 0 : a).ToArray();
+                    arr = playersGames.Select(p => p.Sum(g => g.Fgm.Value) / p.Sum(g => g.Fga.Value)).ToArray();
                 else
                     arr = playersGames.Select(p => p.Sum(g => (double)prop.GetValue(g)) / (mode == CalcScoreType.Days ? 1 : p.Count(g => g.Min > 0))).ToArray();
+
+                arr = arr.Where(a => !double.IsNaN(a)).ToArray();
 
                 var val = new Dictionary<string, double> { { "Average", arr.Average() }, { "Median", CalcMedian(arr) }, { "Std", CalcStdDev(arr) } };
                 fieldInfo.SetValue(this, val);

@@ -93,8 +93,8 @@ namespace espn
                 {
                     if (db.Players.Any(p => p.Name.Equals(name) || p.ID == id))
                     {
-                        id = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Can't Found Player, Please Insert Id", "Add New Player", "-1"));
-                        if (id == -1) return;
+                        MessageBox.Show("Player Already Exist");
+                        return;
                     }
 
                     int gamePk = db.Games.Max(g => g.Pk);
@@ -107,7 +107,7 @@ namespace espn
                     db.Games.AddRange(games);
                     db.SaveChanges();
 
-                    Console.WriteLine(player.Name);
+                    MessageBox.Show("Done");
                 }
             }
             catch (Exception e)
@@ -120,12 +120,16 @@ namespace espn
         {
             Player[] players;
             var startTime = DateTime.Now;
+            int currentYear = Utils.GetCurrentYear();
 
             using (var db = new EspnEntities())
             {
                 players = db.Players.ToArray();
-                List<Game> games = new List<Game>(db.Games.Where(g => g.GameDate > new DateTime(2017, 10, 1)));
-                MainForm.PlayerRater = new Rater(players, games);
+                var currentGames = db.Games.AsEnumerable().Where(g => g.GameDate > new DateTime(currentYear, 10, 1));
+                if (currentGames.Any())
+                {
+                    MainForm.PlayerRater = new Rater(players, new List<Game>(currentGames));
+                }
             }
 
             if (!Utils.Ping(@"http://www.espn.com"))
@@ -136,7 +140,7 @@ namespace espn
 
             await Task.Run(() =>
             {
-                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, 2018));
+                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, currentYear + 1));
                 foreach (PlayerInfo playerInfo in playerInfos)
                 {
                     if (playerInfo?.Games?.Count != 0)
@@ -149,7 +153,7 @@ namespace espn
 
             using (var db = new EspnEntities())
             {
-                List<Game> games = new List<Game>(db.Games.Where(g => g.GameDate > new DateTime(2017, 10, 1)));
+                List<Game> games = new List<Game>(db.Games.AsEnumerable().Where(g => g.GameDate > new DateTime(currentYear, 10, 1)));
                 MainForm.PlayerRater.Games = new List<Game>(games);
             }
         }

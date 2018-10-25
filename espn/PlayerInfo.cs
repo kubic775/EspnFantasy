@@ -13,7 +13,7 @@ namespace espn
         public string PlayerName, ImagePath, Team, Misc;
         public List<GameStats> Games;
         public int Id, Age;
-        public double Score;
+        public Dictionary<string, double> Scores;
 
         public PlayerInfo(string playerName, int id, int startYear = 2014)
         {
@@ -23,7 +23,7 @@ namespace espn
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = id;
-                for (int year = startYear; year <= 2018; year++)
+                for (int year = startYear; year <= 2019; year++)
                 {
                     string playerStr = DownloadPlayerStr(Id, year);
                     CreatePlayer(playerStr, Id, year);
@@ -151,7 +151,6 @@ namespace espn
             }
         }
 
-
         public GameStats[] FilterGamesByPlayerInjury(GameStats[] originalGames, string playerInjuredName)
         {
             List<Game> injuredGames;
@@ -163,6 +162,11 @@ namespace espn
 
             List<DateTime> injuredGamesDates = injuredGames.Select(g => g.GameDate.Value).ToList();
             return originalGames.Where(g => injuredGamesDates.Contains(g.GameDate)).ToArray();
+        }
+
+        public GameStats GetAvgGame()
+        {
+            return GameStats.GetAvgStats(Games.ToArray());
         }
     }
 }

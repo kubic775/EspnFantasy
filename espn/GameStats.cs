@@ -37,9 +37,9 @@ namespace espn
             To = game.To.Value;
             Min = game.Min.Value;
             Pf = game.Pf.Value;
-            FtPer = game.FtPer.Value;
-            FgPer = game.FgPer.Value;
-            TpPer = game.TpPer.Value;
+            FtPer = (Ftm / Fta) * 100;
+            FgPer = (Fgm / Fga) * 100;
+            TpPer = (Tpm / Tpa) * 100;
             //Score = game.Score.Value;
             Gp = game.Gp.Value;
             Opp = game.Opp;
@@ -167,46 +167,15 @@ namespace espn
 
         public static double[] GetYVals(string colName, GameStats[] games)
         {
-            double[] y = { };
+            FieldInfo field = typeof(GameStats).GetFields().FirstOrDefault(f => f.Name.Equals(colName));
+            if (field == null || field.FieldType != typeof(double)) return new Double[] { };
 
-            switch (colName)
+            double[] y = games.Select(g => (double)field.GetValue(g)).Select(v => Double.IsNaN(v) ? 0 : v).ToArray();
+
+            if (colName.Equals("Score"))
             {
-                case "Min":
-                    y = games.Select(g => g.Min).ToArray();
-                    break;
-                case "FgPer":
-                    y = games.Select(g => g.FgPer).ToArray();
-                    break;
-                case "TpPer":
-                    y = games.Select(g => g.TpPer).ToArray();
-                    break;
-                case "FtPer":
-                    y = games.Select(g => g.FtPer).ToArray();
-                    break;
-                case "TpmTpa":
-                    y = games.Select(g => g.Tpm).ToArray();
-                    break;
-                case "Reb":
-                    y = games.Select(g => g.Reb).ToArray();
-                    break;
-                case "Ast":
-                    y = games.Select(g => g.Ast).ToArray();
-                    break;
-                case "Blk":
-                    y = games.Select(g => g.Blk).ToArray();
-                    break;
-                case "Stl":
-                    y = games.Select(g => g.Stl).ToArray();
-                    break;
-                case "Pf":
-                    y = games.Select(g => g.Pf).ToArray();
-                    break;
-                case "To":
-                    y = games.Select(g => g.To).ToArray();
-                    break;
-                case "Pts":
-                    y = games.Select(g => g.Pts).ToArray();
-                    break;
+                MainForm.PlayerRater.CreateRater(CalcScoreType.Games);
+                y = games.Select(g => Math.Round(MainForm.PlayerRater.CalcScore(new[] { g }, CalcScoreType.Games, 0, false), 1)).ToArray();
             }
 
             return y;

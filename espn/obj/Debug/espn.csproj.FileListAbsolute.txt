@@ -35,7 +35,6 @@ C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.GenerateRes
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cache
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
-C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojResolveAssemblyReference.cache
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.dll
@@ -45,3 +44,6 @@ C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojAssemblyReference.cache
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.DraftPicksForm.resources
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CopyComplete

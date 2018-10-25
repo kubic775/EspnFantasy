@@ -19,7 +19,8 @@ namespace espn
             {
                 foreach (var player in db.Players)
                 {
-                    Players.Add(player.Name, player.ID);
+                    if (!Players.ContainsKey(player.Name))
+                        Players.Add(player.Name, player.ID);
                 }
             }
         }
