@@ -15,11 +15,12 @@ namespace espn
         public int Id, Age;
         public Dictionary<string, double> Scores;
 
-        public PlayerInfo(string playerName, int id, int startYear = 2014)
+        public PlayerInfo(string playerName, int id, int startYear = 2014, LogDelegate log = null)
         {
             try
             {
                 Console.WriteLine(playerName);
+                log?.Invoke("Download " + playerName);
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = id;

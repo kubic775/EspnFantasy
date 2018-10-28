@@ -44,31 +44,6 @@ namespace espn
             return pk;
         }
 
-        public static void CreateTables()
-        {
-            using (var db = new EspnEntities())
-            {
-                int gamePk = db.Games.Any() ? db.Games.Max(g => g.Pk) : 0;
-
-                foreach (Player player in db.Players)
-                {
-                    Console.WriteLine(player.Name);
-                    //if (player.Age != null) continue;
-                    var playerInfo = new PlayerInfo(player.Name, player.ID);
-                    player.Age = playerInfo.Age;
-                    player.Team = playerInfo.Team;
-                    player.Misc = playerInfo.Misc;
-
-                    foreach (GameStats gameStats in playerInfo.Games)
-                    {
-                        var game = new Game(gameStats, ++gamePk, player.ID);
-                        db.Games.Add(game);
-                    }
-                    db.SaveChanges();
-                }
-            }
-        }
-
         public static void AddNewPlayer(string name, int id = -1)
         {
             try
@@ -110,12 +85,13 @@ namespace espn
             }
         }
 
-        public static async Task UpdatePlayers()
+        public static async Task UpdatePlayers(LogDelegate log = null)
         {
             Player[] players;
             var startTime = DateTime.Now;
             int currentYear = Utils.GetCurrentYear();
 
+            log?.Invoke("Start Crate Rater...");
             using (var db = new EspnEntities())
             {
                 players = db.Players.ToArray();
@@ -134,9 +110,10 @@ namespace espn
 
             await Task.Run(() =>
             {
-                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, currentYear + 1));
+                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, currentYear + 1, log));
                 foreach (PlayerInfo playerInfo in playerInfos)
                 {
+                    log?.Invoke("Update - " + playerInfo.PlayerName);
                     if (playerInfo?.Games?.Count != 0)
                     {
                         UpdatePlayer(playerInfo);
@@ -200,6 +177,16 @@ namespace espn
                     return playres.Select(p => p.ID).ToArray();
                 else
                     return new int[0];
+            }
+        }
+
+        public static string[] GetTeamList()
+        {
+            using (var db = new EspnEntities())
+            {
+                IQueryable<string> teams = db.Players.Select(p => p.Team).Where(t => t != null && !t.Contains("null"))
+                    .Distinct().OrderBy(t => t);
+                return teams.ToArray();
             }
         }
     }

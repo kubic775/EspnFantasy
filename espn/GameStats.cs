@@ -181,13 +181,13 @@ namespace espn
             return y;
         }
 
-        public static double CalcScore(GameStats stat)
-        {
-            return stat.Pts * MainForm.Factors.Pts + stat.Reb * MainForm.Factors.Reb + stat.Ast * MainForm.Factors.Ast +
-                   stat.Stl * MainForm.Factors.Stl + stat.Blk * MainForm.Factors.Blk + stat.Tpm * MainForm.Factors.Tpm +
-                   stat.To * MainForm.Factors.To + stat.FgPer * MainForm.Factors.FgPer + stat.FtPer * MainForm.Factors.FtPer +
-                   MainForm.Factors.FtVol * (stat.Fta - stat.Ftm) + MainForm.Factors.FgVol * (stat.Fga - stat.Fgm);
-        }
+        //public static double CalcScore(GameStats stat)
+        //{
+        //    return stat.Pts * MainForm.Factors.Pts + stat.Reb * MainForm.Factors.Reb + stat.Ast * MainForm.Factors.Ast +
+        //           stat.Stl * MainForm.Factors.Stl + stat.Blk * MainForm.Factors.Blk + stat.Tpm * MainForm.Factors.Tpm +
+        //           stat.To * MainForm.Factors.To + stat.FgPer * MainForm.Factors.FgPer + stat.FtPer * MainForm.Factors.FtPer +
+        //           MainForm.Factors.FtVol * (stat.Fta - stat.Ftm) + MainForm.Factors.FgVol * (stat.Fga - stat.Fgm);
+        //}
 
         public static GameStats[] FilterOutliers(GameStats[] games)
         {

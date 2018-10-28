@@ -31,6 +31,7 @@ namespace espn
             UpdateFactors(mode, startTime);
 
             Dictionary<int, List<Game>> playersGames = Games.Where(g => g.GameDate >= startTime).GroupBy(g => g.PlayerId).ToDictionary(k => k.Key.Value, v => v.ToList());
+            if (!playersGames.Any()) return new List<PlayerInfo>();
 
             foreach (KeyValuePair<int, List<Game>> player in playersGames)
             {
@@ -118,6 +119,8 @@ namespace espn
             IEnumerable<IGrouping<int?, Game>> playersGames = mode == CalcScoreType.Days
                 ? Games.Where(g => g.GameDate.Value.Date >= startDate).GroupBy(g => g.PlayerId)
                 : Games.GroupBy(g => g.PlayerId);
+
+            if (!playersGames.Any()) return;
 
             foreach (FieldInfo fieldInfo in raterFieldNames)
             {

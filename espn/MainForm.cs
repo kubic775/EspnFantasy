@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace espn
 {
     public delegate void PlayerSelectedDelegate(string name);
+    public delegate void LogDelegate(string str, Color color = default(Color));
 
     public partial class MainForm : Form
     {
@@ -67,21 +68,31 @@ namespace espn
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
-
+            teamRater_comboBox.Items.Add("All Teams");
+            teamRater_comboBox.Items.AddRange(DbManager.GetTeamList());
+            teamRater_comboBox.SelectedIndex = 0;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
             update_timer_Tick(null, null);
             this.Enabled = true;
         }
 
+        public void AppendToLogDelegate(string str, Color color = default(Color))
+        {
+            IAsyncResult result = BeginInvoke((MethodInvoker)delegate// runs on UI thread
+            {
+                update_label.Text = str;
+                update_label.ForeColor = color;
+            });
+            EndInvoke(result);
+        }
+
         private async void update_timer_Tick(object sender, EventArgs e)
         {
             update_timer.Stop();
-            update_label.Text = "Updating...";
-            update_label.ForeColor = Color.Green;
-            await DbManager.UpdatePlayers();
-            update_label.Text = "Last Update : " + DateTime.Now.ToString("t");
-            update_label.ForeColor = Color.Black;
+            AppendToLogDelegate("Updating...", Color.Green);
+            await DbManager.UpdatePlayers(AppendToLogDelegate);
+            AppendToLogDelegate("Last Update : " + DateTime.Now.ToString("t"), Color.Black);
             update_timer.Start();
         }
 
@@ -335,7 +346,7 @@ namespace espn
             var newNames = File.ReadAllLines(@"C:\Users\user\Dropbox\NBA fantasy\espn C#\players.txt");
             using (var db = new EspnEntities())
             {
-                var playersName = db.Players.Select(p=>p.Name);
+                var playersName = db.Players.Select(p => p.Name);
                 newNames = newNames.Where(n => !playersName.Contains(n)).ToArray();
             }
 
@@ -586,7 +597,6 @@ namespace espn
             playersReceived_textBox.Text = name + "," + playersReceived_textBox.Text;
         }
 
-
         private void clearList_button_Click(object sender, EventArgs e)
         {
             playersSent_textBox.Text = "";
@@ -649,7 +659,6 @@ namespace espn
 
             UseWaitCursor = false;
         }
-
 
         private void UpdateTotalTradeLabelsh(GameStats totalSend, GameStats totalReceived)
         {
@@ -909,54 +918,57 @@ namespace espn
             }
         }
 
+        private void loadWatchListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] ids = DbManager.GetWatchList();
+            if (!ids.Any()) return;
+            playersSent_textBox.Text =
+                string.Join(",", PlayersList.Players.Where(p => ids.Contains(p.Value)).Select(p => p.Key).OrderBy(p => p));
+        }
         #endregion
 
         #region Players Rater
-
-        private void setFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void raterMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Factors.ShowDialog();
-        }
+            IEnumerable<PlayerInfo> playersRater = null;
+            if (raterMode_comboBox.SelectedIndex < 0) return;
+            string mode = raterMode_comboBox.GetItemText(raterMode_comboBox.Items[raterMode_comboBox.SelectedIndex]);
+            if (mode.Equals(String.Empty)) return;
 
-        private void raterSeason_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days).ToList();
-            UpdateRaterTable(playerRater);
-        }
-
-        private void raterAvg_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Games).ToList();
-            UpdateRaterTable(playerRater);
-        }
-
-        private void raterLast30_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 30).ToList();
-            UpdateRaterTable(playerRater);
-        }
-
-        private void raterLast15_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 15).ToList();
-            UpdateRaterTable(playerRater);
-        }
-
-        private void raterLast7_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 7).ToList();
-            UpdateRaterTable(playerRater);
-        }
-
-        private void raterLast1_button_Click(object sender, EventArgs e)
-        {
-            List<PlayerInfo> playerRater = PlayerRater.CreateRater(CalcScoreType.Days, 1).ToList();
-            UpdateRaterTable(playerRater);
+            switch (mode)
+            {
+                case "Season":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
+                    break;
+                case "Average":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Games);
+                    break;
+                case "Last 30":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 30);
+                    break;
+                case "Last 15":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 15);
+                    break;
+                case "Last 7":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 7);
+                    break;
+                case "Last 1":
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1);
+                    break;
+            }
+            if (!playersRater.Any()) return;
+            UpdateRaterTable(playersRater.ToList());
         }
 
         private void UpdateRaterTable(List<PlayerInfo> playerRater)
         {
             rater_dataGridView.Rows.Clear();
+
+            string team = teamRater_comboBox.GetItemText(teamRater_comboBox.Items[teamRater_comboBox.SelectedIndex]);
+            if (!team.Equals("All Teams"))
+            {
+                playerRater = playerRater.Where(p => p.Team.Equals(team)).ToList();
+            }
 
             if (watchList_checkBox.Checked)
             {
@@ -1047,6 +1059,16 @@ namespace espn
                 db.SaveChanges();
             }
         }
+
+        private void teamRater_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            raterMode_comboBox_SelectedIndexChanged(null, null);
+        }
+
+        private void watchList_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            raterMode_comboBox_SelectedIndexChanged(null, null);
+        }
         #endregion
 
         #region GameLog
@@ -1070,7 +1092,7 @@ namespace espn
             }
         }
 
-        
+
 
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {
