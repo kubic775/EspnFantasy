@@ -108,9 +108,18 @@ namespace espn
                 return;
             }
 
+            double counter = 0;
+            IEnumerable<PlayerInfo> playerInfos = await Task.Run(() =>
+            {
+                return players.AsParallel().Select(p =>
+                {
+                    log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Length)} %");
+                    return new PlayerInfo(p.Name, p.ID, currentYear + 1, log);
+                });
+            });
+
             await Task.Run(() =>
             {
-                ParallelQuery<PlayerInfo> playerInfos = players.AsParallel().Select(p => new PlayerInfo(p.Name, p.ID, currentYear + 1, log));
                 foreach (PlayerInfo playerInfo in playerInfos)
                 {
                     log?.Invoke("Update - " + playerInfo.PlayerName);

@@ -144,10 +144,10 @@ namespace espn
                 if (PlayersList.Players.ContainsKey(name))
                 {
                     _player = await PlayersList.CreatePlayerAsync(name);
-                    player_pictureBox.Load(_player.ImagePath);
                     playerNameLabel.Text = _player.PlayerName;
                     playerInfo_label.Text = $"{_player.Misc} | {_player.Team} | Age: {_player.Age}";
                     button_max_Click(null, null);
+                    player_pictureBox.Load(_player.ImagePath);
                 }
             }
             catch (Exception ex)
@@ -325,10 +325,7 @@ namespace espn
             tabControl.SelectedIndex = 1;
         }
 
-        private void draftPicksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new DraftPicksForm().ShowDialog();
-        }
+        
 
         private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -931,8 +928,8 @@ namespace espn
         private void raterMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             IEnumerable<PlayerInfo> playersRater = null;
-            if (raterMode_comboBox.SelectedIndex < 0) return;
-            string mode = raterMode_comboBox.GetItemText(raterMode_comboBox.Items[raterMode_comboBox.SelectedIndex]);
+            if (raterTimePeriod_comboBox.SelectedIndex < 0) return;
+            string mode = raterTimePeriod_comboBox.GetItemText(raterTimePeriod_comboBox.Items[raterTimePeriod_comboBox.SelectedIndex]);
             if (mode.Equals(String.Empty)) return;
 
             switch (mode)
@@ -967,7 +964,7 @@ namespace espn
             string team = teamRater_comboBox.GetItemText(teamRater_comboBox.Items[teamRater_comboBox.SelectedIndex]);
             if (!team.Equals("All Teams"))
             {
-                playerRater = playerRater.Where(p => p.Team.Equals(team)).ToList();
+                playerRater = playerRater.Where(p => p.Team != null && p.Team.Equals(team)).ToList();
             }
 
             if (watchList_checkBox.Checked)
@@ -983,7 +980,7 @@ namespace espn
                 object[] o;
                 var avgGame = playerRater[i].GetAvgGame();
 
-                if (raterTableMode.Checked) //Scores
+                if (raterScores.Checked) //Scores
                     o = new object[]
                     {
                         playerRater[i].PlayerName, Math.Round(avgGame.Min, 1),
@@ -1007,6 +1004,7 @@ namespace espn
 
                 rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
+                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = playerRater[i].Watch ? Color.Gainsboro : default;
             }
         }
 
@@ -1069,6 +1067,11 @@ namespace espn
         {
             raterMode_comboBox_SelectedIndexChanged(null, null);
         }
+
+        private void raterTableMode_CheckedChanged(object sender, EventArgs e)
+        {
+            raterMode_comboBox_SelectedIndexChanged(null, null);
+        }
         #endregion
 
         #region GameLog
@@ -1092,8 +1095,6 @@ namespace espn
             }
         }
 
-
-
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {
             gameLog_dataGridView.Rows.Clear();
@@ -1113,7 +1114,7 @@ namespace espn
                 row.Cells["Stl_GameLog"].Value = game.Stl;
                 row.Cells["Blk_GameLog"].Value = game.Blk;
                 row.Cells["To_GameLog"].Value = game.To;
-                row.Cells["Pf_GameLog"].Value = game.To;
+                row.Cells["Pf_GameLog"].Value = game.Pf;
 
                 row.Cells["FgmFga_GameLog"].Value = game.Fgm + "/" + game.Fga;
                 row.Cells["FgPer_GameLog"].Value = Math.Round(game.FgPer, 1);
@@ -1125,6 +1126,8 @@ namespace espn
             }
         }
 
+       
+
         private void copyGames_button_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(gameLog_panel.Width, gameLog_panel.Height))
@@ -1132,6 +1135,18 @@ namespace espn
                 gameLog_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 Clipboard.SetImage(bmp);
             }
+        }
+        #endregion
+
+        #region Tools
+        private void draftPicksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DraftPicksForm().ShowDialog();
+        }
+
+        private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }

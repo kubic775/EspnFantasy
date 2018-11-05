@@ -14,13 +14,14 @@ namespace espn
         public List<GameStats> Games;
         public int Id, Age;
         public Dictionary<string, double> Scores;
+        public bool Watch;
 
         public PlayerInfo(string playerName, int id, int startYear = 2014, LogDelegate log = null)
         {
             try
             {
                 Console.WriteLine(playerName);
-                log?.Invoke("Download " + playerName);
+                //log?.Invoke("Download " + playerName);
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = id;
@@ -44,7 +45,8 @@ namespace espn
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + Id + ".png&w=350&h=254";
             Team = player.Team;
             Misc = player.Misc;
-            Age = player.Age.Value;
+            Age = player.Age ?? -1;
+            Watch = player.Watch ?? false;
             Games = games.Select(g => new GameStats(g)).ToList();
         }
 
