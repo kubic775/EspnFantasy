@@ -36,7 +36,6 @@ C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojAssemblyReference.cache
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.DraftPicksForm.resources
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.FactorsForm.resources
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.MainForm.resources

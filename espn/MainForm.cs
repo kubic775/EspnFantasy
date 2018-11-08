@@ -1004,7 +1004,7 @@ namespace espn
 
                 rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
-                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = playerRater[i].Watch ? Color.Gainsboro : default;
+                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = playerRater[i].Type == 1 ? Color.Gainsboro : default;
             }
         }
 
@@ -1048,11 +1048,11 @@ namespace espn
             var name = rater_dataGridView.SelectedCells[0].Value.ToString();
             using (var db = new EspnEntities())
             {
-                var player = db.Players.First(p => p.Name.Equals(name));
-                if (player.Watch == null || player.Watch == false)
-                    player.Watch = true;
+                Player player = db.Players.First(p => p.Name.Equals(name));
+                if (player.Type == null || player.Type == 0)
+                    player.Type = 1;
                 else
-                    player.Watch = false;
+                    player.Type = 0;
 
                 db.SaveChanges();
             }

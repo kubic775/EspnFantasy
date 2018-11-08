@@ -181,7 +181,7 @@ namespace espn
         {
             using (var db = new EspnEntities())
             {
-                var playres = db.Players.Where(p => p.Watch.HasValue && p.Watch.Value);
+                var playres = db.Players.Where(p => p.Type.HasValue && p.Type.Value == 1);
                 if (playres.Any())
                     return playres.Select(p => p.ID).ToArray();
                 else

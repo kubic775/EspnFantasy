@@ -27,5 +27,6 @@ namespace espn
     
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<LeagueTeam> LeagueTeams { get; set; }
     }
 }

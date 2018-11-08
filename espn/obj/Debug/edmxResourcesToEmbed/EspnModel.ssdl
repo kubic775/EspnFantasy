@@ -28,6 +28,14 @@
     <Property Name="Score" Type="real" />
     <Property Name="Opp" Type="varchar" MaxLength="32" />
   </EntityType>
+  <EntityType Name="LeagueTeams">
+    <Key>
+      <PropertyRef Name="Pk" />
+    </Key>
+    <Property Name="Pk" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="32" />
+  </EntityType>
   <EntityType Name="Players">
     <Key>
       <PropertyRef Name="ID" />
@@ -37,10 +45,11 @@
     <Property Name="Team" Type="varchar" MaxLength="32" />
     <Property Name="Age" Type="int" />
     <Property Name="Misc" Type="varchar" MaxLength="32" />
-    <Property Name="Watch" Type="bit" />
+    <Property Name="Type" Type="integer" />
   </EntityType>
   <EntityContainer Name="EspnModelStoreContainer">
     <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" />
+    <EntitySet Name="LeagueTeams" EntityType="Self.LeagueTeams" store:Type="Tables" />
     <EntitySet Name="Players" EntityType="Self.Players" store:Type="Tables" />
   </EntityContainer>
 </Schema>

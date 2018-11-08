@@ -37,7 +37,6 @@ namespace espn
         public Nullable<double> TpPer { get; set; }
         public Nullable<double> Score { get; set; }
         public string Opp { get; set; }
-
         public Game()
         {
 

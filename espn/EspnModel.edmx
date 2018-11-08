@@ -33,6 +33,14 @@
           <Property Name="Score" Type="real" />
           <Property Name="Opp" Type="varchar" MaxLength="32" />
         </EntityType>
+        <EntityType Name="LeagueTeams">
+          <Key>
+            <PropertyRef Name="Pk" />
+          </Key>
+          <Property Name="Pk" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="32" />
+        </EntityType>
         <EntityType Name="Players">
           <Key>
             <PropertyRef Name="ID" />
@@ -42,10 +50,11 @@
           <Property Name="Team" Type="varchar" MaxLength="32" />
           <Property Name="Age" Type="int" />
           <Property Name="Misc" Type="varchar" MaxLength="32" />
-          <Property Name="Watch" Type="bit" />
+          <Property Name="Type" Type="integer" />
         </EntityType>
         <EntityContainer Name="EspnModelStoreContainer">
           <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" />
+          <EntitySet Name="LeagueTeams" EntityType="Self.LeagueTeams" store:Type="Tables" />
           <EntitySet Name="Players" EntityType="Self.Players" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -89,12 +98,21 @@
           <Property Name="Team" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
           <Property Name="Misc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="Watch" Type="Boolean" />
+          <Property Name="Type" Type="Int64" />
         </EntityType>
         <EntityContainer Name="EspnEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Games" EntityType="Self.Game" />
           <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="LeagueTeams" EntityType="EspnModel.LeagueTeam" />
         </EntityContainer>
+        <EntityType Name="LeagueTeam">
+          <Key>
+            <PropertyRef Name="Pk" />
+          </Key>
+          <Property Name="Pk" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -133,12 +151,21 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="EspnModel.Player">
               <MappingFragment StoreEntitySet="Players">
-                <ScalarProperty Name="Watch" ColumnName="Watch" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Team" ColumnName="Team" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Misc" ColumnName="Misc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeagueTeams">
+            <EntityTypeMapping TypeName="EspnModel.LeagueTeam">
+              <MappingFragment StoreEntitySet="LeagueTeams">
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pk" ColumnName="Pk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

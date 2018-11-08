@@ -37,10 +37,19 @@
     <Property Name="Team" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Age" Type="Int32" />
     <Property Name="Misc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="Watch" Type="Boolean" />
+    <Property Name="Type" Type="Int64" />
   </EntityType>
   <EntityContainer Name="EspnEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Games" EntityType="Self.Game" />
     <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="LeagueTeams" EntityType="EspnModel.LeagueTeam" />
   </EntityContainer>
+  <EntityType Name="LeagueTeam">
+    <Key>
+      <PropertyRef Name="Pk" />
+    </Key>
+    <Property Name="Pk" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Abbreviation" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
