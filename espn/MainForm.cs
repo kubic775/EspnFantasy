@@ -325,7 +325,7 @@ namespace espn
             tabControl.SelectedIndex = 1;
         }
 
-        
+
 
         private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1084,7 +1084,7 @@ namespace espn
                     var player = await PlayersList.CreatePlayerAsync(playerName);
                     var games = player.Games.Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 01)).OrderByDescending(g => g.GameDate);
                     PlayerRater.CreateRater(CalcScoreType.Games);
-                    playerNameGameLog_label.Text = player.PlayerName;
+                    playerNameGameLog_label.Text = $"{player.PlayerName}, {player.Team}";
                     startEndTimesGameLog_label.Text = games.Min(g => g.GameDate).ToString("d") + "-" + games.Max(g => g.GameDate).ToString("d");
                     UpdateGamesLogTable(games);
                 }
@@ -1126,8 +1126,6 @@ namespace espn
             }
         }
 
-       
-
         private void copyGames_button_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(gameLog_panel.Width, gameLog_panel.Height))
@@ -1146,7 +1144,18 @@ namespace espn
 
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
+            IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
+            string headers = "Name," + string.Join(",", fieldNames.Select(f => f.Name));
+            List<string> stats = playersRater.Select(p => p.ToString()).ToList();
+            stats.Insert(0, headers);
+            using (var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*" })
+            {
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllLines(d.FileName, stats.ToArray());
+                }
+            }
         }
         #endregion
     }

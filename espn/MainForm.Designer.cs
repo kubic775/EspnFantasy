@@ -823,7 +823,7 @@
             // 
             this.startEndTimesGameLog_label.AutoSize = true;
             this.startEndTimesGameLog_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startEndTimesGameLog_label.Location = new System.Drawing.Point(210, 5);
+            this.startEndTimesGameLog_label.Location = new System.Drawing.Point(890, 5);
             this.startEndTimesGameLog_label.Name = "startEndTimesGameLog_label";
             this.startEndTimesGameLog_label.Size = new System.Drawing.Size(97, 20);
             this.startEndTimesGameLog_label.TabIndex = 22;
@@ -2803,14 +2803,14 @@
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 

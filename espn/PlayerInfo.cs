@@ -171,5 +171,10 @@ namespace espn
         {
             return GameStats.GetAvgStats(Games.ToArray());
         }
+
+        public override string ToString()
+        {
+            return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray()).ToString();
+        }
     }
 }
