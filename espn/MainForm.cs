@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Cursor = System.Windows.Forms.Cursor;
 
 
 namespace espn
@@ -32,6 +33,7 @@ namespace espn
         {
             this.Enabled = false;
             await Task.Run(() => PlayersList.CreatePlayersList());
+            await Task.Run(() => PlayersList.CreateTeams());
 
             stat_chart.Series[0].Points.Clear();
             stat_chart.Series[1].Points.Clear();
@@ -324,8 +326,6 @@ namespace espn
             ShowGameslogAsync(gameLog_autoCompleteTextBox.Text);
             tabControl.SelectedIndex = 1;
         }
-
-
 
         private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -924,7 +924,7 @@ namespace espn
         }
         #endregion
 
-        #region Players Rater
+        #region Rater
         private void raterMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             IEnumerable<PlayerInfo> playersRater = null;
@@ -953,7 +953,12 @@ namespace espn
                     playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1);
                     break;
             }
-            if (!playersRater.Any()) return;
+
+            if (!playersRater.Any())
+            {
+                rater_dataGridView.Rows.Clear();
+                return;
+            }
             UpdateRaterTable(playersRater.ToList());
         }
 
@@ -978,12 +983,13 @@ namespace espn
             for (int i = 0; i < playerRater.Count; i++)
             {
                 object[] o;
+                int gp = playerRater[i].Games.First().Gp;
                 var avgGame = playerRater[i].GetAvgGame();
 
                 if (raterScores.Checked) //Scores
                     o = new object[]
                     {
-                        playerRater[i].PlayerName, Math.Round(avgGame.Min, 1),
+                        playerRater[i].PlayerName, gp , Math.Round(avgGame.Min, 1),
                         Math.Round(playerRater[i].Scores["Fga"], 2), Math.Round(playerRater[i].Scores["FgPer"], 2),
                         Math.Round(playerRater[i].Scores["Fta"], 2), Math.Round(playerRater[i].Scores["FtPer"], 2),
                         Math.Round(playerRater[i].Scores["Tpm"], 2), Math.Round(playerRater[i].Scores["Reb"], 2),
@@ -994,7 +1000,7 @@ namespace espn
                 else
                     o = new object[]
                     {
-                        playerRater[i].PlayerName, Math.Round(avgGame.Min, 1),
+                        playerRater[i].PlayerName, gp, Math.Round(avgGame.Min, 1),
                         avgGame.Fgm.ToString("0.0") + "/" + avgGame.Fga.ToString("0.0"), Math.Round(avgGame.FgPer, 1),
                         avgGame.Ftm.ToString("0.0") + "/" + avgGame.Fta.ToString("0.0"), Math.Round(avgGame.FtPer, 1),
                         Math.Round(avgGame.Tpm, 1), Math.Round(avgGame.Reb, 1), Math.Round(avgGame.Ast, 1),
@@ -1005,6 +1011,7 @@ namespace espn
                 rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
                 rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = playerRater[i].Type == 1 ? Color.Gainsboro : default;
+                rater_dataGridView.Rows[i].Cells[0].ToolTipText = $"{playerRater[i].Team}, {playerRater[i].Misc}";
             }
         }
 
@@ -1079,6 +1086,8 @@ namespace espn
         {
             try
             {
+                gameLog_dataGridView.Rows.Clear();
+                playerNameGameLog_label.Text = "Loading...";
                 if (PlayersList.Players.ContainsKey(playerName))
                 {
                     var player = await PlayersList.CreatePlayerAsync(playerName);
@@ -1098,7 +1107,6 @@ namespace espn
         private void UpdateGamesLogTable(IEnumerable<GameStats> games)
         {
             gameLog_dataGridView.Rows.Clear();
-
             foreach (GameStats game in games)
             {
                 int rowId = gameLog_dataGridView.Rows.Add();
@@ -1134,6 +1142,7 @@ namespace espn
                 Clipboard.SetImage(bmp);
             }
         }
+       
         #endregion
 
         #region Tools
@@ -1158,5 +1167,6 @@ namespace espn
             }
         }
         #endregion
+
     }
 }

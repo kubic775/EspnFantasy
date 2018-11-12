@@ -10,12 +10,12 @@ C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.pdb
 C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojResolveAssemblyReference.cache
 C:\Users\KobiM\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.PlayersForm.resources
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.exe
-C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\EntityFramework.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\EntityFramework.SqlServer.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.dll
-C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.EF6.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.exe.config
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\espn.pdb
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\EntityFramework.dll
+C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.EF6.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.Linq.dll
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\EntityFramework.xml
 C:\Users\user\Dropbox\NBA fantasy\espn C#\espn\bin\Release\EntityFramework.SqlServer.xml

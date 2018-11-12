@@ -10,8 +10,18 @@ namespace espn
     public static class PlayersList
     {
         public static SortedDictionary<string, int> Players = new SortedDictionary<string, int>();
+        public static Dictionary<string, string> Teams = new Dictionary<string, string>();
 
-        //public static Dictionary<string, PlayerInfo> CachePlayers = new Dictionary<string, PlayerInfo>();
+        public static void CreateTeams()
+        {
+            using (var db = new EspnEntities())
+            {
+                foreach (var team in db.LeagueTeams)
+                {
+                    Teams.Add(team.Name, team.Abbreviation);
+                }
+            }
+        }
 
         public static void CreatePlayersList()
         {

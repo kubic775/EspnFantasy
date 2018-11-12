@@ -1,30 +1,30 @@
-"Atlanta Hawks","Atl"
-"Boston Celtics","Bos"
-"Brooklyn Nets","Bkn"
-"Charlotte Hornets","Cha"
-"Chicago Bulls","Chi"
-"Cleveland Cavaliers","Cle"
-"Dallas Mavericks","Dal"
-"Denver Nuggets","Den"
-"Detroit Pistons","Det"
-"Golden State Warriors","GS"
-"Houston Rockets","Hou"
-"Indiana Pacers","Ind"
-"LA Clippers","LAC"
-"Los Angeles Lakers","LAL"
-"Memphis Grizzlies","Mem"
-"Miami Heat","Mia"
-"Milwaukee Bucks","Mil"
-"Minnesota Timberwolves","Min"
-"New Orleans Pelicans","No"
-"New York Knicks","NY"
-"Oklahoma City Thunder","OKC"
-"Orlando Magic","Orl"
-"Philadelphia 76ers","Phi"
-"Phoenix Suns","Phx"
-"Portland Trail Blazers","Por"
-"Sacramento Kings","Sac"
-"San Antonio Spurs","TA"
-"Toronto Raptors","Tor"
-"Utah Jazz","Utah"
-"Washington Wizards","Wsh"
+Atlanta Hawks,Atl
+Boston Celtics,Bos
+Brooklyn Nets,Bkn
+Charlotte Hornets,Cha
+Chicago Bulls,Chi
+Cleveland Cavaliers,Cle
+Dallas Mavericks,Dal
+Denver Nuggets,Den
+Detroit Pistons,Det
+Golden State Warriors,GS
+Houston Rockets,Hou
+Indiana Pacers,Ind
+LA Clippers,LAC
+Los Angeles Lakers,LAL
+Memphis Grizzlies,Mem
+Miami Heat,Mia
+Milwaukee Bucks,Mil
+Minnesota Timberwolves,Min
+New Orleans Pelicans,No
+New York Knicks,NY
+Oklahoma City Thunder,OKC
+Orlando Magic,Orl
+Philadelphia 76ers,Phi
+Phoenix Suns,Phx
+Portland Trail Blazers,Por
+Sacramento Kings,Sac
+San Antonio Spurs,TA
+Toronto Raptors,Tor
+Utah Jazz,Utah
+Washington Wizards,Wsh

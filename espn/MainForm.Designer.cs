@@ -72,6 +72,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playerInfoTab = new System.Windows.Forms.TabPage();
             this.showGameLog_button = new System.Windows.Forms.Button();
@@ -272,20 +274,6 @@
             this.raterScores = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rater_dataGridView = new System.Windows.Forms.DataGridView();
-            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MinRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FgmFgaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FgPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FtmFtaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FtPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpmRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RebRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AstRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StlRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BlkRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PtsRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScoreRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rater_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.playerInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -308,6 +296,21 @@
             this.createStatsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GPRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgmFgaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtmFtaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpmRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RebRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AstRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StlRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BlkRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PtsRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScoreRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -2505,6 +2508,7 @@
             this.rater_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rater_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerName,
+            this.GPRater,
             this.MinRater,
             this.FgmFgaRater,
             this.FgPerRater,
@@ -2523,136 +2527,10 @@
             this.rater_dataGridView.Location = new System.Drawing.Point(6, 38);
             this.rater_dataGridView.Name = "rater_dataGridView";
             this.rater_dataGridView.ReadOnly = true;
-            this.rater_dataGridView.RowHeadersWidth = 60;
+            this.rater_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.rater_dataGridView.RowHeadersWidth = 55;
             this.rater_dataGridView.Size = new System.Drawing.Size(1091, 366);
             this.rater_dataGridView.TabIndex = 0;
-            // 
-            // PlayerName
-            // 
-            this.PlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PlayerName.HeaderText = "Name";
-            this.PlayerName.Name = "PlayerName";
-            this.PlayerName.ReadOnly = true;
-            this.PlayerName.Width = 74;
-            // 
-            // MinRater
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MinRater.DefaultCellStyle = dataGridViewCellStyle9;
-            this.MinRater.HeaderText = "Min";
-            this.MinRater.Name = "MinRater";
-            this.MinRater.ReadOnly = true;
-            this.MinRater.Width = 50;
-            // 
-            // FgmFgaRater
-            // 
-            this.FgmFgaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FgmFgaRater.DefaultCellStyle = dataGridViewCellStyle10;
-            this.FgmFgaRater.HeaderText = "FGM/FGA";
-            this.FgmFgaRater.Name = "FgmFgaRater";
-            this.FgmFgaRater.ReadOnly = true;
-            // 
-            // FgPerRater
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FgPerRater.DefaultCellStyle = dataGridViewCellStyle11;
-            this.FgPerRater.HeaderText = "FG%";
-            this.FgPerRater.Name = "FgPerRater";
-            this.FgPerRater.ReadOnly = true;
-            this.FgPerRater.Width = 60;
-            // 
-            // FtmFtaRater
-            // 
-            this.FtmFtaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FtmFtaRater.DefaultCellStyle = dataGridViewCellStyle12;
-            this.FtmFtaRater.HeaderText = "FTM/FTA";
-            this.FtmFtaRater.Name = "FtmFtaRater";
-            this.FtmFtaRater.ReadOnly = true;
-            this.FtmFtaRater.Width = 98;
-            // 
-            // FtPerRater
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FtPerRater.DefaultCellStyle = dataGridViewCellStyle13;
-            this.FtPerRater.HeaderText = "FT%";
-            this.FtPerRater.Name = "FtPerRater";
-            this.FtPerRater.ReadOnly = true;
-            this.FtPerRater.Width = 60;
-            // 
-            // TpmRater
-            // 
-            this.TpmRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TpmRater.DefaultCellStyle = dataGridViewCellStyle14;
-            this.TpmRater.HeaderText = "3PM";
-            this.TpmRater.Name = "TpmRater";
-            this.TpmRater.ReadOnly = true;
-            this.TpmRater.Width = 63;
-            // 
-            // RebRater
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.RebRater.DefaultCellStyle = dataGridViewCellStyle15;
-            this.RebRater.HeaderText = "Reb";
-            this.RebRater.Name = "RebRater";
-            this.RebRater.ReadOnly = true;
-            this.RebRater.Width = 60;
-            // 
-            // AstRater
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.AstRater.DefaultCellStyle = dataGridViewCellStyle16;
-            this.AstRater.HeaderText = "Ast";
-            this.AstRater.Name = "AstRater";
-            this.AstRater.ReadOnly = true;
-            this.AstRater.Width = 60;
-            // 
-            // StlRater
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.StlRater.DefaultCellStyle = dataGridViewCellStyle17;
-            this.StlRater.HeaderText = "Stl";
-            this.StlRater.Name = "StlRater";
-            this.StlRater.ReadOnly = true;
-            this.StlRater.Width = 50;
-            // 
-            // BlkRater
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.BlkRater.DefaultCellStyle = dataGridViewCellStyle18;
-            this.BlkRater.HeaderText = "Blk";
-            this.BlkRater.Name = "BlkRater";
-            this.BlkRater.ReadOnly = true;
-            this.BlkRater.Width = 50;
-            // 
-            // ToRater
-            // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ToRater.DefaultCellStyle = dataGridViewCellStyle19;
-            this.ToRater.HeaderText = "To";
-            this.ToRater.Name = "ToRater";
-            this.ToRater.ReadOnly = true;
-            this.ToRater.Width = 50;
-            // 
-            // PtsRater
-            // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PtsRater.DefaultCellStyle = dataGridViewCellStyle20;
-            this.PtsRater.HeaderText = "Pts";
-            this.PtsRater.Name = "PtsRater";
-            this.PtsRater.ReadOnly = true;
-            this.PtsRater.Width = 60;
-            // 
-            // ScoreRater
-            // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ScoreRater.DefaultCellStyle = dataGridViewCellStyle21;
-            this.ScoreRater.HeaderText = "Score";
-            this.ScoreRater.Name = "ScoreRater";
-            this.ScoreRater.ReadOnly = true;
-            this.ScoreRater.Width = 60;
             // 
             // rater_contextMenuStrip
             // 
@@ -2830,6 +2708,143 @@
             // 
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.update_timer_Tick);
+            // 
+            // PlayerName
+            // 
+            this.PlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.PlayerName.DefaultCellStyle = dataGridViewCellStyle9;
+            this.PlayerName.HeaderText = "Name";
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            this.PlayerName.Width = 74;
+            // 
+            // GPRater
+            // 
+            this.GPRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.GPRater.DefaultCellStyle = dataGridViewCellStyle10;
+            this.GPRater.HeaderText = "GP";
+            this.GPRater.Name = "GPRater";
+            this.GPRater.ReadOnly = true;
+            // 
+            // MinRater
+            // 
+            this.MinRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MinRater.DefaultCellStyle = dataGridViewCellStyle11;
+            this.MinRater.HeaderText = "Min";
+            this.MinRater.Name = "MinRater";
+            this.MinRater.ReadOnly = true;
+            // 
+            // FgmFgaRater
+            // 
+            this.FgmFgaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgmFgaRater.DefaultCellStyle = dataGridViewCellStyle12;
+            this.FgmFgaRater.HeaderText = "FGM/FGA";
+            this.FgmFgaRater.Name = "FgmFgaRater";
+            this.FgmFgaRater.ReadOnly = true;
+            // 
+            // FgPerRater
+            // 
+            this.FgPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgPerRater.DefaultCellStyle = dataGridViewCellStyle13;
+            this.FgPerRater.HeaderText = "FG%";
+            this.FgPerRater.Name = "FgPerRater";
+            this.FgPerRater.ReadOnly = true;
+            // 
+            // FtmFtaRater
+            // 
+            this.FtmFtaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtmFtaRater.DefaultCellStyle = dataGridViewCellStyle14;
+            this.FtmFtaRater.HeaderText = "FTM/FTA";
+            this.FtmFtaRater.Name = "FtmFtaRater";
+            this.FtmFtaRater.ReadOnly = true;
+            this.FtmFtaRater.Width = 98;
+            // 
+            // FtPerRater
+            // 
+            this.FtPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtPerRater.DefaultCellStyle = dataGridViewCellStyle15;
+            this.FtPerRater.HeaderText = "FT%";
+            this.FtPerRater.Name = "FtPerRater";
+            this.FtPerRater.ReadOnly = true;
+            // 
+            // TpmRater
+            // 
+            this.TpmRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TpmRater.DefaultCellStyle = dataGridViewCellStyle16;
+            this.TpmRater.HeaderText = "3PM";
+            this.TpmRater.Name = "TpmRater";
+            this.TpmRater.ReadOnly = true;
+            // 
+            // RebRater
+            // 
+            this.RebRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RebRater.DefaultCellStyle = dataGridViewCellStyle17;
+            this.RebRater.HeaderText = "Reb";
+            this.RebRater.Name = "RebRater";
+            this.RebRater.ReadOnly = true;
+            // 
+            // AstRater
+            // 
+            this.AstRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.AstRater.DefaultCellStyle = dataGridViewCellStyle18;
+            this.AstRater.HeaderText = "Ast";
+            this.AstRater.Name = "AstRater";
+            this.AstRater.ReadOnly = true;
+            // 
+            // StlRater
+            // 
+            this.StlRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StlRater.DefaultCellStyle = dataGridViewCellStyle19;
+            this.StlRater.HeaderText = "Stl";
+            this.StlRater.Name = "StlRater";
+            this.StlRater.ReadOnly = true;
+            // 
+            // BlkRater
+            // 
+            this.BlkRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.BlkRater.DefaultCellStyle = dataGridViewCellStyle20;
+            this.BlkRater.HeaderText = "Blk";
+            this.BlkRater.Name = "BlkRater";
+            this.BlkRater.ReadOnly = true;
+            // 
+            // ToRater
+            // 
+            this.ToRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ToRater.DefaultCellStyle = dataGridViewCellStyle21;
+            this.ToRater.HeaderText = "To";
+            this.ToRater.Name = "ToRater";
+            this.ToRater.ReadOnly = true;
+            // 
+            // PtsRater
+            // 
+            this.PtsRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PtsRater.DefaultCellStyle = dataGridViewCellStyle22;
+            this.PtsRater.HeaderText = "Pts";
+            this.PtsRater.Name = "PtsRater";
+            this.PtsRater.ReadOnly = true;
+            // 
+            // ScoreRater
+            // 
+            this.ScoreRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ScoreRater.DefaultCellStyle = dataGridViewCellStyle23;
+            this.ScoreRater.HeaderText = "Score";
+            this.ScoreRater.Name = "ScoreRater";
+            this.ScoreRater.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -3087,20 +3102,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pts;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MinRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFgaRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgPerRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFtaRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtPerRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TpmRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RebRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AstRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StlRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BlkRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ToRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PtsRater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreRater;
         private System.Windows.Forms.CheckBox raterScores;
         private System.Windows.Forms.ToolStripMenuItem draftPicksToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip rater_contextMenuStrip;
@@ -3114,6 +3115,21 @@
         private System.Windows.Forms.ToolStripMenuItem loadWatchListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem draftPicksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem createStatsFileToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GPRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFgaRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgPerRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFtaRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtPerRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpmRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RebRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AstRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StlRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BlkRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ToRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PtsRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreRater;
     }
 }
 

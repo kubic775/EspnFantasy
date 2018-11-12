@@ -33,12 +33,21 @@
     <EntitySetMapping Name="Players">
       <EntityTypeMapping TypeName="EspnModel.Player">
         <MappingFragment StoreEntitySet="Players">
-          <ScalarProperty Name="Watch" ColumnName="Watch" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Team" ColumnName="Team" />
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="Misc" ColumnName="Misc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeagueTeams">
+      <EntityTypeMapping TypeName="EspnModel.LeagueTeam">
+        <MappingFragment StoreEntitySet="LeagueTeams">
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pk" ColumnName="Pk" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
