@@ -19,7 +19,7 @@ namespace espn
         {
             try
             {
-                Console.WriteLine(playerName);
+                //Console.WriteLine(playerName);
                 //log?.Invoke("Download " + playerName);
                 Games = new List<GameStats>();
                 PlayerName = playerName;

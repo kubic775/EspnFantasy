@@ -114,6 +114,7 @@ namespace espn
                 return players.AsParallel().Select(p =>
                 {
                     log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Length)} %");
+                    Console.WriteLine(Math.Round(100 * counter / players.Length) + "%");
                     return new PlayerInfo(p.Name, p.ID, currentYear + 1, log);
                 });
             });
@@ -177,11 +178,23 @@ namespace espn
             }
         }
 
-        public static int[] GetWatchList()
+        public static int[] GetIdByType(string type)
         {
+            int val = 0;
+            switch (type)
+            {
+                case "Roster":
+                    val = 1;
+                    break;
+                case "Watch":
+                    val = 2;
+                    break;
+            }
+
+
             using (var db = new EspnEntities())
             {
-                var playres = db.Players.Where(p => p.Type.HasValue && p.Type.Value == 1);
+                var playres = db.Players.Where(p => p.Type.HasValue && p.Type.Value == val);
                 if (playres.Any())
                     return playres.Select(p => p.ID).ToArray();
                 else

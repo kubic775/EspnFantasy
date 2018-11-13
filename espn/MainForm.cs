@@ -73,6 +73,7 @@ namespace espn
             teamRater_comboBox.Items.Add("All Teams");
             teamRater_comboBox.Items.AddRange(DbManager.GetTeamList());
             teamRater_comboBox.SelectedIndex = 0;
+            raterPlayersMode_comboBox.SelectedIndex = 0;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
             update_timer_Tick(null, null);
@@ -917,7 +918,7 @@ namespace espn
 
         private void loadWatchListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int[] ids = DbManager.GetWatchList();
+            int[] ids = DbManager.GetIdByType("Roster");
             if (!ids.Any()) return;
             playersSent_textBox.Text =
                 string.Join(",", PlayersList.Players.Where(p => ids.Contains(p.Value)).Select(p => p.Key).OrderBy(p => p));
@@ -925,14 +926,17 @@ namespace espn
         #endregion
 
         #region Rater
-        private void raterMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+
+        private IEnumerable<PlayerInfo> PrepareDataForRater()
         {
             IEnumerable<PlayerInfo> playersRater = null;
-            if (raterTimePeriod_comboBox.SelectedIndex < 0) return;
-            string mode = raterTimePeriod_comboBox.GetItemText(raterTimePeriod_comboBox.Items[raterTimePeriod_comboBox.SelectedIndex]);
-            if (mode.Equals(String.Empty)) return;
+            if (raterTimePeriod_comboBox.SelectedIndex < 0) return playersRater;
+            string raterTime = raterTimePeriod_comboBox.GetItemText(raterTimePeriod_comboBox.Items[raterTimePeriod_comboBox.SelectedIndex]);
+            string team = teamRater_comboBox.GetItemText(teamRater_comboBox.Items[teamRater_comboBox.SelectedIndex]);
+            string playerType = raterPlayersMode_comboBox.GetItemText(raterPlayersMode_comboBox.Items[raterPlayersMode_comboBox.SelectedIndex]);
 
-            switch (mode)
+
+            switch (raterTime)
             {
                 case "Season":
                     playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
@@ -954,65 +958,69 @@ namespace espn
                     break;
             }
 
-            if (!playersRater.Any())
-            {
-                rater_dataGridView.Rows.Clear();
-                return;
-            }
-            UpdateRaterTable(playersRater.ToList());
-        }
+            if (!playersRater.Any()) return playersRater;
 
-        private void UpdateRaterTable(List<PlayerInfo> playerRater)
-        {
-            rater_dataGridView.Rows.Clear();
 
-            string team = teamRater_comboBox.GetItemText(teamRater_comboBox.Items[teamRater_comboBox.SelectedIndex]);
             if (!team.Equals("All Teams"))
             {
-                playerRater = playerRater.Where(p => p.Team != null && p.Team.Equals(team)).ToList();
+                playersRater = playersRater.Where(p => p.Team != null && p.Team.Equals(team)).ToList();
             }
 
-            if (watchList_checkBox.Checked)
+            if (!playersRater.Any()) return playersRater;
+
+            if (!playerType.Equals("All"))
             {
-                int[] ids = DbManager.GetWatchList();
-                if (!ids.Any()) return;
-
-                playerRater = playerRater.Where(p => ids.Contains(p.Id)).ToList();
+                int[] ids = DbManager.GetIdByType(playerType);
+                playersRater = playersRater.Where(p => ids.Contains(p.Id)).ToList();
             }
 
-            for (int i = 0; i < playerRater.Count; i++)
+            return playersRater;
+        }
+
+        private void UpdateRaterTable(IEnumerable<PlayerInfo> playersRater)
+        {
+            rater_dataGridView.Rows.Clear();
+            if (playersRater == null || !playersRater.Any()) return;
+
+            var players = playersRater.ToList();
+            for (int i = 0; i < players.Count; i++)
             {
                 object[] o;
-                int gp = playerRater[i].Games.First().Gp;
-                var avgGame = playerRater[i].GetAvgGame();
+                int gp = players[i].Games.First().Gp;
+                var avgGame = players[i].GetAvgGame();
 
                 if (raterScores.Checked) //Scores
                     o = new object[]
                     {
-                        playerRater[i].PlayerName, gp , Math.Round(avgGame.Min, 1),
-                        Math.Round(playerRater[i].Scores["Fga"], 2), Math.Round(playerRater[i].Scores["FgPer"], 2),
-                        Math.Round(playerRater[i].Scores["Fta"], 2), Math.Round(playerRater[i].Scores["FtPer"], 2),
-                        Math.Round(playerRater[i].Scores["Tpm"], 2), Math.Round(playerRater[i].Scores["Reb"], 2),
-                        Math.Round(playerRater[i].Scores["Ast"], 2), Math.Round(playerRater[i].Scores["Stl"], 2),
-                        Math.Round(playerRater[i].Scores["Blk"], 2), Math.Round(playerRater[i].Scores["To"], 2),
-                        Math.Round(playerRater[i].Scores["Pts"], 2), Math.Round(playerRater[i].Scores["Score"], 2)
+                        players[i].PlayerName, gp , Math.Round(avgGame.Min, 1),
+                        Math.Round(players[i].Scores["Fga"], 2), Math.Round(players[i].Scores["FgPer"], 2),
+                        Math.Round(players[i].Scores["Fta"], 2), Math.Round(players[i].Scores["FtPer"], 2),
+                        Math.Round(players[i].Scores["Tpm"], 2), Math.Round(players[i].Scores["Reb"], 2),
+                        Math.Round(players[i].Scores["Ast"], 2), Math.Round(players[i].Scores["Stl"], 2),
+                        Math.Round(players[i].Scores["Blk"], 2), Math.Round(players[i].Scores["To"], 2),
+                        Math.Round(players[i].Scores["Pts"], 2), Math.Round(players[i].Scores["Score"], 2)
                     };
                 else
                     o = new object[]
                     {
-                        playerRater[i].PlayerName, gp, Math.Round(avgGame.Min, 1),
+                        players[i].PlayerName, gp, Math.Round(avgGame.Min, 1),
                         avgGame.Fgm.ToString("0.0") + "/" + avgGame.Fga.ToString("0.0"), Math.Round(avgGame.FgPer, 1),
                         avgGame.Ftm.ToString("0.0") + "/" + avgGame.Fta.ToString("0.0"), Math.Round(avgGame.FtPer, 1),
                         Math.Round(avgGame.Tpm, 1), Math.Round(avgGame.Reb, 1), Math.Round(avgGame.Ast, 1),
                         Math.Round(avgGame.Stl, 1), Math.Round(avgGame.Blk, 1), Math.Round(avgGame.To, 1),
-                        Math.Round(avgGame.Pts, 1), Math.Round(playerRater[i].Scores["Score"], 2)
+                        Math.Round(avgGame.Pts, 1), Math.Round(players[i].Scores["Score"], 2)
                     };
 
                 rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
-                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = playerRater[i].Type == 1 ? Color.Gainsboro : default;
-                rater_dataGridView.Rows[i].Cells[0].ToolTipText = $"{playerRater[i].Team}, {playerRater[i].Misc}";
+                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = players[i].Type == 1 ? Color.Gainsboro : default;
+                rater_dataGridView.Rows[i].Cells[0].ToolTipText = $"{players[i].Team}, {players[i].Misc}";
             }
+        }
+
+        private void raterMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRaterTable(PrepareDataForRater());
         }
 
         private void SearchForPlayerInRater(string searchValue)
@@ -1049,14 +1057,28 @@ namespace espn
             tabControl.SelectedIndex = 1;
         }
 
-        private void addRemoveWatchListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void teamRater_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRaterTable(PrepareDataForRater());
+        }
+
+        private void raterScores_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateRaterTable(PrepareDataForRater());
+        }
+
+        private void raterPlayersMode_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRaterTable(PrepareDataForRater());
+        }
+        private void rosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (rater_dataGridView.SelectedCells.Count == 0) return;
             var name = rater_dataGridView.SelectedCells[0].Value.ToString();
             using (var db = new EspnEntities())
             {
                 Player player = db.Players.First(p => p.Name.Equals(name));
-                if (player.Type == null || player.Type == 0)
+                if (player.Type == null || player.Type != 1)
                     player.Type = 1;
                 else
                     player.Type = 0;
@@ -1065,19 +1087,20 @@ namespace espn
             }
         }
 
-        private void teamRater_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void watchListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            raterMode_comboBox_SelectedIndexChanged(null, null);
-        }
+            if (rater_dataGridView.SelectedCells.Count == 0) return;
+            var name = rater_dataGridView.SelectedCells[0].Value.ToString();
+            using (var db = new EspnEntities())
+            {
+                Player player = db.Players.First(p => p.Name.Equals(name));
+                if (player.Type == null || player.Type != 2)
+                    player.Type = 2;
+                else
+                    player.Type = 0;
 
-        private void watchList_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            raterMode_comboBox_SelectedIndexChanged(null, null);
-        }
-
-        private void raterTableMode_CheckedChanged(object sender, EventArgs e)
-        {
-            raterMode_comboBox_SelectedIndexChanged(null, null);
+                db.SaveChanges();
+            }
         }
         #endregion
 
@@ -1142,7 +1165,9 @@ namespace espn
                 Clipboard.SetImage(bmp);
             }
         }
-       
+
+
+
         #endregion
 
         #region Tools
