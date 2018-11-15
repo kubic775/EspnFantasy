@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -38,6 +39,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -53,12 +58,30 @@
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.playerInfoTab = new System.Windows.Forms.TabPage();
+            this.showGameLog_button = new System.Windows.Forms.Button();
             this.year_comboBox = new System.Windows.Forms.ComboBox();
             this.coptStatChart_button = new System.Windows.Forms.Button();
             this.smooth_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.playerFilter_checkBox = new System.Windows.Forms.CheckBox();
             this.outliersMinutes_checkBox = new System.Windows.Forms.CheckBox();
             this.zeroMinutes_checkBox = new System.Windows.Forms.CheckBox();
             this.copyToClipboard_button = new System.Windows.Forms.Button();
@@ -75,7 +98,7 @@
             this.Min = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FgmFga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FgPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpmTpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tpm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TpPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FtmFta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FtPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,10 +110,37 @@
             this.To = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.player_pictureBox = new System.Windows.Forms.PictureBox();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.gameLogTab = new System.Windows.Forms.TabPage();
+            this.gameLog_panel = new System.Windows.Forms.Panel();
+            this.startEndTimesGameLog_label = new System.Windows.Forms.Label();
+            this.playerNameGameLog_label = new System.Windows.Forms.Label();
+            this.gameLog_dataGridView = new System.Windows.Forms.DataGridView();
+            this.Date_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opp_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Min_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgmFga_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpmTpa_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtmFta_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reb_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ast_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Blk_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stl_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pf_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pts_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.copyGames_button = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
+            this.score2_label = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.score1_label = new System.Windows.Forms.Label();
             this.tradePlayers_button = new System.Windows.Forms.Button();
             this.copyChart_button = new System.Windows.Forms.Button();
             this.copyCompare_button = new System.Windows.Forms.Button();
@@ -134,7 +184,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tradeTab = new System.Windows.Forms.TabPage();
             this.score_label = new System.Windows.Forms.Label();
             this.screenshot_button = new System.Windows.Forms.Button();
             this.trade_panel = new System.Windows.Forms.Panel();
@@ -204,15 +254,41 @@
             this.copyTradeStats_button = new System.Windows.Forms.Button();
             this.clearList_button = new System.Windows.Forms.Button();
             this.trade_button = new System.Windows.Forms.Button();
-            this.tradeLast_comboBox = new System.Windows.Forms.ComboBox();
+            this.tradeNumOfGames_comboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tradeMode_comboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.rater_tab = new System.Windows.Forms.TabPage();
+            this.raterPlayersMode_comboBox = new System.Windows.Forms.ComboBox();
+            this.teamRater_comboBox = new System.Windows.Forms.ComboBox();
+            this.raterTimePeriod_comboBox = new System.Windows.Forms.ComboBox();
+            this.raterScores = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rater_dataGridView = new System.Windows.Forms.DataGridView();
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GPRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgmFgaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtmFtaRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtPerRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpmRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RebRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AstRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StlRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BlkRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PtsRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScoreRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rater_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playerInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatePlayersFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tradeAnalyzerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePlayersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,32 +296,50 @@
             this.receivedPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerRaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadWatchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.draftPicksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.draftPicksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.createStatsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.update_label = new System.Windows.Forms.Label();
+            this.update_timer = new System.Windows.Forms.Timer(this.components);
+            this.sendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.watchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterByPlayer_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.playerName_textBox = new espn.AutoCompleteTextBox();
+            this.gameLog_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.player2_TextBox = new espn.AutoCompleteTextBox();
             this.player1_TextBox = new espn.AutoCompleteTextBox();
             this.receivePlayer_TextBox = new espn.AutoCompleteTextBox();
             this.sendPlayer_TextBox = new espn.AutoCompleteTextBox();
+            this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stats_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player_pictureBox)).BeginInit();
+            this.gameLogTab.SuspendLayout();
+            this.gameLog_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameLog_dataGridView)).BeginInit();
             this.compare_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compare_chart)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tradeTab.SuspendLayout();
             this.trade_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).BeginInit();
+            this.rater_tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rater_dataGridView)).BeginInit();
+            this.rater_contextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.playerInfoTab);
+            this.tabControl.Controls.Add(this.gameLogTab);
             this.tabControl.Controls.Add(this.compare_tabPage);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tradeTab);
+            this.tabControl.Controls.Add(this.rater_tab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(0, 24);
@@ -254,38 +348,50 @@
             this.tabControl.Size = new System.Drawing.Size(1108, 439);
             this.tabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // playerInfoTab
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.OldLace;
-            this.tabPage1.Controls.Add(this.year_comboBox);
-            this.tabPage1.Controls.Add(this.coptStatChart_button);
-            this.tabPage1.Controls.Add(this.smooth_checkBox);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.playerName_textBox);
-            this.tabPage1.Controls.Add(this.copyToClipboard_button);
-            this.tabPage1.Controls.Add(this.stat_chart);
-            this.tabPage1.Controls.Add(this.playerInfo_label);
-            this.tabPage1.Controls.Add(this.playerNameLabel);
-            this.tabPage1.Controls.Add(this.button_max);
-            this.tabPage1.Controls.Add(this.button_30);
-            this.tabPage1.Controls.Add(this.button_15);
-            this.tabPage1.Controls.Add(this.button_7);
-            this.tabPage1.Controls.Add(this.mode_comboBox);
-            this.tabPage1.Controls.Add(this.numOf_textBox);
-            this.tabPage1.Controls.Add(this.stats_dataGridView);
-            this.tabPage1.Controls.Add(this.player_pictureBox);
-            this.tabPage1.Controls.Add(this.nameLabel);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1100, 410);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Players";
+            this.playerInfoTab.BackColor = System.Drawing.Color.OldLace;
+            this.playerInfoTab.Controls.Add(this.showGameLog_button);
+            this.playerInfoTab.Controls.Add(this.year_comboBox);
+            this.playerInfoTab.Controls.Add(this.coptStatChart_button);
+            this.playerInfoTab.Controls.Add(this.smooth_checkBox);
+            this.playerInfoTab.Controls.Add(this.groupBox1);
+            this.playerInfoTab.Controls.Add(this.playerName_textBox);
+            this.playerInfoTab.Controls.Add(this.copyToClipboard_button);
+            this.playerInfoTab.Controls.Add(this.stat_chart);
+            this.playerInfoTab.Controls.Add(this.playerInfo_label);
+            this.playerInfoTab.Controls.Add(this.playerNameLabel);
+            this.playerInfoTab.Controls.Add(this.button_max);
+            this.playerInfoTab.Controls.Add(this.button_30);
+            this.playerInfoTab.Controls.Add(this.button_15);
+            this.playerInfoTab.Controls.Add(this.button_7);
+            this.playerInfoTab.Controls.Add(this.mode_comboBox);
+            this.playerInfoTab.Controls.Add(this.numOf_textBox);
+            this.playerInfoTab.Controls.Add(this.stats_dataGridView);
+            this.playerInfoTab.Controls.Add(this.player_pictureBox);
+            this.playerInfoTab.Controls.Add(this.nameLabel);
+            this.playerInfoTab.Location = new System.Drawing.Point(4, 25);
+            this.playerInfoTab.Name = "playerInfoTab";
+            this.playerInfoTab.Padding = new System.Windows.Forms.Padding(3);
+            this.playerInfoTab.Size = new System.Drawing.Size(1100, 410);
+            this.playerInfoTab.TabIndex = 0;
+            this.playerInfoTab.Text = "Players";
+            // 
+            // showGameLog_button
+            // 
+            this.showGameLog_button.Location = new System.Drawing.Point(822, 313);
+            this.showGameLog_button.Name = "showGameLog_button";
+            this.showGameLog_button.Size = new System.Drawing.Size(95, 23);
+            this.showGameLog_button.TabIndex = 56;
+            this.showGameLog_button.Text = "Game Log";
+            this.showGameLog_button.UseVisualStyleBackColor = true;
+            this.showGameLog_button.Click += new System.EventHandler(this.showGameLog_button_Click);
             // 
             // year_comboBox
             // 
             this.year_comboBox.FormattingEnabled = true;
             this.year_comboBox.Items.AddRange(new object[] {
+            "2019",
             "2018",
             "2017",
             "2016",
@@ -312,23 +418,37 @@
             this.smooth_checkBox.AutoSize = true;
             this.smooth_checkBox.Checked = true;
             this.smooth_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.smooth_checkBox.Location = new System.Drawing.Point(13, 317);
+            this.smooth_checkBox.Location = new System.Drawing.Point(13, 361);
             this.smooth_checkBox.Name = "smooth_checkBox";
             this.smooth_checkBox.Size = new System.Drawing.Size(79, 20);
             this.smooth_checkBox.TabIndex = 19;
             this.smooth_checkBox.Text = "Smooth";
             this.smooth_checkBox.UseVisualStyleBackColor = true;
+            this.smooth_checkBox.Visible = false;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.filterByPlayer_autoCompleteTextBox);
+            this.groupBox1.Controls.Add(this.playerFilter_checkBox);
             this.groupBox1.Controls.Add(this.outliersMinutes_checkBox);
             this.groupBox1.Controls.Add(this.zeroMinutes_checkBox);
             this.groupBox1.Location = new System.Drawing.Point(7, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 231);
+            this.groupBox1.Size = new System.Drawing.Size(194, 290);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
+            // 
+            // playerFilter_checkBox
+            // 
+            this.playerFilter_checkBox.AutoSize = true;
+            this.playerFilter_checkBox.Location = new System.Drawing.Point(6, 80);
+            this.playerFilter_checkBox.Name = "playerFilter_checkBox";
+            this.playerFilter_checkBox.Size = new System.Drawing.Size(133, 20);
+            this.playerFilter_checkBox.TabIndex = 2;
+            this.playerFilter_checkBox.Text = "Filter By Player";
+            this.playerFilter_checkBox.UseVisualStyleBackColor = true;
+            this.playerFilter_checkBox.CheckedChanged += new System.EventHandler(this.playerFilter_checkBox_CheckedChanged);
             // 
             // outliersMinutes_checkBox
             // 
@@ -494,7 +614,7 @@
             this.Min,
             this.FgmFga,
             this.FgPer,
-            this.TpmTpa,
+            this.Tpm,
             this.TpPer,
             this.FtmFta,
             this.FtPer,
@@ -506,7 +626,7 @@
             this.To,
             this.Pts,
             this.Gp,
-            this.Value});
+            this.Score});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -517,6 +637,7 @@
             this.stats_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.stats_dataGridView.Location = new System.Drawing.Point(202, 347);
             this.stats_dataGridView.Name = "stats_dataGridView";
+            this.stats_dataGridView.ReadOnly = true;
             this.stats_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -535,97 +656,113 @@
             // 
             this.Min.HeaderText = "MIN";
             this.Min.Name = "Min";
+            this.Min.ReadOnly = true;
             this.Min.Width = 50;
             // 
             // FgmFga
             // 
             this.FgmFga.HeaderText = "FGM-FGA";
             this.FgmFga.Name = "FgmFga";
+            this.FgmFga.ReadOnly = true;
             this.FgmFga.Width = 80;
             // 
             // FgPer
             // 
             this.FgPer.HeaderText = "FG%";
             this.FgPer.Name = "FgPer";
+            this.FgPer.ReadOnly = true;
             this.FgPer.Width = 50;
             // 
-            // TpmTpa
+            // Tpm
             // 
-            this.TpmTpa.HeaderText = "3PM-3PA";
-            this.TpmTpa.Name = "TpmTpa";
-            this.TpmTpa.Width = 80;
+            this.Tpm.HeaderText = "3PM-3PA";
+            this.Tpm.Name = "Tpm";
+            this.Tpm.ReadOnly = true;
+            this.Tpm.Width = 80;
             // 
             // TpPer
             // 
             this.TpPer.HeaderText = "3P%";
             this.TpPer.Name = "TpPer";
+            this.TpPer.ReadOnly = true;
             this.TpPer.Width = 50;
             // 
             // FtmFta
             // 
             this.FtmFta.HeaderText = "FTM-FTA";
             this.FtmFta.Name = "FtmFta";
+            this.FtmFta.ReadOnly = true;
             this.FtmFta.Width = 80;
             // 
             // FtPer
             // 
             this.FtPer.HeaderText = "FT%";
             this.FtPer.Name = "FtPer";
+            this.FtPer.ReadOnly = true;
             this.FtPer.Width = 50;
             // 
             // Reb
             // 
             this.Reb.HeaderText = "REB";
             this.Reb.Name = "Reb";
+            this.Reb.ReadOnly = true;
             this.Reb.Width = 50;
             // 
             // Ast
             // 
             this.Ast.HeaderText = "AST";
             this.Ast.Name = "Ast";
+            this.Ast.ReadOnly = true;
             this.Ast.Width = 50;
             // 
             // Blk
             // 
             this.Blk.HeaderText = "BLK";
             this.Blk.Name = "Blk";
+            this.Blk.ReadOnly = true;
             this.Blk.Width = 50;
             // 
             // Stl
             // 
             this.Stl.HeaderText = "STL";
             this.Stl.Name = "Stl";
+            this.Stl.ReadOnly = true;
             this.Stl.Width = 50;
             // 
             // Pf
             // 
             this.Pf.HeaderText = "PF";
             this.Pf.Name = "Pf";
+            this.Pf.ReadOnly = true;
             this.Pf.Width = 50;
             // 
             // To
             // 
             this.To.HeaderText = "TO";
             this.To.Name = "To";
+            this.To.ReadOnly = true;
             this.To.Width = 50;
             // 
             // Pts
             // 
             this.Pts.HeaderText = "PTS";
             this.Pts.Name = "Pts";
+            this.Pts.ReadOnly = true;
             this.Pts.Width = 50;
             // 
             // Gp
             // 
             this.Gp.HeaderText = "GP";
             this.Gp.Name = "Gp";
+            this.Gp.ReadOnly = true;
             this.Gp.Width = 50;
             // 
-            // Value
+            // Score
             // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.Width = 50;
+            this.Score.HeaderText = "Value";
+            this.Score.Name = "Score";
+            this.Score.ReadOnly = true;
+            this.Score.Width = 50;
             // 
             // player_pictureBox
             // 
@@ -645,11 +782,240 @@
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name :";
             // 
+            // gameLogTab
+            // 
+            this.gameLogTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gameLogTab.Controls.Add(this.gameLog_panel);
+            this.gameLogTab.Controls.Add(this.copyGames_button);
+            this.gameLogTab.Controls.Add(this.label28);
+            this.gameLogTab.Controls.Add(this.gameLog_autoCompleteTextBox);
+            this.gameLogTab.Location = new System.Drawing.Point(4, 25);
+            this.gameLogTab.Name = "gameLogTab";
+            this.gameLogTab.Padding = new System.Windows.Forms.Padding(3);
+            this.gameLogTab.Size = new System.Drawing.Size(1100, 410);
+            this.gameLogTab.TabIndex = 4;
+            this.gameLogTab.Text = "Game Log";
+            // 
+            // gameLog_panel
+            // 
+            this.gameLog_panel.BackColor = System.Drawing.Color.LemonChiffon;
+            this.gameLog_panel.Controls.Add(this.startEndTimesGameLog_label);
+            this.gameLog_panel.Controls.Add(this.playerNameGameLog_label);
+            this.gameLog_panel.Controls.Add(this.gameLog_dataGridView);
+            this.gameLog_panel.Location = new System.Drawing.Point(3, 33);
+            this.gameLog_panel.Name = "gameLog_panel";
+            this.gameLog_panel.Size = new System.Drawing.Size(1097, 374);
+            this.gameLog_panel.TabIndex = 22;
+            // 
+            // startEndTimesGameLog_label
+            // 
+            this.startEndTimesGameLog_label.AutoSize = true;
+            this.startEndTimesGameLog_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startEndTimesGameLog_label.Location = new System.Drawing.Point(890, 5);
+            this.startEndTimesGameLog_label.Name = "startEndTimesGameLog_label";
+            this.startEndTimesGameLog_label.Size = new System.Drawing.Size(97, 20);
+            this.startEndTimesGameLog_label.TabIndex = 22;
+            this.startEndTimesGameLog_label.Text = "Start - End";
+            // 
+            // playerNameGameLog_label
+            // 
+            this.playerNameGameLog_label.AutoSize = true;
+            this.playerNameGameLog_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerNameGameLog_label.Location = new System.Drawing.Point(6, 5);
+            this.playerNameGameLog_label.Name = "playerNameGameLog_label";
+            this.playerNameGameLog_label.Size = new System.Drawing.Size(109, 20);
+            this.playerNameGameLog_label.TabIndex = 21;
+            this.playerNameGameLog_label.Text = "Player Name";
+            // 
+            // gameLog_dataGridView
+            // 
+            this.gameLog_dataGridView.AllowUserToAddRows = false;
+            this.gameLog_dataGridView.AllowUserToDeleteRows = false;
+            this.gameLog_dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gameLog_dataGridView.BackgroundColor = System.Drawing.Color.OldLace;
+            this.gameLog_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameLog_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.gameLog_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gameLog_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date_GameLog,
+            this.Opp_GameLog,
+            this.Min_GameLog,
+            this.FgmFga_GameLog,
+            this.FgPer_GameLog,
+            this.TpmTpa_GameLog,
+            this.TpPer_GameLog,
+            this.FtmFta_GameLog,
+            this.FtPer_GameLog,
+            this.Reb_GameLog,
+            this.Ast_GameLog,
+            this.Blk_GameLog,
+            this.Stl_GameLog,
+            this.Pf_GameLog,
+            this.To_GameLog,
+            this.Pts_GameLog,
+            this.Score_GameLog});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gameLog_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.gameLog_dataGridView.EnableHeadersVisualStyles = false;
+            this.gameLog_dataGridView.Location = new System.Drawing.Point(0, 28);
+            this.gameLog_dataGridView.Name = "gameLog_dataGridView";
+            this.gameLog_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameLog_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gameLog_dataGridView.RowHeadersWidth = 50;
+            this.gameLog_dataGridView.Size = new System.Drawing.Size(1097, 356);
+            this.gameLog_dataGridView.TabIndex = 20;
+            // 
+            // Date_GameLog
+            // 
+            this.Date_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Date_GameLog.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Date_GameLog.HeaderText = "Date";
+            this.Date_GameLog.Name = "Date_GameLog";
+            this.Date_GameLog.Width = 66;
+            // 
+            // Opp_GameLog
+            // 
+            this.Opp_GameLog.HeaderText = "Opp";
+            this.Opp_GameLog.Name = "Opp_GameLog";
+            this.Opp_GameLog.Width = 50;
+            // 
+            // Min_GameLog
+            // 
+            this.Min_GameLog.HeaderText = "MIN";
+            this.Min_GameLog.Name = "Min_GameLog";
+            this.Min_GameLog.Width = 50;
+            // 
+            // FgmFga_GameLog
+            // 
+            this.FgmFga_GameLog.HeaderText = "FGM-FGA";
+            this.FgmFga_GameLog.Name = "FgmFga_GameLog";
+            this.FgmFga_GameLog.Width = 80;
+            // 
+            // FgPer_GameLog
+            // 
+            this.FgPer_GameLog.HeaderText = "FG%";
+            this.FgPer_GameLog.Name = "FgPer_GameLog";
+            this.FgPer_GameLog.Width = 50;
+            // 
+            // TpmTpa_GameLog
+            // 
+            this.TpmTpa_GameLog.HeaderText = "3PM-3PA";
+            this.TpmTpa_GameLog.Name = "TpmTpa_GameLog";
+            this.TpmTpa_GameLog.Width = 80;
+            // 
+            // TpPer_GameLog
+            // 
+            this.TpPer_GameLog.HeaderText = "3P%";
+            this.TpPer_GameLog.Name = "TpPer_GameLog";
+            this.TpPer_GameLog.Width = 50;
+            // 
+            // FtmFta_GameLog
+            // 
+            this.FtmFta_GameLog.HeaderText = "FTM-FTA";
+            this.FtmFta_GameLog.Name = "FtmFta_GameLog";
+            this.FtmFta_GameLog.Width = 80;
+            // 
+            // FtPer_GameLog
+            // 
+            this.FtPer_GameLog.HeaderText = "FT%";
+            this.FtPer_GameLog.Name = "FtPer_GameLog";
+            this.FtPer_GameLog.Width = 50;
+            // 
+            // Reb_GameLog
+            // 
+            this.Reb_GameLog.HeaderText = "REB";
+            this.Reb_GameLog.Name = "Reb_GameLog";
+            this.Reb_GameLog.Width = 50;
+            // 
+            // Ast_GameLog
+            // 
+            this.Ast_GameLog.HeaderText = "AST";
+            this.Ast_GameLog.Name = "Ast_GameLog";
+            this.Ast_GameLog.Width = 50;
+            // 
+            // Blk_GameLog
+            // 
+            this.Blk_GameLog.HeaderText = "BLK";
+            this.Blk_GameLog.Name = "Blk_GameLog";
+            this.Blk_GameLog.Width = 50;
+            // 
+            // Stl_GameLog
+            // 
+            this.Stl_GameLog.HeaderText = "STL";
+            this.Stl_GameLog.Name = "Stl_GameLog";
+            this.Stl_GameLog.Width = 50;
+            // 
+            // Pf_GameLog
+            // 
+            this.Pf_GameLog.HeaderText = "PF";
+            this.Pf_GameLog.Name = "Pf_GameLog";
+            this.Pf_GameLog.Width = 50;
+            // 
+            // To_GameLog
+            // 
+            this.To_GameLog.HeaderText = "TO";
+            this.To_GameLog.Name = "To_GameLog";
+            this.To_GameLog.Width = 50;
+            // 
+            // Pts_GameLog
+            // 
+            this.Pts_GameLog.HeaderText = "PTS";
+            this.Pts_GameLog.Name = "Pts_GameLog";
+            this.Pts_GameLog.Width = 50;
+            // 
+            // Score_GameLog
+            // 
+            this.Score_GameLog.HeaderText = "Score";
+            this.Score_GameLog.Name = "Score_GameLog";
+            this.Score_GameLog.Width = 70;
+            // 
+            // copyGames_button
+            // 
+            this.copyGames_button.Location = new System.Drawing.Point(1007, 2);
+            this.copyGames_button.Name = "copyGames_button";
+            this.copyGames_button.Size = new System.Drawing.Size(88, 27);
+            this.copyGames_button.TabIndex = 21;
+            this.copyGames_button.Text = "Copy";
+            this.copyGames_button.UseVisualStyleBackColor = true;
+            this.copyGames_button.Click += new System.EventHandler(this.copyGames_button_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(8, 7);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(106, 16);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "Player Name :";
+            // 
             // compare_tabPage
             // 
             this.compare_tabPage.BackColor = System.Drawing.Color.Wheat;
-            this.compare_tabPage.Controls.Add(this.player2_TextBox);
-            this.compare_tabPage.Controls.Add(this.player1_TextBox);
+            this.compare_tabPage.Controls.Add(this.score2_label);
+            this.compare_tabPage.Controls.Add(this.label27);
+            this.compare_tabPage.Controls.Add(this.score1_label);
             this.compare_tabPage.Controls.Add(this.tradePlayers_button);
             this.compare_tabPage.Controls.Add(this.copyChart_button);
             this.compare_tabPage.Controls.Add(this.copyCompare_button);
@@ -676,6 +1042,8 @@
             this.compare_tabPage.Controls.Add(this.to1_label);
             this.compare_tabPage.Controls.Add(this.min1_label);
             this.compare_tabPage.Controls.Add(this.gp1_label);
+            this.compare_tabPage.Controls.Add(this.player2_TextBox);
+            this.compare_tabPage.Controls.Add(this.player1_TextBox);
             this.compare_tabPage.Controls.Add(this.compare_last_comboBox);
             this.compare_tabPage.Controls.Add(this.label16);
             this.compare_tabPage.Controls.Add(this.compareMode_comboBox);
@@ -700,6 +1068,33 @@
             this.compare_tabPage.Size = new System.Drawing.Size(1100, 410);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
+            // 
+            // score2_label
+            // 
+            this.score2_label.AutoSize = true;
+            this.score2_label.Location = new System.Drawing.Point(266, 382);
+            this.score2_label.Name = "score2_label";
+            this.score2_label.Size = new System.Drawing.Size(34, 16);
+            this.score2_label.TabIndex = 59;
+            this.score2_label.Text = "N\\A";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(157, 382);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 16);
+            this.label27.TabIndex = 58;
+            this.label27.Text = "Score";
+            // 
+            // score1_label
+            // 
+            this.score1_label.AutoSize = true;
+            this.score1_label.Location = new System.Drawing.Point(60, 382);
+            this.score1_label.Name = "score1_label";
+            this.score1_label.Size = new System.Drawing.Size(34, 16);
+            this.score1_label.TabIndex = 57;
+            this.score1_label.Text = "N\\A";
             // 
             // tradePlayers_button
             // 
@@ -768,7 +1163,7 @@
             // pts2_label
             // 
             this.pts2_label.AutoSize = true;
-            this.pts2_label.Location = new System.Drawing.Point(266, 163);
+            this.pts2_label.Location = new System.Drawing.Point(266, 150);
             this.pts2_label.Name = "pts2_label";
             this.pts2_label.Size = new System.Drawing.Size(34, 16);
             this.pts2_label.TabIndex = 47;
@@ -777,7 +1172,7 @@
             // ast2_label
             // 
             this.ast2_label.AutoSize = true;
-            this.ast2_label.Location = new System.Drawing.Point(266, 217);
+            this.ast2_label.Location = new System.Drawing.Point(266, 202);
             this.ast2_label.Name = "ast2_label";
             this.ast2_label.Size = new System.Drawing.Size(34, 16);
             this.ast2_label.TabIndex = 46;
@@ -786,7 +1181,7 @@
             // stl2_label
             // 
             this.stl2_label.AutoSize = true;
-            this.stl2_label.Location = new System.Drawing.Point(266, 244);
+            this.stl2_label.Location = new System.Drawing.Point(266, 228);
             this.stl2_label.Name = "stl2_label";
             this.stl2_label.Size = new System.Drawing.Size(34, 16);
             this.stl2_label.TabIndex = 45;
@@ -795,7 +1190,7 @@
             // blk2_label
             // 
             this.blk2_label.AutoSize = true;
-            this.blk2_label.Location = new System.Drawing.Point(266, 271);
+            this.blk2_label.Location = new System.Drawing.Point(266, 254);
             this.blk2_label.Name = "blk2_label";
             this.blk2_label.Size = new System.Drawing.Size(34, 16);
             this.blk2_label.TabIndex = 44;
@@ -804,7 +1199,7 @@
             // reb2_label
             // 
             this.reb2_label.AutoSize = true;
-            this.reb2_label.Location = new System.Drawing.Point(266, 190);
+            this.reb2_label.Location = new System.Drawing.Point(266, 176);
             this.reb2_label.Name = "reb2_label";
             this.reb2_label.Size = new System.Drawing.Size(34, 16);
             this.reb2_label.TabIndex = 43;
@@ -813,7 +1208,7 @@
             // tpm2_label
             // 
             this.tpm2_label.AutoSize = true;
-            this.tpm2_label.Location = new System.Drawing.Point(266, 298);
+            this.tpm2_label.Location = new System.Drawing.Point(266, 280);
             this.tpm2_label.Name = "tpm2_label";
             this.tpm2_label.Size = new System.Drawing.Size(34, 16);
             this.tpm2_label.TabIndex = 42;
@@ -822,7 +1217,7 @@
             // fg2_label
             // 
             this.fg2_label.AutoSize = true;
-            this.fg2_label.Location = new System.Drawing.Point(266, 325);
+            this.fg2_label.Location = new System.Drawing.Point(266, 306);
             this.fg2_label.Name = "fg2_label";
             this.fg2_label.Size = new System.Drawing.Size(34, 16);
             this.fg2_label.TabIndex = 41;
@@ -831,7 +1226,7 @@
             // ft2_label
             // 
             this.ft2_label.AutoSize = true;
-            this.ft2_label.Location = new System.Drawing.Point(266, 352);
+            this.ft2_label.Location = new System.Drawing.Point(266, 332);
             this.ft2_label.Name = "ft2_label";
             this.ft2_label.Size = new System.Drawing.Size(34, 16);
             this.ft2_label.TabIndex = 40;
@@ -840,7 +1235,7 @@
             // to2_label
             // 
             this.to2_label.AutoSize = true;
-            this.to2_label.Location = new System.Drawing.Point(266, 379);
+            this.to2_label.Location = new System.Drawing.Point(266, 358);
             this.to2_label.Name = "to2_label";
             this.to2_label.Size = new System.Drawing.Size(34, 16);
             this.to2_label.TabIndex = 39;
@@ -849,7 +1244,7 @@
             // min2_label
             // 
             this.min2_label.AutoSize = true;
-            this.min2_label.Location = new System.Drawing.Point(266, 136);
+            this.min2_label.Location = new System.Drawing.Point(266, 124);
             this.min2_label.Name = "min2_label";
             this.min2_label.Size = new System.Drawing.Size(34, 16);
             this.min2_label.TabIndex = 38;
@@ -858,7 +1253,7 @@
             // gp2_label
             // 
             this.gp2_label.AutoSize = true;
-            this.gp2_label.Location = new System.Drawing.Point(266, 109);
+            this.gp2_label.Location = new System.Drawing.Point(266, 99);
             this.gp2_label.Name = "gp2_label";
             this.gp2_label.Size = new System.Drawing.Size(34, 16);
             this.gp2_label.TabIndex = 37;
@@ -867,7 +1262,7 @@
             // pts1_label
             // 
             this.pts1_label.AutoSize = true;
-            this.pts1_label.Location = new System.Drawing.Point(60, 163);
+            this.pts1_label.Location = new System.Drawing.Point(60, 150);
             this.pts1_label.Name = "pts1_label";
             this.pts1_label.Size = new System.Drawing.Size(34, 16);
             this.pts1_label.TabIndex = 36;
@@ -876,7 +1271,7 @@
             // ast1_label
             // 
             this.ast1_label.AutoSize = true;
-            this.ast1_label.Location = new System.Drawing.Point(60, 217);
+            this.ast1_label.Location = new System.Drawing.Point(60, 202);
             this.ast1_label.Name = "ast1_label";
             this.ast1_label.Size = new System.Drawing.Size(34, 16);
             this.ast1_label.TabIndex = 35;
@@ -885,7 +1280,7 @@
             // stl1_label
             // 
             this.stl1_label.AutoSize = true;
-            this.stl1_label.Location = new System.Drawing.Point(60, 244);
+            this.stl1_label.Location = new System.Drawing.Point(60, 228);
             this.stl1_label.Name = "stl1_label";
             this.stl1_label.Size = new System.Drawing.Size(34, 16);
             this.stl1_label.TabIndex = 34;
@@ -894,7 +1289,7 @@
             // blk1_label
             // 
             this.blk1_label.AutoSize = true;
-            this.blk1_label.Location = new System.Drawing.Point(60, 271);
+            this.blk1_label.Location = new System.Drawing.Point(60, 254);
             this.blk1_label.Name = "blk1_label";
             this.blk1_label.Size = new System.Drawing.Size(34, 16);
             this.blk1_label.TabIndex = 33;
@@ -903,7 +1298,7 @@
             // reb1_label
             // 
             this.reb1_label.AutoSize = true;
-            this.reb1_label.Location = new System.Drawing.Point(60, 190);
+            this.reb1_label.Location = new System.Drawing.Point(60, 176);
             this.reb1_label.Name = "reb1_label";
             this.reb1_label.Size = new System.Drawing.Size(34, 16);
             this.reb1_label.TabIndex = 32;
@@ -912,7 +1307,7 @@
             // tpm1_label
             // 
             this.tpm1_label.AutoSize = true;
-            this.tpm1_label.Location = new System.Drawing.Point(60, 298);
+            this.tpm1_label.Location = new System.Drawing.Point(60, 280);
             this.tpm1_label.Name = "tpm1_label";
             this.tpm1_label.Size = new System.Drawing.Size(34, 16);
             this.tpm1_label.TabIndex = 31;
@@ -921,7 +1316,7 @@
             // fg1_label
             // 
             this.fg1_label.AutoSize = true;
-            this.fg1_label.Location = new System.Drawing.Point(60, 325);
+            this.fg1_label.Location = new System.Drawing.Point(60, 306);
             this.fg1_label.Name = "fg1_label";
             this.fg1_label.Size = new System.Drawing.Size(34, 16);
             this.fg1_label.TabIndex = 30;
@@ -931,7 +1326,7 @@
             // ft1_label
             // 
             this.ft1_label.AutoSize = true;
-            this.ft1_label.Location = new System.Drawing.Point(60, 352);
+            this.ft1_label.Location = new System.Drawing.Point(60, 332);
             this.ft1_label.Name = "ft1_label";
             this.ft1_label.Size = new System.Drawing.Size(34, 16);
             this.ft1_label.TabIndex = 29;
@@ -941,7 +1336,7 @@
             // to1_label
             // 
             this.to1_label.AutoSize = true;
-            this.to1_label.Location = new System.Drawing.Point(60, 379);
+            this.to1_label.Location = new System.Drawing.Point(60, 358);
             this.to1_label.Name = "to1_label";
             this.to1_label.Size = new System.Drawing.Size(34, 16);
             this.to1_label.TabIndex = 28;
@@ -950,7 +1345,7 @@
             // min1_label
             // 
             this.min1_label.AutoSize = true;
-            this.min1_label.Location = new System.Drawing.Point(60, 136);
+            this.min1_label.Location = new System.Drawing.Point(60, 124);
             this.min1_label.Name = "min1_label";
             this.min1_label.Size = new System.Drawing.Size(34, 16);
             this.min1_label.TabIndex = 27;
@@ -959,7 +1354,7 @@
             // gp1_label
             // 
             this.gp1_label.AutoSize = true;
-            this.gp1_label.Location = new System.Drawing.Point(60, 109);
+            this.gp1_label.Location = new System.Drawing.Point(60, 99);
             this.gp1_label.Name = "gp1_label";
             this.gp1_label.Size = new System.Drawing.Size(34, 16);
             this.gp1_label.TabIndex = 26;
@@ -1016,7 +1411,7 @@
             // ft_label
             // 
             this.ft_label.AutoSize = true;
-            this.ft_label.Location = new System.Drawing.Point(169, 352);
+            this.ft_label.Location = new System.Drawing.Point(168, 332);
             this.ft_label.Name = "ft_label";
             this.ft_label.Size = new System.Drawing.Size(27, 16);
             this.ft_label.TabIndex = 21;
@@ -1026,7 +1421,7 @@
             // to_label
             // 
             this.to_label.AutoSize = true;
-            this.to_label.Location = new System.Drawing.Point(168, 379);
+            this.to_label.Location = new System.Drawing.Point(167, 358);
             this.to_label.Name = "to_label";
             this.to_label.Size = new System.Drawing.Size(29, 16);
             this.to_label.TabIndex = 20;
@@ -1036,7 +1431,7 @@
             // blk_label
             // 
             this.blk_label.AutoSize = true;
-            this.blk_label.Location = new System.Drawing.Point(167, 271);
+            this.blk_label.Location = new System.Drawing.Point(166, 254);
             this.blk_label.Name = "blk_label";
             this.blk_label.Size = new System.Drawing.Size(30, 16);
             this.blk_label.TabIndex = 19;
@@ -1046,7 +1441,7 @@
             // reb_label
             // 
             this.reb_label.AutoSize = true;
-            this.reb_label.Location = new System.Drawing.Point(164, 190);
+            this.reb_label.Location = new System.Drawing.Point(163, 176);
             this.reb_label.Name = "reb_label";
             this.reb_label.Size = new System.Drawing.Size(37, 16);
             this.reb_label.TabIndex = 18;
@@ -1056,7 +1451,7 @@
             // stl_label
             // 
             this.stl_label.AutoSize = true;
-            this.stl_label.Location = new System.Drawing.Point(169, 244);
+            this.stl_label.Location = new System.Drawing.Point(168, 228);
             this.stl_label.Name = "stl_label";
             this.stl_label.Size = new System.Drawing.Size(26, 16);
             this.stl_label.TabIndex = 17;
@@ -1066,7 +1461,7 @@
             // fg_label
             // 
             this.fg_label.AutoSize = true;
-            this.fg_label.Location = new System.Drawing.Point(168, 325);
+            this.fg_label.Location = new System.Drawing.Point(167, 306);
             this.fg_label.Name = "fg_label";
             this.fg_label.Size = new System.Drawing.Size(28, 16);
             this.fg_label.TabIndex = 16;
@@ -1077,7 +1472,7 @@
             // min_label
             // 
             this.min_label.AutoSize = true;
-            this.min_label.Location = new System.Drawing.Point(166, 136);
+            this.min_label.Location = new System.Drawing.Point(165, 124);
             this.min_label.Name = "min_label";
             this.min_label.Size = new System.Drawing.Size(32, 16);
             this.min_label.TabIndex = 15;
@@ -1087,7 +1482,7 @@
             // ast_label
             // 
             this.ast_label.AutoSize = true;
-            this.ast_label.Location = new System.Drawing.Point(167, 217);
+            this.ast_label.Location = new System.Drawing.Point(166, 202);
             this.ast_label.Name = "ast_label";
             this.ast_label.Size = new System.Drawing.Size(30, 16);
             this.ast_label.TabIndex = 14;
@@ -1097,7 +1492,7 @@
             // tpm_label
             // 
             this.tpm_label.AutoSize = true;
-            this.tpm_label.Location = new System.Drawing.Point(163, 298);
+            this.tpm_label.Location = new System.Drawing.Point(162, 280);
             this.tpm_label.Name = "tpm_label";
             this.tpm_label.Size = new System.Drawing.Size(38, 16);
             this.tpm_label.TabIndex = 13;
@@ -1107,7 +1502,7 @@
             // pts_label
             // 
             this.pts_label.AutoSize = true;
-            this.pts_label.Location = new System.Drawing.Point(167, 163);
+            this.pts_label.Location = new System.Drawing.Point(166, 150);
             this.pts_label.Name = "pts_label";
             this.pts_label.Size = new System.Drawing.Size(30, 16);
             this.pts_label.TabIndex = 12;
@@ -1117,7 +1512,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 109);
+            this.label4.Location = new System.Drawing.Point(167, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 16);
             this.label4.TabIndex = 11;
@@ -1141,33 +1536,33 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Player 1";
             // 
-            // tabPage2
+            // tradeTab
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.PeachPuff;
-            this.tabPage2.Controls.Add(this.receivePlayer_TextBox);
-            this.tabPage2.Controls.Add(this.sendPlayer_TextBox);
-            this.tabPage2.Controls.Add(this.score_label);
-            this.tabPage2.Controls.Add(this.screenshot_button);
-            this.tabPage2.Controls.Add(this.trade_panel);
-            this.tabPage2.Controls.Add(this.copyTradeChart_button);
-            this.tabPage2.Controls.Add(this.trade_chart);
-            this.tabPage2.Controls.Add(this.flip_button);
-            this.tabPage2.Controls.Add(this.copyDiff_button);
-            this.tabPage2.Controls.Add(this.copyTradeStats_button);
-            this.tabPage2.Controls.Add(this.clearList_button);
-            this.tabPage2.Controls.Add(this.trade_button);
-            this.tabPage2.Controls.Add(this.tradeLast_comboBox);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.tradeMode_comboBox);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1100, 410);
-            this.tabPage2.TabIndex = 2;
-            this.tabPage2.Text = "Trade Analyzer";
+            this.tradeTab.BackColor = System.Drawing.Color.PeachPuff;
+            this.tradeTab.Controls.Add(this.receivePlayer_TextBox);
+            this.tradeTab.Controls.Add(this.sendPlayer_TextBox);
+            this.tradeTab.Controls.Add(this.score_label);
+            this.tradeTab.Controls.Add(this.screenshot_button);
+            this.tradeTab.Controls.Add(this.trade_panel);
+            this.tradeTab.Controls.Add(this.copyTradeChart_button);
+            this.tradeTab.Controls.Add(this.trade_chart);
+            this.tradeTab.Controls.Add(this.flip_button);
+            this.tradeTab.Controls.Add(this.copyDiff_button);
+            this.tradeTab.Controls.Add(this.copyTradeStats_button);
+            this.tradeTab.Controls.Add(this.clearList_button);
+            this.tradeTab.Controls.Add(this.trade_button);
+            this.tradeTab.Controls.Add(this.tradeNumOfGames_comboBox);
+            this.tradeTab.Controls.Add(this.label5);
+            this.tradeTab.Controls.Add(this.tradeMode_comboBox);
+            this.tradeTab.Controls.Add(this.label6);
+            this.tradeTab.Controls.Add(this.label7);
+            this.tradeTab.Controls.Add(this.label8);
+            this.tradeTab.Location = new System.Drawing.Point(4, 25);
+            this.tradeTab.Name = "tradeTab";
+            this.tradeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.tradeTab.Size = new System.Drawing.Size(1100, 410);
+            this.tradeTab.TabIndex = 2;
+            this.tradeTab.Text = "Trade Analyzer";
             // 
             // score_label
             // 
@@ -1263,7 +1658,6 @@
             this.scoreTrade_label.Size = new System.Drawing.Size(16, 16);
             this.scoreTrade_label.TabIndex = 112;
             this.scoreTrade_label.Text = "0";
-            this.scoreTrade_label.Visible = false;
             // 
             // label23
             // 
@@ -1273,7 +1667,6 @@
             this.label23.Size = new System.Drawing.Size(57, 16);
             this.label23.TabIndex = 111;
             this.label23.Text = "Score :";
-            this.label23.Visible = false;
             // 
             // score2Trade_label
             // 
@@ -1283,7 +1676,6 @@
             this.score2Trade_label.Size = new System.Drawing.Size(34, 16);
             this.score2Trade_label.TabIndex = 110;
             this.score2Trade_label.Text = "N\\A";
-            this.score2Trade_label.Visible = false;
             // 
             // score1Trade_label
             // 
@@ -1293,7 +1685,6 @@
             this.score1Trade_label.Size = new System.Drawing.Size(34, 16);
             this.score1Trade_label.TabIndex = 109;
             this.score1Trade_label.Text = "N\\A";
-            this.score1Trade_label.Visible = false;
             // 
             // scoreChartTrade_label
             // 
@@ -1303,7 +1694,6 @@
             this.scoreChartTrade_label.Size = new System.Drawing.Size(49, 16);
             this.scoreChartTrade_label.TabIndex = 108;
             this.scoreChartTrade_label.Text = "Score";
-            this.scoreChartTrade_label.Visible = false;
             this.scoreChartTrade_label.Click += new System.EventHandler(this.scoreChartTrade_label_Click);
             // 
             // timePeriod_label
@@ -1908,20 +2298,20 @@
             this.trade_button.UseVisualStyleBackColor = true;
             this.trade_button.Click += new System.EventHandler(this.trade_button_Click);
             // 
-            // tradeLast_comboBox
+            // tradeNumOfGames_comboBox
             // 
-            this.tradeLast_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tradeLast_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tradeLast_comboBox.FormattingEnabled = true;
-            this.tradeLast_comboBox.Items.AddRange(new object[] {
+            this.tradeNumOfGames_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tradeNumOfGames_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tradeNumOfGames_comboBox.FormattingEnabled = true;
+            this.tradeNumOfGames_comboBox.Items.AddRange(new object[] {
             "7",
             "14",
             "30",
             "Max"});
-            this.tradeLast_comboBox.Location = new System.Drawing.Point(151, 38);
-            this.tradeLast_comboBox.Name = "tradeLast_comboBox";
-            this.tradeLast_comboBox.Size = new System.Drawing.Size(88, 24);
-            this.tradeLast_comboBox.TabIndex = 33;
+            this.tradeNumOfGames_comboBox.Location = new System.Drawing.Point(151, 38);
+            this.tradeNumOfGames_comboBox.Name = "tradeNumOfGames_comboBox";
+            this.tradeNumOfGames_comboBox.Size = new System.Drawing.Size(88, 24);
+            this.tradeNumOfGames_comboBox.TabIndex = 33;
             // 
             // label5
             // 
@@ -1972,12 +2362,288 @@
             this.label8.TabIndex = 26;
             this.label8.Text = "Players Sent";
             // 
+            // rater_tab
+            // 
+            this.rater_tab.Controls.Add(this.raterPlayersMode_comboBox);
+            this.rater_tab.Controls.Add(this.teamRater_comboBox);
+            this.rater_tab.Controls.Add(this.raterTimePeriod_comboBox);
+            this.rater_tab.Controls.Add(this.raterScores);
+            this.rater_tab.Controls.Add(this.label1);
+            this.rater_tab.Controls.Add(this.rater_dataGridView);
+            this.rater_tab.Controls.Add(this.rater_autoCompleteTextBox);
+            this.rater_tab.Location = new System.Drawing.Point(4, 25);
+            this.rater_tab.Name = "rater_tab";
+            this.rater_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.rater_tab.Size = new System.Drawing.Size(1100, 410);
+            this.rater_tab.TabIndex = 3;
+            this.rater_tab.Text = "Rater";
+            this.rater_tab.UseVisualStyleBackColor = true;
+            // 
+            // raterPlayersMode_comboBox
+            // 
+            this.raterPlayersMode_comboBox.FormattingEnabled = true;
+            this.raterPlayersMode_comboBox.Items.AddRange(new object[] {
+            "All",
+            "Roster",
+            "Watch"});
+            this.raterPlayersMode_comboBox.Location = new System.Drawing.Point(886, 9);
+            this.raterPlayersMode_comboBox.Name = "raterPlayersMode_comboBox";
+            this.raterPlayersMode_comboBox.Size = new System.Drawing.Size(95, 24);
+            this.raterPlayersMode_comboBox.TabIndex = 25;
+            this.raterPlayersMode_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterPlayersMode_comboBox_SelectedIndexChanged);
+            // 
+            // teamRater_comboBox
+            // 
+            this.teamRater_comboBox.FormattingEnabled = true;
+            this.teamRater_comboBox.Location = new System.Drawing.Point(126, 8);
+            this.teamRater_comboBox.Name = "teamRater_comboBox";
+            this.teamRater_comboBox.Size = new System.Drawing.Size(186, 24);
+            this.teamRater_comboBox.TabIndex = 24;
+            this.teamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.teamRater_comboBox_SelectedIndexChanged);
+            // 
+            // raterTimePeriod_comboBox
+            // 
+            this.raterTimePeriod_comboBox.FormattingEnabled = true;
+            this.raterTimePeriod_comboBox.Items.AddRange(new object[] {
+            "Season",
+            "Average",
+            "Last 30",
+            "Last 15",
+            "Last 7",
+            "Last 1"});
+            this.raterTimePeriod_comboBox.Location = new System.Drawing.Point(8, 8);
+            this.raterTimePeriod_comboBox.Name = "raterTimePeriod_comboBox";
+            this.raterTimePeriod_comboBox.Size = new System.Drawing.Size(95, 24);
+            this.raterTimePeriod_comboBox.TabIndex = 23;
+            this.raterTimePeriod_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterMode_comboBox_SelectedIndexChanged);
+            // 
+            // raterScores
+            // 
+            this.raterScores.Appearance = System.Windows.Forms.Appearance.Button;
+            this.raterScores.AutoSize = true;
+            this.raterScores.Location = new System.Drawing.Point(987, 8);
+            this.raterScores.Name = "raterScores";
+            this.raterScores.Size = new System.Drawing.Size(108, 26);
+            this.raterScores.TabIndex = 20;
+            this.raterScores.Text = "Show Scores";
+            this.raterScores.UseVisualStyleBackColor = true;
+            this.raterScores.CheckedChanged += new System.EventHandler(this.raterScores_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(606, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Search Player :";
+            // 
+            // rater_dataGridView
+            // 
+            this.rater_dataGridView.AllowUserToAddRows = false;
+            this.rater_dataGridView.AllowUserToDeleteRows = false;
+            this.rater_dataGridView.BackgroundColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Cornsilk;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rater_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.rater_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rater_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PlayerName,
+            this.GPRater,
+            this.MinRater,
+            this.FgmFgaRater,
+            this.FgPerRater,
+            this.FtmFtaRater,
+            this.FtPerRater,
+            this.TpmRater,
+            this.RebRater,
+            this.AstRater,
+            this.StlRater,
+            this.BlkRater,
+            this.ToRater,
+            this.PtsRater,
+            this.ScoreRater});
+            this.rater_dataGridView.ContextMenuStrip = this.rater_contextMenuStrip;
+            this.rater_dataGridView.EnableHeadersVisualStyles = false;
+            this.rater_dataGridView.Location = new System.Drawing.Point(6, 38);
+            this.rater_dataGridView.Name = "rater_dataGridView";
+            this.rater_dataGridView.ReadOnly = true;
+            this.rater_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.rater_dataGridView.RowHeadersWidth = 55;
+            this.rater_dataGridView.Size = new System.Drawing.Size(1091, 366);
+            this.rater_dataGridView.TabIndex = 0;
+            // 
+            // PlayerName
+            // 
+            this.PlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.PlayerName.DefaultCellStyle = dataGridViewCellStyle9;
+            this.PlayerName.HeaderText = "Name";
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            this.PlayerName.Width = 74;
+            // 
+            // GPRater
+            // 
+            this.GPRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.GPRater.DefaultCellStyle = dataGridViewCellStyle10;
+            this.GPRater.HeaderText = "GP";
+            this.GPRater.Name = "GPRater";
+            this.GPRater.ReadOnly = true;
+            // 
+            // MinRater
+            // 
+            this.MinRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MinRater.DefaultCellStyle = dataGridViewCellStyle11;
+            this.MinRater.HeaderText = "Min";
+            this.MinRater.Name = "MinRater";
+            this.MinRater.ReadOnly = true;
+            // 
+            // FgmFgaRater
+            // 
+            this.FgmFgaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgmFgaRater.DefaultCellStyle = dataGridViewCellStyle12;
+            this.FgmFgaRater.HeaderText = "FGM/FGA";
+            this.FgmFgaRater.Name = "FgmFgaRater";
+            this.FgmFgaRater.ReadOnly = true;
+            // 
+            // FgPerRater
+            // 
+            this.FgPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgPerRater.DefaultCellStyle = dataGridViewCellStyle13;
+            this.FgPerRater.HeaderText = "FG%";
+            this.FgPerRater.Name = "FgPerRater";
+            this.FgPerRater.ReadOnly = true;
+            // 
+            // FtmFtaRater
+            // 
+            this.FtmFtaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtmFtaRater.DefaultCellStyle = dataGridViewCellStyle14;
+            this.FtmFtaRater.HeaderText = "FTM/FTA";
+            this.FtmFtaRater.Name = "FtmFtaRater";
+            this.FtmFtaRater.ReadOnly = true;
+            this.FtmFtaRater.Width = 98;
+            // 
+            // FtPerRater
+            // 
+            this.FtPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtPerRater.DefaultCellStyle = dataGridViewCellStyle15;
+            this.FtPerRater.HeaderText = "FT%";
+            this.FtPerRater.Name = "FtPerRater";
+            this.FtPerRater.ReadOnly = true;
+            // 
+            // TpmRater
+            // 
+            this.TpmRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TpmRater.DefaultCellStyle = dataGridViewCellStyle16;
+            this.TpmRater.HeaderText = "3PM";
+            this.TpmRater.Name = "TpmRater";
+            this.TpmRater.ReadOnly = true;
+            // 
+            // RebRater
+            // 
+            this.RebRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RebRater.DefaultCellStyle = dataGridViewCellStyle17;
+            this.RebRater.HeaderText = "Reb";
+            this.RebRater.Name = "RebRater";
+            this.RebRater.ReadOnly = true;
+            // 
+            // AstRater
+            // 
+            this.AstRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.AstRater.DefaultCellStyle = dataGridViewCellStyle18;
+            this.AstRater.HeaderText = "Ast";
+            this.AstRater.Name = "AstRater";
+            this.AstRater.ReadOnly = true;
+            // 
+            // StlRater
+            // 
+            this.StlRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StlRater.DefaultCellStyle = dataGridViewCellStyle19;
+            this.StlRater.HeaderText = "Stl";
+            this.StlRater.Name = "StlRater";
+            this.StlRater.ReadOnly = true;
+            // 
+            // BlkRater
+            // 
+            this.BlkRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.BlkRater.DefaultCellStyle = dataGridViewCellStyle20;
+            this.BlkRater.HeaderText = "Blk";
+            this.BlkRater.Name = "BlkRater";
+            this.BlkRater.ReadOnly = true;
+            // 
+            // ToRater
+            // 
+            this.ToRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ToRater.DefaultCellStyle = dataGridViewCellStyle21;
+            this.ToRater.HeaderText = "To";
+            this.ToRater.Name = "ToRater";
+            this.ToRater.ReadOnly = true;
+            // 
+            // PtsRater
+            // 
+            this.PtsRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PtsRater.DefaultCellStyle = dataGridViewCellStyle22;
+            this.PtsRater.HeaderText = "Pts";
+            this.PtsRater.Name = "PtsRater";
+            this.PtsRater.ReadOnly = true;
+            // 
+            // ScoreRater
+            // 
+            this.ScoreRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ScoreRater.DefaultCellStyle = dataGridViewCellStyle23;
+            this.ScoreRater.HeaderText = "Score";
+            this.ScoreRater.Name = "ScoreRater";
+            this.ScoreRater.ReadOnly = true;
+            // 
+            // rater_contextMenuStrip
+            // 
+            this.rater_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerInfoToolStripMenuItem,
+            this.gameLogToolStripMenuItem,
+            this.sendToToolStripMenuItem});
+            this.rater_contextMenuStrip.Name = "rater_contextMenuStrip";
+            this.rater_contextMenuStrip.Size = new System.Drawing.Size(131, 70);
+            // 
+            // playerInfoToolStripMenuItem
+            // 
+            this.playerInfoToolStripMenuItem.Name = "playerInfoToolStripMenuItem";
+            this.playerInfoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.playerInfoToolStripMenuItem.Text = "Player Info";
+            this.playerInfoToolStripMenuItem.Click += new System.EventHandler(this.playerInfoToolStripMenuItem_Click);
+            // 
+            // gameLogToolStripMenuItem
+            // 
+            this.gameLogToolStripMenuItem.Name = "gameLogToolStripMenuItem";
+            this.gameLogToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.gameLogToolStripMenuItem.Text = "Game Log";
+            this.gameLogToolStripMenuItem.Click += new System.EventHandler(this.gameLogToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playersToolStripMenuItem,
             this.tradeAnalyzerToolStripMenuItem,
-            this.playerRaterToolStripMenuItem});
+            this.draftPicksToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1108, 24);
@@ -1987,7 +2653,8 @@
             // playersToolStripMenuItem
             // 
             this.playersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewPlayerToolStripMenuItem});
+            this.addNewPlayerToolStripMenuItem,
+            this.updatePlayersFromFileToolStripMenuItem});
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.playersToolStripMenuItem.Text = "Players";
@@ -1995,15 +2662,24 @@
             // addNewPlayerToolStripMenuItem
             // 
             this.addNewPlayerToolStripMenuItem.Name = "addNewPlayerToolStripMenuItem";
-            this.addNewPlayerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addNewPlayerToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.addNewPlayerToolStripMenuItem.Text = "Add New Player";
             this.addNewPlayerToolStripMenuItem.Click += new System.EventHandler(this.addNewPlayerToolStripMenuItem_Click);
+            // 
+            // updatePlayersFromFileToolStripMenuItem
+            // 
+            this.updatePlayersFromFileToolStripMenuItem.Enabled = false;
+            this.updatePlayersFromFileToolStripMenuItem.Name = "updatePlayersFromFileToolStripMenuItem";
+            this.updatePlayersFromFileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.updatePlayersFromFileToolStripMenuItem.Text = "Update Players From File";
+            this.updatePlayersFromFileToolStripMenuItem.Click += new System.EventHandler(this.updatePlayersFromFileToolStripMenuItem_Click);
             // 
             // tradeAnalyzerToolStripMenuItem
             // 
             this.tradeAnalyzerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sentPlayersToolStripMenuItem,
-            this.receivedPlayersToolStripMenuItem});
+            this.receivedPlayersToolStripMenuItem,
+            this.loadWatchListToolStripMenuItem});
             this.tradeAnalyzerToolStripMenuItem.Name = "tradeAnalyzerToolStripMenuItem";
             this.tradeAnalyzerToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.tradeAnalyzerToolStripMenuItem.Text = "Trade Analyzer";
@@ -2054,20 +2730,84 @@
             this.loadPlayersToolStripMenuItem2.Text = "Load Players";
             this.loadPlayersToolStripMenuItem2.Click += new System.EventHandler(this.loadPlayersToolStripMenuItem2_Click);
             // 
-            // playerRaterToolStripMenuItem
+            // loadWatchListToolStripMenuItem
             // 
-            this.playerRaterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setFactorsToolStripMenuItem});
-            this.playerRaterToolStripMenuItem.Name = "playerRaterToolStripMenuItem";
-            this.playerRaterToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.playerRaterToolStripMenuItem.Text = "Player Rater";
+            this.loadWatchListToolStripMenuItem.Name = "loadWatchListToolStripMenuItem";
+            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.loadWatchListToolStripMenuItem.Text = "Load Watch List";
+            this.loadWatchListToolStripMenuItem.Click += new System.EventHandler(this.loadWatchListToolStripMenuItem_Click);
             // 
-            // setFactorsToolStripMenuItem
+            // draftPicksToolStripMenuItem
             // 
-            this.setFactorsToolStripMenuItem.Name = "setFactorsToolStripMenuItem";
-            this.setFactorsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.setFactorsToolStripMenuItem.Text = "Set Factors";
-            this.setFactorsToolStripMenuItem.Click += new System.EventHandler(this.setFactorsToolStripMenuItem_Click);
+            this.draftPicksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.draftPicksToolStripMenuItem1,
+            this.createStatsFileToolStripMenuItem});
+            this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
+            this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.draftPicksToolStripMenuItem.Text = "Tools";
+            // 
+            // draftPicksToolStripMenuItem1
+            // 
+            this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
+            this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
+            // 
+            // createStatsFileToolStripMenuItem
+            // 
+            this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
+            this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
+            // 
+            // update_label
+            // 
+            this.update_label.AutoSize = true;
+            this.update_label.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.update_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update_label.Location = new System.Drawing.Point(864, 4);
+            this.update_label.Name = "update_label";
+            this.update_label.Size = new System.Drawing.Size(90, 16);
+            this.update_label.TabIndex = 56;
+            this.update_label.Text = "Last Update : ";
+            this.update_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // update_timer
+            // 
+            this.update_timer.Interval = 120000;
+            this.update_timer.Tick += new System.EventHandler(this.update_timer_Tick);
+            // 
+            // sendToToolStripMenuItem
+            // 
+            this.sendToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rosterToolStripMenuItem,
+            this.watchListToolStripMenuItem});
+            this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.sendToToolStripMenuItem.Text = "Send To";
+            // 
+            // rosterToolStripMenuItem
+            // 
+            this.rosterToolStripMenuItem.Name = "rosterToolStripMenuItem";
+            this.rosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rosterToolStripMenuItem.Text = "Roster";
+            this.rosterToolStripMenuItem.Click += new System.EventHandler(this.rosterToolStripMenuItem_Click);
+            // 
+            // watchListToolStripMenuItem
+            // 
+            this.watchListToolStripMenuItem.Name = "watchListToolStripMenuItem";
+            this.watchListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.watchListToolStripMenuItem.Text = "Watch List";
+            this.watchListToolStripMenuItem.Click += new System.EventHandler(this.watchListToolStripMenuItem_Click);
+            // 
+            // filterByPlayer_autoCompleteTextBox
+            // 
+            this.filterByPlayer_autoCompleteTextBox.Enabled = false;
+            this.filterByPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(6, 106);
+            this.filterByPlayer_autoCompleteTextBox.Name = "filterByPlayer_autoCompleteTextBox";
+            this.filterByPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.filterByPlayer_autoCompleteTextBox.TabIndex = 18;
+            this.filterByPlayer_autoCompleteTextBox.Values = null;
             // 
             // playerName_textBox
             // 
@@ -2076,6 +2816,14 @@
             this.playerName_textBox.Size = new System.Drawing.Size(130, 22);
             this.playerName_textBox.TabIndex = 17;
             this.playerName_textBox.Values = null;
+            // 
+            // gameLog_autoCompleteTextBox
+            // 
+            this.gameLog_autoCompleteTextBox.Location = new System.Drawing.Point(120, 5);
+            this.gameLog_autoCompleteTextBox.Name = "gameLog_autoCompleteTextBox";
+            this.gameLog_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.gameLog_autoCompleteTextBox.TabIndex = 19;
+            this.gameLog_autoCompleteTextBox.Values = null;
             // 
             // player2_TextBox
             // 
@@ -2109,11 +2857,20 @@
             this.sendPlayer_TextBox.TabIndex = 110;
             this.sendPlayer_TextBox.Values = null;
             // 
+            // rater_autoCompleteTextBox
+            // 
+            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(722, 10);
+            this.rater_autoCompleteTextBox.Name = "rater_autoCompleteTextBox";
+            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.rater_autoCompleteTextBox.TabIndex = 19;
+            this.rater_autoCompleteTextBox.Values = null;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 463);
+            this.Controls.Add(this.update_label);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2122,21 +2879,30 @@
             this.Name = "MainForm";
             this.Text = "ESPN";
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.playerInfoTab.ResumeLayout(false);
+            this.playerInfoTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stats_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player_pictureBox)).EndInit();
+            this.gameLogTab.ResumeLayout(false);
+            this.gameLogTab.PerformLayout();
+            this.gameLog_panel.ResumeLayout(false);
+            this.gameLog_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameLog_dataGridView)).EndInit();
             this.compare_tabPage.ResumeLayout(false);
             this.compare_tabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compare_chart)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tradeTab.ResumeLayout(false);
+            this.tradeTab.PerformLayout();
             this.trade_panel.ResumeLayout(false);
             this.trade_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trade_chart)).EndInit();
+            this.rater_tab.ResumeLayout(false);
+            this.rater_tab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rater_dataGridView)).EndInit();
+            this.rater_contextMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2147,7 +2913,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage playerInfoTab;
         private System.Windows.Forms.TabPage compare_tabPage;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.PictureBox player_pictureBox;
@@ -2161,22 +2927,6 @@
         private System.Windows.Forms.Label playerNameLabel;
         private System.Windows.Forms.Label playerInfo_label;
         private System.Windows.Forms.DataVisualization.Charting.Chart stat_chart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Min;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgPer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TpmTpa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TpPer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtPer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reb;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Blk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn To;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.Button copyToClipboard_button;
         private System.Windows.Forms.Label ft_label;
         private System.Windows.Forms.Label to_label;
@@ -2218,9 +2968,9 @@
         private System.Windows.Forms.Label min2_label;
         private System.Windows.Forms.Label gp2_label;
         private System.Windows.Forms.DataVisualization.Charting.Chart compare_chart;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tradeTab;
         private System.Windows.Forms.Button copyCompare_button;
-        private System.Windows.Forms.ComboBox tradeLast_comboBox;
+        private System.Windows.Forms.ComboBox tradeNumOfGames_comboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox tradeMode_comboBox;
         private System.Windows.Forms.Label label6;
@@ -2299,8 +3049,6 @@
         private System.Windows.Forms.Label score_label;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tradeAnalyzerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playerRaterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setFactorsToolStripMenuItem;
         private AutoCompleteTextBox playerName_textBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox outliersMinutes_checkBox;
@@ -2320,6 +3068,89 @@
         private System.Windows.Forms.CheckBox smooth_checkBox;
         private System.Windows.Forms.Button coptStatChart_button;
         private System.Windows.Forms.ComboBox year_comboBox;
+        private System.Windows.Forms.Label update_label;
+        private System.Windows.Forms.Timer update_timer;
+        private System.Windows.Forms.TabPage rater_tab;
+        private System.Windows.Forms.DataGridView rater_dataGridView;
+        private AutoCompleteTextBox rater_autoCompleteTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label score2_label;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label score1_label;
+        private AutoCompleteTextBox filterByPlayer_autoCompleteTextBox;
+        private System.Windows.Forms.CheckBox playerFilter_checkBox;
+        private System.Windows.Forms.TabPage gameLogTab;
+        private AutoCompleteTextBox gameLog_autoCompleteTextBox;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DataGridView gameLog_dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opp_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Min_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFga_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpmTpa_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFta_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reb_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ast_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Blk_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stl_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pf_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pts_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score_GameLog;
+        private System.Windows.Forms.Button copyGames_button;
+        private System.Windows.Forms.Panel gameLog_panel;
+        private System.Windows.Forms.Label playerNameGameLog_label;
+        private System.Windows.Forms.Label startEndTimesGameLog_label;
+        private System.Windows.Forms.Button showGameLog_button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Min;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tpm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reb;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Blk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.CheckBox raterScores;
+        private System.Windows.Forms.ToolStripMenuItem draftPicksToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip rater_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem playerInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameLogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatePlayersFromFileToolStripMenuItem;
+        private System.Windows.Forms.ComboBox raterTimePeriod_comboBox;
+        private System.Windows.Forms.ComboBox teamRater_comboBox;
+        private System.Windows.Forms.ToolStripMenuItem loadWatchListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem draftPicksToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem createStatsFileToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GPRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFgaRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgPerRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFtaRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtPerRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpmRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RebRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AstRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StlRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BlkRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ToRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PtsRater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreRater;
+        private System.Windows.Forms.ComboBox raterPlayersMode_comboBox;
+        private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rosterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem watchListToolStripMenuItem;
     }
 }
 

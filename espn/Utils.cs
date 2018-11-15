@@ -71,5 +71,30 @@ namespace espn
                 return res;
             }
         }
+
+        public static bool Ping(string url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+                request.Timeout = 5000;
+                request.AllowAutoRedirect = false; // find out if this site is up and don't follow a redirector
+                request.Method = "HEAD";
+
+                using (var response = request.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static int GetCurrentYear()
+        {
+            return DateTime.Now.Month >= 10 ? DateTime.Now.Year : DateTime.Now.Year - 1;
+        }
     }
 }

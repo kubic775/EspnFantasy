@@ -48,7 +48,7 @@ namespace espn
                 ParseFactors();
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Check Your Factors");
             }

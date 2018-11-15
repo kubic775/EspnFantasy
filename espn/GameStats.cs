@@ -12,11 +12,61 @@ namespace espn
         public double Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
         public double FtPer, FgPer, TpPer;
         public double Score;
+        public string Opp;
         public int Gp;
 
         public GameStats()
         {
 
+        }
+
+        public GameStats(Game game)
+        {
+            GameDate = game.GameDate.Value;
+            Pts = game.Pts.Value;
+            Reb = game.Reb.Value;
+            Ast = game.Ast.Value;
+            Tpm = game.Tpm.Value;
+            Tpa = game.Tpa.Value;
+            Fga = game.Fga.Value;
+            Fgm = game.Fgm.Value;
+            Ftm = game.Ftm.Value;
+            Fta = game.Fta.Value;
+            Stl = game.Stl.Value;
+            Blk = game.Blk.Value;
+            To = game.To.Value;
+            Min = game.Min.Value;
+            Pf = game.Pf.Value;
+            FtPer = (Ftm / Fta) * 100;
+            FgPer = (Fgm / Fga) * 100;
+            TpPer = (Tpm / Tpa) * 100;
+            //Score = game.Score.Value;
+            Gp = game.Gp.Value;
+            Opp = game.Opp;
+        }
+
+        public Game UpdateGame(Game game)
+        {
+            game.GameDate = GameDate;
+            game.Pts = Pts;
+            game.Reb = Reb;
+            game.Ast = Ast;
+            game.Tpm = Tpm;
+            game.Tpa = Tpa;
+            game.Fga = Fga;
+            game.Fgm = Fgm;
+            game.Ftm = Ftm;
+            game.Fta = Fta;
+            game.Stl = Stl;
+            game.Blk = Blk;
+            game.To = To;
+            game.Min = Min;
+            game.Pf = Pf;
+            game.FtPer = FtPer;
+            game.FgPer = FtPer;
+            game.TpPer = TpPer;
+            game.Opp = Opp;
+            return game;
         }
 
         public GameStats(string gameStr, int year)
@@ -26,7 +76,9 @@ namespace espn
             var temp = stats[1].Substring(4).Split('/');
             var month = Int32.Parse(temp[0]);
             var day = Int32.Parse(temp[1]);
-            GameDate = new DateTime(month < 10 ? year : year-1, month, day);
+            GameDate = new DateTime(month < 10 ? year : year - 1, month, day);
+
+            Opp = stats[2].Substring(stats[2].Length - 17, 3);
 
             Min = Int32.Parse(stats[4].Substring(stats[4].IndexOf(">") + 1));
 
@@ -66,7 +118,7 @@ namespace espn
                 stats.FgPer = (stats.Fgm / stats.Fga) * 100;
                 stats.FtPer = (stats.Ftm / stats.Fta) * 100;
                 stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
-                stats.Score = CalcScore(stats);
+                //stats.Score = CalcScore(stats);
                 stats.Gp = games.Length;
             }
             else
@@ -80,10 +132,10 @@ namespace espn
             return stats;
         }
 
-        public static GameStats GetSumStats(GameStats[] games)
+        public static GameStats GetSumStats(IEnumerable<GameStats> games)
         {
             GameStats stats = new GameStats();
-            if (games.Length == 0)
+            if (!games.Any())
                 return stats;
 
             FieldInfo[] fieldNames = typeof(GameStats).GetFields();
@@ -96,7 +148,7 @@ namespace espn
             stats.FgPer = (stats.Fgm / stats.Fga) * 100;
             stats.FtPer = (stats.Ftm / stats.Fta) * 100;
             stats.TpPer = (stats.Tpm / stats.Tpa) * 100;
-            stats.Score = CalcScore(stats);
+            //stats.Score = CalcScore(stats);
             return stats;
         }
 
@@ -115,57 +167,18 @@ namespace espn
 
         public static double[] GetYVals(string colName, GameStats[] games)
         {
-            double[] y = { };
+            FieldInfo field = typeof(GameStats).GetFields().FirstOrDefault(f => f.Name.Equals(colName));
+            if (field == null || field.FieldType != typeof(double)) return new Double[] { };
 
-            switch (colName)
+            double[] y = games.Select(g => (double)field.GetValue(g)).Select(v => Double.IsNaN(v) ? 0 : v).ToArray();
+
+            if (colName.Equals("Score"))
             {
-                case "Min":
-                    y = games.Select(g => g.Min).ToArray();
-                    break;
-                case "FgPer":
-                    y = games.Select(g => g.FgPer).ToArray();
-                    break;
-                case "TpPer":
-                    y = games.Select(g => g.TpPer).ToArray();
-                    break;
-                case "FtPer":
-                    y = games.Select(g => g.FtPer).ToArray();
-                    break;
-                case "TpmTpa":
-                    y = games.Select(g => g.Tpm).ToArray();
-                    break;
-                case "Reb":
-                    y = games.Select(g => g.Reb).ToArray();
-                    break;
-                case "Ast":
-                    y = games.Select(g => g.Ast).ToArray();
-                    break;
-                case "Blk":
-                    y = games.Select(g => g.Blk).ToArray();
-                    break;
-                case "Stl":
-                    y = games.Select(g => g.Stl).ToArray();
-                    break;
-                case "Pf":
-                    y = games.Select(g => g.Pf).ToArray();
-                    break;
-                case "To":
-                    y = games.Select(g => g.To).ToArray();
-                    break;
-                case "Pts":
-                    y = games.Select(g => g.Pts).ToArray();
-                    break;
+                MainForm.PlayerRater.CreateRater(CalcScoreType.Games);
+                y = games.Select(g => Math.Round(MainForm.PlayerRater.CalcScore(new[] { g }, CalcScoreType.Games, 0, false), 1)).ToArray();
             }
 
             return y;
-        }
-
-        public static double CalcScore(GameStats stat)
-        {
-            return stat.Pts * MainForm.Factors.Pts + stat.Reb * MainForm.Factors.Reb + stat.Ast * MainForm.Factors.Ast +
-                   stat.Stl * MainForm.Factors.Stl + stat.Blk * MainForm.Factors.Blk + stat.Tpm * MainForm.Factors.Tpm +
-                   stat.To * MainForm.Factors.To + stat.FgPer * MainForm.Factors.FgPer + stat.FtPer * MainForm.Factors.FtPer +
-                   MainForm.Factors.FtVol * (stat.Fta - stat.Ftm) + MainForm.Factors.FgVol * (stat.Fga - stat.Fgm);
         }
 
         public static GameStats[] FilterOutliers(GameStats[] games)
@@ -175,6 +188,12 @@ namespace espn
             double th = std * 1.5;
             games = games.Where(g => g.Min > avg - th && g.Min < avg + th).ToArray();
             return games;
+        }
+
+        public override string ToString()
+        {
+            IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
+            return string.Join(",", fieldNames.Select(f => (double) f.GetValue(this)).ToArray());
         }
     }
 }

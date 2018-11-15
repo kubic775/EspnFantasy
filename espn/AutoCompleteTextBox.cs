@@ -11,8 +11,8 @@ namespace espn
         public PlayerSelectedDelegate PlayerSelectedEvent;
         private ListBox _listBox;
         private bool _isAdded;
-        private String[] _values;
         private String _formerValue = String.Empty;
+        public String[] Values { get; set; }
 
         public AutoCompleteTextBox()
         {
@@ -62,16 +62,16 @@ namespace espn
         {
             switch (e.KeyCode)
             {
-                case Keys.Tab:
-                    {
-                        if (_listBox.Visible)
-                        {
-                            InsertWord((String)_listBox.SelectedItem);
-                            ResetListBox();
-                            _formerValue = Text;
-                        }
-                        break;
-                    }
+                //case Keys.Enter:
+                //    {
+                //        if (_listBox.Visible)
+                //        {
+                //            InsertWord((String)_listBox.SelectedItem);
+                //            ResetListBox();
+                //            _formerValue = Text;
+                //        }
+                //        break;
+                //    }
                 case Keys.Down:
                     {
                         if ((_listBox.Visible) && (_listBox.SelectedIndex < _listBox.Items.Count - 1))
@@ -86,6 +86,14 @@ namespace espn
 
                         break;
                     }
+                case Keys.Escape:
+                {
+                    if (_listBox.Visible)
+                    {
+                        ResetListBox();
+                    }
+                    break;
+                }
             }
         }
 
@@ -106,10 +114,10 @@ namespace espn
             _formerValue = Text;
             String word = GetWord();
 
-            if (_values != null && word.Length > 0)
+            if (Values != null && word.Length > 0)
             {
                 //String[] matches = Array.FindAll(_values,x => (x.StartsWith(word, StringComparison.OrdinalIgnoreCase) && !SelectedValues.Contains(x)));
-                String[] matches = _values.Where(v => v.ToLower().Contains(word.ToLower())).ToArray();
+                String[] matches = Values.Where(v => v.ToLower().Contains(word.ToLower())).ToArray();
                 if (matches.Length > 0)
                 {
                     ShowListBox();
@@ -176,17 +184,7 @@ namespace espn
             SelectionStart = firstPart.Length;
         }
 
-        public String[] Values
-        {
-            get
-            {
-                return _values;
-            }
-            set
-            {
-                _values = value;
-            }
-        }
+
 
         public List<String> SelectedValues
         {

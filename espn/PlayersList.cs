@@ -10,16 +10,28 @@ namespace espn
     public static class PlayersList
     {
         public static SortedDictionary<string, int> Players = new SortedDictionary<string, int>();
+        public static Dictionary<string, string> Teams = new Dictionary<string, string>();
 
-        public static Dictionary<string, PlayerInfo> CachePlayers = new Dictionary<string, PlayerInfo>();
+        public static void CreateTeams()
+        {
+            using (var db = new EspnEntities())
+            {
+                foreach (var team in db.LeagueTeams)
+                {
+                    Teams.Add(team.Name, team.Abbreviation);
+                }
+            }
+        }
 
         public static void CreatePlayersList()
         {
-            string[] players = File.ReadAllLines("Players.txt");
-            foreach (var player in players)
+            using (var db = new EspnEntities())
             {
-                var temp = player.Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                Players.Add(temp[0].Trim(), int.Parse(temp[1]));
+                foreach (var player in db.Players)
+                {
+                    if (!Players.ContainsKey(player.Name))
+                        Players.Add(player.Name, player.ID);
+                }
             }
         }
 
@@ -76,6 +88,7 @@ namespace espn
         {
             Task<List<PlayerInfo>> t = Task.Run(() => playerNames.AsParallel().Select(CachePlayer).ToList());
             return await t;
+
         }
 
         public static async Task<PlayerInfo> CreatePlayerAsync(string playerName)
@@ -86,13 +99,19 @@ namespace espn
 
         private static PlayerInfo CachePlayer(string playerName)
         {
-            if (!CachePlayers.ContainsKey(playerName))
+            using (var db = new EspnEntities())
             {
-                var player = new PlayerInfo(playerName);
-                if (player.Games != null)
-                    CachePlayers.Add(playerName, new PlayerInfo(playerName));
+                var player = db.Players.First(p => p.Name.Equals(playerName));
+                var games = db.Games.Where(g => g.PlayerId == player.ID).ToArray();
+                return new PlayerInfo(player, games);
             }
-            return CachePlayers[playerName];
+            //if (!CachePlayers.ContainsKey(playerName))
+            //{
+            //    var player = new PlayerInfo(playerName);
+            //    if (player.Games != null)
+            //        CachePlayers.Add(playerName, new PlayerInfo(playerName));
+            //}
+            //return CachePlayers[playerName];
         }
     }
 }
