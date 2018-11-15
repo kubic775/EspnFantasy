@@ -75,8 +75,10 @@ namespace espn
 
         private string DownloadPlayerStr(int id, int year)
         {
-            var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
-            return task.Result;
+            //var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
+            //return task.Result;
+            using (var wc = new System.Net.WebClient())
+                return wc.DownloadString(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
         }
 
         public void CreatePlayerGames(string gamesStr, int year)

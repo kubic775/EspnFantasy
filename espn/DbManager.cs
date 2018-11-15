@@ -85,7 +85,7 @@ namespace espn
             }
         }
 
-        public static async Task UpdatePlayers(LogDelegate log = null)
+        public static void UpdatePlayers(LogDelegate log = null)
         {
             Player[] players;
             var startTime = DateTime.Now;
@@ -109,27 +109,21 @@ namespace espn
             }
 
             double counter = 0;
-            IEnumerable<PlayerInfo> playerInfos = await Task.Run(() =>
+            IEnumerable<PlayerInfo> playerInfos = players.AsParallel().Select(p =>
             {
-                return players.AsParallel().Select(p =>
-                {
-                    log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Length)} %");
-                    Console.WriteLine(Math.Round(100 * counter / players.Length) + "%");
-                    return new PlayerInfo(p.Name, p.ID, currentYear + 1, log);
-                });
+                log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Length)} %");
+                Console.WriteLine(Math.Round(100 * counter / players.Length) + "%");
+                return new PlayerInfo(p.Name, p.ID, currentYear + 1);
             });
 
-            await Task.Run(() =>
+            foreach (PlayerInfo playerInfo in playerInfos)
             {
-                foreach (PlayerInfo playerInfo in playerInfos)
+                log?.Invoke("Update - " + playerInfo.PlayerName);
+                if (playerInfo?.Games?.Count != 0)
                 {
-                    log?.Invoke("Update - " + playerInfo.PlayerName);
-                    if (playerInfo?.Games?.Count != 0)
-                    {
-                        UpdatePlayer(playerInfo);
-                    }
+                    UpdatePlayer(playerInfo);
                 }
-            }).ConfigureAwait(false);
+            }
             Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");
 
             using (var db = new EspnEntities())
@@ -158,14 +152,16 @@ namespace espn
 
                     if (lastGame != null)
                     {
-                        playerInfo.Games.FirstOrDefault(g => g.GameDate == lastGame.GameDate)?.UpdateGame(lastGame);//Update Last Game In DB
+                        playerInfo.Games.FirstOrDefault(g => g.GameDate == lastGame.GameDate)
+                            ?.UpdateGame(lastGame); //Update Last Game In DB
                         db.Games.AddOrUpdate(lastGame);
-                    }
 
-                    foreach (GameStats gameStats in playerInfo.Games.Where(g => g.GameDate > lastGame.GameDate))//Update Rest Of The Games
-                    {
-                        var game = new Game(gameStats, GetNextGamePk(), player.ID);
-                        db.Games.Add(game);
+
+                        foreach (GameStats gameStats in playerInfo.Games.Where(g => g.GameDate > lastGame.GameDate)) //Update Rest Of The Games
+                        {
+                            var game = new Game(gameStats, GetNextGamePk(), player.ID);
+                            db.Games.Add(game);
+                        }
                     }
 
                     db.SaveChanges();

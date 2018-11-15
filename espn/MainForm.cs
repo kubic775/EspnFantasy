@@ -94,7 +94,7 @@ namespace espn
         {
             update_timer.Stop();
             AppendToLogDelegate("Updating...", Color.Green);
-            await DbManager.UpdatePlayers(AppendToLogDelegate);
+            await Task.Run(() => DbManager.UpdatePlayers(AppendToLogDelegate));
             AppendToLogDelegate("Last Update : " + DateTime.Now.ToString("t"), Color.Black);
             update_timer.Start();
         }
