@@ -10,9 +10,11 @@ namespace espn
 {
     public class PlayerInfo
     {
-        public string PlayerName, ImagePath, Team, Misc;
+        public readonly string PlayerName;
+        public string ImagePath, Team, Misc;
         public List<GameStats> Games;
-        public int Id, Age, Type;
+        public readonly int Id;
+        public int Age, Type, RaterPos;
         public Dictionary<string, double> Scores;
 
         public PlayerInfo(string playerName, int id, int startYear = 2014, LogDelegate log = null)
@@ -49,7 +51,7 @@ namespace espn
             Games = games.Select(g => new GameStats(g)).ToList();
         }
 
-        public void CreatePlayer(string playerStr, int id, int year)
+        private void CreatePlayer(string playerStr, int id, int year)
         {
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
 
@@ -81,7 +83,7 @@ namespace espn
                 return wc.DownloadString(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
         }
 
-        public void CreatePlayerGames(string gamesStr, int year)
+        private void CreatePlayerGames(string gamesStr, int year)
         {
             var lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries).Where(line => line.Contains("oddrow team") || line.Contains("evenrow team"));
             var games = lines.Select(l => new GameStats(l, year));

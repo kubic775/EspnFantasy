@@ -80,7 +80,7 @@ namespace espn
             this.Enabled = true;
         }
 
-        public void AppendToLogDelegate(string str, Color color = default(Color))
+        private void AppendToLogDelegate(string str, Color color = default(Color))
         {
             IAsyncResult result = BeginInvoke((MethodInvoker)delegate// runs on UI thread
             {
@@ -99,7 +99,7 @@ namespace espn
             update_timer.Start();
         }
 
-        public void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
+        private void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
         {
             chart.Series[seriesNum].Points.Clear();
             chart.Series[seriesNum].Name = name;
@@ -954,7 +954,7 @@ namespace espn
                     playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 7);
                     break;
                 case "Last 1":
-                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1);
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1).OrderByDescending(p => p.Games[0].Pts);
                     break;
             }
 
@@ -983,38 +983,38 @@ namespace espn
             if (playersRater == null || !playersRater.Any()) return;
 
             var players = playersRater.ToList();
-            for (int i = 0; i < players.Count; i++)
+            foreach (var p in players)
             {
                 object[] o;
-                int gp = players[i].Games.First().Gp;
-                var avgGame = players[i].GetAvgGame();
+                int gp = p.Games.First().Gp;
+                var avgGame = p.GetAvgGame();
 
                 if (raterScores.Checked) //Scores
                     o = new object[]
                     {
-                        players[i].PlayerName, gp , Math.Round(avgGame.Min, 1),
-                        Math.Round(players[i].Scores["Fga"], 2), Math.Round(players[i].Scores["FgPer"], 2),
-                        Math.Round(players[i].Scores["Fta"], 2), Math.Round(players[i].Scores["FtPer"], 2),
-                        Math.Round(players[i].Scores["Tpm"], 2), Math.Round(players[i].Scores["Reb"], 2),
-                        Math.Round(players[i].Scores["Ast"], 2), Math.Round(players[i].Scores["Stl"], 2),
-                        Math.Round(players[i].Scores["Blk"], 2), Math.Round(players[i].Scores["To"], 2),
-                        Math.Round(players[i].Scores["Pts"], 2), Math.Round(players[i].Scores["Score"], 2)
+                        p.PlayerName, gp , Math.Round(avgGame.Min, 1),
+                        Math.Round(p.Scores["Fga"], 2), Math.Round(p.Scores["FgPer"], 2),
+                        Math.Round(p.Scores["Fta"], 2), Math.Round(p.Scores["FtPer"], 2),
+                        Math.Round(p.Scores["Tpm"], 2), Math.Round(p.Scores["Reb"], 2),
+                        Math.Round(p.Scores["Ast"], 2), Math.Round(p.Scores["Stl"], 2),
+                        Math.Round(p.Scores["Blk"], 2), Math.Round(p.Scores["To"], 2),
+                        Math.Round(p.Scores["Pts"], 2), Math.Round(p.Scores["Score"], 2)
                     };
                 else
                     o = new object[]
                     {
-                        players[i].PlayerName, gp, Math.Round(avgGame.Min, 1),
+                        p.PlayerName, gp, Math.Round(avgGame.Min, 1),
                         avgGame.Fgm.ToString("0.0") + "/" + avgGame.Fga.ToString("0.0"), Math.Round(avgGame.FgPer, 1),
                         avgGame.Ftm.ToString("0.0") + "/" + avgGame.Fta.ToString("0.0"), Math.Round(avgGame.FtPer, 1),
                         Math.Round(avgGame.Tpm, 1), Math.Round(avgGame.Reb, 1), Math.Round(avgGame.Ast, 1),
                         Math.Round(avgGame.Stl, 1), Math.Round(avgGame.Blk, 1), Math.Round(avgGame.To, 1),
-                        Math.Round(avgGame.Pts, 1), Math.Round(players[i].Scores["Score"], 2)
+                        Math.Round(avgGame.Pts, 1), Math.Round(p.Scores["Score"], 2)
                     };
 
-                rater_dataGridView.Rows.Add(o);
-                rater_dataGridView.Rows[i].HeaderCell.Value = $"{i + 1}";
-                rater_dataGridView.Rows[i].DefaultCellStyle.BackColor = players[i].Type == 1 ? Color.Gainsboro : default;
-                rater_dataGridView.Rows[i].Cells[0].ToolTipText = $"{players[i].Team}, {players[i].Misc}";
+                int rowIndex = rater_dataGridView.Rows.Add(o);
+                rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
+                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.Type == 1 ? Color.Gainsboro : default;
+                rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}";
             }
         }
 

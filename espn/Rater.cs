@@ -39,12 +39,19 @@ namespace espn
                 var scores = CalcScores(games, mode, timePeriod, false);
                 var avgGame = GameStats.GetAvgStats(games.ToArray());
                 avgGame.Score = scores["Score"];
-                var playerT = new PlayerInfo(Players.First(p => p.ID == player.Key),
-                    new[] { new Game(avgGame, -1, player.Key) })
-                { Scores = scores };
+                var playerT =
+                    new PlayerInfo(Players.First(p => p.ID == player.Key), new[] { new Game(avgGame, -1, player.Key) })
+                    {
+                        Scores = scores,
+                    };
                 rater.Add(playerT);
             }
-            return rater.OrderByDescending(g => g.Scores["Score"]);
+
+            return rater.OrderByDescending(p => p.Scores["Score"]).Select((r, i) =>
+            {
+                r.RaterPos = ++i;
+                return r;
+            });
         }
 
         /// <summary>
