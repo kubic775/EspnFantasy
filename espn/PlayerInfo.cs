@@ -170,6 +170,11 @@ namespace espn
             return originalGames.Where(g => injuredGamesDates.Contains(g.GameDate)).ToArray();
         }
 
+        public IEnumerable<GameStats> FilterGamesByDates(IEnumerable<DateTime> dates)
+        {
+            return Games.Where(g => dates.Contains(g.GameDate));
+        }
+
         public GameStats GetAvgGame()
         {
             return GameStats.GetAvgStats(Games.ToArray());
@@ -177,7 +182,26 @@ namespace espn
 
         public override string ToString()
         {
-            return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray()).ToString();
+            return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray());
+        }
+
+        public string ToShortString()
+        {
+            return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray()).ToShortString();
+        }
+
+        public string GetFullHistory(int startYear, int endYear)
+        {
+            string history = String.Empty;
+
+            for (int year = startYear; year <= endYear; year++)
+            {
+                var avgGame = GameStats.GetAvgStats(FilterGames(year, "Games", 82));
+                if (avgGame.Gp != 0)
+                    history += $"{PlayerName}, {year}:{Environment.NewLine}{avgGame}{Environment.NewLine + Environment.NewLine}";
+            }
+
+            return history;
         }
     }
 }

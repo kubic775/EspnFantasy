@@ -190,10 +190,17 @@ namespace espn
             return games;
         }
 
-        public override string ToString()
+        public string ToShortString()
         {
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
-            return string.Join(",", fieldNames.Select(f => (double) f.GetValue(this)).ToArray());
+            return string.Join(",", fieldNames.Select(f => (double)f.GetValue(this)).ToArray());
         }
+
+        public override string ToString()
+        {
+            return $"Pts:{Pts:0.0}, Reb:{Reb:0.0}, Ast:{Ast:0.0}, Tpm:{Tpm:0.0}, Stl:{Stl:0.0}, Blk:{Blk:0.0}, To:{To:0.0}, " +
+                         $"FgPer:{Fgm:0.0}/{Fga:0.0}({FgPer:0.0}%), FtPer:{Ftm:0.0}/{Fta:0.0}({FtPer:0.0}%), Min:{Min:0.0}, Gp:{Gp}";
+        }
+
     }
 }

@@ -76,9 +76,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playerInfoTab = new System.Windows.Forms.TabPage();
+            this.copyHistoryToClipboard_button = new System.Windows.Forms.Button();
             this.showGameLog_button = new System.Windows.Forms.Button();
             this.year_comboBox = new System.Windows.Forms.ComboBox();
-            this.coptStatChart_button = new System.Windows.Forms.Button();
             this.smooth_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.filterByPlayer_autoCompleteTextBox = new espn.AutoCompleteTextBox();
@@ -88,6 +88,8 @@
             this.playerName_textBox = new espn.AutoCompleteTextBox();
             this.copyToClipboard_button = new System.Windows.Forms.Button();
             this.stat_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.playerInfo_chart_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerInfo_label = new System.Windows.Forms.Label();
             this.playerNameLabel = new System.Windows.Forms.Label();
             this.button_max = new System.Windows.Forms.Button();
@@ -137,7 +139,9 @@
             this.To_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pts_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Score_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.copyGames_button = new System.Windows.Forms.Button();
+            this.gameLog_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAvgStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label28 = new System.Windows.Forms.Label();
             this.gameLog_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
@@ -317,11 +321,13 @@
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).BeginInit();
+            this.playerInfo_chart_contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stats_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player_pictureBox)).BeginInit();
             this.gameLogTab.SuspendLayout();
             this.gameLog_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gameLog_dataGridView)).BeginInit();
+            this.gameLog_contextMenuStrip.SuspendLayout();
             this.compare_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compare_chart)).BeginInit();
             this.tradeTab.SuspendLayout();
@@ -351,9 +357,9 @@
             // playerInfoTab
             // 
             this.playerInfoTab.BackColor = System.Drawing.Color.OldLace;
+            this.playerInfoTab.Controls.Add(this.copyHistoryToClipboard_button);
             this.playerInfoTab.Controls.Add(this.showGameLog_button);
             this.playerInfoTab.Controls.Add(this.year_comboBox);
-            this.playerInfoTab.Controls.Add(this.coptStatChart_button);
             this.playerInfoTab.Controls.Add(this.smooth_checkBox);
             this.playerInfoTab.Controls.Add(this.groupBox1);
             this.playerInfoTab.Controls.Add(this.playerName_textBox);
@@ -377,9 +383,19 @@
             this.playerInfoTab.TabIndex = 0;
             this.playerInfoTab.Text = "Players";
             // 
+            // copyHistoryToClipboard_button
+            // 
+            this.copyHistoryToClipboard_button.Location = new System.Drawing.Point(989, 313);
+            this.copyHistoryToClipboard_button.Name = "copyHistoryToClipboard_button";
+            this.copyHistoryToClipboard_button.Size = new System.Drawing.Size(106, 23);
+            this.copyHistoryToClipboard_button.TabIndex = 57;
+            this.copyHistoryToClipboard_button.Text = "Copy History";
+            this.copyHistoryToClipboard_button.UseVisualStyleBackColor = true;
+            this.copyHistoryToClipboard_button.Click += new System.EventHandler(this.copyHistoryToClipboard_button_Click);
+            // 
             // showGameLog_button
             // 
-            this.showGameLog_button.Location = new System.Drawing.Point(822, 313);
+            this.showGameLog_button.Location = new System.Drawing.Point(793, 313);
             this.showGameLog_button.Name = "showGameLog_button";
             this.showGameLog_button.Size = new System.Drawing.Size(95, 23);
             this.showGameLog_button.TabIndex = 56;
@@ -402,16 +418,6 @@
             this.year_comboBox.Size = new System.Drawing.Size(71, 24);
             this.year_comboBox.TabIndex = 55;
             this.year_comboBox.DropDownClosed += new System.EventHandler(this.year_comboBox_DropDownClosed);
-            // 
-            // coptStatChart_button
-            // 
-            this.coptStatChart_button.Location = new System.Drawing.Point(923, 313);
-            this.coptStatChart_button.Name = "coptStatChart_button";
-            this.coptStatChart_button.Size = new System.Drawing.Size(95, 23);
-            this.coptStatChart_button.TabIndex = 54;
-            this.coptStatChart_button.Text = "Copy Chart";
-            this.coptStatChart_button.UseVisualStyleBackColor = true;
-            this.coptStatChart_button.Click += new System.EventHandler(this.coptStatChart_button_Click);
             // 
             // smooth_checkBox
             // 
@@ -491,11 +497,11 @@
             // 
             // copyToClipboard_button
             // 
-            this.copyToClipboard_button.Location = new System.Drawing.Point(1024, 313);
+            this.copyToClipboard_button.Location = new System.Drawing.Point(892, 313);
             this.copyToClipboard_button.Name = "copyToClipboard_button";
-            this.copyToClipboard_button.Size = new System.Drawing.Size(75, 23);
+            this.copyToClipboard_button.Size = new System.Drawing.Size(94, 23);
             this.copyToClipboard_button.TabIndex = 16;
-            this.copyToClipboard_button.Text = "Copy";
+            this.copyToClipboard_button.Text = "Copy Stats";
             this.copyToClipboard_button.UseVisualStyleBackColor = true;
             this.copyToClipboard_button.Click += new System.EventHandler(this.copyToClipboard_button_Click);
             // 
@@ -503,6 +509,7 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.stat_chart.ChartAreas.Add(chartArea1);
+            this.stat_chart.ContextMenuStrip = this.playerInfo_chart_contextMenuStrip;
             legend1.DockedToChartArea = "ChartArea1";
             legend1.MaximumAutoSize = 30F;
             legend1.Name = "Legend1";
@@ -531,6 +538,20 @@
             this.stat_chart.Size = new System.Drawing.Size(615, 215);
             this.stat_chart.TabIndex = 15;
             this.stat_chart.Text = "Stat";
+            // 
+            // playerInfo_chart_contextMenuStrip
+            // 
+            this.playerInfo_chart_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyChartToolStripMenuItem});
+            this.playerInfo_chart_contextMenuStrip.Name = "playerInfo_chart_contextMenuStrip";
+            this.playerInfo_chart_contextMenuStrip.Size = new System.Drawing.Size(135, 26);
+            // 
+            // copyChartToolStripMenuItem
+            // 
+            this.copyChartToolStripMenuItem.Name = "copyChartToolStripMenuItem";
+            this.copyChartToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyChartToolStripMenuItem.Text = "Copy Chart";
+            this.copyChartToolStripMenuItem.Click += new System.EventHandler(this.playerInfo_copyChartToolStripMenuItem_Click);
             // 
             // playerInfo_label
             // 
@@ -803,7 +824,6 @@
             // 
             this.gameLogTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gameLogTab.Controls.Add(this.gameLog_panel);
-            this.gameLogTab.Controls.Add(this.copyGames_button);
             this.gameLogTab.Controls.Add(this.label28);
             this.gameLogTab.Controls.Add(this.gameLog_autoCompleteTextBox);
             this.gameLogTab.Location = new System.Drawing.Point(4, 25);
@@ -878,6 +898,7 @@
             this.To_GameLog,
             this.Pts_GameLog,
             this.Score_GameLog});
+            this.gameLog_dataGridView.ContextMenuStrip = this.gameLog_contextMenuStrip;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -901,6 +922,7 @@
             this.gameLog_dataGridView.RowHeadersWidth = 50;
             this.gameLog_dataGridView.Size = new System.Drawing.Size(1097, 356);
             this.gameLog_dataGridView.TabIndex = 20;
+            this.gameLog_dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.gameLog_dataGridView_RowStateChanged);
             // 
             // Date_GameLog
             // 
@@ -1008,15 +1030,27 @@
             this.Score_GameLog.Name = "Score_GameLog";
             this.Score_GameLog.Width = 70;
             // 
-            // copyGames_button
+            // gameLog_contextMenuStrip
             // 
-            this.copyGames_button.Location = new System.Drawing.Point(1007, 2);
-            this.copyGames_button.Name = "copyGames_button";
-            this.copyGames_button.Size = new System.Drawing.Size(88, 27);
-            this.copyGames_button.TabIndex = 21;
-            this.copyGames_button.Text = "Copy";
-            this.copyGames_button.UseVisualStyleBackColor = true;
-            this.copyGames_button.Click += new System.EventHandler(this.copyGames_button_Click);
+            this.gameLog_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyTableToolStripMenuItem,
+            this.copyAvgStatsToolStripMenuItem});
+            this.gameLog_contextMenuStrip.Name = "gameLog_contextMenuStrip";
+            this.gameLog_contextMenuStrip.Size = new System.Drawing.Size(158, 48);
+            // 
+            // copyTableToolStripMenuItem
+            // 
+            this.copyTableToolStripMenuItem.Name = "copyTableToolStripMenuItem";
+            this.copyTableToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.copyTableToolStripMenuItem.Text = "Copy Table";
+            this.copyTableToolStripMenuItem.Click += new System.EventHandler(this.copyTableToolStripMenuItem_Click);
+            // 
+            // copyAvgStatsToolStripMenuItem
+            // 
+            this.copyAvgStatsToolStripMenuItem.Name = "copyAvgStatsToolStripMenuItem";
+            this.copyAvgStatsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.copyAvgStatsToolStripMenuItem.Text = "Copy  Avg Stats";
+            this.copyAvgStatsToolStripMenuItem.Click += new System.EventHandler(this.copyAvgStatsToolStripMenuItem_Click);
             // 
             // label28
             // 
@@ -2885,6 +2919,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stat_chart)).EndInit();
+            this.playerInfo_chart_contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stats_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player_pictureBox)).EndInit();
             this.gameLogTab.ResumeLayout(false);
@@ -2892,6 +2927,7 @@
             this.gameLog_panel.ResumeLayout(false);
             this.gameLog_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gameLog_dataGridView)).EndInit();
+            this.gameLog_contextMenuStrip.ResumeLayout(false);
             this.compare_tabPage.ResumeLayout(false);
             this.compare_tabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compare_chart)).EndInit();
@@ -3067,7 +3103,6 @@
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewPlayerToolStripMenuItem;
         private System.Windows.Forms.CheckBox smooth_checkBox;
-        private System.Windows.Forms.Button coptStatChart_button;
         private System.Windows.Forms.ComboBox year_comboBox;
         private System.Windows.Forms.Label update_label;
         private System.Windows.Forms.Timer update_timer;
@@ -3101,7 +3136,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn To_GameLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pts_GameLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score_GameLog;
-        private System.Windows.Forms.Button copyGames_button;
         private System.Windows.Forms.Panel gameLog_panel;
         private System.Windows.Forms.Label playerNameGameLog_label;
         private System.Windows.Forms.Label startEndTimesGameLog_label;
@@ -3152,6 +3186,12 @@
         private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem watchListToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip playerInfo_chart_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyChartToolStripMenuItem;
+        private System.Windows.Forms.Button copyHistoryToClipboard_button;
+        private System.Windows.Forms.ContextMenuStrip gameLog_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyAvgStatsToolStripMenuItem;
     }
 }
 

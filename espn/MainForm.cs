@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -289,7 +290,8 @@ namespace espn
 
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
-            string text = $"{_player.PlayerName} , Last {numOf_textBox.Text} {mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex])}";
+
+            string text = $"{_player.PlayerName} , {year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])}, Last {numOf_textBox.Text} {mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex])}";
             if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
                 text += $" ,Without {filterByPlayer_autoCompleteTextBox.Text}";
             text += " : " + Environment.NewLine +
@@ -306,7 +308,7 @@ namespace espn
             Clipboard.SetText(text);
         }
 
-        private void coptStatChart_button_Click(object sender, EventArgs e)
+        private void playerInfo_copyChartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -314,6 +316,13 @@ namespace espn
                 Bitmap bm = new Bitmap(ms);
                 Clipboard.SetImage(bm);
             }
+        }
+
+        private void copyHistoryToClipboard_button_Click(object sender, EventArgs e)
+        {
+            string history = _player?.GetFullHistory(Utils.GetCurrentYear() - 4, Utils.GetCurrentYear() + 1);
+            if (history != null)
+                Clipboard.SetText(history);
         }
 
         private void playerFilter_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -1102,6 +1111,7 @@ namespace espn
                 db.SaveChanges();
             }
         }
+
         #endregion
 
         #region GameLog
@@ -1157,7 +1167,7 @@ namespace espn
             }
         }
 
-        private void copyGames_button_Click(object sender, EventArgs e)
+        private void copyTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(gameLog_panel.Width, gameLog_panel.Height))
             {
@@ -1166,8 +1176,36 @@ namespace espn
             }
         }
 
+        private async void copyAvgStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string str = await GameLogGetAvgStats();
 
+            Clipboard.SetText(str);
 
+            gameLog_dataGridView.SelectedRows[0].Cells[0].ToolTipText = Clipboard.GetText();
+        }
+
+        private async Task<string> GameLogGetAvgStats()
+        {
+            if (gameLog_dataGridView.SelectedRows.Count == 0) return string.Empty;
+            List<DateTime> dates = gameLog_dataGridView.Rows.Cast<DataGridViewRow>().Where(r => r.Selected)
+                .Select(r => DateTime.Parse(r.Cells["Date_GameLog"].Value.ToString())).ToList();
+            var player = await PlayersList.CreatePlayerAsync(gameLog_autoCompleteTextBox.Text);
+            var games = player.FilterGamesByDates(dates);
+            if (!games.Any()) return string.Empty;
+
+            return GameStats.GetAvgStats(games.ToArray()).ToString();
+        }
+
+        private async void gameLog_dataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+            string str = await GameLogGetAvgStats();
+            for (int i = 0; i < gameLog_dataGridView.SelectedRows.Count; i++)
+            {
+                gameLog_dataGridView.SelectedRows[i].Cells[0].ToolTipText = str;
+            }
+        }
         #endregion
 
         #region Tools
@@ -1181,7 +1219,7 @@ namespace espn
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
             IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
             string headers = "Name," + string.Join(",", fieldNames.Select(f => f.Name));
-            List<string> stats = playersRater.Select(p => p.ToString()).ToList();
+            List<string> stats = playersRater.Select(p => p.ToShortString()).ToList();
             stats.Insert(0, headers);
             using (var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*" })
             {
@@ -1192,6 +1230,5 @@ namespace espn
             }
         }
         #endregion
-
     }
 }
