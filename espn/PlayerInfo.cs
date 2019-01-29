@@ -203,5 +203,17 @@ namespace espn
 
             return history;
         }
+
+        public bool IsOutlier()
+        {
+            if (!Games.Any()) return false;
+
+            var lastGames = Games.OrderByDescending(g => g.GameDate).Take(7);
+            var avgMin = lastGames.Average(g => g.Min);
+            var avgPts = lastGames.Average(g => g.Pts);
+
+
+            return false;
+        }
     }
 }

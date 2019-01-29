@@ -31,11 +31,11 @@ namespace espn
             return res;
         }
 
-        public static double StandardDeviation(this IEnumerable<double> values)
-        {
-            double avg = values.Average();
-            return Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)));
-        }
+        //public static double StandardDeviation(this IEnumerable<double> values)
+        //{
+        //    double avg = values.Average();
+        //    return Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)));
+        //}
 
         public static Task<string> MakeAsyncRequest(string url)
         {

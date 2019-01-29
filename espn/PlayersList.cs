@@ -12,6 +12,22 @@ namespace espn
         public static SortedDictionary<string, int> Players = new SortedDictionary<string, int>();
         public static Dictionary<string, string> Teams = new Dictionary<string, string>();
 
+        public static void CreatePlayersList(LogDelegate log = null)
+        {
+            log?.Invoke("Init Players...");
+            using (var db = new EspnEntities())
+            {
+                var players = db.Players.ToArray();
+                foreach (var player in players)
+                {
+                    if (!Players.ContainsKey(player.Name))
+                        Players.Add(player.Name, player.ID);
+                }
+                var currentGames = db.Games.AsEnumerable().Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 1)).ToList();
+                MainForm.PlayerRater = currentGames.Any() ? new Rater(players, currentGames) : null;
+            }
+        }
+
         public static void CreateTeams()
         {
             using (var db = new EspnEntities())
@@ -19,18 +35,6 @@ namespace espn
                 foreach (var team in db.LeagueTeams)
                 {
                     Teams.Add(team.Name, team.Abbreviation);
-                }
-            }
-        }
-
-        public static void CreatePlayersList()
-        {
-            using (var db = new EspnEntities())
-            {
-                foreach (var player in db.Players)
-                {
-                    if (!Players.ContainsKey(player.Name))
-                        Players.Add(player.Name, player.ID);
                 }
             }
         }

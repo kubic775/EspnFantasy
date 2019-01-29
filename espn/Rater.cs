@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using MathNet.Numerics.Statistics;
 
 namespace espn
 {
@@ -143,45 +144,45 @@ namespace espn
 
                 arr = arr.Where(a => !double.IsNaN(a)).ToArray();
 
-                var val = new Dictionary<string, double> { { "Average", arr.Average() }, { "Median", CalcMedian(arr) }, { "Std", CalcStdDev(arr) } };
+                var val = new Dictionary<string, double> { { "Average", arr.Average() }, { "Median", arr.Median() }, { "Std", arr.StandardDeviation() } };
                 fieldInfo.SetValue(this, val);
             }
         }
 
-        private static double CalcMedian(IEnumerable<double> sourceNumbers)
-        {
-            //Framework 2.0 version of this method. there is an easier way in F4        
-            if (sourceNumbers == null || !sourceNumbers.Any())
-                throw new System.Exception("Median of empty array not defined.");
+        //private static double CalcMedian(IEnumerable<double> sourceNumbers)
+        //{
+        //    //Framework 2.0 version of this method. there is an easier way in F4        
+        //    if (sourceNumbers == null || !sourceNumbers.Any())
+        //        throw new Exception("Median of empty array not defined.");
 
-            //make sure the list is sorted, but use a new array
-            double[] sortedPNumbers = (double[])sourceNumbers.ToArray().Clone();
-            Array.Sort(sortedPNumbers);
+        //    //make sure the list is sorted, but use a new array
+        //    double[] sortedPNumbers = (double[])sourceNumbers.ToArray().Clone();
+        //    Array.Sort(sortedPNumbers);
 
-            //get the median
-            int size = sortedPNumbers.Length;
-            int mid = size / 2;
-            double median = (size % 2 != 0) ? sortedPNumbers[mid] : (sortedPNumbers[mid] + sortedPNumbers[mid - 1]) / 2;
-            return median;
-        }
+        //    //get the median
+        //    int size = sortedPNumbers.Length;
+        //    int mid = size / 2;
+        //    double median = (size % 2 != 0) ? sortedPNumbers[mid] : (sortedPNumbers[mid] + sortedPNumbers[mid - 1]) / 2;
+        //    return median;
+        //}
 
-        private static double CalcStdDev(IEnumerable<double> values)
-        {
-            double ret = 0;
-            int count = values.Count();
-            if (count > 1)
-            {
-                //Compute the Average
-                double avg = values.Average();
+        //private static double CalcStdDev(IEnumerable<double> values)
+        //{
+        //    double ret = 0;
+        //    int count = values.Count();
+        //    if (count > 1)
+        //    {
+        //        //Compute the Average
+        //        double avg = values.Average();
 
-                //Perform the Sum of (value-avg)^2
-                double sum = values.Sum(d => (d - avg) * (d - avg));
+        //        //Perform the Sum of (value-avg)^2
+        //        double sum = values.Sum(d => (d - avg) * (d - avg));
 
-                //Put it all together
-                ret = Math.Sqrt(sum / (count - 1));
-            }
-            return ret;
-        }
+        //        //Put it all together
+        //        ret = Math.Sqrt(sum / (count - 1));
+        //    }
+        //    return ret;
+        //}
     }
 
     public enum CalcScoreType

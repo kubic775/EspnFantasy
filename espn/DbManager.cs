@@ -87,32 +87,23 @@ namespace espn
 
         public static void UpdatePlayers(LogDelegate log = null)
         {
-            Player[] players;
+            var players = MainForm.PlayerRater.Players;
             var startTime = DateTime.Now;
             int currentYear = Utils.GetCurrentYear();
 
             log?.Invoke("Start Crate Rater...");
-            using (var db = new EspnEntities())
-            {
-                players = db.Players.ToArray();
-                var currentGames = db.Games.AsEnumerable().Where(g => g.GameDate > new DateTime(currentYear, 10, 1));
-                if (currentGames.Any())
-                {
-                    MainForm.PlayerRater = new Rater(players, new List<Game>(currentGames));
-                }
-            }
-
             if (!Utils.Ping(@"http://www.espn.com"))
             {
                 Console.WriteLine("No Ping");
+                log?.Invoke("No Internet, Can't Update");
                 return;
             }
 
             double counter = 0;
             IEnumerable<PlayerInfo> playerInfos = players.AsParallel().Select(p =>
             {
-                log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Length)} %");
-                Console.WriteLine(Math.Round(100 * counter / players.Length) + "%");
+                log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Count())} %");
+                Console.WriteLine(Math.Round(100 * counter / players.Count()) + "%");
                 return new PlayerInfo(p.Name, p.ID, currentYear + 1);
             });
 
