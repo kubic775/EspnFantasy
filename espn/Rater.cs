@@ -69,13 +69,13 @@ namespace espn
 
         public Dictionary<string, double> CalcScores(IEnumerable<GameStats> games, CalcScoreType mode, int timePeriod, bool updateFactors = true)
         {
+            Dictionary<string, double> scores = new Dictionary<string, double>();
             try
             {
                 DateTime startTime = timePeriod == 0 ? default(DateTime) : DateTime.Today - new TimeSpan(timePeriod, 0, 0, 0);
                 if (updateFactors)
                     UpdateFactors(mode, startTime);
 
-                Dictionary<string, double> scores = new Dictionary<string, double>();
                 FieldInfo[] raterFieldNames = typeof(Rater).GetFields();
                 FieldInfo[] gameFieldNames = typeof(GameStats).GetFields();
 
@@ -116,7 +116,8 @@ namespace espn
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                scores.Add("Score", -1);
+                return scores;
             }
         }
 

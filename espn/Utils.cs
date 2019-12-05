@@ -10,6 +10,12 @@ namespace espn
 {
     public static class Utils
     {
+        public static int ToInt(this string str)
+        {
+            int.TryParse(str, out int num);
+            return num;
+        }
+
         public static IEnumerable<Control> GetAll(Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();

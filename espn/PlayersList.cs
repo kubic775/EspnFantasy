@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,7 +26,8 @@ namespace espn
                         Players.Add(player.Name, player.ID);
                 }
                 var currentGames = db.Games.AsEnumerable().Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 1)).ToList();
-                MainForm.PlayerRater = currentGames.Any() ? new Rater(players, currentGames) : null;
+                //MainForm.PlayerRater = currentGames.Any() ? new Rater(players, currentGames) : null;
+                MainForm.PlayerRater = new Rater(players, currentGames);
             }
         }
 
@@ -116,6 +119,25 @@ namespace espn
             //        CachePlayers.Add(playerName, new PlayerInfo(playerName));
             //}
             //return CachePlayers[playerName];
+        }
+
+        public static void ExtractPlyaersIdsFromFile(string path)
+        {
+            var lines = File.ReadAllLines(path);
+            var players = lines.Select(l => l.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                .ToDictionary(k => Regex.Match(k[0], @"\d+").Value, v => $"{v[2]}{v[1]}".TrimStart()).ToArray();
+            //using (var db = new EspnEntities())
+            //{
+            //    foreach (var player in players)
+            //    {
+
+            //    }
+            //}
+
+            using (var wc = new WebClient())
+            {
+                var json = wc.DownloadString("https://stats.nba.com/stats/playergamelog/?playerid=200755&Season=2018-19&SeasonType=Regular%20Season");
+            }
         }
     }
 }

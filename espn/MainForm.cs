@@ -27,6 +27,8 @@ namespace espn
         public MainForm()
         {
             InitializeComponent();
+            //PlayersList.ExtractPlyaersIdsFromFile(@"C:\Users\user\Dropbox\NBA fantasy\espn C#\nba_players.csv");
+            //EspnHttpClient.RunTest();
             InitGui();
         }
 
@@ -77,7 +79,7 @@ namespace espn
             raterPlayersMode_comboBox.SelectedIndex = 0;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
-            update_timer_Tick(null, null);
+            UpdateTimer_Tick(null, null);
             this.Enabled = true;
         }
 
@@ -91,7 +93,7 @@ namespace espn
             EndInvoke(result);
         }
 
-        private async void update_timer_Tick(object sender, EventArgs e)
+        private async void UpdateTimer_Tick(object sender, EventArgs e)
         {
             update_timer.Stop();
             AppendToLogDelegate("Updating...", Color.Green);
@@ -139,7 +141,7 @@ namespace espn
         private void update_label_Click(object sender, EventArgs e)
         {
             if (update_timer.Enabled)
-                update_timer_Tick(null, null);
+                UpdateTimer_Tick(null, null);
         }
         #endregion
 
@@ -250,6 +252,7 @@ namespace espn
                 if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
                 {
                     games = _player?.FilterGamesByPlayerInjury(games, filterByPlayer_autoCompleteTextBox.Text);
+                    mode = "Games";
                 }
 
                 var avgGame = GameStats.GetAvgStats(games);
@@ -257,7 +260,7 @@ namespace espn
                 //avgGame.Score = mode.Equals("Days")
                 //    ? PlayerRater.CreateRater(CalcScoreType.Days, numOfGames).First(p => p.Id.Equals(_player.Id)).RaterPos
                 //    : PlayerRater.CreateRater(CalcScoreType.Games).First(p => p.Id.Equals(_player.Id)).RaterPos;
-                avgGame.Score = GetRank(_player.Id, games, mode, numOf_textBox.Text);
+                avgGame.Score = GetRank(_player.Id, games, mode, playerFilter_checkBox.Checked ? "Max" : numOf_textBox.Text);
                 //avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames);
 
                 UpdateTable(avgGame);

@@ -100,7 +100,7 @@ namespace espn
             }
 
             double counter = 0;
-            IEnumerable<PlayerInfo> playerInfos = players.AsParallel().Select(p =>
+            IEnumerable<PlayerInfo> playerInfos = players.Select(p =>
             {
                 log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Count())} %");
                 Console.WriteLine(Math.Round(100 * counter / players.Count()) + "%");
@@ -113,6 +113,10 @@ namespace espn
                 if (playerInfo?.Games?.Count != 0)
                 {
                     UpdatePlayer(playerInfo);
+                }
+                else
+                {
+                    Console.WriteLine($"{playerInfo.PlayerName} - No Games");
                 }
             }
             Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");

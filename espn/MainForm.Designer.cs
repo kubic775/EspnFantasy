@@ -42,7 +42,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -74,6 +73,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playerInfoTab = new System.Windows.Forms.TabPage();
             this.button_60 = new System.Windows.Forms.Button();
@@ -121,23 +121,6 @@
             this.startEndTimesGameLog_label = new System.Windows.Forms.Label();
             this.playerNameGameLog_label = new System.Windows.Forms.Label();
             this.gameLog_dataGridView = new System.Windows.Forms.DataGridView();
-            this.Date_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opp_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Min_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FgmFga_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FgPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpmTpa_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FtmFta_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FtPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reb_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ast_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Blk_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stl_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pf_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.To_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pts_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Score_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gameLog_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAvgStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -318,6 +301,23 @@
             this.receivePlayer_TextBox = new espn.AutoCompleteTextBox();
             this.sendPlayer_TextBox = new espn.AutoCompleteTextBox();
             this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
+            this.Date_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opp_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Min_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgmFga_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FgPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpmTpa_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TpPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtmFta_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FtPer_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reb_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ast_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Blk_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stl_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pf_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.To_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pts_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score_GameLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -419,12 +419,12 @@
             // 
             this.year_comboBox.FormattingEnabled = true;
             this.year_comboBox.Items.AddRange(new object[] {
+            "2020",
             "2019",
             "2018",
             "2017",
             "2016",
-            "2015",
-            "2014"});
+            "2015"});
             this.year_comboBox.Location = new System.Drawing.Point(202, 313);
             this.year_comboBox.Name = "year_comboBox";
             this.year_comboBox.Size = new System.Drawing.Size(71, 24);
@@ -918,112 +918,6 @@
             this.gameLog_dataGridView.Size = new System.Drawing.Size(1097, 356);
             this.gameLog_dataGridView.TabIndex = 20;
             this.gameLog_dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.gameLog_dataGridView_RowStateChanged);
-            // 
-            // Date_GameLog
-            // 
-            this.Date_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Date_GameLog.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Date_GameLog.HeaderText = "Date";
-            this.Date_GameLog.Name = "Date_GameLog";
-            this.Date_GameLog.Width = 66;
-            // 
-            // Opp_GameLog
-            // 
-            this.Opp_GameLog.HeaderText = "Opp";
-            this.Opp_GameLog.Name = "Opp_GameLog";
-            this.Opp_GameLog.Width = 50;
-            // 
-            // Min_GameLog
-            // 
-            this.Min_GameLog.HeaderText = "MIN";
-            this.Min_GameLog.Name = "Min_GameLog";
-            this.Min_GameLog.Width = 50;
-            // 
-            // FgmFga_GameLog
-            // 
-            this.FgmFga_GameLog.HeaderText = "FGM-FGA";
-            this.FgmFga_GameLog.Name = "FgmFga_GameLog";
-            this.FgmFga_GameLog.Width = 80;
-            // 
-            // FgPer_GameLog
-            // 
-            this.FgPer_GameLog.HeaderText = "FG%";
-            this.FgPer_GameLog.Name = "FgPer_GameLog";
-            this.FgPer_GameLog.Width = 50;
-            // 
-            // TpmTpa_GameLog
-            // 
-            this.TpmTpa_GameLog.HeaderText = "3PM-3PA";
-            this.TpmTpa_GameLog.Name = "TpmTpa_GameLog";
-            this.TpmTpa_GameLog.Width = 80;
-            // 
-            // TpPer_GameLog
-            // 
-            this.TpPer_GameLog.HeaderText = "3P%";
-            this.TpPer_GameLog.Name = "TpPer_GameLog";
-            this.TpPer_GameLog.Width = 50;
-            // 
-            // FtmFta_GameLog
-            // 
-            this.FtmFta_GameLog.HeaderText = "FTM-FTA";
-            this.FtmFta_GameLog.Name = "FtmFta_GameLog";
-            this.FtmFta_GameLog.Width = 80;
-            // 
-            // FtPer_GameLog
-            // 
-            this.FtPer_GameLog.HeaderText = "FT%";
-            this.FtPer_GameLog.Name = "FtPer_GameLog";
-            this.FtPer_GameLog.Width = 50;
-            // 
-            // Reb_GameLog
-            // 
-            this.Reb_GameLog.HeaderText = "REB";
-            this.Reb_GameLog.Name = "Reb_GameLog";
-            this.Reb_GameLog.Width = 50;
-            // 
-            // Ast_GameLog
-            // 
-            this.Ast_GameLog.HeaderText = "AST";
-            this.Ast_GameLog.Name = "Ast_GameLog";
-            this.Ast_GameLog.Width = 50;
-            // 
-            // Blk_GameLog
-            // 
-            this.Blk_GameLog.HeaderText = "BLK";
-            this.Blk_GameLog.Name = "Blk_GameLog";
-            this.Blk_GameLog.Width = 50;
-            // 
-            // Stl_GameLog
-            // 
-            this.Stl_GameLog.HeaderText = "STL";
-            this.Stl_GameLog.Name = "Stl_GameLog";
-            this.Stl_GameLog.Width = 50;
-            // 
-            // Pf_GameLog
-            // 
-            this.Pf_GameLog.HeaderText = "PF";
-            this.Pf_GameLog.Name = "Pf_GameLog";
-            this.Pf_GameLog.Width = 50;
-            // 
-            // To_GameLog
-            // 
-            this.To_GameLog.HeaderText = "TO";
-            this.To_GameLog.Name = "To_GameLog";
-            this.To_GameLog.Width = 50;
-            // 
-            // Pts_GameLog
-            // 
-            this.Pts_GameLog.HeaderText = "PTS";
-            this.Pts_GameLog.Name = "Pts_GameLog";
-            this.Pts_GameLog.Width = 50;
-            // 
-            // Score_GameLog
-            // 
-            this.Score_GameLog.HeaderText = "Score";
-            this.Score_GameLog.Name = "Score_GameLog";
-            this.Score_GameLog.Width = 70;
             // 
             // gameLog_contextMenuStrip
             // 
@@ -2753,7 +2647,7 @@
             this.receivedPlayersToolStripMenuItem,
             this.loadWatchListToolStripMenuItem});
             this.tradeAnalyzerToolStripMenuItem.Name = "tradeAnalyzerToolStripMenuItem";
-            this.tradeAnalyzerToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.tradeAnalyzerToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.tradeAnalyzerToolStripMenuItem.Text = "Trade Analyzer";
             // 
             // sentPlayersToolStripMenuItem
@@ -2815,7 +2709,7 @@
             this.draftPicksToolStripMenuItem1,
             this.createStatsFileToolStripMenuItem});
             this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
-            this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.draftPicksToolStripMenuItem.Text = "Tools";
             // 
             // draftPicksToolStripMenuItem1
@@ -2848,7 +2742,7 @@
             // update_timer
             // 
             this.update_timer.Interval = 120000;
-            this.update_timer.Tick += new System.EventHandler(this.update_timer_Tick);
+            this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
             // filterByPlayer_autoCompleteTextBox
             // 
@@ -2914,6 +2808,113 @@
             this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
             this.rater_autoCompleteTextBox.TabIndex = 19;
             this.rater_autoCompleteTextBox.Values = null;
+            // 
+            // Date_GameLog
+            // 
+            this.Date_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Date_GameLog.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Date_GameLog.HeaderText = "Date";
+            this.Date_GameLog.Name = "Date_GameLog";
+            this.Date_GameLog.Width = 66;
+            // 
+            // Opp_GameLog
+            // 
+            this.Opp_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Opp_GameLog.HeaderText = "Opp";
+            this.Opp_GameLog.Name = "Opp_GameLog";
+            this.Opp_GameLog.Width = 62;
+            // 
+            // Min_GameLog
+            // 
+            this.Min_GameLog.HeaderText = "MIN";
+            this.Min_GameLog.Name = "Min_GameLog";
+            this.Min_GameLog.Width = 50;
+            // 
+            // FgmFga_GameLog
+            // 
+            this.FgmFga_GameLog.HeaderText = "FGM-FGA";
+            this.FgmFga_GameLog.Name = "FgmFga_GameLog";
+            this.FgmFga_GameLog.Width = 80;
+            // 
+            // FgPer_GameLog
+            // 
+            this.FgPer_GameLog.HeaderText = "FG%";
+            this.FgPer_GameLog.Name = "FgPer_GameLog";
+            this.FgPer_GameLog.Width = 50;
+            // 
+            // TpmTpa_GameLog
+            // 
+            this.TpmTpa_GameLog.HeaderText = "3PM-3PA";
+            this.TpmTpa_GameLog.Name = "TpmTpa_GameLog";
+            this.TpmTpa_GameLog.Width = 80;
+            // 
+            // TpPer_GameLog
+            // 
+            this.TpPer_GameLog.HeaderText = "3P%";
+            this.TpPer_GameLog.Name = "TpPer_GameLog";
+            this.TpPer_GameLog.Width = 50;
+            // 
+            // FtmFta_GameLog
+            // 
+            this.FtmFta_GameLog.HeaderText = "FTM-FTA";
+            this.FtmFta_GameLog.Name = "FtmFta_GameLog";
+            this.FtmFta_GameLog.Width = 80;
+            // 
+            // FtPer_GameLog
+            // 
+            this.FtPer_GameLog.HeaderText = "FT%";
+            this.FtPer_GameLog.Name = "FtPer_GameLog";
+            this.FtPer_GameLog.Width = 50;
+            // 
+            // Reb_GameLog
+            // 
+            this.Reb_GameLog.HeaderText = "REB";
+            this.Reb_GameLog.Name = "Reb_GameLog";
+            this.Reb_GameLog.Width = 50;
+            // 
+            // Ast_GameLog
+            // 
+            this.Ast_GameLog.HeaderText = "AST";
+            this.Ast_GameLog.Name = "Ast_GameLog";
+            this.Ast_GameLog.Width = 50;
+            // 
+            // Blk_GameLog
+            // 
+            this.Blk_GameLog.HeaderText = "BLK";
+            this.Blk_GameLog.Name = "Blk_GameLog";
+            this.Blk_GameLog.Width = 50;
+            // 
+            // Stl_GameLog
+            // 
+            this.Stl_GameLog.HeaderText = "STL";
+            this.Stl_GameLog.Name = "Stl_GameLog";
+            this.Stl_GameLog.Width = 50;
+            // 
+            // Pf_GameLog
+            // 
+            this.Pf_GameLog.HeaderText = "PF";
+            this.Pf_GameLog.Name = "Pf_GameLog";
+            this.Pf_GameLog.Width = 50;
+            // 
+            // To_GameLog
+            // 
+            this.To_GameLog.HeaderText = "TO";
+            this.To_GameLog.Name = "To_GameLog";
+            this.To_GameLog.Width = 50;
+            // 
+            // Pts_GameLog
+            // 
+            this.Pts_GameLog.HeaderText = "PTS";
+            this.Pts_GameLog.Name = "Pts_GameLog";
+            this.Pts_GameLog.Width = 50;
+            // 
+            // Score_GameLog
+            // 
+            this.Score_GameLog.HeaderText = "Score";
+            this.Score_GameLog.Name = "Score_GameLog";
+            this.Score_GameLog.Width = 70;
             // 
             // MainForm
             // 
@@ -3134,23 +3135,6 @@
         private AutoCompleteTextBox gameLog_autoCompleteTextBox;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.DataGridView gameLog_dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opp_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Min_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFga_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FgPer_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TpmTpa_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TpPer_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFta_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FtPer_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reb_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ast_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Blk_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stl_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pf_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn To_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pts_GameLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Score_GameLog;
         private System.Windows.Forms.Panel gameLog_panel;
         private System.Windows.Forms.Label playerNameGameLog_label;
         private System.Windows.Forms.Label startEndTimesGameLog_label;
@@ -3208,6 +3192,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pts;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opp_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Min_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgmFga_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FgPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpmTpa_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TpPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtmFta_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FtPer_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reb_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ast_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Blk_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stl_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pf_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn To_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pts_GameLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score_GameLog;
     }
 }
 

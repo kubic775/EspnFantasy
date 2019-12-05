@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json.Linq;
 
 namespace espn
 {
@@ -17,7 +19,7 @@ namespace espn
         public int Age, Type, RaterPos;
         public Dictionary<string, double> Scores;
 
-        public PlayerInfo(string playerName, int id, int startYear = 2014, LogDelegate log = null)
+        public PlayerInfo(string playerName, int id, int startYear = 2015, LogDelegate log = null)
         {
             try
             {
@@ -26,9 +28,10 @@ namespace espn
                 Games = new List<GameStats>();
                 PlayerName = playerName;
                 Id = id;
-                for (int year = startYear; year <= 2019; year++)
+                for (int year = startYear; year <= Utils.GetCurrentYear() + 1; year++)
                 {
-                    string playerStr = DownloadPlayerStr(Id, year);
+                    //string playerStr = DownloadPlayerStr(Id, year);
+                    string playerStr = DownloadPlayerJson(Id, year);
                     CreatePlayer(playerStr, Id, year);
                 }
             }
@@ -53,26 +56,53 @@ namespace espn
 
         private void CreatePlayer(string playerStr, int id, int year)
         {
+            UpdatePlayerInfo(playerStr, id);
+            Games.AddRange(CreateGames(playerStr, year));
+        }
+
+        private List<GameStats> CreateGames(string playerStr, int year)
+        {
+            var games = new List<GameStats>();
+            int start = playerStr.IndexOf("Regular Season");
+            int end = playerStr.IndexOf("Preseason");
+            if (start == -1 || end == -1) return games;
+            var gamesStr = playerStr.Substring(start, end - start);
+            int index1 = gamesStr.IndexOf("<tr");
+            if (index1 == -1) return games;
+            int index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
+            while (index1 != -1 && index2 != -1)
+            {
+                var gameStr = gamesStr.Substring(index1, index2 - index1);
+                var game = new GameStats(gameStr, year);
+                if (game.GameDate != default)
+                {
+                    games.Add(game);
+                }
+                gamesStr = gamesStr.Remove(0, index2 - index1);
+                index1 = gamesStr.IndexOf("<tr");
+                if (index1 == -1) break;
+                index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
+            }
+
+            return games;
+        }
+
+        private void UpdatePlayerInfo(string playerStr, int id)
+        {
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
 
-            int index1 = playerStr.IndexOf("Game By Game Stats and Performance", StringComparison.InvariantCulture);
-            int index2 = playerStr.IndexOf("ESPN</title>", index1, StringComparison.InvariantCulture);
-            Team = playerStr.Substring(index1 + 34, index2 - index1 - 34).Trim().Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.Trim();
-
-            index1 = playerStr.IndexOf("general-info", StringComparison.InvariantCulture);
-            index1 = playerStr.IndexOf("first", index1, StringComparison.InvariantCulture);
-            index2 = playerStr.IndexOf("lbs", index1, StringComparison.InvariantCulture);
-            var playerInfo = playerStr.Substring(index1 + 6, index2 - index1).Split(new[] { '>', '<' }, StringSplitOptions.RemoveEmptyEntries);
-            Age = int.Parse(playerStr.Substring(playerStr.IndexOf("Age:", index1, StringComparison.InvariantCulture) + 5, 2));
-            Misc = playerInfo[0] + " | " + playerInfo[3];
-
-            index1 = playerStr.IndexOf((year - 1) + "-" + year + " REGULAR SEASON GAME LOG", StringComparison.InvariantCulture);
-            index2 = playerStr.IndexOf("REGULAR SEASON STATS", StringComparison.InvariantCulture);
-            if (index1 != -1 && index2 != -1)
-            {
-                string gamesStr = playerStr.Substring(index1, index2 - index1);
-                CreatePlayerGames(gamesStr, year);
-            }
+            string pattern = "<script type='text/javascript' >";
+            string pattern2 = ";</script>";
+            var i1 = playerStr.IndexOf(pattern);
+            var i2 = playerStr.IndexOf(pattern, i1 + 30);
+            var i3 = playerStr.IndexOf(pattern, i2 + 30);
+            if (i1 == -1) return;
+            string jsonStr = playerStr.Substring(i2 + 55, i3 - i2 - 70).TrimEnd().Replace(pattern2, "");
+            JObject json = JObject.Parse(jsonStr);
+            JToken playerInfo = json["page"]["content"]["player"]["plyrHdr"]["ath"];
+            Team = (playerInfo["tm"] ?? "").ToString();
+            int.TryParse(playerInfo["dob"].ToString().Split("()".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last(), out Age);
+            Misc = $"{playerInfo["pos"]} | {playerInfo["sts"]}";
         }
 
         private string DownloadPlayerStr(int id, int year)
@@ -81,6 +111,20 @@ namespace espn
             //return task.Result;
             using (var wc = new System.Net.WebClient())
                 return wc.DownloadString(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
+        }
+
+        private string DownloadPlayerJson(int id, int year)
+        {
+            using (var client = new HttpClient())
+            {
+                using (HttpResponseMessage response = client.GetAsync(ConfigurationManager.AppSettings["EspnPath"] + id + "/type/nba/year/" + year).Result)
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        return content.ReadAsStringAsync().Result;
+                    }
+                }
+            }
         }
 
         private void CreatePlayerGames(string gamesStr, int year)

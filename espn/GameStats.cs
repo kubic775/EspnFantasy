@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Xml;
 using MathNet.Numerics.Statistics;
 
 namespace espn
@@ -13,7 +14,7 @@ namespace espn
         public double Pts, Reb, Ast, Tpm, Tpa, Fga, Fgm, Ftm, Fta, Stl, Blk, To, Min, Pf;
         public double FtPer, FgPer, TpPer;
         public double Score;
-        public string Opp;
+        public string Opp, Result;
         public int Gp;
 
         public GameStats()
@@ -70,39 +71,37 @@ namespace espn
             return game;
         }
 
-        public GameStats(string gameStr, int year)
+        public GameStats(string gameXml, int year)
         {
-            string[] stats = gameStr.Split(new[] { @"<td>", @"</td>" }, StringSplitOptions.RemoveEmptyEntries);
-
-            var temp = stats[1].Substring(4).Split('/');
-            var month = Int32.Parse(temp[0]);
-            var day = Int32.Parse(temp[1]);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(gameXml);
+            var val = xmlDoc.FirstChild.ChildNodes.OfType<XmlNode>().Select(node => node.InnerText).ToList();
+            //Console.WriteLine(string.Join(",", val));
+            var dateInfo = val[0].Remove(0, 4).Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            if (dateInfo.Length != 2) return;
+            var month = dateInfo[0].ToInt();
+            var day = dateInfo[1].ToInt();
+            if (month == 0 || day == 0) return;
             GameDate = new DateTime(month < 10 ? year : year - 1, month, day);
-
-            Opp = stats[2].Substring(stats[2].Length - 17, 3);
-
-            Min = Int32.Parse(stats[4].Substring(stats[4].IndexOf(">") + 1));
-
-            temp = stats[5].Substring(stats[5].IndexOf(">") + 1).Split('-');
-            Fgm = Int32.Parse(temp[0]);
-            Fga = Int32.Parse(temp[1]);
-            FgPer = Double.Parse(stats[6].Substring(stats[6].IndexOf(">") + 1)) * 100;
-            temp = stats[7].Substring(stats[7].IndexOf(">") + 1).Split('-');
-            Tpm = Int32.Parse(temp[0]);
-            Tpa = Int32.Parse(temp[1]);
-            TpPer = Double.Parse(stats[8].Substring(stats[8].IndexOf(">") + 1)) * 100;
-            temp = stats[9].Substring(stats[9].IndexOf(">") + 1).Split('-');
-            Ftm = Int32.Parse(temp[0]);
-            Fta = Int32.Parse(temp[1]);
-            FtPer = Double.Parse(stats[10].Substring(stats[10].IndexOf(">") + 1)) * 100;
-
-            Reb = Int32.Parse(stats[11].Substring(stats[11].IndexOf(">") + 1));
-            Ast = Int32.Parse(stats[12].Substring(stats[12].IndexOf(">") + 1));
-            Blk = Int32.Parse(stats[13].Substring(stats[13].IndexOf(">") + 1));
-            Stl = Int32.Parse(stats[14].Substring(stats[14].IndexOf(">") + 1));
-            Pf = Int32.Parse(stats[15].Substring(stats[15].IndexOf(">") + 1));
-            To = Int32.Parse(stats[16].Substring(stats[16].IndexOf(">") + 1));
-            Pts = Int32.Parse(stats[17].Substring(stats[17].IndexOf(">") + 1));
+            Opp = val[1];
+            Result = val[2];
+            Min = val[3].ToInt();
+            Fga = val[4].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
+            Fgm = val[4].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
+            FgPer = Fgm / Fga;
+            Tpa = val[6].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
+            Tpm = val[6].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
+            TpPer = Tpm / Tpa;
+            Fta = val[8].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
+            Ftm = val[8].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
+            FtPer = Ftm / Fta;
+            Reb = val[10].ToInt();
+            Ast = val[11].ToInt();
+            Blk = val[12].ToInt();
+            Stl = val[13].ToInt();
+            Pf = val[14].ToInt();
+            To = val[15].ToInt();
+            Pts = val[16].ToInt();
         }
 
         public static GameStats GetAvgStats(GameStats[] games)
