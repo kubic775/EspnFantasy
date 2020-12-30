@@ -40,8 +40,11 @@ namespace espn
             Min = game.Min.Value;
             Pf = game.Pf.Value;
             FtPer = (Ftm / Fta) * 100;
+            FtPer = double.IsNaN(FtPer) ? 0 : Math.Round(FtPer, 3);
             FgPer = (Fgm / Fga) * 100;
+            FgPer = double.IsNaN(FgPer) ? 0 : Math.Round(FgPer, 3);
             TpPer = (Tpm / Tpa) * 100;
+            TpPer = double.IsNaN(TpPer) ? 0 : Math.Round(TpPer, 3);
             //Score = game.Score.Value;
             Gp = game.Gp.Value;
             Opp = game.Opp;
@@ -64,9 +67,9 @@ namespace espn
             game.To = To;
             game.Min = Min;
             game.Pf = Pf;
-            game.FtPer = FtPer;
-            game.FgPer = FtPer;
-            game.TpPer = TpPer;
+            game.FtPer = double.IsNaN(FtPer) ? 0 : FtPer;
+            game.FgPer = double.IsNaN(FgPer) ? 0 : FgPer;
+            game.TpPer = double.IsNaN(TpPer) ? 0 : TpPer;
             game.Opp = Opp;
             return game;
         }
@@ -83,18 +86,21 @@ namespace espn
             var day = dateInfo[1].ToInt();
             if (month == 0 || day == 0) return;
             GameDate = new DateTime(month < 10 ? year : year - 1, month, day);
-            Opp = val[1];
+            Opp = new string(val[1].Where(c => Char.IsLetter(c) && Char.IsUpper(c)).ToArray());
             Result = val[2];
             Min = val[3].ToInt();
             Fga = val[4].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
             Fgm = val[4].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
             FgPer = Fgm / Fga;
+            FgPer = double.IsNaN(FgPer) ? 0 : Math.Round(FgPer, 3);
             Tpa = val[6].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
             Tpm = val[6].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
             TpPer = Tpm / Tpa;
+            TpPer = double.IsNaN(TpPer) ? 0 : Math.Round(TpPer, 3);
             Fta = val[8].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last().ToInt();
             Ftm = val[8].Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).First().ToInt();
             FtPer = Ftm / Fta;
+            FtPer = double.IsNaN(FtPer) ? 0 : Math.Round(FtPer, 3);
             Reb = val[10].ToInt();
             Ast = val[11].ToInt();
             Blk = val[12].ToInt();

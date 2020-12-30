@@ -51,7 +51,6 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\Newtonsoft.Json.pdb
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\Newtonsoft.Json.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Data.SQLite.dll.config
-Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojAssemblyReference.cache
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.DraftPicksForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.FactorsForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.MainForm.resources

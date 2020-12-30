@@ -76,7 +76,7 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.MainForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.PlayersForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.Properties.Resources.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.GenerateResource.cache
-Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cache
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CopyComplete
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cache

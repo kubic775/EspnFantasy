@@ -121,7 +121,7 @@ namespace espn
             }
         }
 
-        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default(DateTime))
+        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default)
         {
             FieldInfo[] raterFieldNames = typeof(Rater).GetFields();
 
@@ -143,7 +143,7 @@ namespace espn
                 else
                     arr = playersGames.Select(p => p.Sum(g => (double)prop.GetValue(g)) / (mode == CalcScoreType.Days ? 1 : p.Count(g => g.Min > 0))).ToArray();
 
-                arr = arr.Where(a => !double.IsNaN(a)).ToArray();
+                arr = arr.Where(a => !double.IsNaN(a) && !double.IsInfinity(a)).ToArray();
 
                 var val = new Dictionary<string, double> { { "Average", arr.Average() }, { "Median", arr.Median() }, { "Std", arr.StandardDeviation() } };
                 fieldInfo.SetValue(this, val);

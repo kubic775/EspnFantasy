@@ -102,7 +102,7 @@ namespace espn
             double counter = 0;
             IEnumerable<PlayerInfo> playerInfos = players.Select(p =>
             {
-                log?.Invoke($"Download - {Math.Round(100 * ++counter / players.Count())} %");
+                log?.Invoke($"{p.Name} - {Math.Round(100 * ++counter / players.Count())} %");
                 Console.WriteLine(Math.Round(100 * counter / players.Count()) + "%");
                 return new PlayerInfo(p.Name, p.ID, currentYear + 1);
             });
@@ -110,14 +110,15 @@ namespace espn
             foreach (PlayerInfo playerInfo in playerInfos)
             {
                 log?.Invoke("Update - " + playerInfo.PlayerName);
-                if (playerInfo?.Games?.Count != 0)
-                {
-                    UpdatePlayer(playerInfo);
-                }
-                else
-                {
-                    Console.WriteLine($"{playerInfo.PlayerName} - No Games");
-                }
+                UpdatePlayer(playerInfo);
+                //if (playerInfo?.Games?.Count != 0)
+                //{
+                //    UpdatePlayer(playerInfo);
+                //}
+                //else
+                //{
+                //    Console.WriteLine($"{playerInfo.PlayerName} - No Games");
+                //}
             }
             Console.WriteLine(Environment.NewLine + "Done In " + (DateTime.Now - startTime).TotalSeconds + " Seconds");
 
