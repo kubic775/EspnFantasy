@@ -160,7 +160,7 @@
             this.pts_textBox.Name = "pts_textBox";
             this.pts_textBox.Size = new System.Drawing.Size(56, 20);
             this.pts_textBox.TabIndex = 10;
-            this.pts_textBox.Text = "0.18";
+            this.pts_textBox.Text = "1";
             this.pts_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // reb_textBox
@@ -169,7 +169,7 @@
             this.reb_textBox.Name = "reb_textBox";
             this.reb_textBox.Size = new System.Drawing.Size(56, 20);
             this.reb_textBox.TabIndex = 11;
-            this.reb_textBox.Text = "0.55";
+            this.reb_textBox.Text = "1";
             this.reb_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ast_textBox
@@ -178,7 +178,7 @@
             this.ast_textBox.Name = "ast_textBox";
             this.ast_textBox.Size = new System.Drawing.Size(56, 20);
             this.ast_textBox.TabIndex = 12;
-            this.ast_textBox.Text = "0.4";
+            this.ast_textBox.Text = "1";
             this.ast_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tpm_textBox
@@ -187,7 +187,7 @@
             this.tpm_textBox.Name = "tpm_textBox";
             this.tpm_textBox.Size = new System.Drawing.Size(56, 20);
             this.tpm_textBox.TabIndex = 13;
-            this.tpm_textBox.Text = "0.46";
+            this.tpm_textBox.Text = "1";
             this.tpm_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // stl_textBox
@@ -196,7 +196,7 @@
             this.stl_textBox.Name = "stl_textBox";
             this.stl_textBox.Size = new System.Drawing.Size(56, 20);
             this.stl_textBox.TabIndex = 14;
-            this.stl_textBox.Text = "0.65";
+            this.stl_textBox.Text = "1";
             this.stl_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // blk_textBox
@@ -205,7 +205,7 @@
             this.blk_textBox.Name = "blk_textBox";
             this.blk_textBox.Size = new System.Drawing.Size(56, 20);
             this.blk_textBox.TabIndex = 15;
-            this.blk_textBox.Text = "0.68";
+            this.blk_textBox.Text = "1";
             this.blk_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fgPer_textBox
@@ -214,7 +214,7 @@
             this.fgPer_textBox.Name = "fgPer_textBox";
             this.fgPer_textBox.Size = new System.Drawing.Size(56, 20);
             this.fgPer_textBox.TabIndex = 16;
-            this.fgPer_textBox.Text = "0.55";
+            this.fgPer_textBox.Text = "1";
             this.fgPer_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fgVol_textBox
@@ -223,7 +223,7 @@
             this.fgVol_textBox.Name = "fgVol_textBox";
             this.fgVol_textBox.Size = new System.Drawing.Size(56, 20);
             this.fgVol_textBox.TabIndex = 17;
-            this.fgVol_textBox.Text = "-0.15";
+            this.fgVol_textBox.Text = "1";
             this.fgVol_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ftPer_textBox
@@ -232,7 +232,7 @@
             this.ftPer_textBox.Name = "ftPer_textBox";
             this.ftPer_textBox.Size = new System.Drawing.Size(56, 20);
             this.ftPer_textBox.TabIndex = 18;
-            this.ftPer_textBox.Text = "0.34";
+            this.ftPer_textBox.Text = "1";
             this.ftPer_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ftVol_textBox
@@ -241,7 +241,7 @@
             this.ftVol_textBox.Name = "ftVol_textBox";
             this.ftVol_textBox.Size = new System.Drawing.Size(56, 20);
             this.ftVol_textBox.TabIndex = 19;
-            this.ftVol_textBox.Text = "-0.45";
+            this.ftVol_textBox.Text = "1";
             this.ftVol_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ok_button
@@ -261,7 +261,7 @@
             this.to_textBox.Name = "to_textBox";
             this.to_textBox.Size = new System.Drawing.Size(56, 20);
             this.to_textBox.TabIndex = 23;
-            this.to_textBox.Text = "-0.67";
+            this.to_textBox.Text = "1";
             this.to_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11

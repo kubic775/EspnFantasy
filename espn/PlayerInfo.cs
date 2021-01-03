@@ -64,7 +64,10 @@ namespace espn
         {
             var games = new List<GameStats>();
             int start = playerStr.IndexOf("Regular Season");
+            if (start == -1) return games;
             int end = playerStr.IndexOf("Preseason");
+            if (end == -1)
+                end = playerStr.IndexOf("Data provided by Elias Sports Bureau");
             if (start == -1 || end == -1) return games;
             var gamesStr = playerStr.Substring(start, end - start);
             int index1 = gamesStr.IndexOf("<tr");

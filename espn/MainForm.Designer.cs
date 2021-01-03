@@ -319,6 +319,7 @@
             this.createStatsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
+            this.editFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -2892,7 +2893,8 @@
             // 
             this.draftPicksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.draftPicksToolStripMenuItem1,
-            this.createStatsFileToolStripMenuItem});
+            this.createStatsFileToolStripMenuItem,
+            this.editFactorsToolStripMenuItem});
             this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
             this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.draftPicksToolStripMenuItem.Text = "Tools";
@@ -2900,14 +2902,14 @@
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 
@@ -2928,6 +2930,13 @@
             // 
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
+            // 
+            // editFactorsToolStripMenuItem
+            // 
+            this.editFactorsToolStripMenuItem.Name = "editFactorsToolStripMenuItem";
+            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editFactorsToolStripMenuItem.Text = "Edit Factors";
+            this.editFactorsToolStripMenuItem.Click += new System.EventHandler(this.editFactorsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -3223,6 +3232,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pts_GameLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score_GameLog;
         private System.Windows.Forms.Label playerStatus_label;
+        private System.Windows.Forms.ToolStripMenuItem editFactorsToolStripMenuItem;
     }
 }
 

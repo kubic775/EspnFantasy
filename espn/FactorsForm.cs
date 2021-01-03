@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Reflection;
 using System.Windows.Forms;
@@ -8,9 +9,7 @@ namespace espn
     public partial class FactorsForm : Form
     {
         public double Pts, Reb, Ast, Tpm, Stl, Blk, To;
-
-      
-        public double FtPer, FgPer, FtVol, FgVol;
+        public double FtPer, FgPer, Fta, Fga;
 
         public FactorsForm()
         {
@@ -36,11 +35,21 @@ namespace espn
             tpm_textBox.Text = Tpm.ToString();
             ftPer_textBox.Text = FtPer.ToString();
             fgPer_textBox.Text = FgPer.ToString();
-            ftVol_textBox.Text = FtVol.ToString();
-            fgVol_textBox.Text = FgVol.ToString();
+            ftVol_textBox.Text = Fta.ToString();
+            fgVol_textBox.Text = Fga.ToString();
         }
 
-       
+        public static Dictionary<string, double> GetFactors()
+        {
+            FieldInfo[] fieldNames = typeof(FactorsForm).GetFields();
+            Dictionary<string, double> factors = new Dictionary<string, double>();
+            foreach (FieldInfo fieldName in fieldNames)
+            {
+                factors.Add(fieldName.Name, double.Parse(ConfigurationManager.AppSettings[fieldName.Name]));
+            }
+            return factors;
+        }
+
         private void ok_button_Click(object sender, EventArgs e)
         {
             try
@@ -66,9 +75,9 @@ namespace espn
             To = double.Parse(to_textBox.Text);
 
             FtPer = double.Parse(ftPer_textBox.Text);
-            FtVol = double.Parse(ftVol_textBox.Text);
+            Fta = double.Parse(ftVol_textBox.Text);
             FgPer = double.Parse(fgPer_textBox.Text);
-            FgVol = double.Parse(fgVol_textBox.Text);
+            Fga = double.Parse(fgVol_textBox.Text);
         }
 
         private void save_button_Click(object sender, EventArgs e)

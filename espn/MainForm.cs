@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,7 +7,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Cursor = System.Windows.Forms.Cursor;
 
 
 namespace espn
@@ -28,6 +25,7 @@ namespace espn
         {
             InitializeComponent();
             InitGui();
+            
         }
 
         private async void InitGui()
@@ -986,20 +984,28 @@ namespace espn
 
         private int GetRank(int playerId, GameStats[] games, string mode, string historyLength)
         {
-            if (mode.Equals("Days"))
+            try
             {
-                int numOfDays = historyLength.Equals("Max")
-                    ? (int)Math.Ceiling((DateTime.Today - games.Min(g => g.GameDate)).TotalDays)
-                    : int.Parse(historyLength);
-                return PlayerRater.CreateRater(CalcScoreType.Days, numOfDays).First(p => p.Id == playerId).RaterPos;
+                if (mode.Equals("Days"))
+                {
+                    int numOfDays = historyLength.Equals("Max")
+                        ? (int)Math.Ceiling((DateTime.Today - games.Min(g => g.GameDate)).TotalDays)
+                        : int.Parse(historyLength);
+                    return PlayerRater.CreateRater(CalcScoreType.Days, numOfDays).First(p => p.Id == playerId).RaterPos;
+                }
+                else//Games
+                {
+                    GameStats[] relevantGames = historyLength.Equals("Max")
+                        ? games
+                        : games.OrderByDescending(g => g.GameDate).Take(int.Parse(historyLength)).ToArray();
+                    int numOfDays = (int)Math.Ceiling((DateTime.Today - relevantGames.Min(g => g.GameDate)).TotalDays);
+                    return PlayerRater.CreateRater(CalcScoreType.Days, numOfDays).First(p => p.Id == playerId).RaterPos;
+                }
             }
-            else//Games
+            catch (Exception e)
             {
-                GameStats[] relevantGames = historyLength.Equals("Max")
-                    ? games
-                    : games.OrderByDescending(g => g.GameDate).Take(int.Parse(historyLength)).ToArray();
-                int numOfDays = (int)Math.Ceiling((DateTime.Today - relevantGames.Min(g => g.GameDate)).TotalDays);
-                return PlayerRater.CreateRater(CalcScoreType.Days, numOfDays).First(p => p.Id == playerId).RaterPos;
+                Console.WriteLine(e);
+                return -1;
             }
         }
 
@@ -1273,6 +1279,12 @@ namespace espn
             {
                 gameLog_dataGridView.SelectedRows[i].Cells[0].ToolTipText = str;
             }
+        }
+
+        private void editFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Factors = new FactorsForm();
+            Factors.ShowDialog();
         }
 
 

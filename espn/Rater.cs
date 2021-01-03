@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,7 +13,7 @@ namespace espn
     {
         //Average, Median, Std
         public Dictionary<string, double> Pts, Reb, Ast, Tpm, Stl, Blk, To, Fta, FtPer, Fga, FgPer;
-
+        public Dictionary<string, double> Factors;
         public IEnumerable<Game> Games;
         public IEnumerable<Player> Players;
 
@@ -20,14 +21,16 @@ namespace espn
         {
             Players = players;
             Games = games;
+            Factors = FactorsForm.GetFactors();
         }
 
 
         public IEnumerable<PlayerInfo> CreateRater(CalcScoreType mode, int timePeriod = 0)
         {
             var rater = new List<PlayerInfo>();
+            Factors = FactorsForm.GetFactors();
 
-            DateTime startTime = timePeriod == 0 ? default(DateTime) : DateTime.Today - new TimeSpan(timePeriod, 0, 0, 0);
+            DateTime startTime = timePeriod == 0 ? default : DateTime.Today - new TimeSpan(timePeriod, 0, 0, 0);
 
             UpdateFactors(mode, startTime);
 
@@ -100,16 +103,21 @@ namespace espn
 
                 scores["To"] = scores["To"] * -1;
 
+                //Apply Factors
+                var factorScore = new Dictionary<string, double>();
+                foreach (string key in scores.Keys)
+                {
+                    if (!Factors.ContainsKey(key)) continue;
+                    factorScore.Add(key, scores[key] * Factors[key]);
+                }
+
+                scores = factorScore;
+
                 scores["Fg"] = Math.Sign(scores["FgPer"]) * Math.Abs(scores["Fga"] * scores["FgPer"]);
                 scores["Ft"] = Math.Sign(scores["FtPer"]) * Math.Abs(scores["Fta"] * scores["FtPer"]);
 
-                //scores.Remove("Fta");
-                //scores.Remove("FtPer");
-                //scores.Remove("Fga");
-                //scores.Remove("FgPer");
-
                 scores["Score"] = scores["Fg"] + scores["Ft"] + scores["Tpm"] + scores["Reb"] + scores["Ast"] +
-                                  scores["Stl"] + scores["Blk"] + scores["To"] + scores["Pts"];
+                                   scores["Stl"] + scores["Blk"] + scores["To"] + scores["Pts"];
 
                 return scores;
             }
@@ -149,41 +157,6 @@ namespace espn
                 fieldInfo.SetValue(this, val);
             }
         }
-
-        //private static double CalcMedian(IEnumerable<double> sourceNumbers)
-        //{
-        //    //Framework 2.0 version of this method. there is an easier way in F4        
-        //    if (sourceNumbers == null || !sourceNumbers.Any())
-        //        throw new Exception("Median of empty array not defined.");
-
-        //    //make sure the list is sorted, but use a new array
-        //    double[] sortedPNumbers = (double[])sourceNumbers.ToArray().Clone();
-        //    Array.Sort(sortedPNumbers);
-
-        //    //get the median
-        //    int size = sortedPNumbers.Length;
-        //    int mid = size / 2;
-        //    double median = (size % 2 != 0) ? sortedPNumbers[mid] : (sortedPNumbers[mid] + sortedPNumbers[mid - 1]) / 2;
-        //    return median;
-        //}
-
-        //private static double CalcStdDev(IEnumerable<double> values)
-        //{
-        //    double ret = 0;
-        //    int count = values.Count();
-        //    if (count > 1)
-        //    {
-        //        //Compute the Average
-        //        double avg = values.Average();
-
-        //        //Perform the Sum of (value-avg)^2
-        //        double sum = values.Sum(d => (d - avg) * (d - avg));
-
-        //        //Put it all together
-        //        ret = Math.Sqrt(sum / (count - 1));
-        //    }
-        //    return ret;
-        //}
     }
 
     public enum CalcScoreType

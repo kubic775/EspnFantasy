@@ -61,3 +61,4 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CoreCompileInputs.ca
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CopyComplete
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.exe
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.pdb
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojAssemblyReference.cache
