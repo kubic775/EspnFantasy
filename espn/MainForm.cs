@@ -241,7 +241,7 @@ namespace espn
                 numOf_textBox.Text = games.Length.ToString();
         }
 
-        private void numOf_textBox_TextChanged(object sender, EventArgs e)
+        private async void numOf_textBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -258,7 +258,8 @@ namespace espn
 
                 if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
                 {
-                    games = _player?.FilterGamesByPlayerInjury(games, filterByPlayer_autoCompleteTextBox.Text);
+                    var injuredPlayer = await PlayersList.CreatePlayerAsync(filterByPlayer_autoCompleteTextBox.Text);
+                    games = _player?.FilterGamesByPlayerInjury(games, injuredPlayer, year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]));
                     mode = "Games";
                 }
 
@@ -1285,6 +1286,15 @@ namespace espn
         {
             Factors = new FactorsForm();
             Factors.ShowDialog();
+        }
+
+        private void table_screenshot_button_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(rater_tab.Width, rater_tab.Height))
+            {
+                rater_tab.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                Clipboard.SetImage(bmp);
+            }
         }
 
 

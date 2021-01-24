@@ -173,7 +173,7 @@ namespace espn
 
         public GameStats[] FilterGamesByYear(int year)
         {
-            return Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToArray();
+            return Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 9, 1)).ToArray();
         }
 
         public GameStats[] FilterGames(string year, string mode, string numOfGames, bool filterZeroMinutes = false, bool filterOutliers = false)
@@ -204,17 +204,12 @@ namespace espn
             }
         }
 
-        public GameStats[] FilterGamesByPlayerInjury(GameStats[] originalGames, string playerInjuredName)
+        public GameStats[] FilterGamesByPlayerInjury(GameStats[] originalGames, PlayerInfo playerInjured, string year)
         {
-            List<Game> injuredGames;
-            using (var db = new EspnEntities())
-            {
-                var playerInjured = db.Players.First(p => p.Name.Equals(playerInjuredName));
-                injuredGames = db.Games.Where(g => g.PlayerId == playerInjured.ID).Where(g => g.Min < 10).ToList();
-            }
+            var playerInjuredGamesDates =
+                playerInjured.FilterGamesByYear(int.Parse(year)).Select(g => g.GameDate).ToList();
 
-            List<DateTime> injuredGamesDates = injuredGames.Select(g => g.GameDate.Value).ToList();
-            return originalGames.Where(g => injuredGamesDates.Contains(g.GameDate)).ToArray();
+            return originalGames.Where(g => !playerInjuredGamesDates.Contains(g.GameDate)).ToArray();
         }
 
         public IEnumerable<GameStats> FilterGamesByDates(IEnumerable<DateTime> dates)
