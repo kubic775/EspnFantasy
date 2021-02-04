@@ -637,6 +637,14 @@ namespace espn
             }
         }
 
+        private void compareScreenshot_button_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(compare_panel.Width, compare_panel.Height))
+            {
+                compare_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                Clipboard.SetImage(bmp);
+            }
+        }
         #endregion
 
         #region Trade Analyzer
@@ -1187,6 +1195,15 @@ namespace espn
             }
         }
 
+        private void table_screenshot_button_Click(object sender, EventArgs e)
+        {
+            using (var bmp = new Bitmap(rater_tab.Width, rater_tab.Height))
+            {
+                rater_tab.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                Clipboard.SetImage(bmp);
+            }
+        }
+
         #endregion
 
         #region GameLog
@@ -1288,15 +1305,7 @@ namespace espn
             Factors.ShowDialog();
         }
 
-        private void table_screenshot_button_Click(object sender, EventArgs e)
-        {
-            using (var bmp = new Bitmap(rater_tab.Width, rater_tab.Height))
-            {
-                rater_tab.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                Clipboard.SetImage(bmp);
-            }
-        }
-
+        
 
         #endregion
 
