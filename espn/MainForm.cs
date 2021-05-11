@@ -1271,9 +1271,8 @@ namespace espn
         private async void copyAvgStatsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string str = await GameLogGetAvgStats();
-
-            Clipboard.SetText(str);
-
+            Clipboard.SetText(gameLog_autoCompleteTextBox.Text + Environment.NewLine + str);
+            if (gameLog_dataGridView.SelectedRows.Count == 0) return;
             gameLog_dataGridView.SelectedRows[0].Cells[0].ToolTipText = Clipboard.GetText();
         }
 

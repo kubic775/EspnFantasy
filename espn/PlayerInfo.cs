@@ -192,7 +192,7 @@ namespace espn
 
         public GameStats[] FilterGames(int year, string mode, int numOfGames)
         {
-            var releventGames = Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 5, 1)).ToList();
+            var releventGames = Games.Where(g => g.GameDate > new DateTime(year - 1, 10, 1) & g.GameDate < new DateTime(year, 10, 1)).ToList();
             if (mode.Equals("Games"))
             {
                 return releventGames.OrderByDescending(g => g.GameDate).Take(numOfGames).OrderBy(g => g.GameDate).ToArray();
