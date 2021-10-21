@@ -94,13 +94,12 @@ namespace espn
         {
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
 
-            string pattern = "<script type='text/javascript' >";
+            string pattern = "{\"app\"";
             string pattern2 = ";</script>";
             var i1 = playerStr.IndexOf(pattern);
-            var i2 = playerStr.IndexOf(pattern, i1 + 30);
-            var i3 = playerStr.IndexOf(pattern, i2 + 30);
+            var i2 = playerStr.IndexOf(pattern2);
             if (i1 == -1) return;
-            string jsonStr = playerStr.Substring(i2 + 55, i3 - i2 - 70).TrimEnd().Replace(pattern2, "");
+            string jsonStr = playerStr.Substring(i1, i2 - i1);
             JObject json = JObject.Parse(jsonStr);
             JToken playerInfo = json["page"]["content"]["player"]["plyrHdr"]["ath"];
             Team = (playerInfo["tm"] ?? "").ToString();

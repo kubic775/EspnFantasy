@@ -69,7 +69,6 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\Newtonsoft.Json.pdb
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\Newtonsoft.Json.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Debug\System.Data.SQLite.dll.config
-Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csprojAssemblyReference.cache
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.DraftPicksForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.FactorsForm.resources
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.MainForm.resources
@@ -80,3 +79,4 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CopyComplete
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cache
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.AssemblyReference.cache
