@@ -25,7 +25,6 @@ namespace espn
         {
             InitializeComponent();
             InitGui();
-            
         }
 
         private async void InitGui()
@@ -155,8 +154,8 @@ namespace espn
                     playerInfo_label.Text = $"{_player.Misc} | {_player.Team} | Age: {_player.Age}";
                     button_max_Click(null, null);
                     player_pictureBox.Load(_player.ImagePath);
-                    string[] status = _player.Misc.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    if (status.Length >= 2)
+                    string[] status = _player.Misc?.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    if (status?.Length >= 2)
                     {
                         playerStatus_label.Text = status[1].Trim();
                         playerStatus_label.ForeColor = playerStatus_label.Text.Equals("Active") ? Color.Green : Color.Red;
