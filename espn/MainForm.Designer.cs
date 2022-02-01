@@ -1,4 +1,6 @@
-﻿namespace espn
+﻿using System;
+
+namespace espn
 {
     partial class MainForm
     {
@@ -307,8 +309,6 @@
             this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updatePlayersFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tradeAnalyzerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePlayersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -323,6 +323,7 @@
             this.editFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
+            this.createLeagueStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -2839,27 +2840,9 @@
             // 
             // playersToolStripMenuItem
             // 
-            this.playersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewPlayerToolStripMenuItem,
-            this.updatePlayersFromFileToolStripMenuItem});
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.playersToolStripMenuItem.Text = "Players";
-            // 
-            // addNewPlayerToolStripMenuItem
-            // 
-            this.addNewPlayerToolStripMenuItem.Name = "addNewPlayerToolStripMenuItem";
-            this.addNewPlayerToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.addNewPlayerToolStripMenuItem.Text = "Add New Player";
-            this.addNewPlayerToolStripMenuItem.Click += new System.EventHandler(this.addNewPlayerToolStripMenuItem_Click);
-            // 
-            // updatePlayersFromFileToolStripMenuItem
-            // 
-            this.updatePlayersFromFileToolStripMenuItem.Enabled = false;
-            this.updatePlayersFromFileToolStripMenuItem.Name = "updatePlayersFromFileToolStripMenuItem";
-            this.updatePlayersFromFileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.updatePlayersFromFileToolStripMenuItem.Text = "Update Players From File";
-            this.updatePlayersFromFileToolStripMenuItem.Click += new System.EventHandler(this.updatePlayersFromFileToolStripMenuItem_Click);
             // 
             // tradeAnalyzerToolStripMenuItem
             // 
@@ -2929,7 +2912,8 @@
             this.draftPicksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.draftPicksToolStripMenuItem1,
             this.createStatsFileToolStripMenuItem,
-            this.editFactorsToolStripMenuItem});
+            this.editFactorsToolStripMenuItem,
+            this.createLeagueStatsToolStripMenuItem});
             this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
             this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.draftPicksToolStripMenuItem.Text = "Tools";
@@ -2937,21 +2921,21 @@
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 
             // editFactorsToolStripMenuItem
             // 
             this.editFactorsToolStripMenuItem.Name = "editFactorsToolStripMenuItem";
-            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editFactorsToolStripMenuItem.Text = "Edit Factors";
             this.editFactorsToolStripMenuItem.Click += new System.EventHandler(this.editFactorsToolStripMenuItem_Click);
             // 
@@ -2972,6 +2956,13 @@
             // 
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
+            // 
+            // createLeagueStatsToolStripMenuItem
+            // 
+            this.createLeagueStatsToolStripMenuItem.Name = "createLeagueStatsToolStripMenuItem";
+            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createLeagueStatsToolStripMenuItem.Text = "Create League Stats";
+            this.createLeagueStatsToolStripMenuItem.Click += new System.EventHandler(this.createLeagueStatsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -3019,6 +3010,16 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void rosterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -3175,7 +3176,6 @@
         private System.Windows.Forms.ToolStripMenuItem savePlayersToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem loadPlayersToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewPlayerToolStripMenuItem;
         private System.Windows.Forms.CheckBox smooth_checkBox;
         private System.Windows.Forms.ComboBox year_comboBox;
         private System.Windows.Forms.Label update_label;
@@ -3202,7 +3202,6 @@
         private System.Windows.Forms.ContextMenuStrip rater_contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem playerInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameLogToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updatePlayersFromFileToolStripMenuItem;
         private System.Windows.Forms.ComboBox raterTimePeriod_comboBox;
         private System.Windows.Forms.ComboBox teamRater_comboBox;
         private System.Windows.Forms.ToolStripMenuItem loadWatchListToolStripMenuItem;
@@ -3272,6 +3271,7 @@
         private System.Windows.Forms.Button table_screenshot_button;
         private System.Windows.Forms.Panel compare_panel;
         private System.Windows.Forms.Button compareScreenshot_button;
+        private System.Windows.Forms.ToolStripMenuItem createLeagueStatsToolStripMenuItem;
     }
 }
 

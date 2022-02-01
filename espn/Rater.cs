@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using espn.Models;
 using MathNet.Numerics.Statistics;
 
 namespace espn
@@ -14,10 +15,10 @@ namespace espn
         //Average, Median, Std
         public Dictionary<string, double> Pts, Reb, Ast, Tpm, Stl, Blk, To, Fta, FtPer, Fga, FgPer;
         public Dictionary<string, double> Factors;
-        public IEnumerable<Game> Games;
-        public IEnumerable<Player> Players;
+        public IEnumerable<Games> Games;
+        public IEnumerable<Players> Players;
 
-        public Rater(IEnumerable<Player> players, IEnumerable<Game> games)
+        public Rater(IEnumerable<Players> players, IEnumerable<Games> games)
         {
             Players = players;
             Games = games;
@@ -34,17 +35,17 @@ namespace espn
 
             UpdateFactors(mode, startTime);
 
-            Dictionary<int, List<Game>> playersGames = Games.Where(g => g.GameDate >= startTime).GroupBy(g => g.PlayerId).ToDictionary(k => k.Key.Value, v => v.ToList());
+            Dictionary<long, List<Games>> playersGames = Games.Where(g => g.GameDate >= startTime).GroupBy(g => g.PlayerId).ToDictionary(k => k.Key.Value, v => v.ToList());
             if (!playersGames.Any()) return new List<PlayerInfo>();
 
-            foreach (KeyValuePair<int, List<Game>> player in playersGames)
+            foreach (KeyValuePair<long, List<Games>> player in playersGames)
             {
                 IEnumerable<GameStats> games = player.Value.Select(g => new GameStats(g));
                 var scores = CalcScores(games, mode, timePeriod, false);
-                var avgGame = GameStats.GetAvgStats(games.ToArray());
+                GameStats avgGame = GameStats.GetAvgStats(games.ToArray());
                 avgGame.Score = scores["Score"];
                 var playerT =
-                    new PlayerInfo(Players.First(p => p.ID == player.Key), new[] { new Game(avgGame, -1, player.Key) })
+                    new PlayerInfo(Players.First(p => p.Id == player.Key), new[] { avgGame })
                     {
                         Scores = scores,
                     };
@@ -133,8 +134,8 @@ namespace espn
         {
             FieldInfo[] raterFieldNames = typeof(Rater).GetFields();
 
-            IEnumerable<IGrouping<int?, Game>> playersGames = mode == CalcScoreType.Days
-                ? Games.Where(g => g.GameDate.Value.Date >= startDate).GroupBy(g => g.PlayerId)
+           var playersGames = mode == CalcScoreType.Days
+                ? Games.Where(g => g.GameDate.Date >= startDate).GroupBy(g => g.PlayerId)
                 : Games.GroupBy(g => g.PlayerId);
 
             if (!playersGames.Any()) return;
@@ -142,7 +143,7 @@ namespace espn
             foreach (FieldInfo fieldInfo in raterFieldNames)
             {
                 double[] arr;
-                var prop = typeof(Game).GetProperties().FirstOrDefault(p => p.Name.Equals(fieldInfo.Name));
+                var prop = typeof(Games).GetProperties().FirstOrDefault(p => p.Name.Equals(fieldInfo.Name));
                 if (prop == null) continue;
                 if (prop.Name.Equals("FtPer"))
                     arr = playersGames.Select(p => p.Sum(g => g.Ftm.Value) / p.Sum(g => g.Fta.Value)).ToArray();

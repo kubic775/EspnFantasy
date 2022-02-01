@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,18 @@ namespace espn
         {
             int.TryParse(str, out int num);
             return num;
+        }
+        
+        public static double ToDouble(this string str)
+        {
+            double.TryParse(str, out double num);
+            return num;
+        }
+
+        public static string ToPascalCase(this string str)
+        {
+            TextInfo info = CultureInfo.CurrentCulture.TextInfo;
+            return info.ToTitleCase(str.ToLower());
         }
 
         public static IEnumerable<Control> GetAll(Control control, Type type)
@@ -71,7 +84,6 @@ namespace espn
         {
             using (WebClient wc = new WebClient())
             {
-                //wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 //wc.Encoding = System.Text.Encoding.UTF8;
                 string res = wc.DownloadString(url);
                 return res;

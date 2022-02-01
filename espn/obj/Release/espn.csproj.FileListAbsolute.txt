@@ -61,4 +61,9 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CoreCompileInputs.ca
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.CopyComplete
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.exe
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.pdb
-Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csprojAssemblyReference.cache
+Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\HtmlAgilityPack.dll
+Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.ValueTuple.dll
+Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\HtmlAgilityPack.pdb
+Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\HtmlAgilityPack.xml
+Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.ValueTuple.xml
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.AssemblyReference.cache

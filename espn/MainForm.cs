@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using espn.Models;
 
 
 namespace espn
@@ -30,8 +33,8 @@ namespace espn
         private async void InitGui()
         {
             this.Enabled = false;
-            await Task.Run(() => PlayersList.CreatePlayersList());
-            await Task.Run(() => PlayersList.CreateTeams());
+            await Task.Run(YahooDBMethods.LoadDataFromDB);
+
 
             stat_chart.Series[0].Points.Clear();
             stat_chart.Series[1].Points.Clear();
@@ -52,9 +55,10 @@ namespace espn
 
 
             //Init AutoCompleteTextBox//
+            var playersNames = YahooDBMethods.AllPlayers.Select(p => p.Name).ToArray();
             foreach (var textBox in Utils.GetAll(this, typeof(AutoCompleteTextBox)))
             {
-                ((AutoCompleteTextBox)textBox).Values = PlayersList.Players.Keys.ToArray();
+                ((AutoCompleteTextBox)textBox).Values = playersNames;
             }
 
             playerName_textBox.PlayerSelectedEvent = PlayerInfoSelectPlayerEvent;
@@ -69,7 +73,7 @@ namespace espn
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
             teamRater_comboBox.Items.Add("All Teams");
-            teamRater_comboBox.Items.AddRange(DbManager.GetTeamList());
+            teamRater_comboBox.Items.AddRange(YahooDBMethods.NbaTeams.Select(t => t.Name).ToArray());
             teamRater_comboBox.SelectedIndex = 0;
             raterPlayersMode_comboBox.SelectedIndex = 0;
 
@@ -78,7 +82,7 @@ namespace espn
             this.Enabled = true;
         }
 
-        private void AppendToLogDelegate(string str, Color color = default(Color))
+        private void AppendToLogDelegate(string str, Color color = default)
         {
             IAsyncResult result = BeginInvoke((MethodInvoker)delegate// runs on UI thread
             {
@@ -92,8 +96,8 @@ namespace espn
         {
             update_timer.Stop();
             AppendToLogDelegate("Updating...", Color.Green);
-            await Task.Run(() => DbManager.UpdatePlayers(AppendToLogDelegate));
-            AppendToLogDelegate("Last Update : " + DateTime.Now.ToString("t"), Color.Black);
+            await Task.Run(YahooDBMethods.LoadDataFromDB);
+            AppendToLogDelegate("Last Update : " + YahooDBMethods.LastUpdateTime.ToString("t"), Color.Black);
             update_timer.Start();
         }
 
@@ -147,9 +151,9 @@ namespace espn
             UseWaitCursor = true;
             try
             {
-                if (PlayersList.Players.ContainsKey(name))
+                if (YahooDBMethods.AllPlayers.Any(p => p.Name.Equals(name)))
                 {
-                    _player = await PlayersList.CreatePlayerAsync(name);
+                    _player = await PlayerInfo.GetPlayerInfoAsync(name);
                     playerNameLabel.Text = _player.PlayerName;
                     playerInfo_label.Text = $"{_player.Misc} | {_player.Team} | Age: {_player.Age}";
                     button_max_Click(null, null);
@@ -257,7 +261,7 @@ namespace espn
 
                 if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
                 {
-                    var injuredPlayer = await PlayersList.CreatePlayerAsync(filterByPlayer_autoCompleteTextBox.Text);
+                    var injuredPlayer = await PlayerInfo.GetPlayerInfoAsync(filterByPlayer_autoCompleteTextBox.Text);
                     games = _player?.FilterGamesByPlayerInjury(games, injuredPlayer, year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]));
                     mode = "Games";
                 }
@@ -383,32 +387,6 @@ namespace espn
             tabControl.SelectedIndex = 1;
         }
 
-        private void addNewPlayerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string name = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Player Name (For Example: Chris Paul)", "Add New Player", "Default", -1, -1);
-            if (!string.Equals(name, ""))
-            {
-                DbManager.AddNewPlayer(name);
-                //PlayersList.AddNewPlayer(name);
-                InitGui();
-            }
-        }
-
-        private void updatePlayersFromFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var newNames = File.ReadAllLines(@"C:\Users\user\Dropbox\NBA fantasy\espn C#\players.txt");
-            using (var db = new EspnEntities())
-            {
-                var playersName = db.Players.Select(p => p.Name);
-                newNames = newNames.Where(n => !playersName.Contains(n)).ToArray();
-            }
-
-            foreach (string name in newNames)
-            {
-                DbManager.AddNewPlayer(name);
-            }
-            InitGui();
-        }
         #endregion
 
         #region ComparePlayers
@@ -444,8 +422,8 @@ namespace espn
                 {
                     if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player1_TextBox.Text == String.Empty)
                         return;
-                    if (_player1 == null || _player1.Id != PlayersList.Players[player1_TextBox.Text])
-                        _player1 = await PlayersList.CreatePlayerAsync(player1_TextBox.Text);
+                    if (_player1 == null || _player1.Id != (await PlayerInfo.GetPlayerInfoAsync(player1_TextBox.Text)).Id)
+                        _player1 = await PlayerInfo.GetPlayerInfoAsync(player1_TextBox.Text);
 
                     GameStats[] games = _player1.FilterGames((Utils.GetCurrentYear() + 1).ToString(), compareMode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(games);
@@ -457,8 +435,8 @@ namespace espn
                 {
                     if (compareMode_comboBox.SelectedIndex == -1 || compare_last_comboBox.SelectedIndex == -1 || player2_TextBox.Text == String.Empty)
                         return;
-                    if (_player2 == null || _player2.Id != PlayersList.Players[player2_TextBox.Text])
-                        _player2 = await PlayersList.CreatePlayerAsync(player2_TextBox.Text);
+                    if (_player2 == null || _player2.Id != (await PlayerInfo.GetPlayerInfoAsync(player2_TextBox.Text)).Id)
+                        _player2 = await PlayerInfo.GetPlayerInfoAsync(player2_TextBox.Text);
                     GameStats[] games = _player2.FilterGames((Utils.GetCurrentYear() + 1).ToString(), compareMode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(games);
                     avgGame.Score = GetRank(_player2.Id, games, compareMode, numOfGames);
@@ -685,8 +663,8 @@ namespace espn
 
                 timePeriod_label.Text = $@"Last {numOfGames} {mode}";
 
-                List<PlayerInfo> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-                List<PlayerInfo> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                List<PlayerInfo> sentPlayers = await PlayerInfo.GetPlayersInfoAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                List<PlayerInfo> receivedPlayers = await PlayerInfo.GetPlayersInfoAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
                 List<GameStats> avgStatsSend = new List<GameStats>();
                 foreach (var player in sentPlayers)
@@ -697,17 +675,17 @@ namespace espn
                     avgStatsSend.Add(avgGame);
                 }
 
-                List<GameStats> avgStatsrecevied = new List<GameStats>();
-                foreach (var player in receiviedPlayers)
+                List<GameStats> avgStatsReceived = new List<GameStats>();
+                foreach (var player in receivedPlayers)
                 {
                     var relevantGames = player.FilterGames((Utils.GetCurrentYear() + 1).ToString(), mode, numOfGames);
                     var avgGame = GameStats.GetAvgStats(relevantGames);
                     avgGame.Score = PlayerRater.CalcScore(relevantGames, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames.Equals("Max") ? 0 : int.Parse(numOfGames));
-                    avgStatsrecevied.Add(avgGame);
+                    avgStatsReceived.Add(avgGame);
                 }
 
                 GameStats totalSend = GameStats.GetSumStats(avgStatsSend);
-                GameStats totalReceived = GameStats.GetSumStats(avgStatsrecevied);
+                GameStats totalReceived = GameStats.GetSumStats(avgStatsReceived);
                 GameStats diffStat = GameStats.GetDiffInStats(totalSend, totalReceived);
 
                 UpdateTotalTradeLabelsh(totalSend, totalReceived);
@@ -899,25 +877,25 @@ namespace espn
             FieldInfo fieldInfo = gameStatsType.GetField(colName);
 
 
-            List<PlayerInfo> sentPlayers = await PlayersList.CreatePlayersAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
-            List<PlayerInfo> receiviedPlayers = await PlayersList.CreatePlayersAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<PlayerInfo> sentPlayers = await PlayerInfo.GetPlayersInfoAsync(playersSent_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+            List<PlayerInfo> receivedPlayers = await PlayerInfo.GetPlayersInfoAsync(playersReceived_textBox.Text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
 
             var yValSend = new double[4];
-            var yValRecevied = new double[4];
+            var yValReceived = new double[4];
 
             yValSend[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames((Utils.GetCurrentYear() + 1).ToString(), "Games", "Max"))).ToArray())).ToString());
-            yValRecevied[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames((Utils.GetCurrentYear() + 1).ToString(), "Games", "Max"))).ToArray())).ToString());
+            yValReceived[0] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receivedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames((Utils.GetCurrentYear() + 1).ToString(), "Games", "Max"))).ToArray())).ToString());
             yValSend[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 30))).ToArray())).ToString());
-            yValRecevied[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 30))).ToArray())).ToString());
+            yValReceived[1] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receivedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 30))).ToArray())).ToString());
             yValSend[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 15))).ToArray())).ToString());
-            yValRecevied[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 15))).ToArray())).ToString());
+            yValReceived[2] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receivedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 15))).ToArray())).ToString());
             yValSend[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(sentPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 7))).ToArray())).ToString());
-            yValRecevied[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receiviedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 7))).ToArray())).ToString());
+            yValReceived[3] = double.Parse(fieldInfo.GetValue(GameStats.GetSumStats(receivedPlayers.Select(p => GameStats.GetAvgStats(p.FilterGames(Utils.GetCurrentYear() + 1, "Games", 7))).ToArray())).ToString());
 
             var xVal = new[] { "Season", "30", "15", "7" };
 
             PrintChartWithString(yValSend, xVal, "Sent", trade_chart);
-            PrintChartWithString(yValRecevied, xVal, "Receivied", trade_chart, 1);
+            PrintChartWithString(yValReceived, xVal, "Received", trade_chart, 1);
             trade_chart.Titles[0].Text = colName;
         }
 
@@ -941,6 +919,7 @@ namespace espn
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void loadPlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
         {
             try
@@ -981,16 +960,16 @@ namespace espn
 
         private void loadWatchListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int[] ids = DbManager.GetIdByType("Roster");
-            if (!ids.Any()) return;
-            playersSent_textBox.Text =
-                string.Join(",", PlayersList.Players.Where(p => ids.Contains(p.Value)).Select(p => p.Key).OrderBy(p => p));
+            //ToDO: create form for select team
+            var players = YahooDBMethods.GetYahooTeamPlayers("Miller Time");
+            if (!players.Any()) return;
+            playersSent_textBox.Text = string.Join(",", players.Select(p => p.Name));
         }
         #endregion
 
         #region Rater
 
-        private int GetRank(int playerId, GameStats[] games, string mode, string historyLength)
+        private int GetRank(long playerId, GameStats[] games, string mode, string historyLength)
         {
             try
             {
@@ -1060,7 +1039,7 @@ namespace espn
 
             if (!playerType.Equals("All"))
             {
-                int[] ids = DbManager.GetIdByType(playerType);
+                long[] ids = YahooDBMethods.GetPlayersByStatus(playerType).Select(p => p.Id).ToArray();
                 playersRater = playersRater.Where(p => ids.Contains(p.Id)).ToList();
             }
 
@@ -1103,7 +1082,8 @@ namespace espn
 
                 int rowIndex = rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
-                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.Type == 1 ? Color.Gainsboro : default;
+                //ToDo: change My YahooTeamNumber to parameter from app config
+                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == 5 ? Color.Gainsboro : default;
                 rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}";
             }
         }
@@ -1162,36 +1142,11 @@ namespace espn
             UpdateRaterTable(PrepareDataForRater());
         }
 
-        private void rosterToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void watchListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (rater_dataGridView.SelectedCells.Count == 0) return;
             var name = rater_dataGridView.SelectedCells[0].Value.ToString();
-            using (var db = new EspnEntities())
-            {
-                Player player = db.Players.First(p => p.Name.Equals(name));
-                if (player.Type == null || player.Type != 1)
-                    player.Type = 1;
-                else
-                    player.Type = 0;
-
-                db.SaveChanges();
-            }
-        }
-
-        private void watchListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (rater_dataGridView.SelectedCells.Count == 0) return;
-            var name = rater_dataGridView.SelectedCells[0].Value.ToString();
-            using (var db = new EspnEntities())
-            {
-                Player player = db.Players.First(p => p.Name.Equals(name));
-                if (player.Type == null || player.Type != 2)
-                    player.Type = 2;
-                else
-                    player.Type = 0;
-
-                db.SaveChanges();
-            }
+            await Task.Run(() => YahooDBMethods.AddPlayerToWatchList(name));
         }
 
         private void table_screenshot_button_Click(object sender, EventArgs e)
@@ -1212,9 +1167,9 @@ namespace espn
             {
                 gameLog_dataGridView.Rows.Clear();
                 playerNameGameLog_label.Text = "Loading...";
-                if (PlayersList.Players.ContainsKey(playerName))
+                var player = await PlayerInfo.GetPlayerInfoAsync(playerName);
+                if (player != null)
                 {
-                    var player = await PlayersList.CreatePlayerAsync(playerName);
                     var games = player.Games.Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 01)).OrderByDescending(g => g.GameDate);
                     PlayerRater.CreateRater(CalcScoreType.Games);
                     playerNameGameLog_label.Text = $"{player.PlayerName}, {player.Team}";
@@ -1280,7 +1235,7 @@ namespace espn
             if (gameLog_dataGridView.SelectedRows.Count == 0) return string.Empty;
             List<DateTime> dates = gameLog_dataGridView.Rows.Cast<DataGridViewRow>().Where(r => r.Selected)
                 .Select(r => DateTime.Parse(r.Cells["Date_GameLog"].Value.ToString())).ToList();
-            var player = await PlayersList.CreatePlayerAsync(gameLog_autoCompleteTextBox.Text);
+            var player = await PlayerInfo.GetPlayerInfoAsync(gameLog_autoCompleteTextBox.Text);
             var games = player.FilterGamesByDates(dates);
             if (!games.Any()) return string.Empty;
 
@@ -1303,7 +1258,9 @@ namespace espn
             Factors.ShowDialog();
         }
 
-        
+
+
+
 
         #endregion
 
@@ -1328,7 +1285,38 @@ namespace espn
                 }
             }
         }
+
         #endregion
 
+        #region YahooLeague
+        private void createLeagueStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int? gamesNormalize = null;
+            try
+            {
+                string numOfGames =
+                    Microsoft.VisualBasic.Interaction.InputBox("Please Enter Number Of Games For Normalize (Or Empty)",
+                        "Create League Stats");
+                if (!string.IsNullOrEmpty(numOfGames))
+                    gamesNormalize = numOfGames.ToInt();
+                List<string> csv = new YahooLeague(gamesNormalize).ExportToFile();
+                using var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+                saveFileDialog.FileName = $"{DateTime.Now:yyyy-MM-dd}" +
+                                          (gamesNormalize.HasValue ? $"_NumOfGames{gamesNormalize}" : String.Empty);
+                if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                File.WriteAllLines(saveFileDialog.FileName, csv);
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+       
     }
 }

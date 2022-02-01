@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using espn.Models;
 using MathNet.Numerics.Statistics;
 
 namespace espn
@@ -22,9 +23,9 @@ namespace espn
 
         }
 
-        public GameStats(Game game)
+        public GameStats(Games game)
         {
-            GameDate = game.GameDate.Value;
+            GameDate = game.GameDate;
             Pts = game.Pts.Value;
             Reb = game.Reb.Value;
             Ast = game.Ast.Value;
@@ -50,29 +51,29 @@ namespace espn
             Opp = game.Opp;
         }
 
-        public Game UpdateGame(Game game)
-        {
-            game.GameDate = GameDate;
-            game.Pts = Pts;
-            game.Reb = Reb;
-            game.Ast = Ast;
-            game.Tpm = Tpm;
-            game.Tpa = Tpa;
-            game.Fga = Fga;
-            game.Fgm = Fgm;
-            game.Ftm = Ftm;
-            game.Fta = Fta;
-            game.Stl = Stl;
-            game.Blk = Blk;
-            game.To = To;
-            game.Min = Min;
-            game.Pf = Pf;
-            game.FtPer = double.IsNaN(FtPer) ? 0 : FtPer;
-            game.FgPer = double.IsNaN(FgPer) ? 0 : FgPer;
-            game.TpPer = double.IsNaN(TpPer) ? 0 : TpPer;
-            game.Opp = Opp;
-            return game;
-        }
+        //public Games UpdateGame(Games game)
+        //{
+        //    game.GameDate = GameDate;
+        //    game.Pts = Pts;
+        //    game.Reb = Reb;
+        //    game.Ast = Ast;
+        //    game.Tpm = Tpm;
+        //    game.Tpa = Tpa;
+        //    game.Fga = Fga;
+        //    game.Fgm = Fgm;
+        //    game.Ftm = Ftm;
+        //    game.Fta = Fta;
+        //    game.Stl = Stl;
+        //    game.Blk = Blk;
+        //    game.To = To;
+        //    game.Min = Min;
+        //    game.Pf = Pf;
+        //    game.FtPer = double.IsNaN(FtPer) ? 0 : FtPer;
+        //    game.FgPer = double.IsNaN(FgPer) ? 0 : FgPer;
+        //    game.TpPer = double.IsNaN(TpPer) ? 0 : TpPer;
+        //    game.Opp = Opp;
+        //    return game;
+        //}
 
         public GameStats(string gameXml, int year)
         {

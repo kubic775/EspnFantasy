@@ -6,169 +6,174 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using espn.Models;
 using Newtonsoft.Json.Linq;
 
 namespace espn
 {
     public class PlayerInfo
     {
+        public readonly long Id;
         public readonly string PlayerName;
-        public string ImagePath, Team, Misc;
+        public string ImagePath, Team, Misc, Status;
         public List<GameStats> Games;
-        public readonly int Id;
-        public int Age, Type, RaterPos;
+        public int Age, RaterPos;
+        public int? YahooTeamNumber;
         public Dictionary<string, double> Scores;
 
-        public PlayerInfo(string playerName, int id, int startYear = 2015, LogDelegate log = null)
+        public static async Task<List<PlayerInfo>> GetPlayersInfoAsync(string[] names)
         {
-            try
+            List<PlayerInfo> players = new List<PlayerInfo>();
+            foreach (string name in names)
             {
-                //Console.WriteLine(playerName);
-                //log?.Invoke("Download " + playerName);
-                Games = new List<GameStats>();
-                PlayerName = playerName;
-                Id = id;
-                for (int year = startYear; year <= Utils.GetCurrentYear() + 1; year++)
-                {
-                    //string playerStr = DownloadPlayerStr(Id, year);
-                    string playerStr = DownloadPlayerJson(Id, year);
-                    CreatePlayer(playerStr, Id, year);
-                }
+                players.Add(await Task.Run(() => GetPlayerInfo(name)));
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Can't Create Player - " + playerName + ", " + ex.Message);
-                Games = null;
-            }
+            return players;
         }
 
-        public PlayerInfo(Player player, Game[] games)
+        public static async Task<PlayerInfo> GetPlayerInfoAsync(string name)
         {
+            return await Task.Run(() => GetPlayerInfo(name));
+        }
+
+        private static PlayerInfo GetPlayerInfo(string name)
+        {
+            var player = YahooDBMethods.AllPlayers.FirstOrDefault(p => p.Name.Equals(name));
+            if (player == null) return null;
+            return YahooDBMethods.PlayersGames.ContainsKey(name)
+                ? new PlayerInfo(player, YahooDBMethods.PlayersGames[name])
+                : new PlayerInfo(player);
+        }
+
+        public PlayerInfo(Players player, Games[] games = null) : 
+            this(player, games?.Select(g => new GameStats(g)).ToArray() ?? Array.Empty<GameStats>())
+        {
+        }
+
+        public PlayerInfo(Players player, GameStats[] games)
+        {
+            Id = player.Id;
             PlayerName = player.Name;
-            Id = player.ID;
             ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + Id + ".png&w=350&h=254";
             Team = player.Team;
             Misc = player.Misc;
-            Age = player.Age ?? -1;
-            Type = (int)(player.Type ?? 0);
-            Games = games.Select(g => new GameStats(g)).ToList();
+            Age = player.Age.Value;
+            Status = player.Status;
+            YahooTeamNumber = player.TeamNumber;
+            Games = games?.ToList();
         }
 
-        private void CreatePlayer(string playerStr, int id, int year)
-        {
-            UpdatePlayerInfo(playerStr, id);
-            Games.AddRange(CreateGames(playerStr, year));
-        }
+        //private List<GameStats> CreateGames(string playerStr, int year)
+        //{
+        //    var games = new List<GameStats>();
+        //    int start = playerStr.IndexOf("Regular Season");
+        //    if (start == -1) return games;
+        //    int end = playerStr.IndexOf("Preseason");
+        //    if (end == -1)
+        //        end = playerStr.IndexOf("Data provided by Elias Sports Bureau");
+        //    if (end == -1)
+        //        end = playerStr.IndexOf("glossary");
+        //    if (start == -1 || end == -1) return games;
+        //    var gamesStr = playerStr.Substring(start, end - start);
+        //    int index1 = gamesStr.IndexOf("<tr");
+        //    if (index1 == -1) return games;
+        //    int index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
+        //    while (index1 != -1 && index2 != -1)
+        //    {
+        //        var gameStr = gamesStr.Substring(index1, index2 - index1);
+        //        var game = new GameStats(gameStr, year);
+        //        if (game.GameDate != default)
+        //        {
+        //            games.Add(game);
+        //        }
+        //        gamesStr = gamesStr.Remove(0, index2 - index1);
+        //        index1 = gamesStr.IndexOf("<tr");
+        //        if (index1 == -1) break;
+        //        index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
+        //    }
 
-        private List<GameStats> CreateGames(string playerStr, int year)
-        {
-            var games = new List<GameStats>();
-            int start = playerStr.IndexOf("Regular Season");
-            if (start == -1) return games;
-            int end = playerStr.IndexOf("Preseason");
-            if (end == -1)
-                end = playerStr.IndexOf("Data provided by Elias Sports Bureau");
-            if (start == -1 || end == -1) return games;
-            var gamesStr = playerStr.Substring(start, end - start);
-            int index1 = gamesStr.IndexOf("<tr");
-            if (index1 == -1) return games;
-            int index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
-            while (index1 != -1 && index2 != -1)
-            {
-                var gameStr = gamesStr.Substring(index1, index2 - index1);
-                var game = new GameStats(gameStr, year);
-                if (game.GameDate != default)
-                {
-                    games.Add(game);
-                }
-                gamesStr = gamesStr.Remove(0, index2 - index1);
-                index1 = gamesStr.IndexOf("<tr");
-                if (index1 == -1) break;
-                index2 = gamesStr.IndexOf("</tr>", index1) + "</tr>".Length;
-            }
+        //    return games;
+        //}
 
-            return games;
-        }
+        //private void UpdatePlayerInfo(string playerStr, int id)
+        //{
+        //    ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
 
-        private void UpdatePlayerInfo(string playerStr, int id)
-        {
-            ImagePath = ConfigurationManager.AppSettings["PlayerImagePath"] + id + ".png&w=350&h=254";
+        //    string pattern = "{\"app\"";
+        //    string pattern2 = ";</script>";
+        //    var i1 = playerStr.IndexOf(pattern);
+        //    var i2 = playerStr.IndexOf(pattern2);
+        //    if (i1 == -1) return;
+        //    string jsonStr = playerStr.Substring(i1, i2 - i1);
+        //    JObject json = JObject.Parse(jsonStr);
+        //    JToken playerInfo = json["page"]["content"]["player"]["plyrHdr"]["ath"];
+        //    Team = (playerInfo["tm"] ?? "").ToString();
+        //    int.TryParse(playerInfo["dob"].ToString().Split("()".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last(), out Age);
+        //    Misc = $"{playerInfo["pos"]} | {playerInfo["sts"]}";
+        //}
 
-            string pattern = "{\"app\"";
-            string pattern2 = ";</script>";
-            var i1 = playerStr.IndexOf(pattern);
-            var i2 = playerStr.IndexOf(pattern2);
-            if (i1 == -1) return;
-            string jsonStr = playerStr.Substring(i1, i2 - i1);
-            JObject json = JObject.Parse(jsonStr);
-            JToken playerInfo = json["page"]["content"]["player"]["plyrHdr"]["ath"];
-            Team = (playerInfo["tm"] ?? "").ToString();
-            int.TryParse(playerInfo["dob"].ToString().Split("()".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last(), out Age);
-            Misc = $"{playerInfo["pos"]} | {playerInfo["sts"]}";
-        }
+        //private string DownloadPlayerStr(int id, int year)
+        //{
+        //    //var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
+        //    //return task.Result;
+        //    using (var wc = new System.Net.WebClient())
+        //        return wc.DownloadString(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
+        //}
 
-        private string DownloadPlayerStr(int id, int year)
-        {
-            //var task = Utils.MakeAsyncRequest(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
-            //return task.Result;
-            using (var wc = new System.Net.WebClient())
-                return wc.DownloadString(ConfigurationManager.AppSettings["EspnPath"] + id + "/year/" + year);
-        }
+        //private string DownloadPlayerJson(long id, int year)
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        using (HttpResponseMessage response = client.GetAsync(ConfigurationManager.AppSettings["EspnPath"] + id + "/type/nba/year/" + year).Result)
+        //        {
+        //            using (HttpContent content = response.Content)
+        //            {
+        //                return content.ReadAsStringAsync().Result;
+        //            }
+        //        }
+        //    }
+        //}
 
-        private string DownloadPlayerJson(int id, int year)
-        {
-            using (var client = new HttpClient())
-            {
-                using (HttpResponseMessage response = client.GetAsync(ConfigurationManager.AppSettings["EspnPath"] + id + "/type/nba/year/" + year).Result)
-                {
-                    using (HttpContent content = response.Content)
-                    {
-                        return content.ReadAsStringAsync().Result;
-                    }
-                }
-            }
-        }
+        //private void CreatePlayerGames(string gamesStr, int year)
+        //{
+        //    var lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries).Where(line => line.Contains("oddrow team") || line.Contains("evenrow team"));
+        //    var games = lines.Select(l => new GameStats(l, year));
+        //    Games.AddRange(games);
+        //    Games = Games.OrderBy(g => g.GameDate).ToList();
+        //}
 
-        private void CreatePlayerGames(string gamesStr, int year)
-        {
-            var lines = gamesStr.Split(new[] { @"<tr>", @"</tr>" }, StringSplitOptions.RemoveEmptyEntries).Where(line => line.Contains("oddrow team") || line.Contains("evenrow team"));
-            var games = lines.Select(l => new GameStats(l, year));
-            Games.AddRange(games);
-            Games = Games.OrderBy(g => g.GameDate).ToList();
-        }
+        //public static int GetPlayerId(string playerName)
+        //{
+        //    try
+        //    {
+        //        string uriString = @"https://www.bing.com/search?q=" + playerName + " espn";
+        //        string[] searchPatterns = { @"www.espn.com/nba/player/_/id/", @"www.espn.com/nba/player/gamelog/_/id/" };
+        //        string res = Utils.DownloadStringFromUrl(uriString);
 
-        public static int GetPlayerId(string playerName)
-        {
-            try
-            {
-                string uriString = @"https://www.bing.com/search?q=" + playerName + " espn";
-                string[] searchPatterns = { @"www.espn.com/nba/player/_/id/", @"www.espn.com/nba/player/gamelog/_/id/" };
-                string res = Utils.DownloadStringFromUrl(uriString);
+        //        int i1 = -1;
+        //        foreach (string searchPattern in searchPatterns)
+        //        {
+        //            i1 = res.IndexOf(searchPattern, StringComparison.Ordinal);
+        //            if (i1 != -1)
+        //            {
+        //                i1 += searchPattern.Length;
+        //                break;
+        //            }
+        //        }
+        //        if (i1 == -1)
+        //            return -1;
 
-                int i1 = -1;
-                foreach (string searchPattern in searchPatterns)
-                {
-                    i1 = res.IndexOf(searchPattern, StringComparison.Ordinal);
-                    if (i1 != -1)
-                    {
-                        i1 += searchPattern.Length;
-                        break;
-                    }
-                }
-                if (i1 == -1)
-                    return -1;
+        //        int i2 = i1;
+        //        while (Char.IsDigit(res[i2]))
+        //            i2++;
 
-                int i2 = i1;
-                while (Char.IsDigit(res[i2]))
-                    i2++;
-
-                return int.Parse(res.Substring(i1, i2 - i1));
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
+        //        return int.Parse(res.Substring(i1, i2 - i1));
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return -1;
+        //    }
+        //}
 
         public GameStats[] FilterGamesByYear(int year)
         {
