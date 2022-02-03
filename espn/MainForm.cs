@@ -72,10 +72,13 @@ namespace espn
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
-            teamRater_comboBox.Items.Add("All Teams");
-            teamRater_comboBox.Items.AddRange(YahooDBMethods.NbaTeams.Select(t => t.Name).ToArray());
-            teamRater_comboBox.SelectedIndex = 0;
-            raterPlayersMode_comboBox.SelectedIndex = 0;
+            nbaTeamRater_comboBox.Items.Add("All Teams");
+            nbaTeamRater_comboBox.Items.AddRange(YahooDBMethods.NbaTeams.Select(t => t.Name).ToArray());
+            nbaTeamRater_comboBox.SelectedIndex = 0;
+            yahooTeamRater_comboBox.Items.Add("All Teams");
+            yahooTeamRater_comboBox.Items.AddRange(YahooDBMethods.YahooTeams.Select(t => t.TeamName).ToArray());
+            yahooTeamRater_comboBox.SelectedIndex = 0;
+            raterPlayersStatus_comboBox.SelectedIndex = 0;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
             UpdateTimer_Tick(null, null);
@@ -1001,8 +1004,9 @@ namespace espn
             IEnumerable<PlayerInfo> playersRater = null;
             if (raterTimePeriod_comboBox.SelectedIndex < 0) return playersRater;
             string raterTime = raterTimePeriod_comboBox.GetItemText(raterTimePeriod_comboBox.Items[raterTimePeriod_comboBox.SelectedIndex]);
-            string team = teamRater_comboBox.GetItemText(teamRater_comboBox.Items[teamRater_comboBox.SelectedIndex]);
-            string playerType = raterPlayersMode_comboBox.GetItemText(raterPlayersMode_comboBox.Items[raterPlayersMode_comboBox.SelectedIndex]);
+            string nbaTeam = nbaTeamRater_comboBox.GetItemText(nbaTeamRater_comboBox.Items[nbaTeamRater_comboBox.SelectedIndex]);
+            string yahooTeam = yahooTeamRater_comboBox.GetItemText(yahooTeamRater_comboBox.Items[yahooTeamRater_comboBox.SelectedIndex]);
+            string playerStatus = raterPlayersStatus_comboBox.GetItemText(raterPlayersStatus_comboBox.Items[raterPlayersStatus_comboBox.SelectedIndex]);
 
 
             switch (raterTime)
@@ -1030,17 +1034,36 @@ namespace espn
             if (!playersRater.Any()) return playersRater;
 
 
-            if (!team.Equals("All Teams"))
+            if (!nbaTeam.Equals("All Teams"))
             {
-                playersRater = playersRater.Where(p => p.Team != null && p.Team.Equals(team)).ToList();
+                playersRater = playersRater.Where(p => p.Team != null && p.Team.Equals(nbaTeam)).ToList();
             }
-
             if (!playersRater.Any()) return playersRater;
 
-            if (!playerType.Equals("All"))
+            if (!yahooTeam.Equals("All Teams"))
             {
-                long[] ids = YahooDBMethods.GetPlayersByStatus(playerType).Select(p => p.Id).ToArray();
-                playersRater = playersRater.Where(p => ids.Contains(p.Id)).ToList();
+                int yahooTeamIndex = YahooDBMethods.YahooTeams.First(t => t.TeamName.Equals(yahooTeam)).TeamId;
+                playersRater = playersRater.Where(p => p.YahooTeamNumber.HasValue && p.YahooTeamNumber == yahooTeamIndex).ToList();
+            }
+            if (!playersRater.Any()) return playersRater;
+
+            switch (playerStatus)
+            {
+                case "All":
+                    //do nothing
+                    break;
+
+                case "Available":
+                    playersRater = playersRater.Where(p => !p.YahooTeamNumber.HasValue).ToList();
+                    break;
+
+                case "Watch":
+                    playersRater = playersRater.Where(p => p.Status.Equals("Watch",StringComparison.CurrentCultureIgnoreCase)).ToList();
+                    break;
+
+                case "Outliers":
+                    playersRater = playersRater.Where(p => p.Status.Equals("Outliers", StringComparison.CurrentCultureIgnoreCase)).ToList();
+                    break;
             }
 
             return playersRater;
@@ -1051,8 +1074,7 @@ namespace espn
             rater_dataGridView.Rows.Clear();
             if (playersRater == null || !playersRater.Any()) return;
 
-            var players = playersRater.ToList();
-            foreach (var p in players)
+            foreach (var p in playersRater)
             {
                 object[] o;
                 int gp = p.Games.First().Gp;
@@ -1132,6 +1154,11 @@ namespace espn
             UpdateRaterTable(PrepareDataForRater());
         }
 
+        private void yahooTeamRater_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRaterTable(PrepareDataForRater());
+        }
+
         private void raterScores_CheckedChanged(object sender, EventArgs e)
         {
             UpdateRaterTable(PrepareDataForRater());
@@ -1149,7 +1176,7 @@ namespace espn
             await Task.Run(() => YahooDBMethods.AddPlayerToWatchList(name));
         }
 
-        private void table_screenshot_button_Click(object sender, EventArgs e)
+        private void table_screenShot_button_Click(object sender, EventArgs e)
         {
             using (var bmp = new Bitmap(rater_tab.Width, rater_tab.Height))
             {
@@ -1270,6 +1297,8 @@ namespace espn
             new DraftPicksForm().ShowDialog();
         }
 
+
+
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
@@ -1317,6 +1346,6 @@ namespace espn
         }
 
         #endregion
-       
+
     }
 }

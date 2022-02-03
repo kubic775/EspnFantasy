@@ -10,7 +10,7 @@ namespace espn.Models
     public partial class YahooTeams
     {
         public long Pk { get; set; }
-        public long TeamId { get; set; }
+        public int TeamId { get; set; }
         public string TeamName { get; set; }
     }
 }

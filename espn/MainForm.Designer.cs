@@ -278,9 +278,10 @@ namespace espn
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.rater_tab = new System.Windows.Forms.TabPage();
+            this.yahooTeamRater_comboBox = new System.Windows.Forms.ComboBox();
             this.table_screenshot_button = new System.Windows.Forms.Button();
-            this.raterPlayersMode_comboBox = new System.Windows.Forms.ComboBox();
-            this.teamRater_comboBox = new System.Windows.Forms.ComboBox();
+            this.raterPlayersStatus_comboBox = new System.Windows.Forms.ComboBox();
+            this.nbaTeamRater_comboBox = new System.Windows.Forms.ComboBox();
             this.raterTimePeriod_comboBox = new System.Windows.Forms.ComboBox();
             this.raterScores = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -321,9 +322,9 @@ namespace espn
             this.draftPicksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.createStatsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createLeagueStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
-            this.createLeagueStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -2509,9 +2510,10 @@ namespace espn
             // 
             // rater_tab
             // 
+            this.rater_tab.Controls.Add(this.yahooTeamRater_comboBox);
             this.rater_tab.Controls.Add(this.table_screenshot_button);
-            this.rater_tab.Controls.Add(this.raterPlayersMode_comboBox);
-            this.rater_tab.Controls.Add(this.teamRater_comboBox);
+            this.rater_tab.Controls.Add(this.raterPlayersStatus_comboBox);
+            this.rater_tab.Controls.Add(this.nbaTeamRater_comboBox);
             this.rater_tab.Controls.Add(this.raterTimePeriod_comboBox);
             this.rater_tab.Controls.Add(this.raterScores);
             this.rater_tab.Controls.Add(this.label1);
@@ -2525,6 +2527,15 @@ namespace espn
             this.rater_tab.Text = "Rater";
             this.rater_tab.UseVisualStyleBackColor = true;
             // 
+            // yahooTeamRater_comboBox
+            // 
+            this.yahooTeamRater_comboBox.FormattingEnabled = true;
+            this.yahooTeamRater_comboBox.Location = new System.Drawing.Point(304, 8);
+            this.yahooTeamRater_comboBox.Name = "yahooTeamRater_comboBox";
+            this.yahooTeamRater_comboBox.Size = new System.Drawing.Size(186, 24);
+            this.yahooTeamRater_comboBox.TabIndex = 27;
+            this.yahooTeamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.yahooTeamRater_comboBox_SelectedIndexChanged);
+            // 
             // table_screenshot_button
             // 
             this.table_screenshot_button.Location = new System.Drawing.Point(881, 8);
@@ -2533,30 +2544,30 @@ namespace espn
             this.table_screenshot_button.TabIndex = 26;
             this.table_screenshot_button.Text = "ScreenShot";
             this.table_screenshot_button.UseVisualStyleBackColor = true;
-            this.table_screenshot_button.Click += new System.EventHandler(this.table_screenshot_button_Click);
+            this.table_screenshot_button.Click += new System.EventHandler(this.table_screenShot_button_Click);
             // 
-            // raterPlayersMode_comboBox
+            // raterPlayersStatus_comboBox
             // 
-            this.raterPlayersMode_comboBox.FormattingEnabled = true;
-            this.raterPlayersMode_comboBox.Items.AddRange(new object[] {
+            this.raterPlayersStatus_comboBox.FormattingEnabled = true;
+            this.raterPlayersStatus_comboBox.Items.AddRange(new object[] {
             "All",
-            "Roster",
+            "Available",
             "Watch",
             "Outliers"});
-            this.raterPlayersMode_comboBox.Location = new System.Drawing.Point(773, 9);
-            this.raterPlayersMode_comboBox.Name = "raterPlayersMode_comboBox";
-            this.raterPlayersMode_comboBox.Size = new System.Drawing.Size(95, 24);
-            this.raterPlayersMode_comboBox.TabIndex = 25;
-            this.raterPlayersMode_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterPlayersMode_comboBox_SelectedIndexChanged);
+            this.raterPlayersStatus_comboBox.Location = new System.Drawing.Point(773, 9);
+            this.raterPlayersStatus_comboBox.Name = "raterPlayersStatus_comboBox";
+            this.raterPlayersStatus_comboBox.Size = new System.Drawing.Size(95, 24);
+            this.raterPlayersStatus_comboBox.TabIndex = 25;
+            this.raterPlayersStatus_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterPlayersMode_comboBox_SelectedIndexChanged);
             // 
-            // teamRater_comboBox
+            // nbaTeamRater_comboBox
             // 
-            this.teamRater_comboBox.FormattingEnabled = true;
-            this.teamRater_comboBox.Location = new System.Drawing.Point(126, 8);
-            this.teamRater_comboBox.Name = "teamRater_comboBox";
-            this.teamRater_comboBox.Size = new System.Drawing.Size(186, 24);
-            this.teamRater_comboBox.TabIndex = 24;
-            this.teamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.teamRater_comboBox_SelectedIndexChanged);
+            this.nbaTeamRater_comboBox.FormattingEnabled = true;
+            this.nbaTeamRater_comboBox.Location = new System.Drawing.Point(112, 8);
+            this.nbaTeamRater_comboBox.Name = "nbaTeamRater_comboBox";
+            this.nbaTeamRater_comboBox.Size = new System.Drawing.Size(186, 24);
+            this.nbaTeamRater_comboBox.TabIndex = 24;
+            this.nbaTeamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.teamRater_comboBox_SelectedIndexChanged);
             // 
             // raterTimePeriod_comboBox
             // 
@@ -2921,23 +2932,30 @@ namespace espn
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 
             // editFactorsToolStripMenuItem
             // 
             this.editFactorsToolStripMenuItem.Name = "editFactorsToolStripMenuItem";
-            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editFactorsToolStripMenuItem.Text = "Edit Factors";
             this.editFactorsToolStripMenuItem.Click += new System.EventHandler(this.editFactorsToolStripMenuItem_Click);
+            // 
+            // createLeagueStatsToolStripMenuItem
+            // 
+            this.createLeagueStatsToolStripMenuItem.Name = "createLeagueStatsToolStripMenuItem";
+            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.createLeagueStatsToolStripMenuItem.Text = "Create League Stats";
+            this.createLeagueStatsToolStripMenuItem.Click += new System.EventHandler(this.createLeagueStatsToolStripMenuItem_Click);
             // 
             // update_label
             // 
@@ -2956,13 +2974,6 @@ namespace espn
             // 
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
-            // 
-            // createLeagueStatsToolStripMenuItem
-            // 
-            this.createLeagueStatsToolStripMenuItem.Name = "createLeagueStatsToolStripMenuItem";
-            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.createLeagueStatsToolStripMenuItem.Text = "Create League Stats";
-            this.createLeagueStatsToolStripMenuItem.Click += new System.EventHandler(this.createLeagueStatsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -3203,7 +3214,7 @@ namespace espn
         private System.Windows.Forms.ToolStripMenuItem playerInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameLogToolStripMenuItem;
         private System.Windows.Forms.ComboBox raterTimePeriod_comboBox;
-        private System.Windows.Forms.ComboBox teamRater_comboBox;
+        private System.Windows.Forms.ComboBox nbaTeamRater_comboBox;
         private System.Windows.Forms.ToolStripMenuItem loadWatchListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem draftPicksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem createStatsFileToolStripMenuItem;
@@ -3222,7 +3233,7 @@ namespace espn
         private System.Windows.Forms.DataGridViewTextBoxColumn ToRater;
         private System.Windows.Forms.DataGridViewTextBoxColumn PtsRater;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScoreRater;
-        private System.Windows.Forms.ComboBox raterPlayersMode_comboBox;
+        private System.Windows.Forms.ComboBox raterPlayersStatus_comboBox;
         private System.Windows.Forms.ToolStripMenuItem sendToToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem watchListToolStripMenuItem;
@@ -3272,6 +3283,7 @@ namespace espn
         private System.Windows.Forms.Panel compare_panel;
         private System.Windows.Forms.Button compareScreenshot_button;
         private System.Windows.Forms.ToolStripMenuItem createLeagueStatsToolStripMenuItem;
+        private System.Windows.Forms.ComboBox yahooTeamRater_comboBox;
     }
 }
 
