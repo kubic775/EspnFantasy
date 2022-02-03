@@ -147,3 +147,5 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CoreCompileInputs.cach
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.CopyComplete
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.exe
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.pdb
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.csproj.AssemblyReference.cache
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Debug\espn.LoadPlayersForm.resources

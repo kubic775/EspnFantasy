@@ -312,10 +312,8 @@ namespace espn
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tradeAnalyzerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savePlayersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlayersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.receivedPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savePlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlayersToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadWatchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.draftPicksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2868,53 +2866,37 @@ namespace espn
             // sentPlayersToolStripMenuItem
             // 
             this.sentPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.savePlayersToolStripMenuItem1,
             this.loadPlayersToolStripMenuItem1});
             this.sentPlayersToolStripMenuItem.Name = "sentPlayersToolStripMenuItem";
-            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sentPlayersToolStripMenuItem.Text = "Sent Players";
-            // 
-            // savePlayersToolStripMenuItem1
-            // 
-            this.savePlayersToolStripMenuItem1.Name = "savePlayersToolStripMenuItem1";
-            this.savePlayersToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
-            this.savePlayersToolStripMenuItem1.Text = "Save Players";
-            this.savePlayersToolStripMenuItem1.Click += new System.EventHandler(this.savePlayersToolStripMenuItem1_Click);
             // 
             // loadPlayersToolStripMenuItem1
             // 
             this.loadPlayersToolStripMenuItem1.Name = "loadPlayersToolStripMenuItem1";
-            this.loadPlayersToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.loadPlayersToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.loadPlayersToolStripMenuItem1.Text = "Load Players";
             this.loadPlayersToolStripMenuItem1.Click += new System.EventHandler(this.loadPlayersToolStripMenuItem1_Click);
             // 
             // receivedPlayersToolStripMenuItem
             // 
             this.receivedPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.savePlayersToolStripMenuItem2,
             this.loadPlayersToolStripMenuItem2});
             this.receivedPlayersToolStripMenuItem.Name = "receivedPlayersToolStripMenuItem";
-            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receivedPlayersToolStripMenuItem.Text = "Received Players";
-            // 
-            // savePlayersToolStripMenuItem2
-            // 
-            this.savePlayersToolStripMenuItem2.Name = "savePlayersToolStripMenuItem2";
-            this.savePlayersToolStripMenuItem2.Size = new System.Drawing.Size(140, 22);
-            this.savePlayersToolStripMenuItem2.Text = "Save Players";
-            this.savePlayersToolStripMenuItem2.Click += new System.EventHandler(this.savePlayersToolStripMenuItem2_Click);
             // 
             // loadPlayersToolStripMenuItem2
             // 
             this.loadPlayersToolStripMenuItem2.Name = "loadPlayersToolStripMenuItem2";
-            this.loadPlayersToolStripMenuItem2.Size = new System.Drawing.Size(140, 22);
+            this.loadPlayersToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.loadPlayersToolStripMenuItem2.Text = "Load Players";
             this.loadPlayersToolStripMenuItem2.Click += new System.EventHandler(this.loadPlayersToolStripMenuItem2_Click);
             // 
             // loadWatchListToolStripMenuItem
             // 
             this.loadWatchListToolStripMenuItem.Name = "loadWatchListToolStripMenuItem";
-            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadWatchListToolStripMenuItem.Text = "Load Watch List";
             this.loadWatchListToolStripMenuItem.Click += new System.EventHandler(this.loadWatchListToolStripMenuItem_Click);
             // 
@@ -3182,9 +3164,7 @@ namespace espn
         private AutoCompleteTextBox player1_TextBox;
         private System.Windows.Forms.ToolStripMenuItem sentPlayersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPlayersToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem savePlayersToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem receivedPlayersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem savePlayersToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem loadPlayersToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
         private System.Windows.Forms.CheckBox smooth_checkBox;

@@ -213,6 +213,12 @@
       <DependentUpon>FactorsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameStats.cs" />
+    <Compile Include="LoadPlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadPlayersForm.Designer.cs">
+      <DependentUpon>LoadPlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FactorsForm.resx">
       <DependentUpon>FactorsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadPlayersForm.resx">
+      <DependentUpon>LoadPlayersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

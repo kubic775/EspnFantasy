@@ -915,7 +915,9 @@ namespace espn
         {
             try
             {
-                playersSent_textBox.Text = File.ReadAllText("SentPlayers.txt");
+                using var form = new LoadPlayersForm();
+                form.ShowDialog();
+                playersSent_textBox.Text = string.Join(",", form.GetPlayersNames());
             }
             catch (Exception ex)
             {
@@ -927,7 +929,16 @@ namespace espn
         {
             try
             {
-                playersReceived_textBox.Text = File.ReadAllText("ReceivedPlayers.txt");
+                try
+                {
+                    using var form = new LoadPlayersForm();
+                    form.ShowDialog();
+                    playersReceived_textBox.Text = string.Join(",", form.GetPlayersNames());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             catch (Exception ex)
             {
@@ -935,31 +946,6 @@ namespace espn
             }
         }
 
-        private void savePlayersToolStripMenuItem1_Click(object sender, EventArgs e)//Sent
-        {
-            try
-            {
-                File.WriteAllText("SentPlayers.txt", playersSent_textBox.Text);
-                MessageBox.Show("Done");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void savePlayersToolStripMenuItem2_Click(object sender, EventArgs e)//Received
-        {
-            try
-            {
-                File.WriteAllText("ReceivedPlayers.txt", playersReceived_textBox.Text);
-                MessageBox.Show("Done");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void loadWatchListToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1058,7 +1044,7 @@ namespace espn
                     break;
 
                 case "Watch":
-                    playersRater = playersRater.Where(p => p.Status.Equals("Watch",StringComparison.CurrentCultureIgnoreCase)).ToList();
+                    playersRater = playersRater.Where(p => p.Status.Equals("Watch", StringComparison.CurrentCultureIgnoreCase)).ToList();
                     break;
 
                 case "Outliers":
