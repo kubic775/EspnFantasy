@@ -78,6 +78,8 @@ namespace espn
             yahooTeamRater_comboBox.Items.Add("All Teams");
             yahooTeamRater_comboBox.Items.AddRange(YahooDBMethods.YahooTeams.Select(t => t.TeamName).ToArray());
             yahooTeamRater_comboBox.SelectedIndex = 0;
+            raterPlayersStatus_comboBox.Items.Add("All");
+            raterPlayersStatus_comboBox.Items.AddRange(Enum.GetNames(typeof(PlayerStatus)));
             raterPlayersStatus_comboBox.SelectedIndex = 0;
 
             update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
@@ -992,8 +994,10 @@ namespace espn
             string raterTime = raterTimePeriod_comboBox.GetItemText(raterTimePeriod_comboBox.Items[raterTimePeriod_comboBox.SelectedIndex]);
             string nbaTeam = nbaTeamRater_comboBox.GetItemText(nbaTeamRater_comboBox.Items[nbaTeamRater_comboBox.SelectedIndex]);
             string yahooTeam = yahooTeamRater_comboBox.GetItemText(yahooTeamRater_comboBox.Items[yahooTeamRater_comboBox.SelectedIndex]);
-            string playerStatus = raterPlayersStatus_comboBox.GetItemText(raterPlayersStatus_comboBox.Items[raterPlayersStatus_comboBox.SelectedIndex]);
-
+            var parseSuccess = Enum.TryParse(
+                raterPlayersStatus_comboBox.GetItemText(
+                    raterPlayersStatus_comboBox.Items[raterPlayersStatus_comboBox.SelectedIndex]),
+                out PlayerStatus playerStatus);
 
             switch (raterTime)
             {
@@ -1033,24 +1037,27 @@ namespace espn
             }
             if (!playersRater.Any()) return playersRater;
 
-            switch (playerStatus)
-            {
-                case "All":
-                    //do nothing
-                    break;
+            if (parseSuccess)
+                switch (playerStatus)
+                {
+                    case PlayerStatus.Roster:
+                        playersRater = playersRater.Where(p => p.YahooTeamNumber.HasValue).ToList();
+                        break;
 
-                case "Available":
-                    playersRater = playersRater.Where(p => !p.YahooTeamNumber.HasValue).ToList();
-                    break;
+                    case PlayerStatus.Available:
+                        playersRater = playersRater.Where(p => !p.YahooTeamNumber.HasValue).ToList();
+                        break;
 
-                case "Watch":
-                    playersRater = playersRater.Where(p => p.Status.Equals("Watch", StringComparison.CurrentCultureIgnoreCase)).ToList();
-                    break;
+                    case PlayerStatus.WatchList:
+                        playersRater = playersRater.Where(p =>
+                            !string.IsNullOrEmpty(p.Status) && p.Status.Equals(PlayerStatus.WatchList.ToString(), StringComparison.CurrentCultureIgnoreCase)).ToList();
+                        break;
 
-                case "Outliers":
-                    playersRater = playersRater.Where(p => p.Status.Equals("Outliers", StringComparison.CurrentCultureIgnoreCase)).ToList();
-                    break;
-            }
+                    case PlayerStatus.Outliers:
+                        playersRater = playersRater.Where(p =>
+                            !string.IsNullOrEmpty(p.Status) && p.Status.Equals(PlayerStatus.Outliers.ToString(), StringComparison.CurrentCultureIgnoreCase)).ToList();
+                        break;
+                }
 
             return playersRater;
         }

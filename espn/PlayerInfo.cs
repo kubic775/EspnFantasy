@@ -262,4 +262,12 @@ namespace espn
             return false;
         }
     }
+
+    public enum PlayerStatus
+    {
+        Roster,
+        Available,
+        WatchList,
+        Outliers
+    }
 }

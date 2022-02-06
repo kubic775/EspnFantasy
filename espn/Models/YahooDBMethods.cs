@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace espn.Models
 {
@@ -25,6 +26,7 @@ namespace espn.Models
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                MessageBox.Show(e.Message);
             }
         }
 
