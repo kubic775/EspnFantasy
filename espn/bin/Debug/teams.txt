@@ -1,30 +1,30 @@
-Atlanta Hawks,Atl
-Boston Celtics,Bos
-Brooklyn Nets,Bkn
-Charlotte Hornets,Cha
-Chicago Bulls,Chi
-Cleveland Cavaliers,Cle
-Dallas Mavericks,Dal
-Denver Nuggets,Den
-Detroit Pistons,Det
-Golden State Warriors,GS
-Houston Rockets,Hou
-Indiana Pacers,Ind
-LA Clippers,LAC
-Los Angeles Lakers,LAL
-Memphis Grizzlies,Mem
-Miami Heat,Mia
-Milwaukee Bucks,Mil
-Minnesota Timberwolves,Min
-New Orleans Pelicans,No
-New York Knicks,NY
-Oklahoma City Thunder,OKC
-Orlando Magic,Orl
-Philadelphia 76ers,Phi
-Phoenix Suns,Phx
-Portland Trail Blazers,Por
-Sacramento Kings,Sac
-San Antonio Spurs,TA
-Toronto Raptors,Tor
-Utah Jazz,Utah
-Washington Wizards,Wsh
+﻿http://www.espn.com/nba/team/roster/_/name/bos/boston-celtics
+http://www.espn.com/nba/team/roster/_/name/bkn/brooklyn-nets
+http://www.espn.com/nba/team/roster/_/name/ny/new-york-knicks
+http://www.espn.com/nba/team/roster/_/name/phi/philadelphia-76ers
+http://www.espn.com/nba/team/roster/_/name/tor/toronto-raptors
+http://www.espn.com/nba/team/roster/_/name/gs/golden-state-warriors
+http://www.espn.com/nba/team/roster/_/name/lac/la-clippers
+http://www.espn.com/nba/team/roster/_/name/lal/los-angeles-lakers
+http://www.espn.com/nba/team/roster/_/name/phx/phoenix-suns
+http://www.espn.com/nba/team/roster/_/name/sac/sacramento-kings
+http://www.espn.com/nba/team/roster/_/name/chi/chicago-bulls
+http://www.espn.com/nba/team/roster/_/name/cle/cleveland-cavaliers
+http://www.espn.com/nba/team/roster/_/name/det/detroit-pistons
+http://www.espn.com/nba/team/roster/_/name/ind/indiana-pacers
+http://www.espn.com/nba/team/roster/_/name/mil/milwaukee-bucks
+http://www.espn.com/nba/team/roster/_/name/dal/dallas-mavericks
+http://www.espn.com/nba/team/roster/_/name/hou/houston-rockets
+http://www.espn.com/nba/team/roster/_/name/mem/memphis-grizzlies
+http://www.espn.com/nba/team/roster/_/name/no/new-orleans-pelicans
+http://www.espn.com/nba/team/roster/_/name/sa/san-antonio-spurs
+http://www.espn.com/nba/team/roster/_/name/atl/atlanta-hawks
+http://www.espn.com/nba/team/roster/_/name/cha/charlotte-hornets
+http://www.espn.com/nba/team/roster/_/name/mia/miami-heat
+http://www.espn.com/nba/team/roster/_/name/orl/orlando-magic
+http://www.espn.com/nba/team/roster/_/name/wsh/washington-wizards
+http://www.espn.com/nba/team/roster/_/name/den/denver-nuggets
+http://www.espn.com/nba/team/roster/_/name/min/minnesota-timberwolves
+http://www.espn.com/nba/team/roster/_/name/okc/oklahoma-city-thunder
+http://www.espn.com/nba/team/roster/_/name/por/portland-trail-blazers
+http://www.espn.com/nba/team/roster/_/name/utah/utah-jazz

@@ -102,7 +102,7 @@ namespace espn
             update_timer.Stop();
             AppendToLogDelegate("Updating...", Color.Green);
             await Task.Run(YahooDBMethods.LoadDataFromDB);
-            AppendToLogDelegate("Last Update : " + YahooDBMethods.LastUpdateTime.ToString("t"), Color.Black);
+            AppendToLogDelegate("Last Update : " + YahooDBMethods.LastUpdateTime.ToString("g"), Color.Black);
             update_timer.Start();
         }
 
