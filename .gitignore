@@ -3,3 +3,4 @@
 /packages
 /espn/bin/*
 /EspnYahooClient/obj/*
+/espn/obj/Release/espn.csproj.AssemblyReference.cache

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -1290,7 +1291,20 @@ namespace espn
             new DraftPicksForm().ShowDialog();
         }
 
-
+        private void runUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists("CreateEspnDBFile.exe"))
+            {
+                Process proc = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = "CreateEspnDBFile.exe", UseShellExecute = true
+                    }
+                };
+                proc.Start();
+            }
+        }
 
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {

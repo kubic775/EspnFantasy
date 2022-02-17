@@ -130,3 +130,4 @@ Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Numerics.Vectors.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\bin\Release\System.Threading.Tasks.Extensions.xml
 Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.LoadPlayersForm.resources
+Z:\Dropbox\NBA fantasy\espn C#\espn\obj\Release\espn.csproj.AssemblyReference.cache
