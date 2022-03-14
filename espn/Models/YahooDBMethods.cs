@@ -59,11 +59,12 @@ namespace espn.Models
 
         public static void AddPlayerToWatchList(string name)
         {
-            var player = AllPlayers.First(p => p.Name.Equals(name));
-            player.Status = "WatchList";
             using var db = new YahooDB();
             var dbPlayer = db.Players.First(p => p.Name.Equals(name));
-            dbPlayer.Status = "WatchList";
+            var player = AllPlayers.First(p => p.Name.Equals(name));
+
+            player.Status = !string.IsNullOrEmpty(player.Status) && player.Status.Equals("WatchList") ? null : "WatchList";
+            dbPlayer.Status = !string.IsNullOrEmpty(dbPlayer.Status) && dbPlayer.Status.Equals("WatchList") ? null : "WatchList";
             db.SaveChanges();
         }
     }

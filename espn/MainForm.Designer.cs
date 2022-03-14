@@ -301,14 +301,15 @@ namespace espn
             this.ToRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PtsRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScoreRater = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.rater_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.playerInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.watchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rater_autoCompleteTextBox = new espn.AutoCompleteTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tradeAnalyzerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentPlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlayersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,7 +323,7 @@ namespace espn
             this.createLeagueStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
-            this.runUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -2629,7 +2630,6 @@ namespace espn
             this.ToRater,
             this.PtsRater,
             this.ScoreRater});
-            this.rater_dataGridView.ContextMenuStrip = this.rater_contextMenuStrip;
             this.rater_dataGridView.EnableHeadersVisualStyles = false;
             this.rater_dataGridView.Location = new System.Drawing.Point(6, 38);
             this.rater_dataGridView.Name = "rater_dataGridView";
@@ -2638,6 +2638,7 @@ namespace espn
             this.rater_dataGridView.RowHeadersWidth = 55;
             this.rater_dataGridView.Size = new System.Drawing.Size(1091, 366);
             this.rater_dataGridView.TabIndex = 0;
+            this.rater_dataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rater_dataGridView_CellMouseClick);
             // 
             // PlayerName
             // 
@@ -2776,26 +2777,35 @@ namespace espn
             this.ScoreRater.Name = "ScoreRater";
             this.ScoreRater.ReadOnly = true;
             // 
+            // rater_autoCompleteTextBox
+            // 
+            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(638, 10);
+            this.rater_autoCompleteTextBox.Name = "rater_autoCompleteTextBox";
+            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.rater_autoCompleteTextBox.TabIndex = 19;
+            this.rater_autoCompleteTextBox.Values = null;
+            // 
             // rater_contextMenuStrip
             // 
             this.rater_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerInfoToolStripMenuItem,
             this.gameLogToolStripMenuItem,
-            this.sendToToolStripMenuItem});
+            this.sendToToolStripMenuItem,
+            this.updatePlayerToolStripMenuItem});
             this.rater_contextMenuStrip.Name = "rater_contextMenuStrip";
-            this.rater_contextMenuStrip.Size = new System.Drawing.Size(131, 70);
+            this.rater_contextMenuStrip.Size = new System.Drawing.Size(181, 114);
             // 
             // playerInfoToolStripMenuItem
             // 
             this.playerInfoToolStripMenuItem.Name = "playerInfoToolStripMenuItem";
-            this.playerInfoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.playerInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.playerInfoToolStripMenuItem.Text = "Player Info";
             this.playerInfoToolStripMenuItem.Click += new System.EventHandler(this.playerInfoToolStripMenuItem_Click);
             // 
             // gameLogToolStripMenuItem
             // 
             this.gameLogToolStripMenuItem.Name = "gameLogToolStripMenuItem";
-            this.gameLogToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.gameLogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gameLogToolStripMenuItem.Text = "Game Log";
             this.gameLogToolStripMenuItem.Click += new System.EventHandler(this.gameLogToolStripMenuItem_Click);
             // 
@@ -2804,7 +2814,7 @@ namespace espn
             this.sendToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.watchListToolStripMenuItem});
             this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
-            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sendToToolStripMenuItem.Text = "Send To";
             // 
             // watchListToolStripMenuItem
@@ -2813,14 +2823,6 @@ namespace espn
             this.watchListToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.watchListToolStripMenuItem.Text = "Watch List";
             this.watchListToolStripMenuItem.Click += new System.EventHandler(this.watchListToolStripMenuItem_Click);
-            // 
-            // rater_autoCompleteTextBox
-            // 
-            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(638, 10);
-            this.rater_autoCompleteTextBox.Name = "rater_autoCompleteTextBox";
-            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
-            this.rater_autoCompleteTextBox.TabIndex = 19;
-            this.rater_autoCompleteTextBox.Values = null;
             // 
             // menuStrip1
             // 
@@ -2842,6 +2844,13 @@ namespace espn
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.playersToolStripMenuItem.Text = "Players";
             // 
+            // runUpdateToolStripMenuItem
+            // 
+            this.runUpdateToolStripMenuItem.Name = "runUpdateToolStripMenuItem";
+            this.runUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runUpdateToolStripMenuItem.Text = "RunPlayersUpdate";
+            this.runUpdateToolStripMenuItem.Click += new System.EventHandler(this.runUpdateToolStripMenuItem_Click);
+            // 
             // tradeAnalyzerToolStripMenuItem
             // 
             this.tradeAnalyzerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2857,7 +2866,7 @@ namespace espn
             this.sentPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadPlayersToolStripMenuItem1});
             this.sentPlayersToolStripMenuItem.Name = "sentPlayersToolStripMenuItem";
-            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.sentPlayersToolStripMenuItem.Text = "Sent Players";
             // 
             // loadPlayersToolStripMenuItem1
@@ -2872,7 +2881,7 @@ namespace espn
             this.receivedPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadPlayersToolStripMenuItem2});
             this.receivedPlayersToolStripMenuItem.Name = "receivedPlayersToolStripMenuItem";
-            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.receivedPlayersToolStripMenuItem.Text = "Received Players";
             // 
             // loadPlayersToolStripMenuItem2
@@ -2885,7 +2894,7 @@ namespace espn
             // loadWatchListToolStripMenuItem
             // 
             this.loadWatchListToolStripMenuItem.Name = "loadWatchListToolStripMenuItem";
-            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.loadWatchListToolStripMenuItem.Text = "Load Watch List";
             this.loadWatchListToolStripMenuItem.Click += new System.EventHandler(this.loadWatchListToolStripMenuItem_Click);
             // 
@@ -2903,28 +2912,28 @@ namespace espn
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 
             // editFactorsToolStripMenuItem
             // 
             this.editFactorsToolStripMenuItem.Name = "editFactorsToolStripMenuItem";
-            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editFactorsToolStripMenuItem.Text = "Edit Factors";
             this.editFactorsToolStripMenuItem.Click += new System.EventHandler(this.editFactorsToolStripMenuItem_Click);
             // 
             // createLeagueStatsToolStripMenuItem
             // 
             this.createLeagueStatsToolStripMenuItem.Name = "createLeagueStatsToolStripMenuItem";
-            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.createLeagueStatsToolStripMenuItem.Text = "Create League Stats";
             this.createLeagueStatsToolStripMenuItem.Click += new System.EventHandler(this.createLeagueStatsToolStripMenuItem_Click);
             // 
@@ -2946,12 +2955,12 @@ namespace espn
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // runUpdateToolStripMenuItem
+            // updatePlayerToolStripMenuItem
             // 
-            this.runUpdateToolStripMenuItem.Name = "runUpdateToolStripMenuItem";
-            this.runUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.runUpdateToolStripMenuItem.Text = "RunPlayersUpdate";
-            this.runUpdateToolStripMenuItem.Click += new System.EventHandler(this.runUpdateToolStripMenuItem_Click);
+            this.updatePlayerToolStripMenuItem.Name = "updatePlayerToolStripMenuItem";
+            this.updatePlayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updatePlayerToolStripMenuItem.Text = "Update Player";
+            this.updatePlayerToolStripMenuItem.Click += new System.EventHandler(this.updatePlayerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -3260,6 +3269,7 @@ namespace espn
         private System.Windows.Forms.ToolStripMenuItem createLeagueStatsToolStripMenuItem;
         private System.Windows.Forms.ComboBox yahooTeamRater_comboBox;
         private System.Windows.Forms.ToolStripMenuItem runUpdateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatePlayerToolStripMenuItem;
     }
 }
 

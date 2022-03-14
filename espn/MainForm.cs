@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -1179,6 +1180,15 @@ namespace espn
             }
         }
 
+        private void rater_dataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right) return;
+            if (e.RowIndex < 0) return;
+
+            rater_contextMenuStrip.Show(rater_dataGridView.PointToScreen(
+                rater_dataGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location));
+        }
+
         #endregion
 
         #region GameLog
@@ -1293,13 +1303,32 @@ namespace espn
 
         private void runUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RunPlayersUpdate();
+        }
+
+        private void updatePlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rater_dataGridView.SelectedCells.Count == 0) return;
+            var selectedNames = new List<string>();
+            foreach (DataGridViewCell cell in rater_dataGridView.SelectedCells)
+            {
+                selectedNames.Add(cell.Value.ToString());
+            }
+
+            var selectedIds = YahooDBMethods.AllPlayers.Where(p => selectedNames.Contains(p.Name)).Select(p => p.Id);
+            var arg = string.Join(",",selectedIds);
+            RunPlayersUpdate(arg);
+        }
+
+        private void RunPlayersUpdate(string arg = null)
+        {
             if (File.Exists("CreateEspnDBFile.exe"))
             {
                 Process proc = new Process
                 {
                     StartInfo =
                     {
-                        FileName = "CreateEspnDBFile.exe", UseShellExecute = true
+                        FileName = "CreateEspnDBFile.exe", UseShellExecute = true, Arguments = arg
                     }
                 };
                 proc.Start();
@@ -1353,6 +1382,8 @@ namespace espn
         }
 
         #endregion
+
+
 
     }
 }
