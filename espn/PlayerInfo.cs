@@ -208,12 +208,20 @@ namespace espn
             }
         }
 
-        public GameStats[] FilterGamesByPlayerInjury(GameStats[] originalGames, PlayerInfo playerInjured, string year)
+        public GameStats[] FilterGamesWithoutOtherPlayer(GameStats[] originalGames, PlayerInfo otherPlayer, string year)
         {
-            var playerInjuredGamesDates =
-                playerInjured.FilterGamesByYear(int.Parse(year)).Select(g => g.GameDate).ToList();
+            var otherPlayerGamesDates =
+                otherPlayer.FilterGamesByYear(int.Parse(year)).Select(g => g.GameDate).ToList();
 
-            return originalGames.Where(g => !playerInjuredGamesDates.Contains(g.GameDate)).ToArray();
+            return originalGames.Where(g => !otherPlayerGamesDates.Contains(g.GameDate)).ToArray();
+        }
+
+        public GameStats[] FilterGamesWithOtherPlayer(GameStats[] originalGames, PlayerInfo otherPlayer, string year)
+        {
+            var otherPlayerGamesDates =
+                otherPlayer.FilterGamesByYear(int.Parse(year)).Select(g => g.GameDate).ToList();
+
+            return originalGames.Where(g => otherPlayerGamesDates.Contains(g.GameDate)).ToArray();
         }
 
         public IEnumerable<GameStats> FilterGamesByDates(IEnumerable<DateTime> dates)

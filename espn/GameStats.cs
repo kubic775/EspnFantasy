@@ -188,12 +188,11 @@ namespace espn
             return y;
         }
 
-        public static GameStats[] FilterOutliers(GameStats[] games)
+        public static GameStats[] FilterOutliers(GameStats[] games)//ToDO: change to percentile
         {
-            double avg = games.Select(g => g.Min).Average();
-            double std = games.Select(g => g.Min).ToArray().StandardDeviation();
-            double th = std * 1.5;
-            games = games.Where(g => g.Min > avg - th && g.Min < avg + th).ToArray();
+            double minTh = games.Select(g => g.Min).Percentile(10);
+            double maxTh = games.Select(g => g.Min).Percentile(90);
+            games = games.Where(g => g.Min > minTh  && g.Min < maxTh).ToArray();
             return games;
         }
 

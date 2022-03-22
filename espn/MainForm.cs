@@ -64,7 +64,8 @@ namespace espn
             }
 
             playerName_textBox.PlayerSelectedEvent = PlayerInfoSelectPlayerEvent;
-            filterByPlayer_autoCompleteTextBox.PlayerSelectedEvent = PlayerInjuredSelectPlayerEvent;
+            filterWithoutPlayer_autoCompleteTextBox.PlayerSelectedEvent = PlayerInjuredSelectPlayerEvent;
+            filterWithPlayer_autoCompleteTextBox.PlayerSelectedEvent = PlayerInjuredSelectPlayerEvent;
             sendPlayer_TextBox.PlayerSelectedEvent = SendPlayerSelectedEvent;
             receivePlayer_TextBox.PlayerSelectedEvent = ReceivedPlayerSelectedEvent;
             player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
@@ -260,25 +261,40 @@ namespace espn
 
                 string mode = mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex]);
 
-                var games = _player?.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
+                GameStats[] games = _player?.FilterGames(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]),
                     mode, numOf_textBox.Text, zeroMinutes_checkBox.Checked, outliersMinutes_checkBox.Checked);
 
                 if (games == null)
                     return;
 
-                if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+                if (filterWithoutPlayer_checkBox.Checked && !filterWithoutPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
                 {
-                    var injuredPlayer = await PlayerInfo.GetPlayerInfoAsync(filterByPlayer_autoCompleteTextBox.Text);
-                    games = _player?.FilterGamesByPlayerInjury(games, injuredPlayer, year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]));
+                    var otherPlayer = await PlayerInfo.GetPlayerInfoAsync(filterWithoutPlayer_autoCompleteTextBox.Text);
+                    games = _player?.FilterGamesWithoutOtherPlayer(games, otherPlayer, year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]));
                     mode = "Games";
                 }
 
+                if (filterWithPlayer_checkBox.Checked && !filterWithPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+                {
+                    var otherPlayer = await PlayerInfo.GetPlayerInfoAsync(filterWithPlayer_autoCompleteTextBox.Text);
+                    games = _player?.FilterGamesWithOtherPlayer(games, otherPlayer, year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex]));
+                    mode = "Games";
+                }
+
+                if (minutesFilter_checkBox.Checked)
+                {
+                    int minutes = Decimal.ToInt32(perMinuteVal.Value);
+                    games = games.Where(g => g.Min > minutes).ToArray();
+                }
+
                 var avgGame = GameStats.GetAvgStats(games);
+
                 //Get player pos in rater, not his score
                 //avgGame.Score = mode.Equals("Days")
                 //    ? PlayerRater.CreateRater(CalcScoreType.Days, numOfGames).First(p => p.Id.Equals(_player.Id)).RaterPos
                 //    : PlayerRater.CreateRater(CalcScoreType.Games).First(p => p.Id.Equals(_player.Id)).RaterPos;
-                avgGame.Score = GetRank(_player.Id, games, mode, playerFilter_checkBox.Checked ? "Max" : numOf_textBox.Text);
+                //avgGame.Score = GetRank(_player.Id, games, mode, filterWithoutPlayer_checkBox.Checked ? "Max" : numOf_textBox.Text);
+                avgGame.Score = GetRank(_player.Id, games, "Games", "Max");
                 //avgGame.Score = PlayerRater.CalcScore(games, (CalcScoreType)Enum.Parse(typeof(CalcScoreType), mode), numOfGames);
 
                 UpdateTable(avgGame);
@@ -295,6 +311,11 @@ namespace espn
         }
 
         private void zeroMinutes_checkBox_CheckStateChanged(object sender, EventArgs e)
+        {
+            numOf_textBox_TextChanged(null, null);
+        }
+
+        private void perMinuteVal_ValueChanged(object sender, EventArgs e)
         {
             numOf_textBox_TextChanged(null, null);
         }
@@ -348,8 +369,12 @@ namespace espn
         private void copyToClipboard_button_Click(object sender, EventArgs e)
         {
             string text = $"{_player.PlayerName} , {year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])}, Last {numOf_textBox.Text} {mode_comboBox.GetItemText(mode_comboBox.Items[mode_comboBox.SelectedIndex])}";
-            if (playerFilter_checkBox.Checked && !filterByPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
-                text += $" ,Without {filterByPlayer_autoCompleteTextBox.Text}";
+            if (filterWithoutPlayer_checkBox.Checked && !filterWithoutPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+                text += $" ,Without {filterWithoutPlayer_autoCompleteTextBox.Text}";
+            if (filterWithPlayer_checkBox.Checked && !filterWithPlayer_autoCompleteTextBox.Text.Equals(string.Empty))
+                text += $" ,With {filterWithPlayer_autoCompleteTextBox.Text}";
+            if (minutesFilter_checkBox.Checked)
+                text += $" ,Games Over {Decimal.ToInt32(perMinuteVal.Value)} Minutes";
             text += " : " + Environment.NewLine +
                     "Pts: " + stats_dataGridView.Rows[0].Cells["Pts"].Value + ", " +
                     "Reb: " + stats_dataGridView.Rows[0].Cells["Reb"].Value + ", " +
@@ -384,7 +409,12 @@ namespace espn
 
         private void playerFilter_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            filterByPlayer_autoCompleteTextBox.Enabled = playerFilter_checkBox.Checked;
+            filterWithoutPlayer_autoCompleteTextBox.Enabled = filterWithoutPlayer_checkBox.Checked;
+        }
+
+        private void filterWithPlayer_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterWithPlayer_autoCompleteTextBox.Enabled = filterWithPlayer_checkBox.Checked;
         }
 
         private void showGameLog_button_Click(object sender, EventArgs e)
@@ -1101,7 +1131,10 @@ namespace espn
                 rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
                 //ToDo: change My YahooTeamNumber to parameter from app config
                 rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == 5 ? Color.Gainsboro : default;
-                rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}";
+                rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}" +
+                                                                         (p.YahooTeamNumber.HasValue
+                                                                             ? $", {YahooDBMethods.YahooTeams.First(y => y.TeamId == p.YahooTeamNumber).TeamName}"
+                                                                             : String.Empty);
             }
         }
 
@@ -1316,7 +1349,7 @@ namespace espn
             }
 
             var selectedIds = YahooDBMethods.AllPlayers.Where(p => selectedNames.Contains(p.Name)).Select(p => p.Id);
-            var arg = string.Join(",",selectedIds);
+            var arg = string.Join(",", selectedIds);
             RunPlayersUpdate(arg);
         }
 
@@ -1334,6 +1367,8 @@ namespace espn
                 proc.Start();
             }
         }
+
+
 
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1382,8 +1417,6 @@ namespace espn
         }
 
         #endregion
-
-
 
     }
 }
