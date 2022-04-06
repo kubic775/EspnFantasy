@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>espn</RootNamespace>
-    <AssemblyName>espn</AssemblyName>
+    <AssemblyName>NBA Fantasy</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>espn_logo.ico</ApplicationIcon>
+    <ApplicationIcon>Blackvariant-Button-Ui-Requests-13-NBA.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -287,6 +287,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Blackvariant-Button-Ui-Requests-13-NBA.ico" />
     <Content Include="espn_logo.ico" />
   </ItemGroup>
   <ItemGroup>
