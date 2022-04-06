@@ -1,4 +1,4 @@
-﻿namespace espn
+﻿namespace NBAFantasy
 {
     partial class DraftPicksForm
     {

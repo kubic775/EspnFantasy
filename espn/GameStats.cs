@@ -4,10 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using espn.Models;
+using espn;
 using MathNet.Numerics.Statistics;
+using NBAFantasy.Models;
 
-namespace espn
+namespace NBAFantasy
 {
     public class GameStats
     {

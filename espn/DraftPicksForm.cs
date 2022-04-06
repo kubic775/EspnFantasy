@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace espn
+namespace NBAFantasy
 {
     public partial class DraftPicksForm : Form
     {

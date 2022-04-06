@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace espn.Models
+namespace NBAFantasy.Models
 {
     public partial class Players
     {
@@ -16,5 +16,6 @@ namespace espn.Models
         public string Misc { get; set; }
         public int? TeamNumber { get; set; }
         public string Status { get; set; }
+        public DateTime LastUpdateTime { get; set; }
     }
 }

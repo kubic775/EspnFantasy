@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using espn.Models;
-using Newtonsoft.Json.Linq;
+using NBAFantasy.Models;
+using NBAFantasy.YahooLeague;
 
-namespace espn
+namespace NBAFantasy
 {
     public class PlayerInfo
     {

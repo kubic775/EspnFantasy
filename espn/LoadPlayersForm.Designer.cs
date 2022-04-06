@@ -1,5 +1,5 @@
 ﻿
-namespace espn
+namespace NBAFantasy
 {
     partial class LoadPlayersForm
     {

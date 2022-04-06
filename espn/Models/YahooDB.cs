@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace espn.Models
+namespace NBAFantasy.Models
 {
     public partial class YahooDB : DbContext
     {
@@ -24,6 +24,7 @@ namespace espn.Models
         public virtual DbSet<GlobalParams> GlobalParams { get; set; }
         public virtual DbSet<LeagueTeams> LeagueTeams { get; set; }
         public virtual DbSet<Players> Players { get; set; }
+        public virtual DbSet<YahooTeamStats> YahooTeamStats { get; set; }
         public virtual DbSet<YahooTeams> YahooTeams { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,6 +34,7 @@ namespace espn.Models
                 optionsBuilder.UseSqlite("DataSource=" + Path.Combine(Environment.CurrentDirectory, "espn.sqlite"));
             }
         }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -131,11 +133,56 @@ namespace espn.Models
 
                 entity.Property(e => e.Age).HasColumnType("int");
 
+                entity.Property(e => e.LastUpdateTime).HasColumnType("datetime");
+
                 entity.Property(e => e.Misc).HasColumnType("varchar(32)");
 
                 entity.Property(e => e.Name).HasColumnType("varchar(32)");
 
                 entity.Property(e => e.Team).HasColumnType("varchar(32)");
+            });
+
+            modelBuilder.Entity<YahooTeamStats>(entity =>
+            {
+                entity.HasKey(e => e.Pk);
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("int")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Ast).HasColumnType("int");
+
+                entity.Property(e => e.Blk).HasColumnType("int");
+
+                entity.Property(e => e.FgPer).HasColumnType("double");
+
+                entity.Property(e => e.Fga).HasColumnType("int");
+
+                entity.Property(e => e.Fgm).HasColumnType("int");
+
+                entity.Property(e => e.FtPer).HasColumnType("double");
+
+                entity.Property(e => e.Fta).HasColumnType("int");
+
+                entity.Property(e => e.Ftm).HasColumnType("int");
+
+                entity.Property(e => e.GameDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Gp)
+                    .HasColumnName("GP")
+                    .HasColumnType("INT");
+
+                entity.Property(e => e.Pts).HasColumnType("int");
+
+                entity.Property(e => e.Reb).HasColumnType("int");
+
+                entity.Property(e => e.Stl).HasColumnType("int");
+
+                entity.Property(e => e.To).HasColumnType("int");
+
+                entity.Property(e => e.Tpm).HasColumnType("int");
+
+                entity.Property(e => e.YahooTeamId).HasColumnType("int");
             });
 
             modelBuilder.Entity<YahooTeams>(entity =>

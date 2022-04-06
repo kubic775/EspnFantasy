@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace espn
+namespace NBAFantasy
 {
     public partial class FactorsForm : Form
     {

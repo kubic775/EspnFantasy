@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace espn.Properties {
+namespace NBAFantasy.Properties {
     using System;
     
     

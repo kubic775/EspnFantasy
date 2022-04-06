@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using espn.Models;
-
+using espn.YahooLeague;
+using NBAFantasy;
+using NBAFantasy.YahooLeague;
 
 namespace espn
 {
@@ -1368,8 +1366,6 @@ namespace espn
             }
         }
 
-
-
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
@@ -1399,7 +1395,7 @@ namespace espn
                         "Create League Stats");
                 if (!string.IsNullOrEmpty(numOfGames))
                     gamesNormalize = numOfGames.ToInt();
-                List<string> csv = new YahooLeague(gamesNormalize).ExportToFile();
+                List<string> csv = new YahooLeagueManager(gamesNormalize).ExportToFile();
                 using var saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
                 saveFileDialog.FileName = $"{DateTime.Now:yyyy-MM-dd}" +
@@ -1416,6 +1412,26 @@ namespace espn
             }
         }
 
+        private void calcRatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string numOfDays =
+                Microsoft.VisualBasic.Interaction.InputBox("Please Enter Number Of Days For Calc Rates (Or Empty For Entire Season)",
+                    "Create Stats Rate");
+
+            List<string> csv = YahooLeagueManager.ExportRatesToFile(
+                string.IsNullOrEmpty(numOfDays)
+                ? DateTime.Now.AddDays(-365)
+                : DateTime.Now.AddDays(-numOfDays.ToInt()));
+
+            using var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+            saveFileDialog.FileName = $"{DateTime.Now:yyyy-MM-dd}_" +
+                                      (string.IsNullOrEmpty(numOfDays) ? "entire_season" : $"last_{numOfDays}_days");
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            File.WriteAllLines(saveFileDialog.FileName, csv);
+            MessageBox.Show("Done");
+        }
         #endregion
 
     }

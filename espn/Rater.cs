@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using espn.Models;
 using MathNet.Numerics.Statistics;
+using NBAFantasy.Models;
 
-namespace espn
+namespace NBAFantasy
 {
     public class Rater
     {

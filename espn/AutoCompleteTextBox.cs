@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using espn;
 
-namespace espn
+namespace NBAFantasy
 {
     public class AutoCompleteTextBox : TextBox
     {
