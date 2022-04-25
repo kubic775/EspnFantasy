@@ -1369,16 +1369,26 @@ namespace espn
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
-            IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
             string headers = "Name," + string.Join(",", fieldNames.Select(f => f.Name));
-            List<string> stats = playersRater.Select(p => p.ToShortString()).ToList();
-            stats.Insert(0, headers);
-            using (var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*" })
+            
+            IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
+            IEnumerable<PlayerInfo> playersRaterAvg = PlayerRater.CreateRater(CalcScoreType.Games);
+           
+            List<string> statsTotal = playersRater.Select(p => p.ToShortString()).ToList();
+            List<string> statsAvg = playersRaterAvg.Select(p => p.ToShortString()).ToList();
+            statsTotal.Insert(0, headers);
+            statsAvg.Insert(0, headers);
+
+            using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*" , FileName = "StatsTotal"};
+            if (d.ShowDialog() == DialogResult.OK)
             {
-                if (d.ShowDialog() == DialogResult.OK)
-                {
-                    File.WriteAllLines(d.FileName, stats.ToArray());
-                }
+                File.WriteAllLines(d.FileName, statsTotal.ToArray());
+            }
+            
+            using var dd = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "StatsAvg" };
+            if (dd.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllLines(dd.FileName, statsAvg.ToArray());
             }
         }
 
