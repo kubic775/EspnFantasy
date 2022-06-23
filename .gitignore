@@ -10,3 +10,4 @@
 /.vs/NBA Fantasy/DesignTimeBuild/.dtbcache
 /.vs/
 /espn/obj/
+/espn/bin/Release/espn.sqlite
