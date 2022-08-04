@@ -1392,6 +1392,11 @@ namespace espn
             }
         }
 
+        private void simulateCustomPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new CustomPlayer().ShowDialog();
+        }
+
         #endregion
 
         #region YahooLeague

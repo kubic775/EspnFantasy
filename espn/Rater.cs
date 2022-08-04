@@ -102,7 +102,7 @@ namespace NBAFantasy
                     scores.Add(fieldInfo.Name, score);
                 }
 
-                scores["To"] = scores["To"] * -1;
+                scores["To"] *= -1;
 
                 //Apply Factors
                 var factorScore = new Dictionary<string, double>();

@@ -200,6 +200,12 @@
     <Compile Include="AutoCompleteTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomPlayer.Designer.cs">
+      <DependentUpon>CustomPlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DraftPicksForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     <Compile Include="YahooLeague\YahooLeagueManager.cs" />
     <Compile Include="YahooLeague\YahooTeam.cs" />
     <Compile Include="YahooLeague\YahooTeamStatsRate.cs" />
+    <EmbeddedResource Include="CustomPlayer.resx">
+      <DependentUpon>CustomPlayer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DraftPicksForm.resx">
       <DependentUpon>DraftPicksForm.cs</DependentUpon>
     </EmbeddedResource>
