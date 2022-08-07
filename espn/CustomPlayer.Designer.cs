@@ -46,7 +46,6 @@ namespace espn
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pts_textBox = new System.Windows.Forms.TextBox();
-            this.gp_textBox = new System.Windows.Forms.TextBox();
             this.to_textBox = new System.Windows.Forms.TextBox();
             this.tpm_textBox = new System.Windows.Forms.TextBox();
             this.blk_textBox = new System.Windows.Forms.TextBox();
@@ -63,6 +62,8 @@ namespace espn
             this.rank_label = new System.Windows.Forms.Label();
             this.score_label = new System.Windows.Forms.Label();
             this.calc_button = new System.Windows.Forms.Button();
+            this.gp_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.gp_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label23
@@ -237,15 +238,6 @@ namespace espn
             this.pts_textBox.Text = "20";
             this.pts_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // gp_textBox
-            // 
-            this.gp_textBox.Location = new System.Drawing.Point(408, 47);
-            this.gp_textBox.Name = "gp_textBox";
-            this.gp_textBox.Size = new System.Drawing.Size(60, 20);
-            this.gp_textBox.TabIndex = 130;
-            this.gp_textBox.Text = "50";
-            this.gp_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // to_textBox
             // 
             this.to_textBox.Location = new System.Drawing.Point(69, 215);
@@ -356,7 +348,7 @@ namespace espn
             // 
             this.total_checkBox.AutoSize = true;
             this.total_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_checkBox.Location = new System.Drawing.Point(486, 47);
+            this.total_checkBox.Location = new System.Drawing.Point(449, 49);
             this.total_checkBox.Name = "total_checkBox";
             this.total_checkBox.Size = new System.Drawing.Size(58, 20);
             this.total_checkBox.TabIndex = 145;
@@ -386,7 +378,7 @@ namespace espn
             // calc_button
             // 
             this.calc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calc_button.Location = new System.Drawing.Point(369, 188);
+            this.calc_button.Location = new System.Drawing.Point(346, 175);
             this.calc_button.Name = "calc_button";
             this.calc_button.Size = new System.Drawing.Size(161, 32);
             this.calc_button.TabIndex = 148;
@@ -394,11 +386,31 @@ namespace espn
             this.calc_button.UseVisualStyleBackColor = true;
             this.calc_button.Click += new System.EventHandler(this.calc_button_Click);
             // 
+            // gp_numericUpDown
+            // 
+            this.gp_numericUpDown.Location = new System.Drawing.Point(393, 49);
+            this.gp_numericUpDown.Maximum = new decimal(new int[] {
+            82,
+            0,
+            0,
+            0});
+            this.gp_numericUpDown.Name = "gp_numericUpDown";
+            this.gp_numericUpDown.Size = new System.Drawing.Size(44, 20);
+            this.gp_numericUpDown.TabIndex = 149;
+            this.gp_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gp_numericUpDown.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.gp_numericUpDown.ValueChanged += new System.EventHandler(this.gp_numericUpDown_ValueChanged);
+            // 
             // CustomPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 278);
+            this.ClientSize = new System.Drawing.Size(556, 278);
+            this.Controls.Add(this.gp_numericUpDown);
             this.Controls.Add(this.calc_button);
             this.Controls.Add(this.score_label);
             this.Controls.Add(this.rank_label);
@@ -415,7 +427,6 @@ namespace espn
             this.Controls.Add(this.blk_textBox);
             this.Controls.Add(this.tpm_textBox);
             this.Controls.Add(this.to_textBox);
-            this.Controls.Add(this.gp_textBox);
             this.Controls.Add(this.pts_textBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -435,6 +446,7 @@ namespace espn
             this.Controls.Add(this.label10);
             this.Name = "CustomPlayer";
             this.Text = "CustomPlayer";
+            ((System.ComponentModel.ISupportInitialize)(this.gp_numericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,7 +471,6 @@ namespace espn
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox pts_textBox;
-        private System.Windows.Forms.TextBox gp_textBox;
         private System.Windows.Forms.TextBox to_textBox;
         private System.Windows.Forms.TextBox tpm_textBox;
         private System.Windows.Forms.TextBox blk_textBox;
@@ -476,5 +487,6 @@ namespace espn
         private System.Windows.Forms.Label rank_label;
         private System.Windows.Forms.Label score_label;
         private System.Windows.Forms.Button calc_button;
+        private System.Windows.Forms.NumericUpDown gp_numericUpDown;
     }
 }

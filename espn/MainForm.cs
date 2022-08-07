@@ -1394,7 +1394,7 @@ namespace espn
 
         private void simulateCustomPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new CustomPlayer().ShowDialog();
+            new CustomPlayer().Show();
         }
 
         #endregion

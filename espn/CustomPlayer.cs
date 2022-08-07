@@ -25,11 +25,17 @@ namespace espn
             CreateCustomPlayerRank();
         }
 
+        private void gp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if(!total_checkBox.Checked) return;
+            calc_button_Click(null, null);
+        }
+
         private void CreateCustomPlayerRank()
         {
             try
             {
-                int gp = total_checkBox.Checked ? gp_textBox.Text.ToInt() : 1;
+                int gp = total_checkBox.Checked ? (int)gp_numericUpDown.Value : 1;
                 var g = new Games();
                 g.GameDate = DateTime.Today;
                 g.Pts = pts_textBox.Text.ToInt() * gp;
@@ -51,14 +57,14 @@ namespace espn
                 var gameStats = new GameStats(g);
 
                 var score = total_checkBox.Checked ?
-                    MainForm.PlayerRater.CalcScore(new[] { gameStats }, CalcScoreType.Days, 0, false) :
-                    MainForm.PlayerRater.CalcScore(new[] { gameStats }, CalcScoreType.Games, 0, false);
+                    MainForm.PlayerRater.CalcScore(new[] { gameStats }, CalcScoreType.Days, 0) :
+                    MainForm.PlayerRater.CalcScore(new[] { gameStats }, CalcScoreType.Games, 0);
 
                 var raterPos = total_checkBox.Checked
                     ? _scoresTotal.Count(s => s >= score) + 1
                     : _scoresAvg.Count(s => s >= score) + 1;
 
-                score_label.Text = (score/gp).ToString("#.##");
+                score_label.Text = score.ToString("#.##");
                 rank_label.Text = raterPos.ToString();
                 fgPer_textBox.Text = gameStats.FgPer.ToString("#.##");
                 ftPer_textBox.Text = gameStats.FtPer.ToString("#.##");
