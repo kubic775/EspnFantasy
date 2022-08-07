@@ -63,6 +63,8 @@ namespace espn
             this.score_label = new System.Windows.Forms.Label();
             this.calc_button = new System.Windows.Forms.Button();
             this.gp_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.customPlayer_autoCompleteTextBox = new NBAFantasy.AutoCompleteTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gp_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +72,7 @@ namespace espn
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(350, 104);
+            this.label23.Location = new System.Drawing.Point(350, 120);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(59, 20);
             this.label23.TabIndex = 122;
@@ -80,7 +82,7 @@ namespace espn
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 48);
+            this.label9.Location = new System.Drawing.Point(22, 64);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 20);
             this.label9.TabIndex = 112;
@@ -90,7 +92,7 @@ namespace espn
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(22, 188);
+            this.label20.Location = new System.Drawing.Point(22, 204);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(49, 20);
             this.label20.TabIndex = 113;
@@ -100,7 +102,7 @@ namespace espn
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(22, 104);
+            this.label19.Location = new System.Drawing.Point(22, 120);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(41, 20);
             this.label19.TabIndex = 114;
@@ -110,7 +112,7 @@ namespace espn
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(170, 114);
+            this.label17.Location = new System.Drawing.Point(170, 130);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(54, 20);
             this.label17.TabIndex = 115;
@@ -121,7 +123,7 @@ namespace espn
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(22, 132);
+            this.label14.Location = new System.Drawing.Point(22, 148);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(36, 20);
             this.label14.TabIndex = 116;
@@ -131,7 +133,7 @@ namespace espn
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(22, 76);
+            this.label13.Location = new System.Drawing.Point(22, 92);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 20);
             this.label13.TabIndex = 117;
@@ -141,7 +143,7 @@ namespace espn
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(22, 160);
+            this.label12.Location = new System.Drawing.Point(22, 176);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(39, 20);
             this.label12.TabIndex = 118;
@@ -151,7 +153,7 @@ namespace espn
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(22, 216);
+            this.label11.Location = new System.Drawing.Point(22, 232);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 20);
             this.label11.TabIndex = 119;
@@ -161,7 +163,7 @@ namespace espn
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(170, 213);
+            this.label10.Location = new System.Drawing.Point(170, 229);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 20);
             this.label10.TabIndex = 120;
@@ -171,7 +173,7 @@ namespace espn
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(350, 76);
+            this.label1.Location = new System.Drawing.Point(350, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 123;
@@ -181,7 +183,7 @@ namespace espn
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(170, 48);
+            this.label2.Location = new System.Drawing.Point(170, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 20);
             this.label2.TabIndex = 124;
@@ -192,7 +194,7 @@ namespace espn
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(170, 81);
+            this.label3.Location = new System.Drawing.Point(170, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 125;
@@ -203,7 +205,7 @@ namespace espn
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(170, 147);
+            this.label4.Location = new System.Drawing.Point(170, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 20);
             this.label4.TabIndex = 126;
@@ -213,7 +215,7 @@ namespace espn
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(170, 180);
+            this.label5.Location = new System.Drawing.Point(170, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 20);
             this.label5.TabIndex = 127;
@@ -223,7 +225,7 @@ namespace espn
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(350, 48);
+            this.label6.Location = new System.Drawing.Point(350, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 20);
             this.label6.TabIndex = 128;
@@ -231,7 +233,7 @@ namespace espn
             // 
             // pts_textBox
             // 
-            this.pts_textBox.Location = new System.Drawing.Point(69, 47);
+            this.pts_textBox.Location = new System.Drawing.Point(69, 63);
             this.pts_textBox.Name = "pts_textBox";
             this.pts_textBox.Size = new System.Drawing.Size(60, 20);
             this.pts_textBox.TabIndex = 129;
@@ -240,7 +242,7 @@ namespace espn
             // 
             // to_textBox
             // 
-            this.to_textBox.Location = new System.Drawing.Point(69, 215);
+            this.to_textBox.Location = new System.Drawing.Point(69, 231);
             this.to_textBox.Name = "to_textBox";
             this.to_textBox.Size = new System.Drawing.Size(60, 20);
             this.to_textBox.TabIndex = 132;
@@ -249,7 +251,7 @@ namespace espn
             // 
             // tpm_textBox
             // 
-            this.tpm_textBox.Location = new System.Drawing.Point(69, 187);
+            this.tpm_textBox.Location = new System.Drawing.Point(69, 203);
             this.tpm_textBox.Name = "tpm_textBox";
             this.tpm_textBox.Size = new System.Drawing.Size(60, 20);
             this.tpm_textBox.TabIndex = 133;
@@ -258,7 +260,7 @@ namespace espn
             // 
             // blk_textBox
             // 
-            this.blk_textBox.Location = new System.Drawing.Point(69, 159);
+            this.blk_textBox.Location = new System.Drawing.Point(69, 175);
             this.blk_textBox.Name = "blk_textBox";
             this.blk_textBox.Size = new System.Drawing.Size(60, 20);
             this.blk_textBox.TabIndex = 134;
@@ -267,7 +269,7 @@ namespace espn
             // 
             // stl_textBox
             // 
-            this.stl_textBox.Location = new System.Drawing.Point(69, 131);
+            this.stl_textBox.Location = new System.Drawing.Point(69, 147);
             this.stl_textBox.Name = "stl_textBox";
             this.stl_textBox.Size = new System.Drawing.Size(60, 20);
             this.stl_textBox.TabIndex = 135;
@@ -276,7 +278,7 @@ namespace espn
             // 
             // ast_textBox
             // 
-            this.ast_textBox.Location = new System.Drawing.Point(69, 103);
+            this.ast_textBox.Location = new System.Drawing.Point(69, 119);
             this.ast_textBox.Name = "ast_textBox";
             this.ast_textBox.Size = new System.Drawing.Size(60, 20);
             this.ast_textBox.TabIndex = 136;
@@ -285,7 +287,7 @@ namespace espn
             // 
             // reb_textBox
             // 
-            this.reb_textBox.Location = new System.Drawing.Point(69, 75);
+            this.reb_textBox.Location = new System.Drawing.Point(69, 91);
             this.reb_textBox.Name = "reb_textBox";
             this.reb_textBox.Size = new System.Drawing.Size(60, 20);
             this.reb_textBox.TabIndex = 137;
@@ -294,7 +296,7 @@ namespace espn
             // 
             // fga_textBox
             // 
-            this.fga_textBox.Location = new System.Drawing.Point(226, 80);
+            this.fga_textBox.Location = new System.Drawing.Point(226, 96);
             this.fga_textBox.Name = "fga_textBox";
             this.fga_textBox.Size = new System.Drawing.Size(60, 20);
             this.fga_textBox.TabIndex = 144;
@@ -303,7 +305,7 @@ namespace espn
             // 
             // fgPer_textBox
             // 
-            this.fgPer_textBox.Location = new System.Drawing.Point(226, 113);
+            this.fgPer_textBox.Location = new System.Drawing.Point(226, 129);
             this.fgPer_textBox.Name = "fgPer_textBox";
             this.fgPer_textBox.Size = new System.Drawing.Size(60, 20);
             this.fgPer_textBox.TabIndex = 142;
@@ -311,7 +313,7 @@ namespace espn
             // 
             // ftm_textBox
             // 
-            this.ftm_textBox.Location = new System.Drawing.Point(226, 146);
+            this.ftm_textBox.Location = new System.Drawing.Point(226, 162);
             this.ftm_textBox.Name = "ftm_textBox";
             this.ftm_textBox.Size = new System.Drawing.Size(60, 20);
             this.ftm_textBox.TabIndex = 141;
@@ -320,7 +322,7 @@ namespace espn
             // 
             // fta_textBox
             // 
-            this.fta_textBox.Location = new System.Drawing.Point(226, 179);
+            this.fta_textBox.Location = new System.Drawing.Point(226, 195);
             this.fta_textBox.Name = "fta_textBox";
             this.fta_textBox.Size = new System.Drawing.Size(60, 20);
             this.fta_textBox.TabIndex = 140;
@@ -329,7 +331,7 @@ namespace espn
             // 
             // ftPer_textBox
             // 
-            this.ftPer_textBox.Location = new System.Drawing.Point(226, 212);
+            this.ftPer_textBox.Location = new System.Drawing.Point(226, 228);
             this.ftPer_textBox.Name = "ftPer_textBox";
             this.ftPer_textBox.Size = new System.Drawing.Size(60, 20);
             this.ftPer_textBox.TabIndex = 139;
@@ -337,7 +339,7 @@ namespace espn
             // 
             // fgm_textBox
             // 
-            this.fgm_textBox.Location = new System.Drawing.Point(226, 47);
+            this.fgm_textBox.Location = new System.Drawing.Point(226, 63);
             this.fgm_textBox.Name = "fgm_textBox";
             this.fgm_textBox.Size = new System.Drawing.Size(60, 20);
             this.fgm_textBox.TabIndex = 138;
@@ -348,18 +350,19 @@ namespace espn
             // 
             this.total_checkBox.AutoSize = true;
             this.total_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_checkBox.Location = new System.Drawing.Point(449, 49);
+            this.total_checkBox.Location = new System.Drawing.Point(449, 65);
             this.total_checkBox.Name = "total_checkBox";
             this.total_checkBox.Size = new System.Drawing.Size(58, 20);
             this.total_checkBox.TabIndex = 145;
             this.total_checkBox.Text = "Total";
             this.total_checkBox.UseVisualStyleBackColor = true;
+            this.total_checkBox.CheckedChanged += new System.EventHandler(this.total_checkBox_CheckedChanged);
             // 
             // rank_label
             // 
             this.rank_label.AutoSize = true;
             this.rank_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rank_label.Location = new System.Drawing.Point(408, 79);
+            this.rank_label.Location = new System.Drawing.Point(408, 95);
             this.rank_label.Name = "rank_label";
             this.rank_label.Size = new System.Drawing.Size(16, 16);
             this.rank_label.TabIndex = 146;
@@ -369,7 +372,7 @@ namespace espn
             // 
             this.score_label.AutoSize = true;
             this.score_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.score_label.Location = new System.Drawing.Point(408, 107);
+            this.score_label.Location = new System.Drawing.Point(408, 123);
             this.score_label.Name = "score_label";
             this.score_label.Size = new System.Drawing.Size(16, 16);
             this.score_label.TabIndex = 147;
@@ -378,7 +381,7 @@ namespace espn
             // calc_button
             // 
             this.calc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calc_button.Location = new System.Drawing.Point(346, 175);
+            this.calc_button.Location = new System.Drawing.Point(346, 191);
             this.calc_button.Name = "calc_button";
             this.calc_button.Size = new System.Drawing.Size(161, 32);
             this.calc_button.TabIndex = 148;
@@ -388,7 +391,7 @@ namespace espn
             // 
             // gp_numericUpDown
             // 
-            this.gp_numericUpDown.Location = new System.Drawing.Point(393, 49);
+            this.gp_numericUpDown.Location = new System.Drawing.Point(393, 65);
             this.gp_numericUpDown.Maximum = new decimal(new int[] {
             82,
             0,
@@ -405,11 +408,32 @@ namespace espn
             0});
             this.gp_numericUpDown.ValueChanged += new System.EventHandler(this.gp_numericUpDown_ValueChanged);
             // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(10, 14);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(57, 16);
+            this.nameLabel.TabIndex = 150;
+            this.nameLabel.Text = "Name :";
+            // 
+            // customPlayer_autoCompleteTextBox
+            // 
+            this.customPlayer_autoCompleteTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(70, 14);
+            this.customPlayer_autoCompleteTextBox.Name = "customPlayer_autoCompleteTextBox";
+            this.customPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(131, 22);
+            this.customPlayer_autoCompleteTextBox.TabIndex = 152;
+            this.customPlayer_autoCompleteTextBox.Values = null;
+            // 
             // CustomPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 278);
+            this.Controls.Add(this.customPlayer_autoCompleteTextBox);
+            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.gp_numericUpDown);
             this.Controls.Add(this.calc_button);
             this.Controls.Add(this.score_label);
@@ -488,5 +512,7 @@ namespace espn
         private System.Windows.Forms.Label score_label;
         private System.Windows.Forms.Button calc_button;
         private System.Windows.Forms.NumericUpDown gp_numericUpDown;
+        private System.Windows.Forms.Label nameLabel;
+        private NBAFantasy.AutoCompleteTextBox customPlayer_autoCompleteTextBox;
     }
 }
