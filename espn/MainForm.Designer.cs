@@ -328,9 +328,9 @@ namespace espn
             this.editFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createLeagueStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calcRatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simulateCustomPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.update_label = new System.Windows.Forms.Label();
             this.update_timer = new System.Windows.Forms.Timer(this.components);
-            this.simulateCustomPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -444,15 +444,6 @@ namespace espn
             // year_comboBox
             // 
             this.year_comboBox.FormattingEnabled = true;
-            this.year_comboBox.Items.AddRange(new object[] {
-            "2022",
-            "2021",
-            "2020",
-            "2019",
-            "2018",
-            "2017",
-            "2016",
-            "2015"});
             this.year_comboBox.Location = new System.Drawing.Point(202, 313);
             this.year_comboBox.Name = "year_comboBox";
             this.year_comboBox.Size = new System.Drawing.Size(71, 24);
@@ -3013,6 +3004,13 @@ namespace espn
             this.calcRatesToolStripMenuItem.Text = "Calc Rates";
             this.calcRatesToolStripMenuItem.Click += new System.EventHandler(this.calcRatesToolStripMenuItem_Click);
             // 
+            // simulateCustomPlayerToolStripMenuItem
+            // 
+            this.simulateCustomPlayerToolStripMenuItem.Name = "simulateCustomPlayerToolStripMenuItem";
+            this.simulateCustomPlayerToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.simulateCustomPlayerToolStripMenuItem.Text = "Simulate Custom Player";
+            this.simulateCustomPlayerToolStripMenuItem.Click += new System.EventHandler(this.simulateCustomPlayerToolStripMenuItem_Click);
+            // 
             // update_label
             // 
             this.update_label.AutoSize = true;
@@ -3031,13 +3029,6 @@ namespace espn
             this.update_timer.Interval = 120000;
             this.update_timer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
-            // simulateCustomPlayerToolStripMenuItem
-            // 
-            this.simulateCustomPlayerToolStripMenuItem.Name = "simulateCustomPlayerToolStripMenuItem";
-            this.simulateCustomPlayerToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.simulateCustomPlayerToolStripMenuItem.Text = "Simulate Custom Player";
-            this.simulateCustomPlayerToolStripMenuItem.Click += new System.EventHandler(this.simulateCustomPlayerToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3050,7 +3041,8 @@ namespace espn
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "NBA Fantasy";
+            this.Text = "NBA Fantasy - V221024";
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabControl.ResumeLayout(false);
             this.playerInfoTab.ResumeLayout(false);
             this.playerInfoTab.PerformLayout();

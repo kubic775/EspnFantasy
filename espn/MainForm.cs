@@ -27,14 +27,24 @@ namespace espn
         public MainForm()
         {
             InitializeComponent();
+            
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
             InitGui();
         }
 
         private async void InitGui()
         {
             this.Enabled = false;
-            await Task.Run(YahooDBMethods.LoadDataFromDB);
+            
+            foreach (var year in Enumerable.Range(Utils.GetCurrentYear() - 4, 6).Reverse())
+            {
+                year_comboBox.Items.Add(year);
+            }
 
+            await Task.Run(YahooDBMethods.LoadDataFromDB);
 
             stat_chart.Series[0].Points.Clear();
             stat_chart.Series[1].Points.Clear();
@@ -242,8 +252,9 @@ namespace espn
 
         private void year_comboBox_DropDownClosed(object sender, EventArgs e)
         {
-            var games = _player.FilterGamesByYear(
+            var games = _player?.FilterGamesByYear(
                 int.Parse(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])));
+            if(games==null) return;
             if (numOf_textBox.Text.Equals(games.Length.ToString()))
                 numOf_textBox_TextChanged(null, null);
             else
@@ -1396,6 +1407,8 @@ namespace espn
         {
             new CustomPlayer().Show();
         }
+
+       
 
         #endregion
 
