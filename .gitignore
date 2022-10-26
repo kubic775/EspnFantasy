@@ -1,0 +1,13 @@
+/.vs/espn/v15/Server/sqlite3/db.lock
+*.sqlite
+/packages
+/espn/bin/*
+/EspnYahooClient/obj/*
+/espn/obj/Release/espn.csproj.AssemblyReference.cache
+/.vs/espn/v17/.suo
+/.vs/espn/v16/.suo
+/espn/obj/
+/.vs/NBA Fantasy/DesignTimeBuild/.dtbcache
+/.vs/
+/espn/obj/
+/espn/bin/Release/espn.sqlite
