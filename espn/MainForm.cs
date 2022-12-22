@@ -1132,7 +1132,6 @@ namespace espn
 
                 int rowIndex = rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
-                //ToDo: change My YahooTeamNumber to parameter from app config
                 rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == yahooTeamId ? Color.Gainsboro : default;
                 rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}" +
                                                                          (p.YahooTeamNumber.HasValue
@@ -1256,28 +1255,17 @@ namespace espn
             gameLog_dataGridView.Rows.Clear();
             foreach (GameStats game in games)
             {
-                int rowId = gameLog_dataGridView.Rows.Add();
-                DataGridViewRow row = gameLog_dataGridView.Rows[rowId];
-                row.HeaderCell.Value = $"{rowId + 1}";
+                var score = Math.Round(PlayerRater.CalcScore(new[] { game }, CalcScoreType.Games, 0, false), 1);
+                object[] o = { game.GameDate ,game.Opp, game.Min,
+                    game.Fgm + "/" + game.Fga,Math.Round(game.FgPer, 1),game.Tpm + "/" + game.Tpa,Math.Round(game.TpPer, 1),
+                    game.Ftm + "/" + game.Fta,Math.Round(game.FtPer, 1),game.Reb, game.Ast,game.Blk,game.Stl,game.Pf,game.To,
+                    game.Pts, score };
 
-                row.Cells["Date_GameLog"].Value = game.GameDate;
-                row.Cells["Opp_GameLog"].Value = game.Opp;
-                row.Cells["Min_GameLog"].Value = game.Min;
-                row.Cells["Pts_GameLog"].Value = game.Pts;
-                row.Cells["Ast_GameLog"].Value = game.Ast;
-                row.Cells["Reb_GameLog"].Value = game.Reb;
-                row.Cells["Stl_GameLog"].Value = game.Stl;
-                row.Cells["Blk_GameLog"].Value = game.Blk;
-                row.Cells["To_GameLog"].Value = game.To;
-                row.Cells["Pf_GameLog"].Value = game.Pf;
+                int rowId = gameLog_dataGridView.Rows.Add(o);
+                gameLog_dataGridView.Rows[rowId].HeaderCell.Value = $"{rowId + 1}";
 
-                row.Cells["FgmFga_GameLog"].Value = game.Fgm + "/" + game.Fga;
-                row.Cells["FgPer_GameLog"].Value = Math.Round(game.FgPer, 1);
-                row.Cells["FtmFta_GameLog"].Value = game.Ftm + "/" + game.Fta;
-                row.Cells["FtPer_GameLog"].Value = Math.Round(game.FtPer, 1);
-                row.Cells["TpmTpa_GameLog"].Value = game.Tpm + "/" + game.Tpa;
-                row.Cells["TpPer_GameLog"].Value = Math.Round(game.TpPer, 1);
-                row.Cells["Score_GameLog"].Value = Math.Round(PlayerRater.CalcScore(new[] { game }, CalcScoreType.Games, 0, false), 1);
+                gameLog_dataGridView.Rows[rowId].DefaultCellStyle.BackColor =
+                    score >= 0 ? Color.LightGreen : Color.LightPink;
             }
         }
 
@@ -1468,7 +1456,7 @@ namespace espn
             File.WriteAllLines(saveFileDialog.FileName, csv);
             MessageBox.Show("Done");
         }
-       
+
         #endregion
 
         #region Timers
