@@ -1135,7 +1135,8 @@ namespace espn
 
                 int rowIndex = rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
-                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == yahooTeamId ? Color.Gainsboro : default;
+                Color rowColor = p.YahooTeamNumber.HasValue ? (p.YahooTeamNumber == yahooTeamId ? Color.LightCyan : Color.LightYellow) : default;
+                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = rowColor;
                 rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}" +
                                                                          (p.YahooTeamNumber.HasValue
                                                                              ? $", {YahooDBMethods.YahooTeams.First(y => y.TeamId == p.YahooTeamNumber).TeamName}"
