@@ -80,7 +80,7 @@ namespace espn
             player1_TextBox.PlayerSelectedEvent = Player1CompareSelectedPlayerEvent;
             player2_TextBox.PlayerSelectedEvent = Player2CompareSelectedPlayerEvent;
             rater_autoCompleteTextBox.PlayerSelectedEvent = SearchForPlayerInRater;
-            gameLog_autoCompleteTextBox.PlayerSelectedEvent = ShowGameslogAsync;
+            gameLog_autoCompleteTextBox.PlayerSelectedEvent = ShowGamesLogAsync;
 
             compareMode_comboBox.SelectedIndex = mode_comboBox.SelectedIndex = tradeMode_comboBox.SelectedIndex = year_comboBox.SelectedIndex = 0;
             compare_last_comboBox.SelectedIndex = tradeNumOfGames_comboBox.SelectedIndex = 3;
@@ -108,8 +108,6 @@ namespace espn
             });
             EndInvoke(result);
         }
-
-
 
         private void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
         {
@@ -423,7 +421,7 @@ namespace espn
         private void showGameLog_button_Click(object sender, EventArgs e)
         {
             gameLog_autoCompleteTextBox.Text = playerName_textBox.Text;
-            ShowGameslogAsync(gameLog_autoCompleteTextBox.Text);
+            ShowGamesLogAsync(gameLog_autoCompleteTextBox.Text);
             tabControl.SelectedIndex = 1;
         }
 
@@ -1178,7 +1176,7 @@ namespace espn
             if (rater_dataGridView.SelectedCells.Count == 0) return;
             var name = rater_dataGridView.SelectedCells[0].Value.ToString();
             gameLog_autoCompleteTextBox.Text = name;
-            ShowGameslogAsync(name);
+            ShowGamesLogAsync(name);
             tabControl.SelectedIndex = 1;
         }
 
@@ -1230,7 +1228,7 @@ namespace espn
         #endregion
 
         #region GameLog
-        private async void ShowGameslogAsync(string playerName)
+        private async void ShowGamesLogAsync(string playerName)
         {
             try
             {
@@ -1244,6 +1242,7 @@ namespace espn
                     playerNameGameLog_label.Text = $"{player.PlayerName}, {player.Team}";
                     startEndTimesGameLog_label.Text = games.Min(g => g.GameDate).ToString("d") + "-" + games.Max(g => g.GameDate).ToString("d");
                     UpdateGamesLogTable(games);
+                    UpdateLastPlayersGameLog(playerName);
                 }
             }
             catch (Exception ex)
@@ -1279,6 +1278,19 @@ namespace espn
                 row.Cells["TpmTpa_GameLog"].Value = game.Tpm + "/" + game.Tpa;
                 row.Cells["TpPer_GameLog"].Value = Math.Round(game.TpPer, 1);
                 row.Cells["Score_GameLog"].Value = Math.Round(PlayerRater.CalcScore(new[] { game }, CalcScoreType.Games, 0, false), 1);
+            }
+        }
+
+        private void UpdateLastPlayersGameLog(string playerName)
+        {
+            if (!lastPlayersGameLog_comboBox.Items.Contains(playerName))
+            {
+                lastPlayersGameLog_comboBox.Items.Add(playerName);
+            }
+            else
+            {
+                lastPlayersGameLog_comboBox.Items.Remove(playerName);
+                lastPlayersGameLog_comboBox.Items.Add(playerName);
             }
         }
 
@@ -1321,16 +1333,13 @@ namespace espn
             }
         }
 
-        private void editFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lastPlayersGameLog_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Factors = new FactorsForm();
-            Factors.ShowDialog();
+            string playerName = lastPlayersGameLog_comboBox.GetItemText(
+                lastPlayersGameLog_comboBox.Items[lastPlayersGameLog_comboBox.SelectedIndex]);
+            gameLog_autoCompleteTextBox.Text = playerName;
+            ShowGamesLogAsync(playerName);
         }
-
-
-
-
-
         #endregion
 
         #region Tools
@@ -1404,10 +1413,11 @@ namespace espn
             new CustomPlayer().Show();
         }
 
-
-
-
-
+        private void editFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Factors = new FactorsForm();
+            Factors.ShowDialog();
+        }
         #endregion
 
         #region YahooLeague
@@ -1458,6 +1468,7 @@ namespace espn
             File.WriteAllLines(saveFileDialog.FileName, csv);
             MessageBox.Show("Done");
         }
+       
         #endregion
 
         #region Timers
