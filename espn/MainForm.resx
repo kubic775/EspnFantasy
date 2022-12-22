@@ -226,7 +226,7 @@
   <data name="flip_button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAATtJREFUOE+lkzFOQzEMhjNxBi5A31MXrsAIJ+AMjG0Y2BjYGHsAxIiYqJKKhQ4d
+        wQAADsEBuJFr7QAAATtJREFUOE+lkzFOQzEMhjNxBi5A31MXrsAIJ+AMjG0Y2BjYGHsAxIiYqJKKhQ4d
         mIANCSYYqBALHVgZQj4ThwSBeBWWfinP9v/bTvxMaf3T/ZWeH2w23p603s4bN3wHco4+YuSk9Nr6fne1
         dXYUCYtICD9BYjGH3ET7NCF7O9bENTcQ/PYdMc4itIRqmbwxPQiHdy6cza8FnPFVInTCOL2J3WqcfVXy
         9uUo3Cwew8XLrRAB5/u357BzdZQF4MA16cJyZciQ1s/3xAc44yNGThaJXNO64ZMKaDUImlSC7qpY5Jr0
@@ -285,8 +285,11 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="update_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="updateDB_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
+  </metadata>
+  <metadata name="runPlayersUpdate_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>881, 17</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

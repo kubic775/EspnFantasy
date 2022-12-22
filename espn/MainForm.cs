@@ -94,8 +94,8 @@ namespace espn
             raterPlayersStatus_comboBox.Items.AddRange(Enum.GetNames(typeof(PlayerStatus)));
             raterPlayersStatus_comboBox.SelectedIndex = 0;
 
-            update_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
-            UpdateTimer_Tick(null, null);
+            updateDB_timer.Interval = (int)new TimeSpan(0, 10, 0).TotalMilliseconds;
+            UpdateDBTimer_Tick(null, null);
             this.Enabled = true;
         }
 
@@ -109,14 +109,7 @@ namespace espn
             EndInvoke(result);
         }
 
-        private async void UpdateTimer_Tick(object sender, EventArgs e)
-        {
-            update_timer.Stop();
-            AppendToLogDelegate("Updating...", Color.Green);
-            await Task.Run(YahooDBMethods.LoadDataFromDB);
-            AppendToLogDelegate("Last Update : " + YahooDBMethods.LastUpdateTime.ToString("g"), Color.Black);
-            update_timer.Start();
-        }
+
 
         private void PrintChartWithString(double[] y, string[] x, string name, Chart chart, int seriesNum = 0)
         {
@@ -156,8 +149,8 @@ namespace espn
 
         private void update_label_Click(object sender, EventArgs e)
         {
-            if (update_timer.Enabled)
-                UpdateTimer_Tick(null, null);
+            if (updateDB_timer.Enabled)
+                UpdateDBTimer_Tick(null, null);
         }
         #endregion
 
@@ -1413,6 +1406,8 @@ namespace espn
 
 
 
+
+
         #endregion
 
         #region YahooLeague
@@ -1465,5 +1460,23 @@ namespace espn
         }
         #endregion
 
+        #region Timers
+        private async void UpdateDBTimer_Tick(object sender, EventArgs e)
+        {
+            updateDB_timer.Stop();
+            AppendToLogDelegate("Updating...", Color.Green);
+            await Task.Run(YahooDBMethods.LoadDataFromDB);
+            AppendToLogDelegate("Last Update : " + YahooDBMethods.LastUpdateTime.ToString("g"), Color.Black);
+            updateDB_timer.Start();
+        }
+
+        private void runPlayersUpdate_timer_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Hour == 8 && DateTime.Now.Minute == 30)
+                RunPlayersUpdate();
+        }
+
+
+        #endregion
     }
 }
