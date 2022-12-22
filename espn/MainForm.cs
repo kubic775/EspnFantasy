@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -27,7 +28,7 @@ namespace espn
         public MainForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace espn
         private async void InitGui()
         {
             this.Enabled = false;
-            
+
             foreach (var year in Enumerable.Range(Utils.GetCurrentYear() - 4, 6).Reverse())
             {
                 year_comboBox.Items.Add(year);
@@ -254,7 +255,7 @@ namespace espn
         {
             var games = _player?.FilterGamesByYear(
                 int.Parse(year_comboBox.GetItemText(year_comboBox.Items[year_comboBox.SelectedIndex])));
-            if(games==null) return;
+            if (games == null) return;
             if (numOf_textBox.Text.Equals(games.Length.ToString()))
                 numOf_textBox_TextChanged(null, null);
             else
@@ -1108,6 +1109,8 @@ namespace espn
             rater_dataGridView.Rows.Clear();
             if (playersRater == null || !playersRater.Any()) return;
 
+            var yahooTeamId = ConfigurationManager.AppSettings["YahooTeamId"].ToInt();
+
             foreach (var p in playersRater)
             {
                 object[] o;
@@ -1139,7 +1142,7 @@ namespace espn
                 int rowIndex = rater_dataGridView.Rows.Add(o);
                 rater_dataGridView.Rows[rowIndex].HeaderCell.Value = $"{p.RaterPos}";
                 //ToDo: change My YahooTeamNumber to parameter from app config
-                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == 5 ? Color.Gainsboro : default;
+                rater_dataGridView.Rows[rowIndex].DefaultCellStyle.BackColor = p.YahooTeamNumber == yahooTeamId ? Color.Gainsboro : default;
                 rater_dataGridView.Rows[rowIndex].Cells[0].ToolTipText = $"{p.Team}, {p.Misc}" +
                                                                          (p.YahooTeamNumber.HasValue
                                                                              ? $", {YahooDBMethods.YahooTeams.First(y => y.TeamId == p.YahooTeamNumber).TeamName}"
@@ -1381,21 +1384,21 @@ namespace espn
         {
             IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
             string headers = "Name," + string.Join(",", fieldNames.Select(f => f.Name));
-            
+
             IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
             IEnumerable<PlayerInfo> playersRaterAvg = PlayerRater.CreateRater(CalcScoreType.Games);
-           
+
             List<string> statsTotal = playersRater.Select(p => p.ToShortString()).ToList();
             List<string> statsAvg = playersRaterAvg.Select(p => p.ToShortString()).ToList();
             statsTotal.Insert(0, headers);
             statsAvg.Insert(0, headers);
 
-            using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*" , FileName = "StatsTotal"};
+            using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "StatsTotal" };
             if (d.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllLines(d.FileName, statsTotal.ToArray());
             }
-            
+
             using var dd = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "StatsAvg" };
             if (dd.ShowDialog() == DialogResult.OK)
             {
@@ -1408,7 +1411,7 @@ namespace espn
             new CustomPlayer().Show();
         }
 
-       
+
 
         #endregion
 
@@ -1448,7 +1451,7 @@ namespace espn
 
             List<string> csv = YahooLeagueManager.ExportRatesToFile(
                 string.IsNullOrEmpty(numOfDays)
-                ? DateTime.Now.AddDays(-365)
+                ? new DateTime(Utils.GetCurrentYear(), 10, 1)
                 : DateTime.Now.AddDays(-numOfDays.ToInt()));
 
             using var saveFileDialog = new SaveFileDialog();
