@@ -1097,16 +1097,19 @@ namespace espn
 
         private void UpdateRaterTable(IEnumerable<PlayerInfo> playersRater)
         {
+
             rater_dataGridView.Rows.Clear();
             if (playersRater == null || !playersRater.Any()) return;
 
             var yahooTeamId = ConfigurationManager.AppSettings["YahooTeamId"].ToInt();
 
+            List<GameStats> allGames = new List<GameStats>();
             foreach (var p in playersRater)
             {
                 object[] o;
                 int gp = p.Games.First().Gp;
-                var avgGame = p.GetAvgGame();
+                GameStats avgGame = p.GetAvgGame();
+                allGames.Add(avgGame);
 
                 if (raterScores.Checked) //Scores
                     o = new object[]
@@ -1137,6 +1140,35 @@ namespace espn
                                                                          (p.YahooTeamNumber.HasValue
                                                                              ? $", {YahooDBMethods.YahooTeams.First(y => y.TeamId == p.YahooTeamNumber).TeamName}"
                                                                              : String.Empty);
+            }
+
+            if (!raterScores.Checked)//plot sum & avg games stats
+            {
+                var avgStats = GameStats.GetAvgStats(allGames.ToArray());
+                var sumStats = GameStats.GetSumStats(allGames.ToArray());
+                var avgRow = new object[]
+                {
+                    "Avg", allGames.Count, Math.Round(avgStats.Min, 1),
+                    avgStats.Fgm.ToString("0.0") + "/" + avgStats.Fga.ToString("0.0"), Math.Round(avgStats.FgPer, 1),
+                    avgStats.Ftm.ToString("0.0") + "/" + avgStats.Fta.ToString("0.0"), Math.Round(avgStats.FtPer, 1),
+                    Math.Round(avgStats.Tpm, 1), Math.Round(avgStats.Reb, 1), Math.Round(avgStats.Ast, 1),
+                    Math.Round(avgStats.Stl, 1), Math.Round(avgStats.Blk, 1), Math.Round(avgStats.To, 1),
+                    Math.Round(avgStats.Pts, 1), 0
+                };
+                var sumRow = new object[]
+                {
+                    "Sum", allGames.Count, Math.Round(sumStats.Min, 1),
+                    sumStats.Fgm.ToString("0.0") + "/" + sumStats.Fga.ToString("0.0"), Math.Round(sumStats.FgPer, 1),
+                    sumStats.Ftm.ToString("0.0") + "/" + sumStats.Fta.ToString("0.0"), Math.Round(sumStats.FtPer, 1),
+                    Math.Round(sumStats.Tpm, 1), Math.Round(sumStats.Reb, 1), Math.Round(sumStats.Ast, 1),
+                    Math.Round(sumStats.Stl, 1), Math.Round(sumStats.Blk, 1), Math.Round(sumStats.To, 1),
+                    Math.Round(sumStats.Pts, 1), 0
+                };
+
+                int avgRowIndex = rater_dataGridView.Rows.Add(avgRow);
+                int sumRowIndex = rater_dataGridView.Rows.Add(sumRow);
+                rater_dataGridView.Rows[avgRowIndex].DefaultCellStyle.BackColor = Color.Gray;
+                rater_dataGridView.Rows[sumRowIndex].DefaultCellStyle.BackColor = Color.Gray;
             }
         }
 
