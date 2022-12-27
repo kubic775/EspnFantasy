@@ -1154,7 +1154,7 @@ namespace espn
                     avgStats.Ftm.ToString("0.0") + "/" + avgStats.Fta.ToString("0.0"), Math.Round(avgStats.FtPer, 1),
                     Math.Round(avgStats.Tpm, 1), Math.Round(avgStats.Reb, 1), Math.Round(avgStats.Ast, 1),
                     Math.Round(avgStats.Stl, 1), Math.Round(avgStats.Blk, 1), Math.Round(avgStats.To, 1),
-                    Math.Round(avgStats.Pts, 1), 0
+                    Math.Round(avgStats.Pts, 1), Double.NaN
                 };
                 var sumRow = new object[]
                 {
@@ -1163,7 +1163,7 @@ namespace espn
                     sumStats.Ftm.ToString("0.0") + "/" + sumStats.Fta.ToString("0.0"), Math.Round(sumStats.FtPer, 1),
                     Math.Round(sumStats.Tpm, 1), Math.Round(sumStats.Reb, 1), Math.Round(sumStats.Ast, 1),
                     Math.Round(sumStats.Stl, 1), Math.Round(sumStats.Blk, 1), Math.Round(sumStats.To, 1),
-                    Math.Round(sumStats.Pts, 1), 0
+                    Math.Round(sumStats.Pts, 1), Double.NaN
                 };
 
                 int avgRowIndex = rater_dataGridView.Rows.Add(avgRow);
