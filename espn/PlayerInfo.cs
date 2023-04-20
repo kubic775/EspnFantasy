@@ -42,7 +42,7 @@ namespace NBAFantasy
                 : new PlayerInfo(player);
         }
 
-        public PlayerInfo(Players player, Games[] games = null) : 
+        public PlayerInfo(Players player, Games[] games = null) :
             this(player, games?.Select(g => new GameStats(g)).ToArray() ?? Array.Empty<GameStats>())
         {
         }
@@ -236,9 +236,11 @@ namespace NBAFantasy
             return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray());
         }
 
-        public string ToShortString()
+        public string ToShortString(bool addPlayerName = true)
         {
-            return PlayerName + "," + GameStats.GetAvgStats(Games.ToArray()).ToShortString();
+            return addPlayerName
+                ? PlayerName + "," + GameStats.GetAvgStats(Games.ToArray()).ToShortString()
+                : GameStats.GetAvgStats(Games.ToArray()).ToShortString();
         }
 
         public string GetFullHistory(int startYear, int endYear)
