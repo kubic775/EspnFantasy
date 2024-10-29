@@ -32,51 +32,51 @@ namespace espn
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(40D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(40D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(30D, 40D);
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.playerInfoTab = new System.Windows.Forms.TabPage();
             this.playerStatus_label = new System.Windows.Forms.Label();
@@ -334,6 +334,7 @@ namespace espn
             this.update_label = new System.Windows.Forms.Label();
             this.updateDB_timer = new System.Windows.Forms.Timer(this.components);
             this.runPlayersUpdate_timer = new System.Windows.Forms.Timer(this.components);
+            this.compare_telegram_button = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -367,10 +368,11 @@ namespace espn
             this.tabControl.Controls.Add(this.rater_tab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(0, 24);
+            this.tabControl.Location = new System.Drawing.Point(0, 35);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1108, 439);
+            this.tabControl.Size = new System.Drawing.Size(1662, 677);
             this.tabControl.TabIndex = 0;
             // 
             // playerInfoTab
@@ -397,10 +399,11 @@ namespace espn
             this.playerInfoTab.Controls.Add(this.stats_dataGridView);
             this.playerInfoTab.Controls.Add(this.player_pictureBox);
             this.playerInfoTab.Controls.Add(this.nameLabel);
-            this.playerInfoTab.Location = new System.Drawing.Point(4, 25);
+            this.playerInfoTab.Location = new System.Drawing.Point(4, 34);
+            this.playerInfoTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.playerInfoTab.Name = "playerInfoTab";
-            this.playerInfoTab.Padding = new System.Windows.Forms.Padding(3);
-            this.playerInfoTab.Size = new System.Drawing.Size(1100, 410);
+            this.playerInfoTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.playerInfoTab.Size = new System.Drawing.Size(1654, 639);
             this.playerInfoTab.TabIndex = 0;
             this.playerInfoTab.Text = "Players";
             // 
@@ -408,17 +411,19 @@ namespace espn
             // 
             this.playerStatus_label.AutoSize = true;
             this.playerStatus_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerStatus_label.Location = new System.Drawing.Point(981, 36);
+            this.playerStatus_label.Location = new System.Drawing.Point(1472, 55);
+            this.playerStatus_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playerStatus_label.Name = "playerStatus_label";
-            this.playerStatus_label.Size = new System.Drawing.Size(85, 29);
+            this.playerStatus_label.Size = new System.Drawing.Size(125, 40);
             this.playerStatus_label.TabIndex = 59;
             this.playerStatus_label.Text = "Status";
             // 
             // button_60
             // 
-            this.button_60.Location = new System.Drawing.Point(631, 313);
+            this.button_60.Location = new System.Drawing.Point(946, 482);
+            this.button_60.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_60.Name = "button_60";
-            this.button_60.Size = new System.Drawing.Size(46, 23);
+            this.button_60.Size = new System.Drawing.Size(69, 35);
             this.button_60.TabIndex = 58;
             this.button_60.Text = "60";
             this.button_60.UseVisualStyleBackColor = true;
@@ -426,9 +431,10 @@ namespace espn
             // 
             // copyHistoryToClipboard_button
             // 
-            this.copyHistoryToClipboard_button.Location = new System.Drawing.Point(989, 313);
+            this.copyHistoryToClipboard_button.Location = new System.Drawing.Point(1484, 482);
+            this.copyHistoryToClipboard_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyHistoryToClipboard_button.Name = "copyHistoryToClipboard_button";
-            this.copyHistoryToClipboard_button.Size = new System.Drawing.Size(106, 23);
+            this.copyHistoryToClipboard_button.Size = new System.Drawing.Size(159, 35);
             this.copyHistoryToClipboard_button.TabIndex = 57;
             this.copyHistoryToClipboard_button.Text = "Copy History";
             this.copyHistoryToClipboard_button.UseVisualStyleBackColor = true;
@@ -436,9 +442,10 @@ namespace espn
             // 
             // showGameLog_button
             // 
-            this.showGameLog_button.Location = new System.Drawing.Point(793, 313);
+            this.showGameLog_button.Location = new System.Drawing.Point(1190, 482);
+            this.showGameLog_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.showGameLog_button.Name = "showGameLog_button";
-            this.showGameLog_button.Size = new System.Drawing.Size(95, 23);
+            this.showGameLog_button.Size = new System.Drawing.Size(142, 35);
             this.showGameLog_button.TabIndex = 56;
             this.showGameLog_button.Text = "Game Log";
             this.showGameLog_button.UseVisualStyleBackColor = true;
@@ -447,9 +454,10 @@ namespace espn
             // year_comboBox
             // 
             this.year_comboBox.FormattingEnabled = true;
-            this.year_comboBox.Location = new System.Drawing.Point(202, 313);
+            this.year_comboBox.Location = new System.Drawing.Point(303, 482);
+            this.year_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.year_comboBox.Name = "year_comboBox";
-            this.year_comboBox.Size = new System.Drawing.Size(71, 24);
+            this.year_comboBox.Size = new System.Drawing.Size(104, 33);
             this.year_comboBox.TabIndex = 55;
             this.year_comboBox.DropDownClosed += new System.EventHandler(this.year_comboBox_DropDownClosed);
             // 
@@ -458,9 +466,10 @@ namespace espn
             this.smooth_checkBox.AutoSize = true;
             this.smooth_checkBox.Checked = true;
             this.smooth_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.smooth_checkBox.Location = new System.Drawing.Point(13, 361);
+            this.smooth_checkBox.Location = new System.Drawing.Point(20, 555);
+            this.smooth_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.smooth_checkBox.Name = "smooth_checkBox";
-            this.smooth_checkBox.Size = new System.Drawing.Size(78, 20);
+            this.smooth_checkBox.Size = new System.Drawing.Size(112, 29);
             this.smooth_checkBox.TabIndex = 19;
             this.smooth_checkBox.Text = "Smooth";
             this.smooth_checkBox.UseVisualStyleBackColor = true;
@@ -476,23 +485,26 @@ namespace espn
             this.groupBox1.Controls.Add(this.filterWithoutPlayer_checkBox);
             this.groupBox1.Controls.Add(this.outliersMinutes_checkBox);
             this.groupBox1.Controls.Add(this.zeroMinutes_checkBox);
-            this.groupBox1.Location = new System.Drawing.Point(7, 65);
+            this.groupBox1.Location = new System.Drawing.Point(10, 100);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 290);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(291, 446);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
             // 
             // perMinuteVal
             // 
-            this.perMinuteVal.Location = new System.Drawing.Point(124, 194);
+            this.perMinuteVal.Location = new System.Drawing.Point(186, 298);
+            this.perMinuteVal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.perMinuteVal.Maximum = new decimal(new int[] {
             48,
             0,
             0,
             0});
             this.perMinuteVal.Name = "perMinuteVal";
-            this.perMinuteVal.Size = new System.Drawing.Size(59, 22);
+            this.perMinuteVal.Size = new System.Drawing.Size(88, 30);
             this.perMinuteVal.TabIndex = 22;
             this.perMinuteVal.Value = new decimal(new int[] {
             36,
@@ -504,9 +516,10 @@ namespace espn
             // minutesFilter_checkBox
             // 
             this.minutesFilter_checkBox.AutoSize = true;
-            this.minutesFilter_checkBox.Location = new System.Drawing.Point(6, 195);
+            this.minutesFilter_checkBox.Location = new System.Drawing.Point(9, 300);
+            this.minutesFilter_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.minutesFilter_checkBox.Name = "minutesFilter_checkBox";
-            this.minutesFilter_checkBox.Size = new System.Drawing.Size(118, 20);
+            this.minutesFilter_checkBox.Size = new System.Drawing.Size(168, 29);
             this.minutesFilter_checkBox.TabIndex = 21;
             this.minutesFilter_checkBox.Text = "Minutes Filter";
             this.minutesFilter_checkBox.UseVisualStyleBackColor = true;
@@ -514,18 +527,20 @@ namespace espn
             // filterWithPlayer_autoCompleteTextBox
             // 
             this.filterWithPlayer_autoCompleteTextBox.Enabled = false;
-            this.filterWithPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(6, 160);
+            this.filterWithPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(9, 246);
+            this.filterWithPlayer_autoCompleteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.filterWithPlayer_autoCompleteTextBox.Name = "filterWithPlayer_autoCompleteTextBox";
-            this.filterWithPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.filterWithPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(193, 30);
             this.filterWithPlayer_autoCompleteTextBox.TabIndex = 20;
             this.filterWithPlayer_autoCompleteTextBox.Values = null;
             // 
             // filterWithPlayer_checkBox
             // 
             this.filterWithPlayer_checkBox.AutoSize = true;
-            this.filterWithPlayer_checkBox.Location = new System.Drawing.Point(6, 134);
+            this.filterWithPlayer_checkBox.Location = new System.Drawing.Point(9, 206);
+            this.filterWithPlayer_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.filterWithPlayer_checkBox.Name = "filterWithPlayer_checkBox";
-            this.filterWithPlayer_checkBox.Size = new System.Drawing.Size(144, 20);
+            this.filterWithPlayer_checkBox.Size = new System.Drawing.Size(203, 29);
             this.filterWithPlayer_checkBox.TabIndex = 19;
             this.filterWithPlayer_checkBox.Text = "Filter With Player";
             this.filterWithPlayer_checkBox.UseVisualStyleBackColor = true;
@@ -534,18 +549,20 @@ namespace espn
             // filterWithoutPlayer_autoCompleteTextBox
             // 
             this.filterWithoutPlayer_autoCompleteTextBox.Enabled = false;
-            this.filterWithoutPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(6, 106);
+            this.filterWithoutPlayer_autoCompleteTextBox.Location = new System.Drawing.Point(9, 163);
+            this.filterWithoutPlayer_autoCompleteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.filterWithoutPlayer_autoCompleteTextBox.Name = "filterWithoutPlayer_autoCompleteTextBox";
-            this.filterWithoutPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.filterWithoutPlayer_autoCompleteTextBox.Size = new System.Drawing.Size(193, 30);
             this.filterWithoutPlayer_autoCompleteTextBox.TabIndex = 18;
             this.filterWithoutPlayer_autoCompleteTextBox.Values = null;
             // 
             // filterWithoutPlayer_checkBox
             // 
             this.filterWithoutPlayer_checkBox.AutoSize = true;
-            this.filterWithoutPlayer_checkBox.Location = new System.Drawing.Point(6, 80);
+            this.filterWithoutPlayer_checkBox.Location = new System.Drawing.Point(9, 123);
+            this.filterWithoutPlayer_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.filterWithoutPlayer_checkBox.Name = "filterWithoutPlayer_checkBox";
-            this.filterWithoutPlayer_checkBox.Size = new System.Drawing.Size(165, 20);
+            this.filterWithoutPlayer_checkBox.Size = new System.Drawing.Size(233, 29);
             this.filterWithoutPlayer_checkBox.TabIndex = 2;
             this.filterWithoutPlayer_checkBox.Text = "Filter Without Player";
             this.filterWithoutPlayer_checkBox.UseVisualStyleBackColor = true;
@@ -554,9 +571,10 @@ namespace espn
             // outliersMinutes_checkBox
             // 
             this.outliersMinutes_checkBox.AutoSize = true;
-            this.outliersMinutes_checkBox.Location = new System.Drawing.Point(6, 54);
+            this.outliersMinutes_checkBox.Location = new System.Drawing.Point(9, 83);
+            this.outliersMinutes_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.outliersMinutes_checkBox.Name = "outliersMinutes_checkBox";
-            this.outliersMinutes_checkBox.Size = new System.Drawing.Size(136, 20);
+            this.outliersMinutes_checkBox.Size = new System.Drawing.Size(195, 29);
             this.outliersMinutes_checkBox.TabIndex = 1;
             this.outliersMinutes_checkBox.Text = "Outliers Minutes";
             this.outliersMinutes_checkBox.UseVisualStyleBackColor = true;
@@ -565,9 +583,10 @@ namespace espn
             // zeroMinutes_checkBox
             // 
             this.zeroMinutes_checkBox.AutoSize = true;
-            this.zeroMinutes_checkBox.Location = new System.Drawing.Point(6, 28);
+            this.zeroMinutes_checkBox.Location = new System.Drawing.Point(9, 43);
+            this.zeroMinutes_checkBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.zeroMinutes_checkBox.Name = "zeroMinutes_checkBox";
-            this.zeroMinutes_checkBox.Size = new System.Drawing.Size(115, 20);
+            this.zeroMinutes_checkBox.Size = new System.Drawing.Size(164, 29);
             this.zeroMinutes_checkBox.TabIndex = 0;
             this.zeroMinutes_checkBox.Text = "Zero Minutes";
             this.zeroMinutes_checkBox.UseVisualStyleBackColor = true;
@@ -575,17 +594,19 @@ namespace espn
             // 
             // playerName_textBox
             // 
-            this.playerName_textBox.Location = new System.Drawing.Point(63, 17);
+            this.playerName_textBox.Location = new System.Drawing.Point(94, 26);
+            this.playerName_textBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.playerName_textBox.Name = "playerName_textBox";
-            this.playerName_textBox.Size = new System.Drawing.Size(130, 22);
+            this.playerName_textBox.Size = new System.Drawing.Size(193, 30);
             this.playerName_textBox.TabIndex = 17;
             this.playerName_textBox.Values = null;
             // 
             // copyToClipboard_button
             // 
-            this.copyToClipboard_button.Location = new System.Drawing.Point(892, 313);
+            this.copyToClipboard_button.Location = new System.Drawing.Point(1338, 482);
+            this.copyToClipboard_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyToClipboard_button.Name = "copyToClipboard_button";
-            this.copyToClipboard_button.Size = new System.Drawing.Size(94, 23);
+            this.copyToClipboard_button.Size = new System.Drawing.Size(141, 35);
             this.copyToClipboard_button.TabIndex = 16;
             this.copyToClipboard_button.Text = "Copy Stats";
             this.copyToClipboard_button.UseVisualStyleBackColor = true;
@@ -593,49 +614,51 @@ namespace espn
             // 
             // stat_chart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.stat_chart.ChartAreas.Add(chartArea6);
+            chartArea1.Name = "ChartArea1";
+            this.stat_chart.ChartAreas.Add(chartArea1);
             this.stat_chart.ContextMenuStrip = this.playerInfo_chart_contextMenuStrip;
-            legend6.DockedToChartArea = "ChartArea1";
-            legend6.MaximumAutoSize = 30F;
-            legend6.Name = "Legend1";
-            this.stat_chart.Legends.Add(legend6);
-            this.stat_chart.Location = new System.Drawing.Point(481, 93);
+            legend1.DockedToChartArea = "ChartArea1";
+            legend1.MaximumAutoSize = 30F;
+            legend1.Name = "Legend1";
+            this.stat_chart.Legends.Add(legend1);
+            this.stat_chart.Location = new System.Drawing.Point(722, 143);
+            this.stat_chart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.stat_chart.Name = "stat_chart";
-            series11.BorderWidth = 2;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Legend = "Legend1";
-            series11.MarkerSize = 6;
-            series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series11.Name = "Series1";
-            series11.Points.Add(dataPoint12);
-            series11.Points.Add(dataPoint13);
-            series11.Points.Add(dataPoint14);
-            series12.BorderWidth = 4;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.IsVisibleInLegend = false;
-            series12.Legend = "Legend1";
-            series12.MarkerSize = 8;
-            series12.Name = "SmoothSeries";
-            this.stat_chart.Series.Add(series11);
-            this.stat_chart.Series.Add(series12);
-            this.stat_chart.Size = new System.Drawing.Size(615, 215);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.MarkerSize = 6;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series2.BorderWidth = 4;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.MarkerSize = 8;
+            series2.Name = "SmoothSeries";
+            this.stat_chart.Series.Add(series1);
+            this.stat_chart.Series.Add(series2);
+            this.stat_chart.Size = new System.Drawing.Size(922, 331);
             this.stat_chart.TabIndex = 15;
             this.stat_chart.Text = "Stat";
             // 
             // playerInfo_chart_contextMenuStrip
             // 
+            this.playerInfo_chart_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.playerInfo_chart_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyChartToolStripMenuItem});
             this.playerInfo_chart_contextMenuStrip.Name = "playerInfo_chart_contextMenuStrip";
-            this.playerInfo_chart_contextMenuStrip.Size = new System.Drawing.Size(135, 26);
+            this.playerInfo_chart_contextMenuStrip.Size = new System.Drawing.Size(174, 36);
             // 
             // copyChartToolStripMenuItem
             // 
             this.copyChartToolStripMenuItem.Name = "copyChartToolStripMenuItem";
-            this.copyChartToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyChartToolStripMenuItem.Size = new System.Drawing.Size(173, 32);
             this.copyChartToolStripMenuItem.Text = "Copy Chart";
             this.copyChartToolStripMenuItem.Click += new System.EventHandler(this.playerInfo_copyChartToolStripMenuItem_Click);
             // 
@@ -643,9 +666,10 @@ namespace espn
             // 
             this.playerInfo_label.AutoSize = true;
             this.playerInfo_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerInfo_label.Location = new System.Drawing.Point(480, 65);
+            this.playerInfo_label.Location = new System.Drawing.Point(720, 100);
+            this.playerInfo_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playerInfo_label.Name = "playerInfo_label";
-            this.playerInfo_label.Size = new System.Drawing.Size(108, 24);
+            this.playerInfo_label.Size = new System.Drawing.Size(165, 33);
             this.playerInfo_label.TabIndex = 14;
             this.playerInfo_label.Text = "Player Info";
             // 
@@ -654,17 +678,19 @@ namespace espn
             this.playerNameLabel.AutoSize = true;
             this.playerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerNameLabel.Location = new System.Drawing.Point(477, 20);
+            this.playerNameLabel.Location = new System.Drawing.Point(716, 31);
+            this.playerNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playerNameLabel.Name = "playerNameLabel";
-            this.playerNameLabel.Size = new System.Drawing.Size(181, 31);
+            this.playerNameLabel.Size = new System.Drawing.Size(270, 47);
             this.playerNameLabel.TabIndex = 13;
             this.playerNameLabel.Text = "Player Name";
             // 
             // button_max
             // 
-            this.button_max.Location = new System.Drawing.Point(681, 313);
+            this.button_max.Location = new System.Drawing.Point(1022, 482);
+            this.button_max.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_max.Name = "button_max";
-            this.button_max.Size = new System.Drawing.Size(46, 23);
+            this.button_max.Size = new System.Drawing.Size(69, 35);
             this.button_max.TabIndex = 12;
             this.button_max.Text = "Max";
             this.button_max.UseVisualStyleBackColor = true;
@@ -672,9 +698,10 @@ namespace espn
             // 
             // button_30
             // 
-            this.button_30.Location = new System.Drawing.Point(581, 313);
+            this.button_30.Location = new System.Drawing.Point(872, 482);
+            this.button_30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_30.Name = "button_30";
-            this.button_30.Size = new System.Drawing.Size(46, 23);
+            this.button_30.Size = new System.Drawing.Size(69, 35);
             this.button_30.TabIndex = 11;
             this.button_30.Text = "30";
             this.button_30.UseVisualStyleBackColor = true;
@@ -682,9 +709,10 @@ namespace espn
             // 
             // button_15
             // 
-            this.button_15.Location = new System.Drawing.Point(531, 313);
+            this.button_15.Location = new System.Drawing.Point(796, 482);
+            this.button_15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_15.Name = "button_15";
-            this.button_15.Size = new System.Drawing.Size(46, 23);
+            this.button_15.Size = new System.Drawing.Size(69, 35);
             this.button_15.TabIndex = 10;
             this.button_15.Text = "15";
             this.button_15.UseVisualStyleBackColor = true;
@@ -692,9 +720,10 @@ namespace espn
             // 
             // button_7
             // 
-            this.button_7.Location = new System.Drawing.Point(481, 313);
+            this.button_7.Location = new System.Drawing.Point(722, 482);
+            this.button_7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_7.Name = "button_7";
-            this.button_7.Size = new System.Drawing.Size(46, 23);
+            this.button_7.Size = new System.Drawing.Size(69, 35);
             this.button_7.TabIndex = 9;
             this.button_7.Text = "7";
             this.button_7.UseVisualStyleBackColor = true;
@@ -706,17 +735,19 @@ namespace espn
             this.mode_comboBox.Items.AddRange(new object[] {
             "Games",
             "Days"});
-            this.mode_comboBox.Location = new System.Drawing.Point(280, 313);
+            this.mode_comboBox.Location = new System.Drawing.Point(420, 482);
+            this.mode_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mode_comboBox.Name = "mode_comboBox";
-            this.mode_comboBox.Size = new System.Drawing.Size(121, 24);
+            this.mode_comboBox.Size = new System.Drawing.Size(180, 33);
             this.mode_comboBox.TabIndex = 8;
             this.mode_comboBox.DropDownClosed += new System.EventHandler(this.mode_comboBox_DropDownClosed);
             // 
             // numOf_textBox
             // 
-            this.numOf_textBox.Location = new System.Drawing.Point(411, 314);
+            this.numOf_textBox.Location = new System.Drawing.Point(616, 483);
+            this.numOf_textBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numOf_textBox.Name = "numOf_textBox";
-            this.numOf_textBox.Size = new System.Drawing.Size(51, 22);
+            this.numOf_textBox.Size = new System.Drawing.Size(74, 30);
             this.numOf_textBox.TabIndex = 7;
             this.numOf_textBox.TextChanged += new System.EventHandler(this.numOf_textBox_TextChanged);
             // 
@@ -725,14 +756,14 @@ namespace espn
             this.stats_dataGridView.AllowUserToDeleteRows = false;
             this.stats_dataGridView.BackgroundColor = System.Drawing.Color.OldLace;
             this.stats_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.stats_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.stats_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.stats_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.stats_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Min,
@@ -751,34 +782,37 @@ namespace espn
             this.Pts,
             this.Gp,
             this.Score});
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.stats_dataGridView.DefaultCellStyle = dataGridViewCellStyle45;
-            this.stats_dataGridView.Location = new System.Drawing.Point(202, 347);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.stats_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.stats_dataGridView.Location = new System.Drawing.Point(303, 534);
+            this.stats_dataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.stats_dataGridView.Name = "stats_dataGridView";
             this.stats_dataGridView.ReadOnly = true;
             this.stats_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.stats_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.stats_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.stats_dataGridView.RowHeadersVisible = false;
-            this.stats_dataGridView.Size = new System.Drawing.Size(897, 56);
+            this.stats_dataGridView.RowHeadersWidth = 62;
+            this.stats_dataGridView.Size = new System.Drawing.Size(1346, 86);
             this.stats_dataGridView.TabIndex = 5;
             this.stats_dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stats_dataGridView_CellClick);
             // 
             // Min
             // 
             this.Min.HeaderText = "MIN";
+            this.Min.MinimumWidth = 8;
             this.Min.Name = "Min";
             this.Min.ReadOnly = true;
             this.Min.Width = 50;
@@ -786,6 +820,7 @@ namespace espn
             // FgmFga
             // 
             this.FgmFga.HeaderText = "FGM-FGA";
+            this.FgmFga.MinimumWidth = 8;
             this.FgmFga.Name = "FgmFga";
             this.FgmFga.ReadOnly = true;
             this.FgmFga.Width = 80;
@@ -793,6 +828,7 @@ namespace espn
             // FgPer
             // 
             this.FgPer.HeaderText = "FG%";
+            this.FgPer.MinimumWidth = 8;
             this.FgPer.Name = "FgPer";
             this.FgPer.ReadOnly = true;
             this.FgPer.Width = 50;
@@ -800,6 +836,7 @@ namespace espn
             // Tpm
             // 
             this.Tpm.HeaderText = "3PM-3PA";
+            this.Tpm.MinimumWidth = 8;
             this.Tpm.Name = "Tpm";
             this.Tpm.ReadOnly = true;
             this.Tpm.Width = 80;
@@ -807,6 +844,7 @@ namespace espn
             // TpPer
             // 
             this.TpPer.HeaderText = "3P%";
+            this.TpPer.MinimumWidth = 8;
             this.TpPer.Name = "TpPer";
             this.TpPer.ReadOnly = true;
             this.TpPer.Width = 50;
@@ -814,6 +852,7 @@ namespace espn
             // FtmFta
             // 
             this.FtmFta.HeaderText = "FTM-FTA";
+            this.FtmFta.MinimumWidth = 8;
             this.FtmFta.Name = "FtmFta";
             this.FtmFta.ReadOnly = true;
             this.FtmFta.Width = 80;
@@ -821,6 +860,7 @@ namespace espn
             // FtPer
             // 
             this.FtPer.HeaderText = "FT%";
+            this.FtPer.MinimumWidth = 8;
             this.FtPer.Name = "FtPer";
             this.FtPer.ReadOnly = true;
             this.FtPer.Width = 50;
@@ -828,6 +868,7 @@ namespace espn
             // Reb
             // 
             this.Reb.HeaderText = "REB";
+            this.Reb.MinimumWidth = 8;
             this.Reb.Name = "Reb";
             this.Reb.ReadOnly = true;
             this.Reb.Width = 50;
@@ -835,6 +876,7 @@ namespace espn
             // Ast
             // 
             this.Ast.HeaderText = "AST";
+            this.Ast.MinimumWidth = 8;
             this.Ast.Name = "Ast";
             this.Ast.ReadOnly = true;
             this.Ast.Width = 50;
@@ -842,6 +884,7 @@ namespace espn
             // Blk
             // 
             this.Blk.HeaderText = "BLK";
+            this.Blk.MinimumWidth = 8;
             this.Blk.Name = "Blk";
             this.Blk.ReadOnly = true;
             this.Blk.Width = 50;
@@ -849,6 +892,7 @@ namespace espn
             // Stl
             // 
             this.Stl.HeaderText = "STL";
+            this.Stl.MinimumWidth = 8;
             this.Stl.Name = "Stl";
             this.Stl.ReadOnly = true;
             this.Stl.Width = 50;
@@ -856,6 +900,7 @@ namespace espn
             // Pf
             // 
             this.Pf.HeaderText = "PF";
+            this.Pf.MinimumWidth = 8;
             this.Pf.Name = "Pf";
             this.Pf.ReadOnly = true;
             this.Pf.Width = 50;
@@ -863,6 +908,7 @@ namespace espn
             // To
             // 
             this.To.HeaderText = "TO";
+            this.To.MinimumWidth = 8;
             this.To.Name = "To";
             this.To.ReadOnly = true;
             this.To.Width = 50;
@@ -870,6 +916,7 @@ namespace espn
             // Pts
             // 
             this.Pts.HeaderText = "PTS";
+            this.Pts.MinimumWidth = 8;
             this.Pts.Name = "Pts";
             this.Pts.ReadOnly = true;
             this.Pts.Width = 50;
@@ -877,6 +924,7 @@ namespace espn
             // Gp
             // 
             this.Gp.HeaderText = "GP";
+            this.Gp.MinimumWidth = 8;
             this.Gp.Name = "Gp";
             this.Gp.ReadOnly = true;
             this.Gp.Width = 50;
@@ -884,15 +932,17 @@ namespace espn
             // Score
             // 
             this.Score.HeaderText = "Rank";
+            this.Score.MinimumWidth = 8;
             this.Score.Name = "Score";
             this.Score.ReadOnly = true;
             this.Score.Width = 50;
             // 
             // player_pictureBox
             // 
-            this.player_pictureBox.Location = new System.Drawing.Point(207, 18);
+            this.player_pictureBox.Location = new System.Drawing.Point(310, 28);
+            this.player_pictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.player_pictureBox.Name = "player_pictureBox";
-            this.player_pictureBox.Size = new System.Drawing.Size(264, 278);
+            this.player_pictureBox.Size = new System.Drawing.Size(396, 428);
             this.player_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.player_pictureBox.TabIndex = 4;
             this.player_pictureBox.TabStop = false;
@@ -900,9 +950,10 @@ namespace espn
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(4, 19);
+            this.nameLabel.Location = new System.Drawing.Point(6, 29);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(56, 16);
+            this.nameLabel.Size = new System.Drawing.Size(81, 25);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name :";
             // 
@@ -914,28 +965,31 @@ namespace espn
             this.gameLogTab.Controls.Add(this.gameLog_panel);
             this.gameLogTab.Controls.Add(this.label28);
             this.gameLogTab.Controls.Add(this.gameLog_autoCompleteTextBox);
-            this.gameLogTab.Location = new System.Drawing.Point(4, 25);
+            this.gameLogTab.Location = new System.Drawing.Point(4, 34);
+            this.gameLogTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gameLogTab.Name = "gameLogTab";
-            this.gameLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.gameLogTab.Size = new System.Drawing.Size(1100, 410);
+            this.gameLogTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gameLogTab.Size = new System.Drawing.Size(1654, 637);
             this.gameLogTab.TabIndex = 4;
             this.gameLogTab.Text = "Game Log";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(810, 9);
+            this.label29.Location = new System.Drawing.Point(1215, 14);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(154, 16);
+            this.label29.Size = new System.Drawing.Size(219, 25);
             this.label29.TabIndex = 24;
             this.label29.Text = "Last Search Players :";
             // 
             // lastPlayersGameLog_comboBox
             // 
             this.lastPlayersGameLog_comboBox.FormattingEnabled = true;
-            this.lastPlayersGameLog_comboBox.Location = new System.Drawing.Point(971, 5);
+            this.lastPlayersGameLog_comboBox.Location = new System.Drawing.Point(1456, 8);
+            this.lastPlayersGameLog_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lastPlayersGameLog_comboBox.Name = "lastPlayersGameLog_comboBox";
-            this.lastPlayersGameLog_comboBox.Size = new System.Drawing.Size(121, 24);
+            this.lastPlayersGameLog_comboBox.Size = new System.Drawing.Size(180, 33);
             this.lastPlayersGameLog_comboBox.TabIndex = 23;
             this.lastPlayersGameLog_comboBox.SelectedIndexChanged += new System.EventHandler(this.lastPlayersGameLog_comboBox_SelectedIndexChanged);
             // 
@@ -945,18 +999,20 @@ namespace espn
             this.gameLog_panel.Controls.Add(this.startEndTimesGameLog_label);
             this.gameLog_panel.Controls.Add(this.playerNameGameLog_label);
             this.gameLog_panel.Controls.Add(this.gameLog_dataGridView);
-            this.gameLog_panel.Location = new System.Drawing.Point(3, 33);
+            this.gameLog_panel.Location = new System.Drawing.Point(4, 51);
+            this.gameLog_panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gameLog_panel.Name = "gameLog_panel";
-            this.gameLog_panel.Size = new System.Drawing.Size(1097, 374);
+            this.gameLog_panel.Size = new System.Drawing.Size(1646, 575);
             this.gameLog_panel.TabIndex = 22;
             // 
             // startEndTimesGameLog_label
             // 
             this.startEndTimesGameLog_label.AutoSize = true;
             this.startEndTimesGameLog_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startEndTimesGameLog_label.Location = new System.Drawing.Point(890, 5);
+            this.startEndTimesGameLog_label.Location = new System.Drawing.Point(1335, 8);
+            this.startEndTimesGameLog_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.startEndTimesGameLog_label.Name = "startEndTimesGameLog_label";
-            this.startEndTimesGameLog_label.Size = new System.Drawing.Size(97, 20);
+            this.startEndTimesGameLog_label.Size = new System.Drawing.Size(136, 29);
             this.startEndTimesGameLog_label.TabIndex = 22;
             this.startEndTimesGameLog_label.Text = "Start - End";
             // 
@@ -964,9 +1020,10 @@ namespace espn
             // 
             this.playerNameGameLog_label.AutoSize = true;
             this.playerNameGameLog_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerNameGameLog_label.Location = new System.Drawing.Point(6, 5);
+            this.playerNameGameLog_label.Location = new System.Drawing.Point(9, 8);
+            this.playerNameGameLog_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playerNameGameLog_label.Name = "playerNameGameLog_label";
-            this.playerNameGameLog_label.Size = new System.Drawing.Size(109, 20);
+            this.playerNameGameLog_label.Size = new System.Drawing.Size(163, 29);
             this.playerNameGameLog_label.TabIndex = 21;
             this.playerNameGameLog_label.Text = "Player Name";
             // 
@@ -977,14 +1034,14 @@ namespace espn
             this.gameLog_dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gameLog_dataGridView.BackgroundColor = System.Drawing.Color.OldLace;
             this.gameLog_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gameLog_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameLog_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gameLog_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gameLog_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date_GameLog,
@@ -1005,202 +1062,226 @@ namespace espn
             this.Pts_GameLog,
             this.Score_GameLog});
             this.gameLog_dataGridView.ContextMenuStrip = this.gameLog_contextMenuStrip;
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gameLog_dataGridView.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gameLog_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.gameLog_dataGridView.EnableHeadersVisualStyles = false;
-            this.gameLog_dataGridView.Location = new System.Drawing.Point(0, 28);
+            this.gameLog_dataGridView.Location = new System.Drawing.Point(0, 43);
+            this.gameLog_dataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gameLog_dataGridView.Name = "gameLog_dataGridView";
             this.gameLog_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gameLog_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameLog_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gameLog_dataGridView.RowHeadersWidth = 50;
-            this.gameLog_dataGridView.Size = new System.Drawing.Size(1097, 356);
+            this.gameLog_dataGridView.Size = new System.Drawing.Size(1646, 548);
             this.gameLog_dataGridView.TabIndex = 20;
             this.gameLog_dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.gameLog_dataGridView_RowStateChanged);
             // 
             // Date_GameLog
             // 
             this.Date_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle48.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle48.NullValue = null;
-            this.Date_GameLog.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Date_GameLog.DefaultCellStyle = dataGridViewCellStyle5;
             this.Date_GameLog.HeaderText = "Date";
+            this.Date_GameLog.MinimumWidth = 8;
             this.Date_GameLog.Name = "Date_GameLog";
-            this.Date_GameLog.Width = 65;
+            this.Date_GameLog.Width = 93;
             // 
             // Opp_GameLog
             // 
             this.Opp_GameLog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Opp_GameLog.HeaderText = "Opp";
+            this.Opp_GameLog.MinimumWidth = 8;
             this.Opp_GameLog.Name = "Opp_GameLog";
-            this.Opp_GameLog.Width = 61;
+            this.Opp_GameLog.Width = 89;
             // 
             // Min_GameLog
             // 
             this.Min_GameLog.HeaderText = "MIN";
+            this.Min_GameLog.MinimumWidth = 8;
             this.Min_GameLog.Name = "Min_GameLog";
             this.Min_GameLog.Width = 50;
             // 
             // FgmFga_GameLog
             // 
             this.FgmFga_GameLog.HeaderText = "FGM-FGA";
+            this.FgmFga_GameLog.MinimumWidth = 8;
             this.FgmFga_GameLog.Name = "FgmFga_GameLog";
             this.FgmFga_GameLog.Width = 80;
             // 
             // FgPer_GameLog
             // 
             this.FgPer_GameLog.HeaderText = "FG%";
+            this.FgPer_GameLog.MinimumWidth = 8;
             this.FgPer_GameLog.Name = "FgPer_GameLog";
             this.FgPer_GameLog.Width = 50;
             // 
             // TpmTpa_GameLog
             // 
             this.TpmTpa_GameLog.HeaderText = "3PM-3PA";
+            this.TpmTpa_GameLog.MinimumWidth = 8;
             this.TpmTpa_GameLog.Name = "TpmTpa_GameLog";
             this.TpmTpa_GameLog.Width = 80;
             // 
             // TpPer_GameLog
             // 
             this.TpPer_GameLog.HeaderText = "3P%";
+            this.TpPer_GameLog.MinimumWidth = 8;
             this.TpPer_GameLog.Name = "TpPer_GameLog";
             this.TpPer_GameLog.Width = 50;
             // 
             // FtmFta_GameLog
             // 
             this.FtmFta_GameLog.HeaderText = "FTM-FTA";
+            this.FtmFta_GameLog.MinimumWidth = 8;
             this.FtmFta_GameLog.Name = "FtmFta_GameLog";
             this.FtmFta_GameLog.Width = 80;
             // 
             // FtPer_GameLog
             // 
             this.FtPer_GameLog.HeaderText = "FT%";
+            this.FtPer_GameLog.MinimumWidth = 8;
             this.FtPer_GameLog.Name = "FtPer_GameLog";
             this.FtPer_GameLog.Width = 50;
             // 
             // Reb_GameLog
             // 
             this.Reb_GameLog.HeaderText = "REB";
+            this.Reb_GameLog.MinimumWidth = 8;
             this.Reb_GameLog.Name = "Reb_GameLog";
             this.Reb_GameLog.Width = 50;
             // 
             // Ast_GameLog
             // 
             this.Ast_GameLog.HeaderText = "AST";
+            this.Ast_GameLog.MinimumWidth = 8;
             this.Ast_GameLog.Name = "Ast_GameLog";
             this.Ast_GameLog.Width = 50;
             // 
             // Blk_GameLog
             // 
             this.Blk_GameLog.HeaderText = "BLK";
+            this.Blk_GameLog.MinimumWidth = 8;
             this.Blk_GameLog.Name = "Blk_GameLog";
             this.Blk_GameLog.Width = 50;
             // 
             // Stl_GameLog
             // 
             this.Stl_GameLog.HeaderText = "STL";
+            this.Stl_GameLog.MinimumWidth = 8;
             this.Stl_GameLog.Name = "Stl_GameLog";
             this.Stl_GameLog.Width = 50;
             // 
             // Pf_GameLog
             // 
             this.Pf_GameLog.HeaderText = "PF";
+            this.Pf_GameLog.MinimumWidth = 8;
             this.Pf_GameLog.Name = "Pf_GameLog";
             this.Pf_GameLog.Width = 50;
             // 
             // To_GameLog
             // 
             this.To_GameLog.HeaderText = "TO";
+            this.To_GameLog.MinimumWidth = 8;
             this.To_GameLog.Name = "To_GameLog";
             this.To_GameLog.Width = 50;
             // 
             // Pts_GameLog
             // 
             this.Pts_GameLog.HeaderText = "PTS";
+            this.Pts_GameLog.MinimumWidth = 8;
             this.Pts_GameLog.Name = "Pts_GameLog";
             this.Pts_GameLog.Width = 50;
             // 
             // Score_GameLog
             // 
             this.Score_GameLog.HeaderText = "Score";
+            this.Score_GameLog.MinimumWidth = 8;
             this.Score_GameLog.Name = "Score_GameLog";
             this.Score_GameLog.Width = 70;
             // 
             // gameLog_contextMenuStrip
             // 
+            this.gameLog_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.gameLog_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyTableToolStripMenuItem,
             this.copyAvgStatsToolStripMenuItem});
             this.gameLog_contextMenuStrip.Name = "gameLog_contextMenuStrip";
-            this.gameLog_contextMenuStrip.Size = new System.Drawing.Size(158, 48);
+            this.gameLog_contextMenuStrip.Size = new System.Drawing.Size(212, 68);
             // 
             // copyTableToolStripMenuItem
             // 
             this.copyTableToolStripMenuItem.Name = "copyTableToolStripMenuItem";
-            this.copyTableToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.copyTableToolStripMenuItem.Size = new System.Drawing.Size(211, 32);
             this.copyTableToolStripMenuItem.Text = "Copy Table";
             this.copyTableToolStripMenuItem.Click += new System.EventHandler(this.copyTableToolStripMenuItem_Click);
             // 
             // copyAvgStatsToolStripMenuItem
             // 
             this.copyAvgStatsToolStripMenuItem.Name = "copyAvgStatsToolStripMenuItem";
-            this.copyAvgStatsToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.copyAvgStatsToolStripMenuItem.Size = new System.Drawing.Size(211, 32);
             this.copyAvgStatsToolStripMenuItem.Text = "Copy  Avg Stats";
             this.copyAvgStatsToolStripMenuItem.Click += new System.EventHandler(this.copyAvgStatsToolStripMenuItem_Click);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(8, 7);
+            this.label28.Location = new System.Drawing.Point(12, 11);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(105, 16);
+            this.label28.Size = new System.Drawing.Size(148, 25);
             this.label28.TabIndex = 18;
             this.label28.Text = "Player Name :";
             // 
             // gameLog_autoCompleteTextBox
             // 
-            this.gameLog_autoCompleteTextBox.Location = new System.Drawing.Point(120, 5);
+            this.gameLog_autoCompleteTextBox.Location = new System.Drawing.Point(180, 8);
+            this.gameLog_autoCompleteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gameLog_autoCompleteTextBox.Name = "gameLog_autoCompleteTextBox";
-            this.gameLog_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.gameLog_autoCompleteTextBox.Size = new System.Drawing.Size(193, 30);
             this.gameLog_autoCompleteTextBox.TabIndex = 19;
             this.gameLog_autoCompleteTextBox.Values = null;
             // 
             // compare_tabPage
             // 
             this.compare_tabPage.BackColor = System.Drawing.Color.Wheat;
+            this.compare_tabPage.Controls.Add(this.compare_telegram_button);
             this.compare_tabPage.Controls.Add(this.compareScreenshot_button);
             this.compare_tabPage.Controls.Add(this.compare_panel);
             this.compare_tabPage.Controls.Add(this.copyChart_button);
             this.compare_tabPage.Controls.Add(this.copyCompare_button);
             this.compare_tabPage.Controls.Add(this.compare_chart);
             this.compare_tabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compare_tabPage.Location = new System.Drawing.Point(4, 25);
+            this.compare_tabPage.Location = new System.Drawing.Point(4, 34);
+            this.compare_tabPage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compare_tabPage.Name = "compare_tabPage";
-            this.compare_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.compare_tabPage.Size = new System.Drawing.Size(1100, 410);
+            this.compare_tabPage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.compare_tabPage.Size = new System.Drawing.Size(1654, 639);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
             // 
             // compareScreenshot_button
             // 
-            this.compareScreenshot_button.Location = new System.Drawing.Point(345, 169);
+            this.compareScreenshot_button.Location = new System.Drawing.Point(518, 260);
+            this.compareScreenshot_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compareScreenshot_button.Name = "compareScreenshot_button";
-            this.compareScreenshot_button.Size = new System.Drawing.Size(100, 26);
+            this.compareScreenshot_button.Size = new System.Drawing.Size(150, 40);
             this.compareScreenshot_button.TabIndex = 61;
             this.compareScreenshot_button.Text = "ScreenShot";
             this.compareScreenshot_button.UseVisualStyleBackColor = true;
-            this.compareScreenshot_button.Click += new System.EventHandler(this.compareScreenshot_button_Click);
+            this.compareScreenshot_button.Click += new System.EventHandler(this.compareScreenShot_button_Click);
             // 
             // compare_panel
             // 
@@ -1249,9 +1330,10 @@ namespace espn
             this.compare_panel.Controls.Add(this.reb1_label);
             this.compare_panel.Controls.Add(this.fg1_label);
             this.compare_panel.Controls.Add(this.tpm1_label);
-            this.compare_panel.Location = new System.Drawing.Point(7, 6);
+            this.compare_panel.Location = new System.Drawing.Point(10, 9);
+            this.compare_panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compare_panel.Name = "compare_panel";
-            this.compare_panel.Size = new System.Drawing.Size(335, 398);
+            this.compare_panel.Size = new System.Drawing.Size(502, 612);
             this.compare_panel.TabIndex = 60;
             // 
             // compare_last_comboBox
@@ -1265,72 +1347,80 @@ namespace espn
             "30",
             "60",
             "Max"});
-            this.compare_last_comboBox.Location = new System.Drawing.Point(212, 22);
+            this.compare_last_comboBox.Location = new System.Drawing.Point(318, 34);
+            this.compare_last_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compare_last_comboBox.Name = "compare_last_comboBox";
-            this.compare_last_comboBox.Size = new System.Drawing.Size(115, 24);
+            this.compare_last_comboBox.Size = new System.Drawing.Size(170, 33);
             this.compare_last_comboBox.TabIndex = 25;
             this.compare_last_comboBox.SelectedValueChanged += new System.EventHandler(this.compare_last_comboBox_SelectedValueChanged);
             // 
             // score2_label
             // 
             this.score2_label.AutoSize = true;
-            this.score2_label.Location = new System.Drawing.Point(246, 380);
+            this.score2_label.Location = new System.Drawing.Point(369, 585);
+            this.score2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score2_label.Name = "score2_label";
-            this.score2_label.Size = new System.Drawing.Size(33, 16);
+            this.score2_label.Size = new System.Drawing.Size(49, 25);
             this.score2_label.TabIndex = 59;
             this.score2_label.Text = "N\\A";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 49);
+            this.label3.Location = new System.Drawing.Point(45, 75);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.Size = new System.Drawing.Size(91, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Player 1";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(137, 380);
+            this.label27.Location = new System.Drawing.Point(206, 585);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(43, 16);
+            this.label27.Size = new System.Drawing.Size(61, 25);
             this.label27.TabIndex = 58;
             this.label27.Text = "Rank";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 49);
+            this.label2.Location = new System.Drawing.Point(350, 75);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
+            this.label2.Size = new System.Drawing.Size(91, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Player 2";
             // 
             // score1_label
             // 
             this.score1_label.AutoSize = true;
-            this.score1_label.Location = new System.Drawing.Point(40, 380);
+            this.score1_label.Location = new System.Drawing.Point(60, 585);
+            this.score1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score1_label.Name = "score1_label";
-            this.score1_label.Size = new System.Drawing.Size(33, 16);
+            this.score1_label.Size = new System.Drawing.Size(49, 25);
             this.score1_label.TabIndex = 57;
             this.score1_label.Text = "N\\A";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(147, 97);
+            this.label4.Location = new System.Drawing.Point(220, 149);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 16);
+            this.label4.Size = new System.Drawing.Size(42, 25);
             this.label4.TabIndex = 11;
             this.label4.Text = "GP";
             // 
             // tradePlayers_button
             // 
             this.tradePlayers_button.BackColor = System.Drawing.Color.DarkOrange;
-            this.tradePlayers_button.Location = new System.Drawing.Point(131, 36);
+            this.tradePlayers_button.Location = new System.Drawing.Point(196, 55);
+            this.tradePlayers_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tradePlayers_button.Name = "tradePlayers_button";
-            this.tradePlayers_button.Size = new System.Drawing.Size(69, 44);
+            this.tradePlayers_button.Size = new System.Drawing.Size(104, 68);
             this.tradePlayers_button.TabIndex = 54;
             this.tradePlayers_button.Text = "Trade Players";
             this.tradePlayers_button.UseVisualStyleBackColor = false;
@@ -1339,9 +1429,10 @@ namespace espn
             // pts_label
             // 
             this.pts_label.AutoSize = true;
-            this.pts_label.Location = new System.Drawing.Point(146, 148);
+            this.pts_label.Location = new System.Drawing.Point(219, 228);
+            this.pts_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pts_label.Name = "pts_label";
-            this.pts_label.Size = new System.Drawing.Size(29, 16);
+            this.pts_label.Size = new System.Drawing.Size(43, 25);
             this.pts_label.TabIndex = 12;
             this.pts_label.Text = "Pts";
             this.pts_label.Click += new System.EventHandler(this.pts_label_Click);
@@ -1349,9 +1440,10 @@ namespace espn
             // tpm_label
             // 
             this.tpm_label.AutoSize = true;
-            this.tpm_label.Location = new System.Drawing.Point(142, 278);
+            this.tpm_label.Location = new System.Drawing.Point(213, 428);
+            this.tpm_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpm_label.Name = "tpm_label";
-            this.tpm_label.Size = new System.Drawing.Size(37, 16);
+            this.tpm_label.Size = new System.Drawing.Size(56, 25);
             this.tpm_label.TabIndex = 13;
             this.tpm_label.Text = "3PM";
             this.tpm_label.Click += new System.EventHandler(this.tpm_label_Click);
@@ -1359,9 +1451,10 @@ namespace espn
             // ast_label
             // 
             this.ast_label.AutoSize = true;
-            this.ast_label.Location = new System.Drawing.Point(146, 200);
+            this.ast_label.Location = new System.Drawing.Point(219, 308);
+            this.ast_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ast_label.Name = "ast_label";
-            this.ast_label.Size = new System.Drawing.Size(29, 16);
+            this.ast_label.Size = new System.Drawing.Size(44, 25);
             this.ast_label.TabIndex = 14;
             this.ast_label.Text = "Ast";
             this.ast_label.Click += new System.EventHandler(this.ast_label_Click);
@@ -1369,9 +1462,10 @@ namespace espn
             // min_label
             // 
             this.min_label.AutoSize = true;
-            this.min_label.Location = new System.Drawing.Point(145, 122);
+            this.min_label.Location = new System.Drawing.Point(218, 188);
+            this.min_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.min_label.Name = "min_label";
-            this.min_label.Size = new System.Drawing.Size(31, 16);
+            this.min_label.Size = new System.Drawing.Size(47, 25);
             this.min_label.TabIndex = 15;
             this.min_label.Text = "Min";
             this.min_label.Click += new System.EventHandler(this.min_label_Click);
@@ -1379,18 +1473,20 @@ namespace espn
             // pts2_label
             // 
             this.pts2_label.AutoSize = true;
-            this.pts2_label.Location = new System.Drawing.Point(246, 148);
+            this.pts2_label.Location = new System.Drawing.Point(369, 228);
+            this.pts2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pts2_label.Name = "pts2_label";
-            this.pts2_label.Size = new System.Drawing.Size(33, 16);
+            this.pts2_label.Size = new System.Drawing.Size(49, 25);
             this.pts2_label.TabIndex = 47;
             this.pts2_label.Text = "N\\A";
             // 
             // fg_label
             // 
             this.fg_label.AutoSize = true;
-            this.fg_label.Location = new System.Drawing.Point(147, 304);
+            this.fg_label.Location = new System.Drawing.Point(220, 468);
+            this.fg_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fg_label.Name = "fg_label";
-            this.fg_label.Size = new System.Drawing.Size(27, 16);
+            this.fg_label.Size = new System.Drawing.Size(41, 25);
             this.fg_label.TabIndex = 16;
             this.fg_label.Text = "FG";
             this.fg_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1399,18 +1495,20 @@ namespace espn
             // ast2_label
             // 
             this.ast2_label.AutoSize = true;
-            this.ast2_label.Location = new System.Drawing.Point(246, 200);
+            this.ast2_label.Location = new System.Drawing.Point(369, 308);
+            this.ast2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ast2_label.Name = "ast2_label";
-            this.ast2_label.Size = new System.Drawing.Size(33, 16);
+            this.ast2_label.Size = new System.Drawing.Size(49, 25);
             this.ast2_label.TabIndex = 46;
             this.ast2_label.Text = "N\\A";
             // 
             // stl_label
             // 
             this.stl_label.AutoSize = true;
-            this.stl_label.Location = new System.Drawing.Point(148, 226);
+            this.stl_label.Location = new System.Drawing.Point(222, 348);
+            this.stl_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stl_label.Name = "stl_label";
-            this.stl_label.Size = new System.Drawing.Size(25, 16);
+            this.stl_label.Size = new System.Drawing.Size(38, 25);
             this.stl_label.TabIndex = 17;
             this.stl_label.Text = "Stl";
             this.stl_label.Click += new System.EventHandler(this.stl_label_Click);
@@ -1418,18 +1516,20 @@ namespace espn
             // stl2_label
             // 
             this.stl2_label.AutoSize = true;
-            this.stl2_label.Location = new System.Drawing.Point(246, 226);
+            this.stl2_label.Location = new System.Drawing.Point(369, 348);
+            this.stl2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stl2_label.Name = "stl2_label";
-            this.stl2_label.Size = new System.Drawing.Size(33, 16);
+            this.stl2_label.Size = new System.Drawing.Size(49, 25);
             this.stl2_label.TabIndex = 45;
             this.stl2_label.Text = "N\\A";
             // 
             // reb_label
             // 
             this.reb_label.AutoSize = true;
-            this.reb_label.Location = new System.Drawing.Point(143, 174);
+            this.reb_label.Location = new System.Drawing.Point(214, 268);
+            this.reb_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reb_label.Name = "reb_label";
-            this.reb_label.Size = new System.Drawing.Size(36, 16);
+            this.reb_label.Size = new System.Drawing.Size(50, 25);
             this.reb_label.TabIndex = 18;
             this.reb_label.Text = "Reb";
             this.reb_label.Click += new System.EventHandler(this.reb_label_Click);
@@ -1437,18 +1537,20 @@ namespace espn
             // blk2_label
             // 
             this.blk2_label.AutoSize = true;
-            this.blk2_label.Location = new System.Drawing.Point(246, 252);
+            this.blk2_label.Location = new System.Drawing.Point(369, 388);
+            this.blk2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blk2_label.Name = "blk2_label";
-            this.blk2_label.Size = new System.Drawing.Size(33, 16);
+            this.blk2_label.Size = new System.Drawing.Size(49, 25);
             this.blk2_label.TabIndex = 44;
             this.blk2_label.Text = "N\\A";
             // 
             // blk_label
             // 
             this.blk_label.AutoSize = true;
-            this.blk_label.Location = new System.Drawing.Point(146, 252);
+            this.blk_label.Location = new System.Drawing.Point(219, 388);
+            this.blk_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blk_label.Name = "blk_label";
-            this.blk_label.Size = new System.Drawing.Size(29, 16);
+            this.blk_label.Size = new System.Drawing.Size(42, 25);
             this.blk_label.TabIndex = 19;
             this.blk_label.Text = "Blk";
             this.blk_label.Click += new System.EventHandler(this.blk_label_Click);
@@ -1456,18 +1558,20 @@ namespace espn
             // reb2_label
             // 
             this.reb2_label.AutoSize = true;
-            this.reb2_label.Location = new System.Drawing.Point(246, 174);
+            this.reb2_label.Location = new System.Drawing.Point(369, 268);
+            this.reb2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reb2_label.Name = "reb2_label";
-            this.reb2_label.Size = new System.Drawing.Size(33, 16);
+            this.reb2_label.Size = new System.Drawing.Size(49, 25);
             this.reb2_label.TabIndex = 43;
             this.reb2_label.Text = "N\\A";
             // 
             // to_label
             // 
             this.to_label.AutoSize = true;
-            this.to_label.Location = new System.Drawing.Point(147, 356);
+            this.to_label.Location = new System.Drawing.Point(220, 548);
+            this.to_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.to_label.Name = "to_label";
-            this.to_label.Size = new System.Drawing.Size(28, 16);
+            this.to_label.Size = new System.Drawing.Size(43, 25);
             this.to_label.TabIndex = 20;
             this.to_label.Text = "TO";
             this.to_label.Click += new System.EventHandler(this.to_label_Click);
@@ -1475,18 +1579,20 @@ namespace espn
             // tpm2_label
             // 
             this.tpm2_label.AutoSize = true;
-            this.tpm2_label.Location = new System.Drawing.Point(246, 278);
+            this.tpm2_label.Location = new System.Drawing.Point(369, 428);
+            this.tpm2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpm2_label.Name = "tpm2_label";
-            this.tpm2_label.Size = new System.Drawing.Size(33, 16);
+            this.tpm2_label.Size = new System.Drawing.Size(49, 25);
             this.tpm2_label.TabIndex = 42;
             this.tpm2_label.Text = "N\\A";
             // 
             // ft_label
             // 
             this.ft_label.AutoSize = true;
-            this.ft_label.Location = new System.Drawing.Point(148, 330);
+            this.ft_label.Location = new System.Drawing.Point(222, 508);
+            this.ft_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ft_label.Name = "ft_label";
-            this.ft_label.Size = new System.Drawing.Size(26, 16);
+            this.ft_label.Size = new System.Drawing.Size(39, 25);
             this.ft_label.TabIndex = 21;
             this.ft_label.Text = "FT";
             this.ft_label.Click += new System.EventHandler(this.ft_label_Click);
@@ -1494,27 +1600,30 @@ namespace espn
             // fg2_label
             // 
             this.fg2_label.AutoSize = true;
-            this.fg2_label.Location = new System.Drawing.Point(246, 304);
+            this.fg2_label.Location = new System.Drawing.Point(369, 468);
+            this.fg2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fg2_label.Name = "fg2_label";
-            this.fg2_label.Size = new System.Drawing.Size(33, 16);
+            this.fg2_label.Size = new System.Drawing.Size(49, 25);
             this.fg2_label.TabIndex = 41;
             this.fg2_label.Text = "N\\A";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(39, 3);
+            this.label15.Location = new System.Drawing.Point(58, 5);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 16);
+            this.label15.Size = new System.Drawing.Size(66, 25);
             this.label15.TabIndex = 22;
             this.label15.Text = "Mode";
             // 
             // ft2_label
             // 
             this.ft2_label.AutoSize = true;
-            this.ft2_label.Location = new System.Drawing.Point(246, 330);
+            this.ft2_label.Location = new System.Drawing.Point(369, 508);
+            this.ft2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ft2_label.Name = "ft2_label";
-            this.ft2_label.Size = new System.Drawing.Size(33, 16);
+            this.ft2_label.Size = new System.Drawing.Size(49, 25);
             this.ft2_label.TabIndex = 40;
             this.ft2_label.Text = "N\\A";
             // 
@@ -1526,133 +1635,148 @@ namespace espn
             this.compareMode_comboBox.Items.AddRange(new object[] {
             "Games",
             "Days"});
-            this.compareMode_comboBox.Location = new System.Drawing.Point(7, 22);
+            this.compareMode_comboBox.Location = new System.Drawing.Point(10, 34);
+            this.compareMode_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compareMode_comboBox.Name = "compareMode_comboBox";
-            this.compareMode_comboBox.Size = new System.Drawing.Size(115, 24);
+            this.compareMode_comboBox.Size = new System.Drawing.Size(170, 33);
             this.compareMode_comboBox.TabIndex = 23;
             this.compareMode_comboBox.SelectedValueChanged += new System.EventHandler(this.compareMode_comboBox_SelectedValueChanged);
             // 
             // to2_label
             // 
             this.to2_label.AutoSize = true;
-            this.to2_label.Location = new System.Drawing.Point(246, 356);
+            this.to2_label.Location = new System.Drawing.Point(369, 548);
+            this.to2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.to2_label.Name = "to2_label";
-            this.to2_label.Size = new System.Drawing.Size(33, 16);
+            this.to2_label.Size = new System.Drawing.Size(49, 25);
             this.to2_label.TabIndex = 39;
             this.to2_label.Text = "N\\A";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(244, 3);
+            this.label16.Location = new System.Drawing.Point(366, 5);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(48, 16);
+            this.label16.Size = new System.Drawing.Size(71, 25);
             this.label16.TabIndex = 24;
             this.label16.Text = "Last #";
             // 
             // min2_label
             // 
             this.min2_label.AutoSize = true;
-            this.min2_label.Location = new System.Drawing.Point(246, 122);
+            this.min2_label.Location = new System.Drawing.Point(369, 188);
+            this.min2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.min2_label.Name = "min2_label";
-            this.min2_label.Size = new System.Drawing.Size(33, 16);
+            this.min2_label.Size = new System.Drawing.Size(49, 25);
             this.min2_label.TabIndex = 38;
             this.min2_label.Text = "N\\A";
             // 
             // player1_TextBox
             // 
-            this.player1_TextBox.Location = new System.Drawing.Point(7, 68);
+            this.player1_TextBox.Location = new System.Drawing.Point(10, 105);
+            this.player1_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.player1_TextBox.Name = "player1_TextBox";
-            this.player1_TextBox.Size = new System.Drawing.Size(115, 22);
+            this.player1_TextBox.Size = new System.Drawing.Size(170, 30);
             this.player1_TextBox.TabIndex = 55;
             this.player1_TextBox.Values = null;
             // 
             // gp2_label
             // 
             this.gp2_label.AutoSize = true;
-            this.gp2_label.Location = new System.Drawing.Point(246, 97);
+            this.gp2_label.Location = new System.Drawing.Point(369, 149);
+            this.gp2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gp2_label.Name = "gp2_label";
-            this.gp2_label.Size = new System.Drawing.Size(33, 16);
+            this.gp2_label.Size = new System.Drawing.Size(49, 25);
             this.gp2_label.TabIndex = 37;
             this.gp2_label.Text = "N\\A";
             // 
             // player2_TextBox
             // 
-            this.player2_TextBox.Location = new System.Drawing.Point(210, 68);
+            this.player2_TextBox.Location = new System.Drawing.Point(315, 105);
+            this.player2_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.player2_TextBox.Name = "player2_TextBox";
-            this.player2_TextBox.Size = new System.Drawing.Size(115, 22);
+            this.player2_TextBox.Size = new System.Drawing.Size(170, 30);
             this.player2_TextBox.TabIndex = 56;
             this.player2_TextBox.Values = null;
             // 
             // pts1_label
             // 
             this.pts1_label.AutoSize = true;
-            this.pts1_label.Location = new System.Drawing.Point(40, 148);
+            this.pts1_label.Location = new System.Drawing.Point(60, 228);
+            this.pts1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pts1_label.Name = "pts1_label";
-            this.pts1_label.Size = new System.Drawing.Size(33, 16);
+            this.pts1_label.Size = new System.Drawing.Size(49, 25);
             this.pts1_label.TabIndex = 36;
             this.pts1_label.Text = "N\\A";
             // 
             // gp1_label
             // 
             this.gp1_label.AutoSize = true;
-            this.gp1_label.Location = new System.Drawing.Point(40, 97);
+            this.gp1_label.Location = new System.Drawing.Point(60, 149);
+            this.gp1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gp1_label.Name = "gp1_label";
-            this.gp1_label.Size = new System.Drawing.Size(33, 16);
+            this.gp1_label.Size = new System.Drawing.Size(49, 25);
             this.gp1_label.TabIndex = 26;
             this.gp1_label.Text = "N\\A";
             // 
             // ast1_label
             // 
             this.ast1_label.AutoSize = true;
-            this.ast1_label.Location = new System.Drawing.Point(40, 200);
+            this.ast1_label.Location = new System.Drawing.Point(60, 308);
+            this.ast1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ast1_label.Name = "ast1_label";
-            this.ast1_label.Size = new System.Drawing.Size(33, 16);
+            this.ast1_label.Size = new System.Drawing.Size(49, 25);
             this.ast1_label.TabIndex = 35;
             this.ast1_label.Text = "N\\A";
             // 
             // min1_label
             // 
             this.min1_label.AutoSize = true;
-            this.min1_label.Location = new System.Drawing.Point(40, 122);
+            this.min1_label.Location = new System.Drawing.Point(60, 188);
+            this.min1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.min1_label.Name = "min1_label";
-            this.min1_label.Size = new System.Drawing.Size(33, 16);
+            this.min1_label.Size = new System.Drawing.Size(49, 25);
             this.min1_label.TabIndex = 27;
             this.min1_label.Text = "N\\A";
             // 
             // stl1_label
             // 
             this.stl1_label.AutoSize = true;
-            this.stl1_label.Location = new System.Drawing.Point(40, 226);
+            this.stl1_label.Location = new System.Drawing.Point(60, 348);
+            this.stl1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stl1_label.Name = "stl1_label";
-            this.stl1_label.Size = new System.Drawing.Size(33, 16);
+            this.stl1_label.Size = new System.Drawing.Size(49, 25);
             this.stl1_label.TabIndex = 34;
             this.stl1_label.Text = "N\\A";
             // 
             // to1_label
             // 
             this.to1_label.AutoSize = true;
-            this.to1_label.Location = new System.Drawing.Point(40, 356);
+            this.to1_label.Location = new System.Drawing.Point(60, 548);
+            this.to1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.to1_label.Name = "to1_label";
-            this.to1_label.Size = new System.Drawing.Size(33, 16);
+            this.to1_label.Size = new System.Drawing.Size(49, 25);
             this.to1_label.TabIndex = 28;
             this.to1_label.Text = "N\\A";
             // 
             // blk1_label
             // 
             this.blk1_label.AutoSize = true;
-            this.blk1_label.Location = new System.Drawing.Point(40, 252);
+            this.blk1_label.Location = new System.Drawing.Point(60, 388);
+            this.blk1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blk1_label.Name = "blk1_label";
-            this.blk1_label.Size = new System.Drawing.Size(33, 16);
+            this.blk1_label.Size = new System.Drawing.Size(49, 25);
             this.blk1_label.TabIndex = 33;
             this.blk1_label.Text = "N\\A";
             // 
             // ft1_label
             // 
             this.ft1_label.AutoSize = true;
-            this.ft1_label.Location = new System.Drawing.Point(40, 330);
+            this.ft1_label.Location = new System.Drawing.Point(60, 508);
+            this.ft1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ft1_label.Name = "ft1_label";
-            this.ft1_label.Size = new System.Drawing.Size(33, 16);
+            this.ft1_label.Size = new System.Drawing.Size(49, 25);
             this.ft1_label.TabIndex = 29;
             this.ft1_label.Text = "N\\A";
             this.ft1_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1660,18 +1784,20 @@ namespace espn
             // reb1_label
             // 
             this.reb1_label.AutoSize = true;
-            this.reb1_label.Location = new System.Drawing.Point(40, 174);
+            this.reb1_label.Location = new System.Drawing.Point(60, 268);
+            this.reb1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reb1_label.Name = "reb1_label";
-            this.reb1_label.Size = new System.Drawing.Size(33, 16);
+            this.reb1_label.Size = new System.Drawing.Size(49, 25);
             this.reb1_label.TabIndex = 32;
             this.reb1_label.Text = "N\\A";
             // 
             // fg1_label
             // 
             this.fg1_label.AutoSize = true;
-            this.fg1_label.Location = new System.Drawing.Point(40, 304);
+            this.fg1_label.Location = new System.Drawing.Point(60, 468);
+            this.fg1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fg1_label.Name = "fg1_label";
-            this.fg1_label.Size = new System.Drawing.Size(33, 16);
+            this.fg1_label.Size = new System.Drawing.Size(49, 25);
             this.fg1_label.TabIndex = 30;
             this.fg1_label.Text = "N\\A";
             this.fg1_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1679,17 +1805,19 @@ namespace espn
             // tpm1_label
             // 
             this.tpm1_label.AutoSize = true;
-            this.tpm1_label.Location = new System.Drawing.Point(40, 278);
+            this.tpm1_label.Location = new System.Drawing.Point(60, 428);
+            this.tpm1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpm1_label.Name = "tpm1_label";
-            this.tpm1_label.Size = new System.Drawing.Size(33, 16);
+            this.tpm1_label.Size = new System.Drawing.Size(49, 25);
             this.tpm1_label.TabIndex = 31;
             this.tpm1_label.Text = "N\\A";
             // 
             // copyChart_button
             // 
-            this.copyChart_button.Location = new System.Drawing.Point(345, 234);
+            this.copyChart_button.Location = new System.Drawing.Point(518, 360);
+            this.copyChart_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyChart_button.Name = "copyChart_button";
-            this.copyChart_button.Size = new System.Drawing.Size(95, 23);
+            this.copyChart_button.Size = new System.Drawing.Size(142, 35);
             this.copyChart_button.TabIndex = 53;
             this.copyChart_button.Text = "Copy Chart";
             this.copyChart_button.UseVisualStyleBackColor = true;
@@ -1697,9 +1825,10 @@ namespace espn
             // 
             // copyCompare_button
             // 
-            this.copyCompare_button.Location = new System.Drawing.Point(345, 203);
+            this.copyCompare_button.Location = new System.Drawing.Point(518, 312);
+            this.copyCompare_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyCompare_button.Name = "copyCompare_button";
-            this.copyCompare_button.Size = new System.Drawing.Size(95, 23);
+            this.copyCompare_button.Size = new System.Drawing.Size(142, 35);
             this.copyCompare_button.TabIndex = 52;
             this.copyCompare_button.Text = "Copy Stat";
             this.copyCompare_button.UseVisualStyleBackColor = true;
@@ -1707,36 +1836,37 @@ namespace espn
             // 
             // compare_chart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.compare_chart.ChartAreas.Add(chartArea4);
-            legend4.DockedToChartArea = "ChartArea1";
-            legend4.Name = "Legend1";
-            this.compare_chart.Legends.Add(legend4);
-            this.compare_chart.Location = new System.Drawing.Point(459, 6);
+            chartArea2.Name = "ChartArea1";
+            this.compare_chart.ChartAreas.Add(chartArea2);
+            legend2.DockedToChartArea = "ChartArea1";
+            legend2.Name = "Legend1";
+            this.compare_chart.Legends.Add(legend2);
+            this.compare_chart.Location = new System.Drawing.Point(688, 9);
+            this.compare_chart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.compare_chart.Name = "compare_chart";
-            series7.BorderWidth = 2;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series7.Name = "Series1";
-            series7.Points.Add(dataPoint8);
-            series7.Points.Add(dataPoint9);
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series8.Legend = "Legend1";
-            series8.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series8.Name = "Series2";
-            this.compare_chart.Series.Add(series7);
-            this.compare_chart.Series.Add(series8);
-            this.compare_chart.Size = new System.Drawing.Size(634, 389);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Series1";
+            series3.Points.Add(dataPoint4);
+            series3.Points.Add(dataPoint5);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series4.Legend = "Legend1";
+            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series4.Name = "Series2";
+            this.compare_chart.Series.Add(series3);
+            this.compare_chart.Series.Add(series4);
+            this.compare_chart.Size = new System.Drawing.Size(951, 598);
             this.compare_chart.TabIndex = 50;
             this.compare_chart.Text = "Stat";
-            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title5.Name = "PlayerName";
-            title5.Text = "Player1";
-            this.compare_chart.Titles.Add(title5);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "PlayerName";
+            title1.Text = "Player1";
+            this.compare_chart.Titles.Add(title1);
             // 
             // tradeTab
             // 
@@ -1759,26 +1889,29 @@ namespace espn
             this.tradeTab.Controls.Add(this.label6);
             this.tradeTab.Controls.Add(this.label7);
             this.tradeTab.Controls.Add(this.label8);
-            this.tradeTab.Location = new System.Drawing.Point(4, 25);
+            this.tradeTab.Location = new System.Drawing.Point(4, 34);
+            this.tradeTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tradeTab.Name = "tradeTab";
-            this.tradeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.tradeTab.Size = new System.Drawing.Size(1100, 410);
+            this.tradeTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tradeTab.Size = new System.Drawing.Size(1654, 637);
             this.tradeTab.TabIndex = 2;
             this.tradeTab.Text = "Trade Analyzer";
             // 
             // receivePlayer_TextBox
             // 
-            this.receivePlayer_TextBox.Location = new System.Drawing.Point(151, 94);
+            this.receivePlayer_TextBox.Location = new System.Drawing.Point(226, 145);
+            this.receivePlayer_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.receivePlayer_TextBox.Name = "receivePlayer_TextBox";
-            this.receivePlayer_TextBox.Size = new System.Drawing.Size(123, 22);
+            this.receivePlayer_TextBox.Size = new System.Drawing.Size(182, 30);
             this.receivePlayer_TextBox.TabIndex = 111;
             this.receivePlayer_TextBox.Values = null;
             // 
             // sendPlayer_TextBox
             // 
-            this.sendPlayer_TextBox.Location = new System.Drawing.Point(151, 66);
+            this.sendPlayer_TextBox.Location = new System.Drawing.Point(226, 102);
+            this.sendPlayer_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.sendPlayer_TextBox.Name = "sendPlayer_TextBox";
-            this.sendPlayer_TextBox.Size = new System.Drawing.Size(123, 22);
+            this.sendPlayer_TextBox.Size = new System.Drawing.Size(182, 30);
             this.sendPlayer_TextBox.TabIndex = 110;
             this.sendPlayer_TextBox.Values = null;
             // 
@@ -1786,17 +1919,19 @@ namespace espn
             // 
             this.score_label.AutoSize = true;
             this.score_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.score_label.Location = new System.Drawing.Point(385, 53);
+            this.score_label.Location = new System.Drawing.Point(578, 82);
+            this.score_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score_label.Name = "score_label";
-            this.score_label.Size = new System.Drawing.Size(94, 33);
+            this.score_label.Size = new System.Drawing.Size(138, 52);
             this.score_label.TabIndex = 109;
             this.score_label.Text = "Equal";
             // 
             // screenshot_button
             // 
-            this.screenshot_button.Location = new System.Drawing.Point(919, 384);
+            this.screenshot_button.Location = new System.Drawing.Point(1378, 591);
+            this.screenshot_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.screenshot_button.Name = "screenshot_button";
-            this.screenshot_button.Size = new System.Drawing.Size(100, 23);
+            this.screenshot_button.Size = new System.Drawing.Size(150, 35);
             this.screenshot_button.TabIndex = 108;
             this.screenshot_button.Text = "ScreenShot";
             this.screenshot_button.UseVisualStyleBackColor = true;
@@ -1863,53 +1998,59 @@ namespace espn
             this.trade_panel.Controls.Add(this.blkChartTrade_label);
             this.trade_panel.Controls.Add(this.ftChartTrade_label);
             this.trade_panel.Controls.Add(this.toChartTrade_label);
-            this.trade_panel.Location = new System.Drawing.Point(546, 0);
+            this.trade_panel.Location = new System.Drawing.Point(819, 0);
+            this.trade_panel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trade_panel.Name = "trade_panel";
-            this.trade_panel.Size = new System.Drawing.Size(551, 385);
+            this.trade_panel.Size = new System.Drawing.Size(826, 592);
             this.trade_panel.TabIndex = 107;
             // 
             // scoreTrade_label
             // 
             this.scoreTrade_label.AutoSize = true;
-            this.scoreTrade_label.Location = new System.Drawing.Point(92, 357);
+            this.scoreTrade_label.Location = new System.Drawing.Point(138, 549);
+            this.scoreTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.scoreTrade_label.Name = "scoreTrade_label";
-            this.scoreTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.scoreTrade_label.Size = new System.Drawing.Size(24, 25);
             this.scoreTrade_label.TabIndex = 112;
             this.scoreTrade_label.Text = "0";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(33, 357);
+            this.label23.Location = new System.Drawing.Point(50, 549);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(56, 16);
+            this.label23.Size = new System.Drawing.Size(82, 25);
             this.label23.TabIndex = 111;
             this.label23.Text = "Score :";
             // 
             // score2Trade_label
             // 
             this.score2Trade_label.AutoSize = true;
-            this.score2Trade_label.Location = new System.Drawing.Point(440, 355);
+            this.score2Trade_label.Location = new System.Drawing.Point(660, 546);
+            this.score2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score2Trade_label.Name = "score2Trade_label";
-            this.score2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.score2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.score2Trade_label.TabIndex = 110;
             this.score2Trade_label.Text = "N\\A";
             // 
             // score1Trade_label
             // 
             this.score1Trade_label.AutoSize = true;
-            this.score1Trade_label.Location = new System.Drawing.Point(224, 355);
+            this.score1Trade_label.Location = new System.Drawing.Point(336, 546);
+            this.score1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.score1Trade_label.Name = "score1Trade_label";
-            this.score1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.score1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.score1Trade_label.TabIndex = 109;
             this.score1Trade_label.Text = "N\\A";
             // 
             // scoreChartTrade_label
             // 
             this.scoreChartTrade_label.AutoSize = true;
-            this.scoreChartTrade_label.Location = new System.Drawing.Point(318, 355);
+            this.scoreChartTrade_label.Location = new System.Drawing.Point(477, 546);
+            this.scoreChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.scoreChartTrade_label.Name = "scoreChartTrade_label";
-            this.scoreChartTrade_label.Size = new System.Drawing.Size(48, 16);
+            this.scoreChartTrade_label.Size = new System.Drawing.Size(69, 25);
             this.scoreChartTrade_label.TabIndex = 108;
             this.scoreChartTrade_label.Text = "Score";
             this.scoreChartTrade_label.Click += new System.EventHandler(this.scoreChartTrade_label_Click);
@@ -1918,18 +2059,20 @@ namespace espn
             // 
             this.timePeriod_label.AutoSize = true;
             this.timePeriod_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.timePeriod_label.Location = new System.Drawing.Point(127, 9);
+            this.timePeriod_label.Location = new System.Drawing.Point(190, 14);
+            this.timePeriod_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timePeriod_label.Name = "timePeriod_label";
-            this.timePeriod_label.Size = new System.Drawing.Size(2, 18);
+            this.timePeriod_label.Size = new System.Drawing.Size(2, 27);
             this.timePeriod_label.TabIndex = 107;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(3, 6);
+            this.label26.Location = new System.Drawing.Point(4, 9);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(113, 20);
+            this.label26.Size = new System.Drawing.Size(172, 29);
             this.label26.TabIndex = 106;
             this.label26.Text = "Time Period :";
             // 
@@ -1937,9 +2080,10 @@ namespace espn
             // 
             this.playersReceived_textBox.AutoSize = true;
             this.playersReceived_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playersReceived_textBox.Location = new System.Drawing.Point(161, 62);
+            this.playersReceived_textBox.Location = new System.Drawing.Point(242, 95);
+            this.playersReceived_textBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersReceived_textBox.Name = "playersReceived_textBox";
-            this.playersReceived_textBox.Size = new System.Drawing.Size(2, 18);
+            this.playersReceived_textBox.Size = new System.Drawing.Size(2, 27);
             this.playersReceived_textBox.TabIndex = 105;
             this.playersReceived_textBox.Click += new System.EventHandler(this.playersReceived_textBox_Click);
             // 
@@ -1947,54 +2091,60 @@ namespace espn
             // 
             this.playersSent_textBox.AutoSize = true;
             this.playersSent_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playersSent_textBox.Location = new System.Drawing.Point(127, 36);
+            this.playersSent_textBox.Location = new System.Drawing.Point(190, 55);
+            this.playersSent_textBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersSent_textBox.Name = "playersSent_textBox";
-            this.playersSent_textBox.Size = new System.Drawing.Size(2, 18);
+            this.playersSent_textBox.Size = new System.Drawing.Size(2, 27);
             this.playersSent_textBox.TabIndex = 104;
             this.playersSent_textBox.Click += new System.EventHandler(this.playersSent_textBox_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 123);
+            this.label9.Location = new System.Drawing.Point(51, 189);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 16);
+            this.label9.Size = new System.Drawing.Size(56, 25);
             this.label9.TabIndex = 36;
             this.label9.Text = "Pts :";
             // 
             // ptsTrade_label
             // 
             this.ptsTrade_label.AutoSize = true;
-            this.ptsTrade_label.Location = new System.Drawing.Point(92, 123);
+            this.ptsTrade_label.Location = new System.Drawing.Point(138, 189);
+            this.ptsTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ptsTrade_label.Name = "ptsTrade_label";
-            this.ptsTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.ptsTrade_label.Size = new System.Drawing.Size(24, 25);
             this.ptsTrade_label.TabIndex = 37;
             this.ptsTrade_label.Text = "0";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(34, 253);
+            this.label20.Location = new System.Drawing.Point(51, 389);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 16);
+            this.label20.Size = new System.Drawing.Size(69, 25);
             this.label20.TabIndex = 44;
             this.label20.Text = "3PM :";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(34, 175);
+            this.label19.Location = new System.Drawing.Point(51, 269);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 16);
+            this.label19.Size = new System.Drawing.Size(57, 25);
             this.label19.TabIndex = 45;
             this.label19.Text = "Ast :";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(34, 279);
+            this.label17.Location = new System.Drawing.Point(51, 429);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 16);
+            this.label17.Size = new System.Drawing.Size(54, 25);
             this.label17.TabIndex = 47;
             this.label17.Text = "FG :";
             this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2002,9 +2152,10 @@ namespace espn
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(34, 201);
+            this.label14.Location = new System.Drawing.Point(51, 309);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(33, 16);
+            this.label14.Size = new System.Drawing.Size(51, 25);
             this.label14.TabIndex = 48;
             this.label14.Text = "Stl :";
             // 
@@ -2012,18 +2163,20 @@ namespace espn
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(408, 94);
+            this.label25.Location = new System.Drawing.Point(612, 145);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(98, 24);
+            this.label25.Size = new System.Drawing.Size(145, 33);
             this.label25.TabIndex = 101;
             this.label25.Text = "Received";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(34, 149);
+            this.label13.Location = new System.Drawing.Point(51, 229);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 16);
+            this.label13.Size = new System.Drawing.Size(63, 25);
             this.label13.TabIndex = 49;
             this.label13.Text = "Reb :";
             // 
@@ -2031,9 +2184,10 @@ namespace espn
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 60);
+            this.label22.Location = new System.Drawing.Point(4, 92);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(156, 20);
+            this.label22.Size = new System.Drawing.Size(231, 29);
             this.label22.TabIndex = 63;
             this.label22.Text = "Players Received :";
             // 
@@ -2041,9 +2195,10 @@ namespace espn
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 33);
+            this.label18.Location = new System.Drawing.Point(4, 51);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(120, 20);
+            this.label18.Size = new System.Drawing.Size(174, 29);
             this.label18.TabIndex = 61;
             this.label18.Text = "Players Sent :";
             // 
@@ -2051,207 +2206,230 @@ namespace espn
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(215, 94);
+            this.label24.Location = new System.Drawing.Point(322, 145);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(52, 24);
+            this.label24.Size = new System.Drawing.Size(78, 33);
             this.label24.TabIndex = 100;
             this.label24.Text = "Sent";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(34, 227);
+            this.label12.Location = new System.Drawing.Point(51, 349);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 16);
+            this.label12.Size = new System.Drawing.Size(55, 25);
             this.label12.TabIndex = 50;
             this.label12.Text = "Blk :";
             // 
             // pts2Trade_label
             // 
             this.pts2Trade_label.AutoSize = true;
-            this.pts2Trade_label.Location = new System.Drawing.Point(440, 121);
+            this.pts2Trade_label.Location = new System.Drawing.Point(660, 186);
+            this.pts2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pts2Trade_label.Name = "pts2Trade_label";
-            this.pts2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.pts2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.pts2Trade_label.TabIndex = 98;
             this.pts2Trade_label.Text = "N\\A";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(34, 331);
+            this.label11.Location = new System.Drawing.Point(51, 509);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 16);
+            this.label11.Size = new System.Drawing.Size(56, 25);
             this.label11.TabIndex = 51;
             this.label11.Text = "TO :";
             // 
             // ast2Trade_label
             // 
             this.ast2Trade_label.AutoSize = true;
-            this.ast2Trade_label.Location = new System.Drawing.Point(440, 173);
+            this.ast2Trade_label.Location = new System.Drawing.Point(660, 266);
+            this.ast2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ast2Trade_label.Name = "ast2Trade_label";
-            this.ast2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.ast2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.ast2Trade_label.TabIndex = 97;
             this.ast2Trade_label.Text = "N\\A";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(34, 305);
+            this.label10.Location = new System.Drawing.Point(51, 469);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 16);
+            this.label10.Size = new System.Drawing.Size(52, 25);
             this.label10.TabIndex = 52;
             this.label10.Text = "FT :";
             // 
             // stl2Trade_label
             // 
             this.stl2Trade_label.AutoSize = true;
-            this.stl2Trade_label.Location = new System.Drawing.Point(440, 199);
+            this.stl2Trade_label.Location = new System.Drawing.Point(660, 306);
+            this.stl2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stl2Trade_label.Name = "stl2Trade_label";
-            this.stl2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.stl2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.stl2Trade_label.TabIndex = 96;
             this.stl2Trade_label.Text = "N\\A";
             // 
             // rebTrade_label
             // 
             this.rebTrade_label.AutoSize = true;
-            this.rebTrade_label.Location = new System.Drawing.Point(92, 149);
+            this.rebTrade_label.Location = new System.Drawing.Point(138, 229);
+            this.rebTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rebTrade_label.Name = "rebTrade_label";
-            this.rebTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.rebTrade_label.Size = new System.Drawing.Size(24, 25);
             this.rebTrade_label.TabIndex = 53;
             this.rebTrade_label.Text = "0";
             // 
             // blk2Trade_label
             // 
             this.blk2Trade_label.AutoSize = true;
-            this.blk2Trade_label.Location = new System.Drawing.Point(440, 225);
+            this.blk2Trade_label.Location = new System.Drawing.Point(660, 346);
+            this.blk2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blk2Trade_label.Name = "blk2Trade_label";
-            this.blk2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.blk2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.blk2Trade_label.TabIndex = 95;
             this.blk2Trade_label.Text = "N\\A";
             // 
             // astTrade_label
             // 
             this.astTrade_label.AutoSize = true;
-            this.astTrade_label.Location = new System.Drawing.Point(92, 175);
+            this.astTrade_label.Location = new System.Drawing.Point(138, 269);
+            this.astTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.astTrade_label.Name = "astTrade_label";
-            this.astTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.astTrade_label.Size = new System.Drawing.Size(24, 25);
             this.astTrade_label.TabIndex = 54;
             this.astTrade_label.Text = "0";
             // 
             // reb2Trade_label
             // 
             this.reb2Trade_label.AutoSize = true;
-            this.reb2Trade_label.Location = new System.Drawing.Point(440, 147);
+            this.reb2Trade_label.Location = new System.Drawing.Point(660, 226);
+            this.reb2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reb2Trade_label.Name = "reb2Trade_label";
-            this.reb2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.reb2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.reb2Trade_label.TabIndex = 94;
             this.reb2Trade_label.Text = "N\\A";
             // 
             // stlTrade_label
             // 
             this.stlTrade_label.AutoSize = true;
-            this.stlTrade_label.Location = new System.Drawing.Point(92, 201);
+            this.stlTrade_label.Location = new System.Drawing.Point(138, 309);
+            this.stlTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stlTrade_label.Name = "stlTrade_label";
-            this.stlTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.stlTrade_label.Size = new System.Drawing.Size(24, 25);
             this.stlTrade_label.TabIndex = 55;
             this.stlTrade_label.Text = "0";
             // 
             // tpm2Trade_label
             // 
             this.tpm2Trade_label.AutoSize = true;
-            this.tpm2Trade_label.Location = new System.Drawing.Point(440, 251);
+            this.tpm2Trade_label.Location = new System.Drawing.Point(660, 386);
+            this.tpm2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpm2Trade_label.Name = "tpm2Trade_label";
-            this.tpm2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.tpm2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.tpm2Trade_label.TabIndex = 93;
             this.tpm2Trade_label.Text = "N\\A";
             // 
             // blkTrade_label
             // 
             this.blkTrade_label.AutoSize = true;
-            this.blkTrade_label.Location = new System.Drawing.Point(92, 227);
+            this.blkTrade_label.Location = new System.Drawing.Point(138, 349);
+            this.blkTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blkTrade_label.Name = "blkTrade_label";
-            this.blkTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.blkTrade_label.Size = new System.Drawing.Size(24, 25);
             this.blkTrade_label.TabIndex = 56;
             this.blkTrade_label.Text = "0";
             // 
             // fg2Trade_label
             // 
             this.fg2Trade_label.AutoSize = true;
-            this.fg2Trade_label.Location = new System.Drawing.Point(440, 277);
+            this.fg2Trade_label.Location = new System.Drawing.Point(660, 426);
+            this.fg2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fg2Trade_label.Name = "fg2Trade_label";
-            this.fg2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.fg2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.fg2Trade_label.TabIndex = 92;
             this.fg2Trade_label.Text = "N\\A";
             // 
             // tpmTrade_label
             // 
             this.tpmTrade_label.AutoSize = true;
-            this.tpmTrade_label.Location = new System.Drawing.Point(92, 253);
+            this.tpmTrade_label.Location = new System.Drawing.Point(138, 389);
+            this.tpmTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpmTrade_label.Name = "tpmTrade_label";
-            this.tpmTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.tpmTrade_label.Size = new System.Drawing.Size(24, 25);
             this.tpmTrade_label.TabIndex = 57;
             this.tpmTrade_label.Text = "0";
             // 
             // ft2Trade_label
             // 
             this.ft2Trade_label.AutoSize = true;
-            this.ft2Trade_label.Location = new System.Drawing.Point(440, 303);
+            this.ft2Trade_label.Location = new System.Drawing.Point(660, 466);
+            this.ft2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ft2Trade_label.Name = "ft2Trade_label";
-            this.ft2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.ft2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.ft2Trade_label.TabIndex = 91;
             this.ft2Trade_label.Text = "N\\A";
             // 
             // fgPerTrade_label
             // 
             this.fgPerTrade_label.AutoSize = true;
-            this.fgPerTrade_label.Location = new System.Drawing.Point(92, 279);
+            this.fgPerTrade_label.Location = new System.Drawing.Point(138, 429);
+            this.fgPerTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fgPerTrade_label.Name = "fgPerTrade_label";
-            this.fgPerTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.fgPerTrade_label.Size = new System.Drawing.Size(24, 25);
             this.fgPerTrade_label.TabIndex = 58;
             this.fgPerTrade_label.Text = "0";
             // 
             // to2Trade_label
             // 
             this.to2Trade_label.AutoSize = true;
-            this.to2Trade_label.Location = new System.Drawing.Point(440, 329);
+            this.to2Trade_label.Location = new System.Drawing.Point(660, 506);
+            this.to2Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.to2Trade_label.Name = "to2Trade_label";
-            this.to2Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.to2Trade_label.Size = new System.Drawing.Size(49, 25);
             this.to2Trade_label.TabIndex = 90;
             this.to2Trade_label.Text = "N\\A";
             // 
             // ftPerTrade_label
             // 
             this.ftPerTrade_label.AutoSize = true;
-            this.ftPerTrade_label.Location = new System.Drawing.Point(92, 305);
+            this.ftPerTrade_label.Location = new System.Drawing.Point(138, 469);
+            this.ftPerTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ftPerTrade_label.Name = "ftPerTrade_label";
-            this.ftPerTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.ftPerTrade_label.Size = new System.Drawing.Size(24, 25);
             this.ftPerTrade_label.TabIndex = 59;
             this.ftPerTrade_label.Text = "0";
             // 
             // pts1Trade_label
             // 
             this.pts1Trade_label.AutoSize = true;
-            this.pts1Trade_label.Location = new System.Drawing.Point(224, 121);
+            this.pts1Trade_label.Location = new System.Drawing.Point(336, 186);
+            this.pts1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pts1Trade_label.Name = "pts1Trade_label";
-            this.pts1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.pts1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.pts1Trade_label.TabIndex = 87;
             this.pts1Trade_label.Text = "N\\A";
             // 
             // toTrade_label
             // 
             this.toTrade_label.AutoSize = true;
-            this.toTrade_label.Location = new System.Drawing.Point(92, 331);
+            this.toTrade_label.Location = new System.Drawing.Point(138, 509);
+            this.toTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.toTrade_label.Name = "toTrade_label";
-            this.toTrade_label.Size = new System.Drawing.Size(15, 16);
+            this.toTrade_label.Size = new System.Drawing.Size(24, 25);
             this.toTrade_label.TabIndex = 60;
             this.toTrade_label.Text = "0";
             // 
             // ast1Trade_label
             // 
             this.ast1Trade_label.AutoSize = true;
-            this.ast1Trade_label.Location = new System.Drawing.Point(224, 173);
+            this.ast1Trade_label.Location = new System.Drawing.Point(336, 266);
+            this.ast1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ast1Trade_label.Name = "ast1Trade_label";
-            this.ast1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.ast1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.ast1Trade_label.TabIndex = 86;
             this.ast1Trade_label.Text = "N\\A";
             // 
@@ -2259,27 +2437,30 @@ namespace espn
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(33, 94);
+            this.label21.Location = new System.Drawing.Point(50, 145);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(39, 24);
+            this.label21.Size = new System.Drawing.Size(63, 33);
             this.label21.TabIndex = 62;
             this.label21.Text = "Diff";
             // 
             // stl1Trade_label
             // 
             this.stl1Trade_label.AutoSize = true;
-            this.stl1Trade_label.Location = new System.Drawing.Point(224, 199);
+            this.stl1Trade_label.Location = new System.Drawing.Point(336, 306);
+            this.stl1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stl1Trade_label.Name = "stl1Trade_label";
-            this.stl1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.stl1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.stl1Trade_label.TabIndex = 85;
             this.stl1Trade_label.Text = "N\\A";
             // 
             // ptsChartTrade_label
             // 
             this.ptsChartTrade_label.AutoSize = true;
-            this.ptsChartTrade_label.Location = new System.Drawing.Point(327, 121);
+            this.ptsChartTrade_label.Location = new System.Drawing.Point(490, 186);
+            this.ptsChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ptsChartTrade_label.Name = "ptsChartTrade_label";
-            this.ptsChartTrade_label.Size = new System.Drawing.Size(29, 16);
+            this.ptsChartTrade_label.Size = new System.Drawing.Size(43, 25);
             this.ptsChartTrade_label.TabIndex = 67;
             this.ptsChartTrade_label.Text = "Pts";
             this.ptsChartTrade_label.Click += new System.EventHandler(this.ptsChartTrade_label_Click);
@@ -2287,18 +2468,20 @@ namespace espn
             // blk1Trade_label
             // 
             this.blk1Trade_label.AutoSize = true;
-            this.blk1Trade_label.Location = new System.Drawing.Point(224, 225);
+            this.blk1Trade_label.Location = new System.Drawing.Point(336, 346);
+            this.blk1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blk1Trade_label.Name = "blk1Trade_label";
-            this.blk1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.blk1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.blk1Trade_label.TabIndex = 84;
             this.blk1Trade_label.Text = "N\\A";
             // 
             // tpmChartTrade_label
             // 
             this.tpmChartTrade_label.AutoSize = true;
-            this.tpmChartTrade_label.Location = new System.Drawing.Point(323, 251);
+            this.tpmChartTrade_label.Location = new System.Drawing.Point(484, 386);
+            this.tpmChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpmChartTrade_label.Name = "tpmChartTrade_label";
-            this.tpmChartTrade_label.Size = new System.Drawing.Size(37, 16);
+            this.tpmChartTrade_label.Size = new System.Drawing.Size(56, 25);
             this.tpmChartTrade_label.TabIndex = 68;
             this.tpmChartTrade_label.Text = "3PM";
             this.tpmChartTrade_label.Click += new System.EventHandler(this.tpmChartTrade_label_Click);
@@ -2306,18 +2489,20 @@ namespace espn
             // reb1Trade_label
             // 
             this.reb1Trade_label.AutoSize = true;
-            this.reb1Trade_label.Location = new System.Drawing.Point(224, 147);
+            this.reb1Trade_label.Location = new System.Drawing.Point(336, 226);
+            this.reb1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reb1Trade_label.Name = "reb1Trade_label";
-            this.reb1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.reb1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.reb1Trade_label.TabIndex = 83;
             this.reb1Trade_label.Text = "N\\A";
             // 
             // astChartTrade_label
             // 
             this.astChartTrade_label.AutoSize = true;
-            this.astChartTrade_label.Location = new System.Drawing.Point(327, 173);
+            this.astChartTrade_label.Location = new System.Drawing.Point(490, 266);
+            this.astChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.astChartTrade_label.Name = "astChartTrade_label";
-            this.astChartTrade_label.Size = new System.Drawing.Size(29, 16);
+            this.astChartTrade_label.Size = new System.Drawing.Size(44, 25);
             this.astChartTrade_label.TabIndex = 69;
             this.astChartTrade_label.Text = "Ast";
             this.astChartTrade_label.Click += new System.EventHandler(this.astChartTrade_label_Click);
@@ -2325,18 +2510,20 @@ namespace espn
             // tpm1Trade_label
             // 
             this.tpm1Trade_label.AutoSize = true;
-            this.tpm1Trade_label.Location = new System.Drawing.Point(224, 251);
+            this.tpm1Trade_label.Location = new System.Drawing.Point(336, 386);
+            this.tpm1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tpm1Trade_label.Name = "tpm1Trade_label";
-            this.tpm1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.tpm1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.tpm1Trade_label.TabIndex = 82;
             this.tpm1Trade_label.Text = "N\\A";
             // 
             // fgChartTrade_label
             // 
             this.fgChartTrade_label.AutoSize = true;
-            this.fgChartTrade_label.Location = new System.Drawing.Point(328, 277);
+            this.fgChartTrade_label.Location = new System.Drawing.Point(492, 426);
+            this.fgChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fgChartTrade_label.Name = "fgChartTrade_label";
-            this.fgChartTrade_label.Size = new System.Drawing.Size(27, 16);
+            this.fgChartTrade_label.Size = new System.Drawing.Size(41, 25);
             this.fgChartTrade_label.TabIndex = 71;
             this.fgChartTrade_label.Text = "FG";
             this.fgChartTrade_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2345,9 +2532,10 @@ namespace espn
             // fg1Trade_label
             // 
             this.fg1Trade_label.AutoSize = true;
-            this.fg1Trade_label.Location = new System.Drawing.Point(224, 277);
+            this.fg1Trade_label.Location = new System.Drawing.Point(336, 426);
+            this.fg1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fg1Trade_label.Name = "fg1Trade_label";
-            this.fg1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.fg1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.fg1Trade_label.TabIndex = 81;
             this.fg1Trade_label.Text = "N\\A";
             this.fg1Trade_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2355,9 +2543,10 @@ namespace espn
             // stlChartTrade_label
             // 
             this.stlChartTrade_label.AutoSize = true;
-            this.stlChartTrade_label.Location = new System.Drawing.Point(329, 199);
+            this.stlChartTrade_label.Location = new System.Drawing.Point(494, 306);
+            this.stlChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stlChartTrade_label.Name = "stlChartTrade_label";
-            this.stlChartTrade_label.Size = new System.Drawing.Size(25, 16);
+            this.stlChartTrade_label.Size = new System.Drawing.Size(38, 25);
             this.stlChartTrade_label.TabIndex = 72;
             this.stlChartTrade_label.Text = "Stl";
             this.stlChartTrade_label.Click += new System.EventHandler(this.stlChartTrade_label_Click);
@@ -2365,9 +2554,10 @@ namespace espn
             // ft1Trade_label
             // 
             this.ft1Trade_label.AutoSize = true;
-            this.ft1Trade_label.Location = new System.Drawing.Point(224, 303);
+            this.ft1Trade_label.Location = new System.Drawing.Point(336, 466);
+            this.ft1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ft1Trade_label.Name = "ft1Trade_label";
-            this.ft1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.ft1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.ft1Trade_label.TabIndex = 80;
             this.ft1Trade_label.Text = "N\\A";
             this.ft1Trade_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2375,9 +2565,10 @@ namespace espn
             // rebChartTrade_label
             // 
             this.rebChartTrade_label.AutoSize = true;
-            this.rebChartTrade_label.Location = new System.Drawing.Point(324, 147);
+            this.rebChartTrade_label.Location = new System.Drawing.Point(486, 226);
+            this.rebChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rebChartTrade_label.Name = "rebChartTrade_label";
-            this.rebChartTrade_label.Size = new System.Drawing.Size(36, 16);
+            this.rebChartTrade_label.Size = new System.Drawing.Size(50, 25);
             this.rebChartTrade_label.TabIndex = 73;
             this.rebChartTrade_label.Text = "Reb";
             this.rebChartTrade_label.Click += new System.EventHandler(this.rebChartTrade_label_Click);
@@ -2385,18 +2576,20 @@ namespace espn
             // to1Trade_label
             // 
             this.to1Trade_label.AutoSize = true;
-            this.to1Trade_label.Location = new System.Drawing.Point(224, 329);
+            this.to1Trade_label.Location = new System.Drawing.Point(336, 506);
+            this.to1Trade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.to1Trade_label.Name = "to1Trade_label";
-            this.to1Trade_label.Size = new System.Drawing.Size(33, 16);
+            this.to1Trade_label.Size = new System.Drawing.Size(49, 25);
             this.to1Trade_label.TabIndex = 79;
             this.to1Trade_label.Text = "N\\A";
             // 
             // blkChartTrade_label
             // 
             this.blkChartTrade_label.AutoSize = true;
-            this.blkChartTrade_label.Location = new System.Drawing.Point(327, 225);
+            this.blkChartTrade_label.Location = new System.Drawing.Point(490, 346);
+            this.blkChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blkChartTrade_label.Name = "blkChartTrade_label";
-            this.blkChartTrade_label.Size = new System.Drawing.Size(29, 16);
+            this.blkChartTrade_label.Size = new System.Drawing.Size(42, 25);
             this.blkChartTrade_label.TabIndex = 74;
             this.blkChartTrade_label.Text = "Blk";
             this.blkChartTrade_label.Click += new System.EventHandler(this.blkChartTrade_label_Click);
@@ -2404,9 +2597,10 @@ namespace espn
             // ftChartTrade_label
             // 
             this.ftChartTrade_label.AutoSize = true;
-            this.ftChartTrade_label.Location = new System.Drawing.Point(329, 303);
+            this.ftChartTrade_label.Location = new System.Drawing.Point(494, 466);
+            this.ftChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ftChartTrade_label.Name = "ftChartTrade_label";
-            this.ftChartTrade_label.Size = new System.Drawing.Size(26, 16);
+            this.ftChartTrade_label.Size = new System.Drawing.Size(39, 25);
             this.ftChartTrade_label.TabIndex = 76;
             this.ftChartTrade_label.Text = "FT";
             this.ftChartTrade_label.Click += new System.EventHandler(this.ftChartTrade_label_Click);
@@ -2414,18 +2608,20 @@ namespace espn
             // toChartTrade_label
             // 
             this.toChartTrade_label.AutoSize = true;
-            this.toChartTrade_label.Location = new System.Drawing.Point(328, 329);
+            this.toChartTrade_label.Location = new System.Drawing.Point(492, 506);
+            this.toChartTrade_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.toChartTrade_label.Name = "toChartTrade_label";
-            this.toChartTrade_label.Size = new System.Drawing.Size(28, 16);
+            this.toChartTrade_label.Size = new System.Drawing.Size(43, 25);
             this.toChartTrade_label.TabIndex = 75;
             this.toChartTrade_label.Text = "TO";
             this.toChartTrade_label.Click += new System.EventHandler(this.toChartTrade_label_Click);
             // 
             // copyTradeChart_button
             // 
-            this.copyTradeChart_button.Location = new System.Drawing.Point(443, 136);
+            this.copyTradeChart_button.Location = new System.Drawing.Point(664, 209);
+            this.copyTradeChart_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyTradeChart_button.Name = "copyTradeChart_button";
-            this.copyTradeChart_button.Size = new System.Drawing.Size(97, 23);
+            this.copyTradeChart_button.Size = new System.Drawing.Size(146, 35);
             this.copyTradeChart_button.TabIndex = 106;
             this.copyTradeChart_button.Text = "Copy Chart";
             this.copyTradeChart_button.UseVisualStyleBackColor = true;
@@ -2433,53 +2629,56 @@ namespace espn
             // 
             // trade_chart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.trade_chart.ChartAreas.Add(chartArea7);
-            legend7.DockedToChartArea = "ChartArea1";
-            legend7.IsDockedInsideChartArea = false;
-            legend7.Name = "Legend1";
-            this.trade_chart.Legends.Add(legend7);
-            this.trade_chart.Location = new System.Drawing.Point(8, 163);
+            chartArea3.Name = "ChartArea1";
+            this.trade_chart.ChartAreas.Add(chartArea3);
+            legend3.DockedToChartArea = "ChartArea1";
+            legend3.IsDockedInsideChartArea = false;
+            legend3.Name = "Legend1";
+            this.trade_chart.Legends.Add(legend3);
+            this.trade_chart.Location = new System.Drawing.Point(12, 251);
+            this.trade_chart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trade_chart.Name = "trade_chart";
-            series13.BorderWidth = 2;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series13.Legend = "Legend1";
-            series13.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series13.Name = "Series1";
-            series13.Points.Add(dataPoint10);
-            series13.Points.Add(dataPoint15);
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series14.Legend = "Legend1";
-            series14.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series14.Name = "Series2";
-            this.trade_chart.Series.Add(series13);
-            this.trade_chart.Series.Add(series14);
-            this.trade_chart.Size = new System.Drawing.Size(532, 239);
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series5.Name = "Series1";
+            series5.Points.Add(dataPoint6);
+            series5.Points.Add(dataPoint7);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.Legend = "Legend1";
+            series6.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series6.Name = "Series2";
+            this.trade_chart.Series.Add(series5);
+            this.trade_chart.Series.Add(series6);
+            this.trade_chart.Size = new System.Drawing.Size(798, 368);
             this.trade_chart.TabIndex = 105;
             this.trade_chart.Text = "Stat";
-            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title6.Name = "PlayerName";
-            title6.Text = "Player1";
-            this.trade_chart.Titles.Add(title6);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "PlayerName";
+            title2.Text = "Player1";
+            this.trade_chart.Titles.Add(title2);
             // 
             // flip_button
             // 
             this.flip_button.Image = ((System.Drawing.Image)(resources.GetObject("flip_button.Image")));
-            this.flip_button.Location = new System.Drawing.Point(284, 74);
+            this.flip_button.Location = new System.Drawing.Point(426, 114);
+            this.flip_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flip_button.Name = "flip_button";
-            this.flip_button.Size = new System.Drawing.Size(28, 34);
+            this.flip_button.Size = new System.Drawing.Size(42, 52);
             this.flip_button.TabIndex = 104;
             this.flip_button.UseVisualStyleBackColor = true;
             this.flip_button.Click += new System.EventHandler(this.flip_button_Click);
             // 
             // copyDiff_button
             // 
-            this.copyDiff_button.Location = new System.Drawing.Point(573, 384);
+            this.copyDiff_button.Location = new System.Drawing.Point(860, 591);
+            this.copyDiff_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyDiff_button.Name = "copyDiff_button";
-            this.copyDiff_button.Size = new System.Drawing.Size(91, 23);
+            this.copyDiff_button.Size = new System.Drawing.Size(136, 35);
             this.copyDiff_button.TabIndex = 103;
             this.copyDiff_button.Text = "Copy Diff";
             this.copyDiff_button.UseVisualStyleBackColor = true;
@@ -2487,9 +2686,10 @@ namespace espn
             // 
             // copyTradeStats_button
             // 
-            this.copyTradeStats_button.Location = new System.Drawing.Point(755, 384);
+            this.copyTradeStats_button.Location = new System.Drawing.Point(1132, 591);
+            this.copyTradeStats_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.copyTradeStats_button.Name = "copyTradeStats_button";
-            this.copyTradeStats_button.Size = new System.Drawing.Size(91, 23);
+            this.copyTradeStats_button.Size = new System.Drawing.Size(136, 35);
             this.copyTradeStats_button.TabIndex = 102;
             this.copyTradeStats_button.Text = "Copy Stats";
             this.copyTradeStats_button.UseVisualStyleBackColor = true;
@@ -2497,9 +2697,10 @@ namespace espn
             // 
             // clearList_button
             // 
-            this.clearList_button.Location = new System.Drawing.Point(216, 127);
+            this.clearList_button.Location = new System.Drawing.Point(324, 195);
+            this.clearList_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clearList_button.Name = "clearList_button";
-            this.clearList_button.Size = new System.Drawing.Size(83, 23);
+            this.clearList_button.Size = new System.Drawing.Size(124, 35);
             this.clearList_button.TabIndex = 39;
             this.clearList_button.Text = "Clear";
             this.clearList_button.UseVisualStyleBackColor = true;
@@ -2508,9 +2709,10 @@ namespace espn
             // trade_button
             // 
             this.trade_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trade_button.Location = new System.Drawing.Point(99, 127);
+            this.trade_button.Location = new System.Drawing.Point(148, 195);
+            this.trade_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trade_button.Name = "trade_button";
-            this.trade_button.Size = new System.Drawing.Size(79, 23);
+            this.trade_button.Size = new System.Drawing.Size(118, 35);
             this.trade_button.TabIndex = 38;
             this.trade_button.Text = "Trade";
             this.trade_button.UseVisualStyleBackColor = true;
@@ -2527,17 +2729,19 @@ namespace espn
             "30",
             "60",
             "Max"});
-            this.tradeNumOfGames_comboBox.Location = new System.Drawing.Point(151, 38);
+            this.tradeNumOfGames_comboBox.Location = new System.Drawing.Point(226, 58);
+            this.tradeNumOfGames_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tradeNumOfGames_comboBox.Name = "tradeNumOfGames_comboBox";
-            this.tradeNumOfGames_comboBox.Size = new System.Drawing.Size(88, 24);
+            this.tradeNumOfGames_comboBox.Size = new System.Drawing.Size(130, 33);
             this.tradeNumOfGames_comboBox.TabIndex = 33;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 41);
+            this.label5.Location = new System.Drawing.Point(27, 63);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 16);
+            this.label5.Size = new System.Drawing.Size(159, 25);
             this.label5.TabIndex = 32;
             this.label5.Text = "Num Of Games";
             // 
@@ -2549,35 +2753,39 @@ namespace espn
             this.tradeMode_comboBox.Items.AddRange(new object[] {
             "Games",
             "Days"});
-            this.tradeMode_comboBox.Location = new System.Drawing.Point(151, 10);
+            this.tradeMode_comboBox.Location = new System.Drawing.Point(226, 15);
+            this.tradeMode_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tradeMode_comboBox.Name = "tradeMode_comboBox";
-            this.tradeMode_comboBox.Size = new System.Drawing.Size(88, 24);
+            this.tradeMode_comboBox.Size = new System.Drawing.Size(130, 33);
             this.tradeMode_comboBox.TabIndex = 31;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 13);
+            this.label6.Location = new System.Drawing.Point(27, 20);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 16);
+            this.label6.Size = new System.Drawing.Size(160, 25);
             this.label6.TabIndex = 30;
             this.label6.Text = "Compare Mode";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 97);
+            this.label7.Location = new System.Drawing.Point(27, 149);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 16);
+            this.label7.Size = new System.Drawing.Size(179, 25);
             this.label7.TabIndex = 28;
             this.label7.Text = "Players Received";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 69);
+            this.label8.Location = new System.Drawing.Point(27, 106);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 16);
+            this.label8.Size = new System.Drawing.Size(135, 25);
             this.label8.TabIndex = 26;
             this.label8.Text = "Players Sent";
             // 
@@ -2592,10 +2800,11 @@ namespace espn
             this.rater_tab.Controls.Add(this.label1);
             this.rater_tab.Controls.Add(this.rater_dataGridView);
             this.rater_tab.Controls.Add(this.rater_autoCompleteTextBox);
-            this.rater_tab.Location = new System.Drawing.Point(4, 25);
+            this.rater_tab.Location = new System.Drawing.Point(4, 34);
+            this.rater_tab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rater_tab.Name = "rater_tab";
-            this.rater_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.rater_tab.Size = new System.Drawing.Size(1100, 410);
+            this.rater_tab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rater_tab.Size = new System.Drawing.Size(1654, 637);
             this.rater_tab.TabIndex = 3;
             this.rater_tab.Text = "Rater";
             this.rater_tab.UseVisualStyleBackColor = true;
@@ -2603,17 +2812,19 @@ namespace espn
             // yahooTeamRater_comboBox
             // 
             this.yahooTeamRater_comboBox.FormattingEnabled = true;
-            this.yahooTeamRater_comboBox.Location = new System.Drawing.Point(304, 8);
+            this.yahooTeamRater_comboBox.Location = new System.Drawing.Point(456, 12);
+            this.yahooTeamRater_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.yahooTeamRater_comboBox.Name = "yahooTeamRater_comboBox";
-            this.yahooTeamRater_comboBox.Size = new System.Drawing.Size(186, 24);
+            this.yahooTeamRater_comboBox.Size = new System.Drawing.Size(277, 33);
             this.yahooTeamRater_comboBox.TabIndex = 27;
             this.yahooTeamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.yahooTeamRater_comboBox_SelectedIndexChanged);
             // 
             // table_screenshot_button
             // 
-            this.table_screenshot_button.Location = new System.Drawing.Point(881, 8);
+            this.table_screenshot_button.Location = new System.Drawing.Point(1322, 12);
+            this.table_screenshot_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.table_screenshot_button.Name = "table_screenshot_button";
-            this.table_screenshot_button.Size = new System.Drawing.Size(100, 26);
+            this.table_screenshot_button.Size = new System.Drawing.Size(150, 40);
             this.table_screenshot_button.TabIndex = 26;
             this.table_screenshot_button.Text = "ScreenShot";
             this.table_screenshot_button.UseVisualStyleBackColor = true;
@@ -2622,18 +2833,20 @@ namespace espn
             // raterPlayersStatus_comboBox
             // 
             this.raterPlayersStatus_comboBox.FormattingEnabled = true;
-            this.raterPlayersStatus_comboBox.Location = new System.Drawing.Point(773, 9);
+            this.raterPlayersStatus_comboBox.Location = new System.Drawing.Point(1160, 14);
+            this.raterPlayersStatus_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.raterPlayersStatus_comboBox.Name = "raterPlayersStatus_comboBox";
-            this.raterPlayersStatus_comboBox.Size = new System.Drawing.Size(95, 24);
+            this.raterPlayersStatus_comboBox.Size = new System.Drawing.Size(140, 33);
             this.raterPlayersStatus_comboBox.TabIndex = 25;
             this.raterPlayersStatus_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterPlayersMode_comboBox_SelectedIndexChanged);
             // 
             // nbaTeamRater_comboBox
             // 
             this.nbaTeamRater_comboBox.FormattingEnabled = true;
-            this.nbaTeamRater_comboBox.Location = new System.Drawing.Point(112, 8);
+            this.nbaTeamRater_comboBox.Location = new System.Drawing.Point(168, 12);
+            this.nbaTeamRater_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nbaTeamRater_comboBox.Name = "nbaTeamRater_comboBox";
-            this.nbaTeamRater_comboBox.Size = new System.Drawing.Size(186, 24);
+            this.nbaTeamRater_comboBox.Size = new System.Drawing.Size(277, 33);
             this.nbaTeamRater_comboBox.TabIndex = 24;
             this.nbaTeamRater_comboBox.SelectedIndexChanged += new System.EventHandler(this.teamRater_comboBox_SelectedIndexChanged);
             // 
@@ -2647,9 +2860,10 @@ namespace espn
             "Last 15",
             "Last 7",
             "Last 1"});
-            this.raterTimePeriod_comboBox.Location = new System.Drawing.Point(8, 8);
+            this.raterTimePeriod_comboBox.Location = new System.Drawing.Point(12, 12);
+            this.raterTimePeriod_comboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.raterTimePeriod_comboBox.Name = "raterTimePeriod_comboBox";
-            this.raterTimePeriod_comboBox.Size = new System.Drawing.Size(95, 24);
+            this.raterTimePeriod_comboBox.Size = new System.Drawing.Size(140, 33);
             this.raterTimePeriod_comboBox.TabIndex = 23;
             this.raterTimePeriod_comboBox.SelectedIndexChanged += new System.EventHandler(this.raterMode_comboBox_SelectedIndexChanged);
             // 
@@ -2657,9 +2871,10 @@ namespace espn
             // 
             this.raterScores.Appearance = System.Windows.Forms.Appearance.Button;
             this.raterScores.AutoSize = true;
-            this.raterScores.Location = new System.Drawing.Point(987, 8);
+            this.raterScores.Location = new System.Drawing.Point(1480, 12);
+            this.raterScores.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.raterScores.Name = "raterScores";
-            this.raterScores.Size = new System.Drawing.Size(107, 26);
+            this.raterScores.Size = new System.Drawing.Size(150, 35);
             this.raterScores.TabIndex = 20;
             this.raterScores.Text = "Show Scores";
             this.raterScores.UseVisualStyleBackColor = true;
@@ -2668,9 +2883,10 @@ namespace espn
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(522, 13);
+            this.label1.Location = new System.Drawing.Point(783, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 16);
+            this.label1.Size = new System.Drawing.Size(161, 25);
             this.label1.TabIndex = 18;
             this.label1.Text = "Search Player :";
             // 
@@ -2679,14 +2895,14 @@ namespace espn
             this.rater_dataGridView.AllowUserToAddRows = false;
             this.rater_dataGridView.AllowUserToDeleteRows = false;
             this.rater_dataGridView.BackgroundColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Cornsilk;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rater_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Cornsilk;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rater_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.rater_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rater_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerName,
@@ -2705,182 +2921,200 @@ namespace espn
             this.PtsRater,
             this.ScoreRater});
             this.rater_dataGridView.EnableHeadersVisualStyles = false;
-            this.rater_dataGridView.Location = new System.Drawing.Point(6, 38);
+            this.rater_dataGridView.Location = new System.Drawing.Point(9, 58);
+            this.rater_dataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rater_dataGridView.Name = "rater_dataGridView";
             this.rater_dataGridView.ReadOnly = true;
             this.rater_dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.rater_dataGridView.RowHeadersWidth = 55;
-            this.rater_dataGridView.Size = new System.Drawing.Size(1091, 366);
+            this.rater_dataGridView.Size = new System.Drawing.Size(1636, 563);
             this.rater_dataGridView.TabIndex = 0;
             this.rater_dataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rater_dataGridView_CellMouseClick);
             // 
             // PlayerName
             // 
             this.PlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.PlayerName.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.PlayerName.DefaultCellStyle = dataGridViewCellStyle9;
             this.PlayerName.HeaderText = "Name";
+            this.PlayerName.MinimumWidth = 8;
             this.PlayerName.Name = "PlayerName";
             this.PlayerName.ReadOnly = true;
-            this.PlayerName.Width = 73;
+            this.PlayerName.Width = 104;
             // 
             // GPRater
             // 
             this.GPRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.GPRater.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.GPRater.DefaultCellStyle = dataGridViewCellStyle10;
             this.GPRater.HeaderText = "GP";
+            this.GPRater.MinimumWidth = 8;
             this.GPRater.Name = "GPRater";
             this.GPRater.ReadOnly = true;
             // 
             // MinRater
             // 
             this.MinRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MinRater.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MinRater.DefaultCellStyle = dataGridViewCellStyle11;
             this.MinRater.HeaderText = "Min";
+            this.MinRater.MinimumWidth = 8;
             this.MinRater.Name = "MinRater";
             this.MinRater.ReadOnly = true;
             // 
             // FgmFgaRater
             // 
             this.FgmFgaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FgmFgaRater.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgmFgaRater.DefaultCellStyle = dataGridViewCellStyle12;
             this.FgmFgaRater.HeaderText = "FGM/FGA";
+            this.FgmFgaRater.MinimumWidth = 8;
             this.FgmFgaRater.Name = "FgmFgaRater";
             this.FgmFgaRater.ReadOnly = true;
-            this.FgmFgaRater.Width = 99;
+            this.FgmFgaRater.Width = 146;
             // 
             // FgPerRater
             // 
             this.FgPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FgPerRater.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FgPerRater.DefaultCellStyle = dataGridViewCellStyle13;
             this.FgPerRater.HeaderText = "FG%";
+            this.FgPerRater.MinimumWidth = 8;
             this.FgPerRater.Name = "FgPerRater";
             this.FgPerRater.ReadOnly = true;
             // 
             // FtmFtaRater
             // 
             this.FtmFtaRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FtmFtaRater.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtmFtaRater.DefaultCellStyle = dataGridViewCellStyle14;
             this.FtmFtaRater.HeaderText = "FTM/FTA";
+            this.FtmFtaRater.MinimumWidth = 8;
             this.FtmFtaRater.Name = "FtmFtaRater";
             this.FtmFtaRater.ReadOnly = true;
-            this.FtmFtaRater.Width = 97;
+            this.FtmFtaRater.Width = 142;
             // 
             // FtPerRater
             // 
             this.FtPerRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FtPerRater.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FtPerRater.DefaultCellStyle = dataGridViewCellStyle15;
             this.FtPerRater.HeaderText = "FT%";
+            this.FtPerRater.MinimumWidth = 8;
             this.FtPerRater.Name = "FtPerRater";
             this.FtPerRater.ReadOnly = true;
             // 
             // TpmRater
             // 
             this.TpmRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TpmRater.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TpmRater.DefaultCellStyle = dataGridViewCellStyle16;
             this.TpmRater.HeaderText = "3PM";
+            this.TpmRater.MinimumWidth = 8;
             this.TpmRater.Name = "TpmRater";
             this.TpmRater.ReadOnly = true;
             // 
             // RebRater
             // 
             this.RebRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.RebRater.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RebRater.DefaultCellStyle = dataGridViewCellStyle17;
             this.RebRater.HeaderText = "Reb";
+            this.RebRater.MinimumWidth = 8;
             this.RebRater.Name = "RebRater";
             this.RebRater.ReadOnly = true;
             // 
             // AstRater
             // 
             this.AstRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.AstRater.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.AstRater.DefaultCellStyle = dataGridViewCellStyle18;
             this.AstRater.HeaderText = "Ast";
+            this.AstRater.MinimumWidth = 8;
             this.AstRater.Name = "AstRater";
             this.AstRater.ReadOnly = true;
             // 
             // StlRater
             // 
             this.StlRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.StlRater.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StlRater.DefaultCellStyle = dataGridViewCellStyle19;
             this.StlRater.HeaderText = "Stl";
+            this.StlRater.MinimumWidth = 8;
             this.StlRater.Name = "StlRater";
             this.StlRater.ReadOnly = true;
             // 
             // BlkRater
             // 
             this.BlkRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.BlkRater.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.BlkRater.DefaultCellStyle = dataGridViewCellStyle20;
             this.BlkRater.HeaderText = "Blk";
+            this.BlkRater.MinimumWidth = 8;
             this.BlkRater.Name = "BlkRater";
             this.BlkRater.ReadOnly = true;
             // 
             // ToRater
             // 
             this.ToRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ToRater.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ToRater.DefaultCellStyle = dataGridViewCellStyle21;
             this.ToRater.HeaderText = "To";
+            this.ToRater.MinimumWidth = 8;
             this.ToRater.Name = "ToRater";
             this.ToRater.ReadOnly = true;
             // 
             // PtsRater
             // 
             this.PtsRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PtsRater.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PtsRater.DefaultCellStyle = dataGridViewCellStyle22;
             this.PtsRater.HeaderText = "Pts";
+            this.PtsRater.MinimumWidth = 8;
             this.PtsRater.Name = "PtsRater";
             this.PtsRater.ReadOnly = true;
             // 
             // ScoreRater
             // 
             this.ScoreRater.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ScoreRater.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ScoreRater.DefaultCellStyle = dataGridViewCellStyle23;
             this.ScoreRater.HeaderText = "Score";
+            this.ScoreRater.MinimumWidth = 8;
             this.ScoreRater.Name = "ScoreRater";
             this.ScoreRater.ReadOnly = true;
             // 
             // rater_autoCompleteTextBox
             // 
-            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(638, 10);
+            this.rater_autoCompleteTextBox.Location = new System.Drawing.Point(957, 15);
+            this.rater_autoCompleteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rater_autoCompleteTextBox.Name = "rater_autoCompleteTextBox";
-            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(130, 22);
+            this.rater_autoCompleteTextBox.Size = new System.Drawing.Size(193, 30);
             this.rater_autoCompleteTextBox.TabIndex = 19;
             this.rater_autoCompleteTextBox.Values = null;
             // 
             // rater_contextMenuStrip
             // 
+            this.rater_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.rater_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerInfoToolStripMenuItem,
             this.gameLogToolStripMenuItem,
             this.sendToToolStripMenuItem,
             this.updatePlayerToolStripMenuItem});
             this.rater_contextMenuStrip.Name = "rater_contextMenuStrip";
-            this.rater_contextMenuStrip.Size = new System.Drawing.Size(148, 92);
+            this.rater_contextMenuStrip.Size = new System.Drawing.Size(195, 132);
             // 
             // playerInfoToolStripMenuItem
             // 
             this.playerInfoToolStripMenuItem.Name = "playerInfoToolStripMenuItem";
-            this.playerInfoToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.playerInfoToolStripMenuItem.Size = new System.Drawing.Size(194, 32);
             this.playerInfoToolStripMenuItem.Text = "Player Info";
             this.playerInfoToolStripMenuItem.Click += new System.EventHandler(this.playerInfoToolStripMenuItem_Click);
             // 
             // gameLogToolStripMenuItem
             // 
             this.gameLogToolStripMenuItem.Name = "gameLogToolStripMenuItem";
-            this.gameLogToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.gameLogToolStripMenuItem.Size = new System.Drawing.Size(194, 32);
             this.gameLogToolStripMenuItem.Text = "Game Log";
             this.gameLogToolStripMenuItem.Click += new System.EventHandler(this.gameLogToolStripMenuItem_Click);
             // 
@@ -2889,32 +3123,34 @@ namespace espn
             this.sendToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.watchListToolStripMenuItem});
             this.sendToToolStripMenuItem.Name = "sendToToolStripMenuItem";
-            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.sendToToolStripMenuItem.Size = new System.Drawing.Size(194, 32);
             this.sendToToolStripMenuItem.Text = "Send To";
             // 
             // watchListToolStripMenuItem
             // 
             this.watchListToolStripMenuItem.Name = "watchListToolStripMenuItem";
-            this.watchListToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.watchListToolStripMenuItem.Size = new System.Drawing.Size(194, 34);
             this.watchListToolStripMenuItem.Text = "Watch List";
             this.watchListToolStripMenuItem.Click += new System.EventHandler(this.watchListToolStripMenuItem_Click);
             // 
             // updatePlayerToolStripMenuItem
             // 
             this.updatePlayerToolStripMenuItem.Name = "updatePlayerToolStripMenuItem";
-            this.updatePlayerToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.updatePlayerToolStripMenuItem.Size = new System.Drawing.Size(194, 32);
             this.updatePlayerToolStripMenuItem.Text = "Update Player";
             this.updatePlayerToolStripMenuItem.Click += new System.EventHandler(this.updatePlayerToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playersToolStripMenuItem,
             this.tradeAnalyzerToolStripMenuItem,
             this.draftPicksToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1108, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1662, 35);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -2923,13 +3159,13 @@ namespace espn
             this.playersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runUpdateToolStripMenuItem});
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
-            this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.playersToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
             this.playersToolStripMenuItem.Text = "Players";
             // 
             // runUpdateToolStripMenuItem
             // 
             this.runUpdateToolStripMenuItem.Name = "runUpdateToolStripMenuItem";
-            this.runUpdateToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.runUpdateToolStripMenuItem.Size = new System.Drawing.Size(258, 34);
             this.runUpdateToolStripMenuItem.Text = "RunPlayersUpdate";
             this.runUpdateToolStripMenuItem.Click += new System.EventHandler(this.runUpdateToolStripMenuItem_Click);
             // 
@@ -2940,7 +3176,7 @@ namespace espn
             this.receivedPlayersToolStripMenuItem,
             this.loadWatchListToolStripMenuItem});
             this.tradeAnalyzerToolStripMenuItem.Name = "tradeAnalyzerToolStripMenuItem";
-            this.tradeAnalyzerToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.tradeAnalyzerToolStripMenuItem.Size = new System.Drawing.Size(142, 29);
             this.tradeAnalyzerToolStripMenuItem.Text = "Trade Analyzer";
             // 
             // sentPlayersToolStripMenuItem
@@ -2948,13 +3184,13 @@ namespace espn
             this.sentPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadPlayersToolStripMenuItem1});
             this.sentPlayersToolStripMenuItem.Name = "sentPlayersToolStripMenuItem";
-            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.sentPlayersToolStripMenuItem.Size = new System.Drawing.Size(243, 34);
             this.sentPlayersToolStripMenuItem.Text = "Sent Players";
             // 
             // loadPlayersToolStripMenuItem1
             // 
             this.loadPlayersToolStripMenuItem1.Name = "loadPlayersToolStripMenuItem1";
-            this.loadPlayersToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.loadPlayersToolStripMenuItem1.Size = new System.Drawing.Size(213, 34);
             this.loadPlayersToolStripMenuItem1.Text = "Load Players";
             this.loadPlayersToolStripMenuItem1.Click += new System.EventHandler(this.loadPlayersToolStripMenuItem1_Click);
             // 
@@ -2963,20 +3199,20 @@ namespace espn
             this.receivedPlayersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadPlayersToolStripMenuItem2});
             this.receivedPlayersToolStripMenuItem.Name = "receivedPlayersToolStripMenuItem";
-            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.receivedPlayersToolStripMenuItem.Size = new System.Drawing.Size(243, 34);
             this.receivedPlayersToolStripMenuItem.Text = "Received Players";
             // 
             // loadPlayersToolStripMenuItem2
             // 
             this.loadPlayersToolStripMenuItem2.Name = "loadPlayersToolStripMenuItem2";
-            this.loadPlayersToolStripMenuItem2.Size = new System.Drawing.Size(140, 22);
+            this.loadPlayersToolStripMenuItem2.Size = new System.Drawing.Size(213, 34);
             this.loadPlayersToolStripMenuItem2.Text = "Load Players";
             this.loadPlayersToolStripMenuItem2.Click += new System.EventHandler(this.loadPlayersToolStripMenuItem2_Click);
             // 
             // loadWatchListToolStripMenuItem
             // 
             this.loadWatchListToolStripMenuItem.Name = "loadWatchListToolStripMenuItem";
-            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.loadWatchListToolStripMenuItem.Size = new System.Drawing.Size(243, 34);
             this.loadWatchListToolStripMenuItem.Text = "Load Watch List";
             this.loadWatchListToolStripMenuItem.Click += new System.EventHandler(this.loadWatchListToolStripMenuItem_Click);
             // 
@@ -2990,48 +3226,48 @@ namespace espn
             this.calcRatesToolStripMenuItem,
             this.simulateCustomPlayerToolStripMenuItem});
             this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
-            this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
             this.draftPicksToolStripMenuItem.Text = "Tools";
             // 
             // draftPicksToolStripMenuItem1
             // 
             this.draftPicksToolStripMenuItem1.Name = "draftPicksToolStripMenuItem1";
-            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(200, 22);
+            this.draftPicksToolStripMenuItem1.Size = new System.Drawing.Size(301, 34);
             this.draftPicksToolStripMenuItem1.Text = "Draft Picks";
             this.draftPicksToolStripMenuItem1.Click += new System.EventHandler(this.draftPicksToolStripMenuItem_Click);
             // 
             // createStatsFileToolStripMenuItem
             // 
             this.createStatsFileToolStripMenuItem.Name = "createStatsFileToolStripMenuItem";
-            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.createStatsFileToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
             this.createStatsFileToolStripMenuItem.Text = "Create Stats File";
             this.createStatsFileToolStripMenuItem.Click += new System.EventHandler(this.createStatsFileToolStripMenuItem_Click);
             // 
             // editFactorsToolStripMenuItem
             // 
             this.editFactorsToolStripMenuItem.Name = "editFactorsToolStripMenuItem";
-            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.editFactorsToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
             this.editFactorsToolStripMenuItem.Text = "Edit Factors";
             this.editFactorsToolStripMenuItem.Click += new System.EventHandler(this.editFactorsToolStripMenuItem_Click);
             // 
             // createLeagueStatsToolStripMenuItem
             // 
             this.createLeagueStatsToolStripMenuItem.Name = "createLeagueStatsToolStripMenuItem";
-            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.createLeagueStatsToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
             this.createLeagueStatsToolStripMenuItem.Text = "Create League Stats";
             this.createLeagueStatsToolStripMenuItem.Click += new System.EventHandler(this.createLeagueStatsToolStripMenuItem_Click);
             // 
             // calcRatesToolStripMenuItem
             // 
             this.calcRatesToolStripMenuItem.Name = "calcRatesToolStripMenuItem";
-            this.calcRatesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.calcRatesToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
             this.calcRatesToolStripMenuItem.Text = "Calc Rates";
             this.calcRatesToolStripMenuItem.Click += new System.EventHandler(this.calcRatesToolStripMenuItem_Click);
             // 
             // simulateCustomPlayerToolStripMenuItem
             // 
             this.simulateCustomPlayerToolStripMenuItem.Name = "simulateCustomPlayerToolStripMenuItem";
-            this.simulateCustomPlayerToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.simulateCustomPlayerToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
             this.simulateCustomPlayerToolStripMenuItem.Text = "Simulate Custom Player";
             this.simulateCustomPlayerToolStripMenuItem.Click += new System.EventHandler(this.simulateCustomPlayerToolStripMenuItem_Click);
             // 
@@ -3040,9 +3276,10 @@ namespace espn
             this.update_label.AutoSize = true;
             this.update_label.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.update_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update_label.Location = new System.Drawing.Point(864, 4);
+            this.update_label.Location = new System.Drawing.Point(1296, 6);
+            this.update_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.update_label.Name = "update_label";
-            this.update_label.Size = new System.Drawing.Size(72, 16);
+            this.update_label.Size = new System.Drawing.Size(107, 25);
             this.update_label.TabIndex = 56;
             this.update_label.Text = "Init Players";
             this.update_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3059,19 +3296,31 @@ namespace espn
             this.runPlayersUpdate_timer.Interval = 60000;
             this.runPlayersUpdate_timer.Tick += new System.EventHandler(this.runPlayersUpdate_timer_Tick);
             // 
+            // compare_telegram_button
+            // 
+            this.compare_telegram_button.Location = new System.Drawing.Point(518, 210);
+            this.compare_telegram_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.compare_telegram_button.Name = "compare_telegram_button";
+            this.compare_telegram_button.Size = new System.Drawing.Size(150, 40);
+            this.compare_telegram_button.TabIndex = 62;
+            this.compare_telegram_button.Text = "Telegram";
+            this.compare_telegram_button.UseVisualStyleBackColor = true;
+            this.compare_telegram_button.Click += new System.EventHandler(this.compare_telegram_button_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 463);
+            this.ClientSize = new System.Drawing.Size(1662, 712);
             this.Controls.Add(this.update_label);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "NBA Fantasy - V221024";
+            this.Text = "NBA Fantasy - V230420";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabControl.ResumeLayout(false);
             this.playerInfoTab.ResumeLayout(false);
@@ -3378,6 +3627,7 @@ namespace espn
         private System.Windows.Forms.Timer runPlayersUpdate_timer;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox lastPlayersGameLog_comboBox;
+        private System.Windows.Forms.Button compare_telegram_button;
     }
 }
 

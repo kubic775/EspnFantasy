@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using NBAFantasy;
+using espn;
 using NBAFantasy.Models;
 using NBAFantasy.YahooLeague;
 
-namespace espn
+namespace NBAFantasy
 {
     public partial class CustomPlayer : Form
     {

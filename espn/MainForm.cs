@@ -624,7 +624,7 @@ namespace espn
         }
 
 
-        private void copyCompare_button_Click(object sender, EventArgs e)
+        private string CreateCompareTxt()
         {
             string mode = compareMode_comboBox.GetItemText(compareMode_comboBox.SelectedItem);
             string numOfGames = compare_last_comboBox.GetItemText(compare_last_comboBox.SelectedItem);
@@ -638,7 +638,12 @@ namespace espn
                     ", Blk: " + blk2_label.Text + ", Tpm: " + tpm2_label.Text + ", FgPer: " + fg2_label.Text +
                     ", FtPer: " + ft2_label.Text + ", To : " + to2_label.Text + ", Min : " + min2_label.Text;
 
-            Clipboard.SetText(text);
+            return text;
+        }
+
+        private void copyCompare_button_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(CreateCompareTxt());
         }
 
 
@@ -652,13 +657,19 @@ namespace espn
             }
         }
 
-        private void compareScreenshot_button_Click(object sender, EventArgs e)
+        private void compareScreenShot_button_Click(object sender, EventArgs e)
         {
-            using (var bmp = new Bitmap(compare_panel.Width, compare_panel.Height))
-            {
-                compare_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                Clipboard.SetImage(bmp);
-            }
+            using var bmp = new Bitmap(compare_panel.Width, compare_panel.Height);
+            compare_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            Clipboard.SetImage(bmp);
+        }
+
+        private async void compare_telegram_button_Click(object sender, EventArgs e)
+        {
+            using var bmp = new Bitmap(compare_panel.Width, compare_panel.Height);
+            compare_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            await TelegramClient.SendMsg(CreateCompareTxt());
+            await TelegramClient.SendImage(bmp);
         }
         #endregion
 
@@ -1390,13 +1401,14 @@ namespace espn
 
         private void RunPlayersUpdate(string arg = null)
         {
-            if (File.Exists("CreateEspnDBFile.exe"))
+            var processPath = new FileInfo(ConfigurationManager.AppSettings["UpdateDbFileProcessPath"]);
+            if (processPath.Exists)
             {
                 Process proc = new Process
                 {
                     StartInfo =
                     {
-                        FileName = "CreateEspnDBFile.exe", UseShellExecute = true, Arguments = arg
+                        FileName = processPath.FullName, WorkingDirectory = processPath.DirectoryName, UseShellExecute = true, Arguments = arg??string.Empty
                     }
                 };
                 proc.Start();
@@ -1413,9 +1425,9 @@ namespace espn
 
             var playersListForStatsFile = new List<string> { headers };
             playersListForStatsFile.AddRange(
-                from player in playersRaterAvg 
-                let stats = player.ToShortString(false) 
-                let totalRank = playersRater.First(p => p.Id == player.Id).RaterPos 
+                from player in playersRaterAvg
+                let stats = player.ToShortString(false)
+                let totalRank = playersRater.First(p => p.Id == player.Id).RaterPos
                 select $"{player.PlayerName},{totalRank},{player.RaterPos},{player.Games.First().Gp},{stats}");
 
             using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "Stats" };
@@ -1485,6 +1497,8 @@ namespace espn
             File.WriteAllLines(saveFileDialog.FileName, csv);
             MessageBox.Show("Done");
         }
+
+
 
         #endregion
 

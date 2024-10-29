@@ -62,7 +62,6 @@ namespace NBAFantasy
                 MessageBox.Show("Check Your Factors");
             }
         }
-
       
         private void ParseFactors()
         {

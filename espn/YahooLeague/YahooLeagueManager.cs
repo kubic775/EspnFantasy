@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using NBAFantasy;
-using NBAFantasy.YahooLeague;
+using espn.YahooLeague;
 
-namespace espn.YahooLeague
+namespace NBAFantasy.YahooLeague
 {
     public class YahooLeagueManager
     {
