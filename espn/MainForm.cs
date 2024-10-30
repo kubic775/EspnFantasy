@@ -9,14 +9,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using espn.YahooLeague;
-using NBAFantasy;
 using NBAFantasy.YahooLeague;
 
-namespace espn
+namespace NBAFantasy
 {
     public delegate void PlayerSelectedDelegate(string name);
-    public delegate void LogDelegate(string str, Color color = default(Color));
+    public delegate void LogDelegate(string str, Color color = default);
 
     public partial class MainForm : Form
     {
@@ -1447,6 +1445,28 @@ namespace espn
             Factors = new FactorsForm();
             Factors.ShowDialog();
         }
+
+        private async void sendTeamToTelegramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tabControl.TabPages["rater_tab"];
+            raterTimePeriod_comboBox.SelectedIndex = raterTimePeriod_comboBox.Items.Count - 1;
+            var teamName = YahooDBMethods.YahooTeams.First(t => t.TeamId == ConfigurationManager.AppSettings["YahooTeamId"].ToInt()).TeamName;
+            yahooTeamRater_comboBox.SelectedIndex = yahooTeamRater_comboBox.Items.IndexOf(teamName);
+
+            UpdateRaterTable(PrepareDataForRater());
+            using var bmp = new Bitmap(rater_tab.Width, rater_tab.Height);
+            rater_tab.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            await TelegramClient.SendMsg($"Miller Time Team @ {DateTime.Now.Date:d}");
+            await TelegramClient.SendImage(bmp);
+
+            yahooTeamRater_comboBox.SelectedIndex = yahooTeamRater_comboBox.Items.IndexOf("All Teams");
+            UpdateRaterTable(PrepareDataForRater());
+            using var bmp2 = new Bitmap(rater_tab.Width, rater_tab.Height);
+            rater_tab.DrawToBitmap(bmp2, new Rectangle(0, 0, bmp2.Width, bmp2.Height));
+            await TelegramClient.SendMsg($"All Teams @ {DateTime.Now.Date:d}");
+            await TelegramClient.SendImage(bmp2);
+        }
+
         #endregion
 
         #region YahooLeague
@@ -1500,6 +1520,7 @@ namespace espn
 
 
 
+
         #endregion
 
         #region Timers
@@ -1514,11 +1535,19 @@ namespace espn
 
         private void runPlayersUpdate_timer_Tick(object sender, EventArgs e)
         {
-            if (DateTime.Now.Hour == 8 && DateTime.Now.Minute == 30)
+            if (DateTime.Now.Hour == 7 && DateTime.Now.Minute == 30)
                 RunPlayersUpdate();
+            if (DateTime.Now.Hour == 8 && DateTime.Now.Minute == 0)
+            {
+                IAsyncResult result = BeginInvoke((MethodInvoker)delegate// runs on UI thread
+                {
+                    sendTeamToTelegramToolStripMenuItem_Click(null, null);
+                });
+                EndInvoke(result);
+            }
         }
 
-
         #endregion
+
     }
 }

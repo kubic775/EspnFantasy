@@ -1,7 +1,6 @@
 ﻿using System;
-using NBAFantasy;
 
-namespace espn
+namespace NBAFantasy
 {
     partial class MainForm
     {
@@ -156,6 +155,7 @@ namespace espn
             this.label28 = new System.Windows.Forms.Label();
             this.gameLog_autoCompleteTextBox = new NBAFantasy.AutoCompleteTextBox();
             this.compare_tabPage = new System.Windows.Forms.TabPage();
+            this.compare_telegram_button = new System.Windows.Forms.Button();
             this.compareScreenshot_button = new System.Windows.Forms.Button();
             this.compare_panel = new System.Windows.Forms.Panel();
             this.compare_last_comboBox = new System.Windows.Forms.ComboBox();
@@ -334,7 +334,7 @@ namespace espn
             this.update_label = new System.Windows.Forms.Label();
             this.updateDB_timer = new System.Windows.Forms.Timer(this.components);
             this.runPlayersUpdate_timer = new System.Windows.Forms.Timer(this.components);
-            this.compare_telegram_button = new System.Windows.Forms.Button();
+            this.sendTeamToTelegramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -368,11 +368,11 @@ namespace espn
             this.tabControl.Controls.Add(this.rater_tab);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(0, 35);
+            this.tabControl.Location = new System.Drawing.Point(0, 33);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1662, 677);
+            this.tabControl.Size = new System.Drawing.Size(1662, 679);
             this.tabControl.TabIndex = 0;
             // 
             // playerInfoTab
@@ -403,7 +403,7 @@ namespace espn
             this.playerInfoTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.playerInfoTab.Name = "playerInfoTab";
             this.playerInfoTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.playerInfoTab.Size = new System.Drawing.Size(1654, 639);
+            this.playerInfoTab.Size = new System.Drawing.Size(1654, 641);
             this.playerInfoTab.TabIndex = 0;
             this.playerInfoTab.Text = "Players";
             // 
@@ -969,7 +969,7 @@ namespace espn
             this.gameLogTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gameLogTab.Name = "gameLogTab";
             this.gameLogTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gameLogTab.Size = new System.Drawing.Size(1654, 637);
+            this.gameLogTab.Size = new System.Drawing.Size(1654, 639);
             this.gameLogTab.TabIndex = 4;
             this.gameLogTab.Text = "Game Log";
             // 
@@ -1271,6 +1271,17 @@ namespace espn
             this.compare_tabPage.Size = new System.Drawing.Size(1654, 639);
             this.compare_tabPage.TabIndex = 1;
             this.compare_tabPage.Text = "Compare";
+            // 
+            // compare_telegram_button
+            // 
+            this.compare_telegram_button.Location = new System.Drawing.Point(518, 210);
+            this.compare_telegram_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.compare_telegram_button.Name = "compare_telegram_button";
+            this.compare_telegram_button.Size = new System.Drawing.Size(150, 40);
+            this.compare_telegram_button.TabIndex = 62;
+            this.compare_telegram_button.Text = "Telegram";
+            this.compare_telegram_button.UseVisualStyleBackColor = true;
+            this.compare_telegram_button.Click += new System.EventHandler(this.compare_telegram_button_Click);
             // 
             // compareScreenshot_button
             // 
@@ -1893,7 +1904,7 @@ namespace espn
             this.tradeTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tradeTab.Name = "tradeTab";
             this.tradeTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tradeTab.Size = new System.Drawing.Size(1654, 637);
+            this.tradeTab.Size = new System.Drawing.Size(1654, 639);
             this.tradeTab.TabIndex = 2;
             this.tradeTab.Text = "Trade Analyzer";
             // 
@@ -2804,7 +2815,7 @@ namespace espn
             this.rater_tab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rater_tab.Name = "rater_tab";
             this.rater_tab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rater_tab.Size = new System.Drawing.Size(1654, 637);
+            this.rater_tab.Size = new System.Drawing.Size(1654, 639);
             this.rater_tab.TabIndex = 3;
             this.rater_tab.Text = "Rater";
             this.rater_tab.UseVisualStyleBackColor = true;
@@ -3150,7 +3161,7 @@ namespace espn
             this.draftPicksToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1662, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1662, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -3224,7 +3235,8 @@ namespace espn
             this.editFactorsToolStripMenuItem,
             this.createLeagueStatsToolStripMenuItem,
             this.calcRatesToolStripMenuItem,
-            this.simulateCustomPlayerToolStripMenuItem});
+            this.simulateCustomPlayerToolStripMenuItem,
+            this.sendTeamToTelegramToolStripMenuItem});
             this.draftPicksToolStripMenuItem.Name = "draftPicksToolStripMenuItem";
             this.draftPicksToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
             this.draftPicksToolStripMenuItem.Text = "Tools";
@@ -3296,16 +3308,12 @@ namespace espn
             this.runPlayersUpdate_timer.Interval = 60000;
             this.runPlayersUpdate_timer.Tick += new System.EventHandler(this.runPlayersUpdate_timer_Tick);
             // 
-            // compare_telegram_button
+            // sendTeamToTelegramToolStripMenuItem
             // 
-            this.compare_telegram_button.Location = new System.Drawing.Point(518, 210);
-            this.compare_telegram_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.compare_telegram_button.Name = "compare_telegram_button";
-            this.compare_telegram_button.Size = new System.Drawing.Size(150, 40);
-            this.compare_telegram_button.TabIndex = 62;
-            this.compare_telegram_button.Text = "Telegram";
-            this.compare_telegram_button.UseVisualStyleBackColor = true;
-            this.compare_telegram_button.Click += new System.EventHandler(this.compare_telegram_button_Click);
+            this.sendTeamToTelegramToolStripMenuItem.Name = "sendTeamToTelegramToolStripMenuItem";
+            this.sendTeamToTelegramToolStripMenuItem.Size = new System.Drawing.Size(301, 34);
+            this.sendTeamToTelegramToolStripMenuItem.Text = "Send Team To Telegram";
+            this.sendTeamToTelegramToolStripMenuItem.Click += new System.EventHandler(this.sendTeamToTelegramToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -3628,6 +3636,7 @@ namespace espn
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox lastPlayersGameLog_comboBox;
         private System.Windows.Forms.Button compare_telegram_button;
+        private System.Windows.Forms.ToolStripMenuItem sendTeamToTelegramToolStripMenuItem;
     }
 }
 
