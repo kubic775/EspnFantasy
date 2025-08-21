@@ -26,21 +26,24 @@ namespace NBAFantasy
         }
 
 
-        public IEnumerable<PlayerInfo> CreateRater(CalcScoreType mode, int timePeriod = 0)
+        public IEnumerable<PlayerInfo> CreateRater(CalcScoreType mode, int timePeriod = 0, int? numOfGames = null, int minPlayerGamesTh = 1)
         {
             var rater = new List<PlayerInfo>();
             Factors = FactorsForm.GetFactors();
 
+            numOfGames ??= 999;
             DateTime startTime = timePeriod == 0 ? default : DateTime.Today - new TimeSpan(timePeriod, 0, 0, 0);
 
-            UpdateFactors(mode, startTime);
+            UpdateFactors(mode, startTime, minPlayerGamesTh);
 
-            Dictionary<long, List<Games>> playersGames = Games.Where(g => g.GameDate >= startTime).GroupBy(g => g.PlayerId).ToDictionary(k => k.Key.Value, v => v.ToList());
+            Dictionary<long, List<Games>> playersGames = Games.Where(g => g.GameDate >= startTime)
+                .GroupBy(g => g.PlayerId).Where(g => g.Count() > minPlayerGamesTh)
+                .ToDictionary(k => k.Key.Value, v => v.ToList());
             if (!playersGames.Any()) return new List<PlayerInfo>();
 
             foreach (KeyValuePair<long, List<Games>> player in playersGames)
             {
-                IEnumerable<GameStats> games = player.Value.Select(g => new GameStats(g));
+                IEnumerable<GameStats> games = player.Value.OrderByDescending(v => v.GameDate).Take(numOfGames.Value).Select(g => new GameStats(g));
                 var scores = CalcScores(games, mode, timePeriod, false);
                 GameStats avgGame = GameStats.GetAvgStats(games.ToArray());
                 avgGame.Score = scores["Score"];
@@ -86,19 +89,19 @@ namespace NBAFantasy
                 foreach (var fieldInfo in raterFieldNames)
                 {
                     double currentCategory;
-                    var currrentTuple = fieldInfo.GetValue(this) as Dictionary<string, double>;
-                    var currrentGameField = gameFieldNames.FirstOrDefault(f => f.Name.Equals(fieldInfo.Name));
+                    var currentTuple = fieldInfo.GetValue(this) as Dictionary<string, double>;
+                    var currentGameField = gameFieldNames.FirstOrDefault(f => f.Name.Equals(fieldInfo.Name));
 
-                    if (currrentGameField == null || currrentTuple == null) continue;
+                    if (currentGameField == null || currentTuple == null) continue;
 
                     if (fieldInfo.Name.Equals("FgPer"))
                         currentCategory = games.Sum(g => g.Fgm) / games.Sum(g => g.Fga);
                     else if (fieldInfo.Name.Equals("FtPer"))
                         currentCategory = games.Sum(g => g.Ftm) / games.Sum(g => g.Fta);
                     else
-                        currentCategory = games.Select(g => (double)currrentGameField.GetValue(g)).Sum() / (mode == CalcScoreType.Days ? 1 : games.Count(g => g.Min > 0));
+                        currentCategory = games.Select(g => (double)currentGameField.GetValue(g)).Sum() / (mode == CalcScoreType.Days ? 1 : games.Count(g => g.Min > 0));
 
-                    var score = ((double.IsNaN(currentCategory) ? 0 : currentCategory) - currrentTuple["Median"]) / currrentTuple["Std"];
+                    var score = ((double.IsNaN(currentCategory) ? 0 : currentCategory) - currentTuple["Median"]) / currentTuple["Std"];
                     scores.Add(fieldInfo.Name, score);
                 }
 
@@ -130,13 +133,15 @@ namespace NBAFantasy
             }
         }
 
-        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default)
+        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default, int minPlayerGamesTh = 1)
         {
             FieldInfo[] raterFieldNames = typeof(Rater).GetFields();
 
-           var playersGames = mode == CalcScoreType.Days
-                ? Games.Where(g => g.GameDate.Date >= startDate).GroupBy(g => g.PlayerId)
-                : Games.GroupBy(g => g.PlayerId);
+            IEnumerable<IGrouping<long?, Games>> playersGames = mode == CalcScoreType.Days
+                 ? Games.Where(g => g.GameDate.Date >= startDate).GroupBy(g => g.PlayerId)
+                 : Games.GroupBy(g => g.PlayerId);
+
+            playersGames = playersGames.Where(g => g.Count() > minPlayerGamesTh);
 
             if (!playersGames.Any()) return;
 

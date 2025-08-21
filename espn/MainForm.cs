@@ -1059,7 +1059,14 @@ namespace NBAFantasy
                     playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 7);
                     break;
                 case "Last 1":
-                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1).OrderByDescending(p => p.Games[0].Pts);
+                    playersRater = PlayerRater.CreateRater(CalcScoreType.Days, 1);
+                    break;
+                case "Last X Games":
+                    string numOfGamesStr = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Number Of Games For Calc Rater (Or Empty)",
+                            "Create Rater Last X Games");
+                    playersRater = int.TryParse(numOfGamesStr, out int numOfGames)
+                        ? PlayerRater.CreateRater(CalcScoreType.Games, 0, numOfGames)
+                        : PlayerRater.CreateRater(CalcScoreType.Games);
                     break;
             }
 
@@ -1415,23 +1422,37 @@ namespace NBAFantasy
 
         private void createStatsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
-            string headers = "Name,TotalRank,AvgRank,GP," + string.Join(",", fieldNames.Select(f => f.Name));
-
-            IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days);
-            IEnumerable<PlayerInfo> playersRaterAvg = PlayerRater.CreateRater(CalcScoreType.Games);
-
-            var playersListForStatsFile = new List<string> { headers };
-            playersListForStatsFile.AddRange(
-                from player in playersRaterAvg
-                let stats = player.ToShortString(false)
-                let totalRank = playersRater.First(p => p.Id == player.Id).RaterPos
-                select $"{player.PlayerName},{totalRank},{player.RaterPos},{player.Games.First().Gp},{stats}");
-
-            using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "Stats" };
-            if (d.ShowDialog() == DialogResult.OK)
+            try
             {
-                File.WriteAllLines(d.FileName, playersListForStatsFile.ToArray());
+                string numOfGames = Microsoft.VisualBasic.Interaction.InputBox("Please Enter Minimum Player Games (Or Empty For 1 Game)",
+                        "Create Stats File","12");
+
+                if (!int.TryParse(numOfGames, out int minPlayerGamesThreshold) || minPlayerGamesThreshold < 1)
+                    minPlayerGamesThreshold = 1;
+
+
+                IEnumerable<FieldInfo> fieldNames = typeof(GameStats).GetFields().Where(f => f.FieldType == typeof(double));
+                string headers = "Name,TotalRank,AvgRank,GP," + string.Join(",", fieldNames.Select(f => f.Name));
+
+                IEnumerable<PlayerInfo> playersRater = PlayerRater.CreateRater(CalcScoreType.Days, minPlayerGamesTh: minPlayerGamesThreshold);
+                IEnumerable<PlayerInfo> playersRaterAvg = PlayerRater.CreateRater(CalcScoreType.Games, minPlayerGamesTh: minPlayerGamesThreshold);
+
+                var playersListForStatsFile = new List<string> { headers };
+                playersListForStatsFile.AddRange(
+                    from player in playersRaterAvg
+                    let stats = player.ToShortString(false)
+                    let totalRank = playersRater.First(p => p.Id == player.Id).RaterPos
+                    select $"{player.PlayerName},{totalRank},{player.RaterPos},{player.Games.First().Gp},{stats}");
+
+                using var d = new SaveFileDialog { Filter = "CSV files(*.csv)|*.csv| All files(*.*)|*.*", FileName = "Stats" };
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllLines(d.FileName, playersListForStatsFile.ToArray());
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"error whie create stats file - {exception.Message}");
             }
         }
 
@@ -1449,7 +1470,7 @@ namespace NBAFantasy
         private async void sendTeamToTelegramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = tabControl.TabPages["rater_tab"];
-            raterTimePeriod_comboBox.SelectedIndex = raterTimePeriod_comboBox.Items.Count - 1;
+            raterTimePeriod_comboBox.SelectedIndex = raterTimePeriod_comboBox.Items.Count - 2;
             var teamName = YahooDBMethods.YahooTeams.First(t => t.TeamId == ConfigurationManager.AppSettings["YahooTeamId"].ToInt()).TeamName;
             yahooTeamRater_comboBox.SelectedIndex = yahooTeamRater_comboBox.Items.IndexOf(teamName);
 
@@ -1541,7 +1562,7 @@ namespace NBAFantasy
             {
                 IAsyncResult result = BeginInvoke((MethodInvoker)delegate// runs on UI thread
                 {
-                    sendTeamToTelegramToolStripMenuItem_Click(null, null);
+                    //sendTeamToTelegramToolStripMenuItem_Click(null, null);
                 });
                 EndInvoke(result);
             }

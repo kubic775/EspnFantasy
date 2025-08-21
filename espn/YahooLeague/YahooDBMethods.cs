@@ -39,10 +39,16 @@ namespace NBAFantasy.YahooLeague
             YahooTeamsStats = db.YahooTeamStats.AsEnumerable().GroupBy(t => t.YahooTeamId)
                 .ToDictionary(key => key.Key.Value, val => val.ToList());
             NbaTeams = db.LeagueTeams.ToList();
-            PlayersGames = db.Games.AsEnumerable().GroupBy(g => g.PlayerId)
-                .ToDictionary(key => AllPlayers.First(p => p.Id == key.Key).Name, val => val.ToArray());
+            var allGames = db.Games.ToList().GroupBy(g => g.PlayerId);
+            // PlayersGames = allGames.ToDictionary(key => AllPlayers.First(p => p.Id == key.Key).Name, val => val.ToArray());
+            PlayersGames = new Dictionary<string, Games[]>();
+            foreach (var games in allGames)
+            {
+                var name = AllPlayers.First(p => p.Id == games.Key).Name;
+                if (!PlayersGames.ContainsKey(name))
+                    PlayersGames.Add(name, games.ToArray());
+            }
             LastUpdateTime = db.GlobalParams.First().LastUpdateTime;
-
             var currentGames = PlayersGames.Values.SelectMany(g => g)
                 .Where(g => g.GameDate > new DateTime(Utils.GetCurrentYear(), 10, 1)).ToList();
             //MainForm.PlayerRater = currentGames.Any() ? new Rater(players, currentGames) : null;
