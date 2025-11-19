@@ -26,7 +26,7 @@ namespace NBAFantasy
         }
 
 
-        public IEnumerable<PlayerInfo> CreateRater(CalcScoreType mode, int timePeriod = 0, int? numOfGames = null, int minPlayerGamesTh = 1)
+        public IEnumerable<PlayerInfo> CreateRater(CalcScoreType mode, int timePeriod = 0, int? numOfGames = null, int minPlayerGamesTh = 0)
         {
             var rater = new List<PlayerInfo>();
             Factors = FactorsForm.GetFactors();
@@ -133,7 +133,7 @@ namespace NBAFantasy
             }
         }
 
-        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default, int minPlayerGamesTh = 1)
+        private void UpdateFactors(CalcScoreType mode, DateTime startDate = default, int minPlayerGamesTh = 0)
         {
             FieldInfo[] raterFieldNames = typeof(Rater).GetFields();
 
